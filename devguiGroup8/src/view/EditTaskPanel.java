@@ -1,9 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package todo;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -20,7 +14,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
 /**
@@ -28,8 +21,6 @@ import com.toedter.calendar.JDateChooser;
  * @author Mattias
  */
 public class EditTaskPanel extends JPanel {
-    
-    private final String borderTitle = "Add Task";
     
     //Labels
     private JLabel titleLabel            = new JLabel("Title:");
@@ -50,7 +41,7 @@ public class EditTaskPanel extends JPanel {
     private JTextField remStartField     = new JTextField(5);
     private JTextField remEndField       = new JTextField(5);
     
-    //TextArea
+    //Text area
     private JTextArea descriptionArea    = new JTextArea(0,0);
     private JScrollPane	scrollArea 		 = new JScrollPane(descriptionArea);
     
@@ -62,7 +53,7 @@ public class EditTaskPanel extends JPanel {
     private ButtonGroup priorityGroup    = new ButtonGroup();
     private JRadioButton lowPriority     = new JRadioButton("Low", true);
     private JRadioButton mediumPriority  = new JRadioButton("Medium", false);
-    private JRadioButton highPriority    = new JRadioButton("High",	false);
+    private JRadioButton highPriority    = new JRadioButton("High", false);
 
     //Extra Panels
     private JPanel datePanel			 = new JPanel();
@@ -85,8 +76,8 @@ public class EditTaskPanel extends JPanel {
     private JDateChooser fromDateCal	 = new JDateChooser();
     private JDateChooser toDateCal		 = new JDateChooser();
     
-    EditTaskPanel(){
-        
+    EditTaskPanel(String borderTitle){
+
     	//Setup the different layoutManagers
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createTitledBorder(borderTitle));

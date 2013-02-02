@@ -8,7 +8,7 @@ import javax.swing.JFrame;
  */
 public class EditTaskFrame extends JFrame {
     
-    private EditTaskPanel editTaskPanel = new EditTaskPanel();
+    private EditTaskPanel editTaskPanel = new EditTaskPanel("Add/Edit Task");
     
     public EditTaskFrame(String title){
         super(title);
