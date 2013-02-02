@@ -29,7 +29,7 @@ import com.toedter.calendar.JDateChooser;
  */
 public class EditTaskPanel extends JPanel {
     
-    private static final String borderTitle = "Add Task";
+    private final String borderTitle = "Add Task";
     
     //Labels
     private JLabel titleLabel            = new JLabel("Title:");
@@ -50,7 +50,7 @@ public class EditTaskPanel extends JPanel {
     private JTextField remStartField     = new JTextField(5);
     private JTextField remEndField       = new JTextField(5);
     
-    //Text area
+    //TextArea
     private JTextArea descriptionArea    = new JTextArea(0,0);
     private JScrollPane	scrollArea 		 = new JScrollPane(descriptionArea);
     
@@ -62,7 +62,7 @@ public class EditTaskPanel extends JPanel {
     private ButtonGroup priorityGroup    = new ButtonGroup();
     private JRadioButton lowPriority     = new JRadioButton("Low", true);
     private JRadioButton mediumPriority  = new JRadioButton("Medium", false);
-    private JRadioButton highPriority    = new JRadioButton("High", false);
+    private JRadioButton highPriority    = new JRadioButton("High",	false);
 
     //Extra Panels
     private JPanel datePanel			 = new JPanel();
