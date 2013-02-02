@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 
 /**
- * The add/edit task panel
+ * The add/edit task panel.
  * @author Mattias
  */
 public class EditTaskPanel extends JPanel {
