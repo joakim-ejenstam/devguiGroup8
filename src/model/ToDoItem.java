@@ -122,9 +122,6 @@ public class ToDoItem implements Serializable {
 		return creationDate;
 	}
 	/**
-	 * TODO: normally we woudln't need this method, as we can set it in the 
-	 * 			constructor, but as this class is serializeable we might need it?
-	 * 			How to assure, that the creation date is not altered later on?
 	 * @param creationDate the creationDate to set
 	 */
 	public void setCreationDate(Date creationDate) {
