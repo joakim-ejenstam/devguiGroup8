@@ -66,8 +66,6 @@ public class ToDoItem implements Serializable {
 		return priority;
 	}
 	/**
-	 * TODO: what about the range, e.g. 0-5? And how (silent set within border,
-	 * 			throw exception, ...) and where (here, in the model) to control?
 	 * @param priority the priority to set
 	 */
 	public void setPriority(int priority) {
