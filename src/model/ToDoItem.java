@@ -11,7 +11,7 @@ import java.util.EnumSet;
  */
 @SuppressWarnings("serial") //TODO: we should make sure within the model, that not
 							//		two items with the same content are created!
-public class ToDoItem implements Serializable {
+public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 
 	private String	title;
 	private String	description;
@@ -124,6 +124,11 @@ public class ToDoItem implements Serializable {
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+	@Override
+	public int compareTo(ToDoItem o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }
