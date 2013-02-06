@@ -9,8 +9,9 @@ import java.util.EnumSet;
  * @author simon
  *
  */
-@SuppressWarnings("serial") //TODO: we should make sure within the model, that not
-							//		two items with the same content are created!
+@SuppressWarnings("serial") //The title is used as a unique attribute, 
+							//the model makes sure that not two ToDoItems
+							//with the same title get created
 public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 
 	private String	title;
@@ -126,14 +127,53 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 		this.creationDate = creationDate;
 	}
 	
+	/**
+	 * Overrides the method from Comparable. As compareTo should be consistent
+	 * with equals, we'll compare here only the title.
+	 * 
+	 * @param o the ToDoItem to compare this to
+	 * @return int the comparison result
+	 */
 	@Override
 	public int compareTo(ToDoItem o) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(this == o)
+			return 0;
+		return this.getTitle().compareTo(o.getTitle());
 	}
 	
-	//TODO: should we override 
-	// - boolean equals(Object arg0)
-	// - int hashCode()
-	// to use the advantage of the HashSet (used in the models)
+	/**
+	 * Overridden method from object to test if two ToDoItems are equal.
+	 * As the title attribute is the only mandatory attribute and as it
+	 * must be unique, we only test if the title differs.
+	 * 
+	 * @param obj the object to test against.
+	 * @return boolean the result of the test
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+            return false;
+        if (obj == this)
+            return true;
+        if (obj.getClass() != getClass())
+            return false;
+        
+        ToDoItem item = (ToDoItem)obj;
+		if(this.getTitle().equals(item.getTitle()))
+			return true;
+		else
+			return false;
+	}
+	
+	/**
+	 * This method overrides the hashCode generation method from the Object class.
+	 * As the title attribute must be unique, it should be enough to calculate a
+	 * hash. This might not be the fastest/best way to do it...
+	 * @return int the calculated hasCode
+	 */
+	@Override
+	public int hashCode() {
+		return this.getTitle().hashCode();
+	}
+	
 }
