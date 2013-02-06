@@ -125,10 +125,15 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
+	
 	@Override
 	public int compareTo(ToDoItem o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	
+	//TODO: should we override 
+	// - boolean equals(Object arg0)
+	// - int hashCode()
+	// to use the advantage of the HashSet (used in the models)
 }

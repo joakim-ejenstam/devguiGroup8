@@ -28,9 +28,10 @@ public abstract class ToDoItemModel extends Observable {
 	/**
 	 * Use this method to update an already existing {@link ToDoItem}-object, e.g. after changing an attribute.
 	 * This method can of course also be used to fill new attributes, not filled before
-	 * @param item the {@link ToDoItem} to be updated
+	 * @param oldItem the old {@link ToDoItem} which should be updated
+	 * @param newItem the new {@link ToDoItem} that got updated
 	 */
-	public abstract void updateToDoItem(ToDoItem item);
+	public abstract void updateToDoItem(ToDoItem oldItem, ToDoItem newItem);
 	
 	/**
 	 * Creates a new {@link ToDoItem}-object. The only mandatory attribute is the title.
