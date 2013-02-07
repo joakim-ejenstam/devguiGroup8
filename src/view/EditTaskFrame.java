@@ -17,6 +17,8 @@ public class EditTaskFrame extends JFrame {
         super(title);
         Container c = getContentPane();
         c.add(editTaskPanel, BorderLayout.CENTER);
+        this.setVisible(true);
+        this.pack();
     }
     
 }

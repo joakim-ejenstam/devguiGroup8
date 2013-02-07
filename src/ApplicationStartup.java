@@ -1,3 +1,5 @@
+import view.MainView;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Joakim
@@ -10,7 +12,9 @@ public class ApplicationStartup {
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                view.MainView.createAndShowGui();
+            	MainView view = new MainView();
+            	view.createAndShowGUI();
+                //view.MainView.createAndShowGUI();
             }
         });
 

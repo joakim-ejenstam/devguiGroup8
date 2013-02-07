@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -63,6 +65,15 @@ public class MainView extends JFrame {
 	    
 	    // Buttons
 	    JButton addBtn = new JButton("Add");
+	    //TODO: tmp for presentation
+	    addBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				EditTaskFrame editview = new EditTaskFrame("Edit tasks");
+				
+			}
+		});
 	   
 	    // Text fields
 	    JTextField inputFld = new JTextField();
@@ -101,7 +112,8 @@ public class MainView extends JFrame {
 	    table.setBorder(BorderFactory.createTitledBorder(""));	    
 	}
 
-	private static void createAndShowGUI() {
+//	private static void createAndShowGUI() {
+	public void createAndShowGUI() {
 		
 		JFrame frame = new JFrame("The Greight TODO Manager");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -114,11 +126,11 @@ public class MainView extends JFrame {
 		frame.pack();
     }
 	
-	public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-    }
+//	public static void main(String[] args) {
+//        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+//            public void run() {
+//                createAndShowGUI();
+//            }
+//        });
+//    }
 }
