@@ -71,7 +71,8 @@ public class MainView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				EditTaskFrame editview = new EditTaskFrame("Edit tasks");
-				
+				editview.setSize(400,400);
+				editview.setVisible(true);
 			}
 		});
 	   
