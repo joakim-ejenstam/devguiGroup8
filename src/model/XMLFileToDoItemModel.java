@@ -29,7 +29,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		Builder builder = new Builder();
 		
 		try{
-			Document doc	= builder.build("xml\\db.xml");
+			Document doc	= builder.build("data\\db.xml");
 			Element root 	= doc.getRootElement();
 			Elements todos	= root.getChildElements();
 			
