@@ -40,3 +40,9 @@
 			<deleted>0</deleted>
 		</todoitem>
 	</todoitems>
+	
+	<categories>
+		<category>Private</category>
+		<category>University</category>
+	</categories>
+</xml>
