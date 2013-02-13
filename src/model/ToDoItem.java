@@ -14,14 +14,14 @@ import java.util.EnumSet;
 							//with the same title get created
 public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 
-	private String	title;
-	private String	description;
-	private Date	dueDate;
-	private int		priority;
-	private EnumSet<Category>	categories;
-	private boolean	done;
-	private boolean	deleted;
-	private Date	creationDate;
+	private String	 title;
+	private String	 description;
+	private Date	 dueDate;
+	private int		 priority;
+	private Category category;
+	private boolean	 done;
+	private boolean	 deleted;
+	private Date	 creationDate;
 	
 	
 	/**
@@ -75,14 +75,14 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	/**
 	 * @return the List of all categories
 	 */
-	public EnumSet<Category> getCategories() {
-		return categories;
+	public Category getCategory() {
+		return category;
 	}
 	/**
 	 * @param categories the list of all categories to set
 	 */
-	public void setCategories(EnumSet<Category> categories) {
-		this.categories = categories;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	/**
 	 * @param category the category to add to the list of categories
