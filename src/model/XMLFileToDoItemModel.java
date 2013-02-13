@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
 
+import model.Category;
+import model.ToDoItem;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -21,11 +24,21 @@ import exceptions.ToDoItemExistsException;
  *
  */
 public class XMLFileToDoItemModel extends ToDoItemModel {
-
+	
+	private ArrayList<ToDoItem> tasks;
+	
+	public XMLFileToDoItemModel(){
+		this.tasks = parseXML();
+	}
+	
 	@Override
-	public HashSet<ToDoItem> getAllToDoItems() {
+	public ArrayList<ToDoItem> getAllToDoItems() {
+		return tasks;
+	}
+	
+	private static ArrayList<ToDoItem> parseXML(){
 		
-		HashSet<ToDoItem> tasks = new HashSet<ToDoItem>();
+		tasks = new ArrayList<ToDoItem>();
 		Builder builder = new Builder();
 		
 		try{
@@ -39,7 +52,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				Element title			 = todos.get(i).getFirstChildElement("title");
 				Element desc 			 = todos.get(i).getFirstChildElement("description");
 				Element dueDate			 = todos.get(i).getFirstChildElement("duedate");
-				Element categories		 = todos.get(i).getFirstChildElement("categories");
+				Element category		 = todos.get(i).getFirstChildElement("category");
 				Element priority 		 = todos.get(i).getFirstChildElement("priority");
 				Element creationDate 	 = todos.get(i).getFirstChildElement("creationdate");
 				Element done		 	 = todos.get(i).getFirstChildElement("done");
@@ -57,14 +70,13 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 					e.printStackTrace();
 				}
 				
-				//SET CATEGORIES?? 
+				task.setCategory(Category.valueOf(category.getValue()));
 				task.setPriority(Integer.parseInt(priority.getValue()));
 				
 				DateFormat df2 = new SimpleDateFormat("yyy-MM-dd HH:mm");
 				try {
 					task.setCreationDate(df2.parse(creationDate.getValue()));
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				boolean doneAttr = (1 == Integer.parseInt(done.getValue())) ? true : false;
