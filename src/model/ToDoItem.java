@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.EnumSet;
 
 /**
  * JavaBean that represents a ToDo-list item.
@@ -73,22 +72,16 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 		this.priority = priority;
 	}
 	/**
-	 * @return the List of all categories
+	 * @return the category
 	 */
 	public Category getCategory() {
 		return category;
 	}
 	/**
-	 * @param categories the list of all categories to set
+	 * @param category the category to set
 	 */
 	public void setCategory(Category category) {
 		this.category = category;
-	}
-	/**
-	 * @param category the category to add to the list of categories
-	 */
-	public void addCategory(Category category) {
-		this.categories.add(category);
 	}
 	/**
 	 * @return the status if item is done
