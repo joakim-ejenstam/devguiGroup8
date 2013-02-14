@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashSet;
 
 import exceptions.ToDoItemExistsException;
 
@@ -26,7 +25,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		ToDoItem i = new ToDoItem();
 		i.setCreationDate(new Date());
 		i.setTitle("Remember the milk");
-		i.addCategory(Category.PRIVATE);
+		i.setCategory(Category.PRIVATE);
 		i.setDescription("Buy a liter of organic milk from Uppland.");
 		i.setDueDate(new GregorianCalendar(2013,1,10).getTime());
 		i.setPriority(1);
@@ -35,7 +34,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
 		i.setTitle("Learn for the exam");
-		i.addCategory(Category.UNIVERSITY);
+		i.setCategory(Category.UNIVERSITY);
 		i.setDescription("Don't forget the book.");
 		i.setDueDate(new GregorianCalendar(2013,2,1).getTime());
 		i.setPriority(3);
@@ -44,7 +43,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
 		i.setTitle("Hand in thesis");
-		i.addCategory(Category.UNIVERSITY);
+		i.setCategory(Category.UNIVERSITY);
 		i.setDescription("What shall I write about?");
 		i.setDueDate(new GregorianCalendar(2014,6,1).getTime());
 		i.setPriority(2);
@@ -53,7 +52,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
 		i.setTitle("Feed the cat");
-		i.addCategory(Category.PRIVATE);
+		i.setCategory(Category.PRIVATE);
 		i.setDescription("and give something to drink too...");
 		i.setDueDate(new GregorianCalendar(2013,1,10).getTime());
 		i.setPriority(1);
