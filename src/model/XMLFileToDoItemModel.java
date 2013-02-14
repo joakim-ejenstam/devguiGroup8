@@ -36,7 +36,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		return tasks;
 	}
 	
-	private static ArrayList<ToDoItem> parseXML(){
+	private ArrayList<ToDoItem> parseXML(){
 		
 		tasks = new ArrayList<ToDoItem>();
 		Builder builder = new Builder();
