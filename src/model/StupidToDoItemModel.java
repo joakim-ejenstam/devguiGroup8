@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
@@ -14,13 +15,13 @@ import exceptions.ToDoItemExistsException;
  */
 public class StupidToDoItemModel extends ToDoItemModel {
 
-	private HashSet<ToDoItem> items;
+	private ArrayList<ToDoItem> items;
 	
 	/**
 	 * default constructor setting up an initial set of {@link ToDoItem}s
 	 */
 	public StupidToDoItemModel() {
-		this.items = new HashSet<ToDoItem>();
+		this.items = new ArrayList<ToDoItem>();
 		
 		ToDoItem i = new ToDoItem();
 		i.setCreationDate(new Date());
@@ -60,7 +61,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 	}
 	
 	@Override
-	public HashSet<ToDoItem> getAllToDoItems() {
+	public ArrayList<ToDoItem> getAllToDoItems() {
 		return this.items;
 	}
 
