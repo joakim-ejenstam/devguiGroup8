@@ -29,7 +29,9 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i.setDescription("Buy a liter of organic milk from Uppland.");
 		i.setDueDate(new GregorianCalendar(2013,1,10).getTime());
 		i.setPriority(1);
-		this.items.add(i);
+		this.items.add(i); //dirty (see following two lines)
+		setChanged();
+		notifyObservers();
 		
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
@@ -38,7 +40,9 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i.setDescription("Don't forget the book.");
 		i.setDueDate(new GregorianCalendar(2013,2,1).getTime());
 		i.setPriority(3);
-		this.items.add(i);
+		this.items.add(i); //dirty (see following two lines)
+		setChanged();
+		notifyObservers();
 
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
@@ -47,7 +51,9 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i.setDescription("What shall I write about?");
 		i.setDueDate(new GregorianCalendar(2014,6,1).getTime());
 		i.setPriority(2);
-		this.items.add(i);
+		this.items.add(i); //dirty (see following two lines)
+		setChanged();
+		notifyObservers();
 
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
@@ -56,7 +62,9 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i.setDescription("and give something to drink too...");
 		i.setDueDate(new GregorianCalendar(2013,1,10).getTime());
 		i.setPriority(1);
-		this.items.add(i);
+		this.items.add(i); //dirty (see following two lines)
+		setChanged();
+		notifyObservers();
 	}
 	
 	@Override
@@ -65,9 +73,11 @@ public class StupidToDoItemModel extends ToDoItemModel {
 	}
 
 	@Override
-	public void updateToDoItem(ToDoItem oldItem, ToDoItem newItem) {
-		this.items.remove(oldItem);
-		this.items.add(newItem);
+	public void updateToDoItem(int index, ToDoItem updatedItem) {
+		this.items.remove(index);
+		this.items.add(index, updatedItem);
+		setChanged();
+		notifyObservers();
 	}
 
 	@Override
@@ -79,6 +89,8 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		ToDoItem item = new ToDoItem();
 		item.setTitle(title);
 		this.items.add(item);
+		setChanged();
+		notifyObservers();
 		return item;
 	}
 
@@ -89,6 +101,8 @@ public class StupidToDoItemModel extends ToDoItemModel {
 				this.items.remove(item1);
 				item.setDone(true);
 				this.items.add(item);
+				setChanged();
+				notifyObservers();
 			}	
 		}
 	}
@@ -100,6 +114,8 @@ public class StupidToDoItemModel extends ToDoItemModel {
 				this.items.remove(item1);
 				item.setDone(false);
 				this.items.add(item);
+				setChanged();
+				notifyObservers();
 			}	
 		}
 	}
@@ -111,6 +127,8 @@ public class StupidToDoItemModel extends ToDoItemModel {
 				this.items.remove(item1);
 				item.setDeleted(true);
 				this.items.add(item);
+				setChanged();
+				notifyObservers();
 			}	
 		}
 	}
@@ -122,7 +140,19 @@ public class StupidToDoItemModel extends ToDoItemModel {
 				this.items.remove(item1);
 				item.setDeleted(false);
 				this.items.add(item);
+				setChanged();
+				notifyObservers();
 			}	
 		}
+	}
+
+	@Override
+	public ToDoItem getToDoItem(int index) {
+		return this.items.get(index);
+	}
+
+	@Override
+	public int getIndexOfToItem(ToDoItem item) {
+		return this.items.indexOf(item);
 	}
 }

@@ -7,7 +7,7 @@
 				<duedate>2013-03-28</duedate>
 				<category>PRIVATE</category>
 				<priority>1</priority>
-				<creationdate>2013-02-07 12:32</creationdate>
+				<creationdate>2013-02-07T12:32</creationdate>
 				<done>0</done>
 				<deleted>0</deleted>
 			</todoitem>
@@ -18,7 +18,7 @@
 				<duedate>2013-02-01</duedate>
 				<category>UNIVERSITY</category>
 				<priority>3</priority>
-				<creationdate>2013-01-17 12:32</creationdate>
+				<creationdate>2013-01-17T12:32</creationdate>
 				<done>0</done>
 				<deleted>0</deleted>
 			</todoitem>
@@ -29,7 +29,7 @@
 				<duedate>2013-02-18</duedate>
 				<category>PRIVATE</category>
 				<priority>2</priority>
-				<creationdate>2012-02-05 09:12</creationdate>
+				<creationdate>2012-02-05T09:12</creationdate>
 				<done>0</done>
 				<deleted>0</deleted>
 			</todoitem>
