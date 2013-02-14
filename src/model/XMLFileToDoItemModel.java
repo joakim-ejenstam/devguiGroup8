@@ -28,7 +28,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	private ArrayList<ToDoItem> tasks;
 	
 	public XMLFileToDoItemModel(){
-		this.tasks = parseXML();
+		this.tasks = this.parseXML();
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		try{
 			Document doc	= builder.build("data\\db.xml");
 			Element root 	= doc.getRootElement();
-			Elements todos	= root.getChildElements();
+			Elements todos	= root.getFirstChildElement("todoitems").getChildElements();
 			
 			for(int i = 0; i< todos.size(); i++){
 				ToDoItem task = new ToDoItem();
