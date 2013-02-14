@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Observable;
 
@@ -23,7 +24,7 @@ public abstract class ToDoItemModel extends Observable {
 	 * This method doesn't provide any ordering, but just returns all known {@link ToDoItem}-objects.
 	 * @returnHashSet<ToDoItem> the Collection of all {@link ToDoItem}s.
 	 */
-	public abstract HashSet<ToDoItem> getAllToDoItems();
+	public abstract ArrayList<ToDoItem> getAllToDoItems();
 	
 	/**
 	 * Use this method to update an already existing {@link ToDoItem}-object, e.g. after changing an attribute.
