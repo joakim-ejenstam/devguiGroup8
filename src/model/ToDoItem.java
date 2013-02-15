@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 import java.util.Date;
 
+import annotations.DisplayInTable;
+
 /**
  * JavaBean that represents a ToDo-list item.
  * @author simon
@@ -26,6 +28,7 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	/**
 	 * @return the title
 	 */
+	@DisplayInTable(0)
 	public String getTitle() {
 		return title;
 	}
@@ -50,6 +53,7 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	/**
 	 * @return the dueDate
 	 */
+	@DisplayInTable(3)
 	public Date getDueDate() {
 		return dueDate;
 	}
@@ -62,6 +66,7 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	/**
 	 * @return the priority
 	 */
+	@DisplayInTable(2)
 	public int getPriority() {
 		return priority;
 	}
@@ -74,6 +79,7 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	/**
 	 * @return the category
 	 */
+	@DisplayInTable(1)
 	public Category getCategory() {
 		return category;
 	}
@@ -86,6 +92,7 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	/**
 	 * @return the status if item is done
 	 */
+	@DisplayInTable(4)
 	public boolean isDone() {
 		return done;
 	}

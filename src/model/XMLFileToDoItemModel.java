@@ -164,4 +164,9 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		return this.tasks.indexOf(item);
 	}
 
+	@Override
+	public int getNumberOfToDoItems() {
+		return this.tasks.size();
+	}
+
 }

@@ -155,4 +155,9 @@ public class StupidToDoItemModel extends ToDoItemModel {
 	public int getIndexOfToItem(ToDoItem item) {
 		return this.items.indexOf(item);
 	}
+
+	@Override
+	public int getNumberOfToDoItems() {
+		return this.items.size();
+	}
 }
