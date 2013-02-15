@@ -34,11 +34,12 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	 */
 	private void parseXML(){		
 		try{
-			Builder builder = new Builder(); //TODO: what's that?			
+			Builder builder = new Builder();			
 			Document doc	= builder.build("data\\db.xml");
 			Element root 	= doc.getRootElement();
 			Elements todos	= root.getFirstChildElement("todoitems").getChildElements();
 			
+			ToDoItem task = null;
 			this.tasks = new ArrayList<ToDoItem>(todos.size());
 			
 			for(int i = 0; i< todos.size(); i++){
@@ -53,9 +54,9 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 
 				
 				//Add/parse the attributes for the current task
-				
-				// as we have to inform the observers, we use the add method (instead of duplicating code)
-				ToDoItem task = this.createToDoItem(title.getValue());
+				task = new ToDoItem();	// we cannot use this.createToDoItem(String title) here
+										//as it would add the item as a new item to the xml-file
+				task.setTitle(title.getValue());
 				task.setDescription(desc.getValue());
 				
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -80,16 +81,15 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				boolean delAttr = (1 == Integer.parseInt(deleted.getValue())) ? true : false;
 				task.setDeleted(delAttr);
 				
-				// use our own method to add the task, as we have to inform the observers and don't want to duplicate that code
-				this.updateToDoItem(this.getIndexOfToItem(task), task);
+				
+				this.tasks.add(task);
+				setChanged();
+				notifyObservers();
 			}
 		}catch(ParsingException ex){
 			ex.printStackTrace();
 		}catch(IOException ex){
 			ex.printStackTrace();
-		} catch (ToDoItemExistsException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
 	}
 	
