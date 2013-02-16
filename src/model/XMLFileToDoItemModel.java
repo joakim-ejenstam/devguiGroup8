@@ -101,7 +101,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		
 		try {
 			FileOutputStream out = new FileOutputStream(XMLFILEPATH);
-			Serializer ser = new Serializer(out, "ISO-8859-1"); //TODO: UTF8 possible? would be much better for internationalization
+			Serializer ser = new Serializer(out);
 	        ser.setIndent(4);
 	        ser.write(doc);
 	        out.close();
@@ -235,7 +235,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				}
 			}
 			FileOutputStream out = new FileOutputStream(XMLFILEPATH);
-		    Serializer ser = new Serializer(out, "ISO-8859-1"); //TODO: utf8?
+		    Serializer ser = new Serializer(out);
 		    ser.setIndent(4);
 		    ser.write(doc);
 		    out.close();
