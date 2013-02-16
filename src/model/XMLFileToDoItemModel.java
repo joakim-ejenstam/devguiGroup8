@@ -36,23 +36,41 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	}
 	
 	
-	//Private help methods
-	private Date dateParser(String format, String value){
+	/**
+	 * Creates a date object from the string value
+	 * @param format type of format
+	 * @param date the date in a string format
+	 * @return a parsed date object
+	 */
+	private Date dateParser(String format, String date){
 		DateFormat df = new SimpleDateFormat(format);
-		Date date = null;
+		Date dateObj = null;
 		try {
-			date = df.parse(value);
+			dateObj = df.parse(date);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return date;
+		return dateObj;
 	}
 	
+	/**
+	 * Parsing a date object to a string
+	 * @param format type of format
+	 * @param date the date
+	 * @return parsed string containing date
+	 */
 	private String dateFormatter(String format, Date date){
 		DateFormat df = new SimpleDateFormat(format);
 		return df.format(date);
 	}
 	
+	
+	/**
+	 * Adds all specified attributes of a {@link ToDoItem} to an XML file
+	 * @param doc current document
+	 * @param item ToDoItem to be saved to the XML file
+	 * @param todo current XML element
+	 */
 	private void addAttributesToXML(Document doc,ToDoItem item, Element todo){
 		Element title			= new Element("title");
 		Element desc 			= new Element("description");
@@ -182,6 +200,10 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		}
 	}
 	
+	/**
+	 * Adds a {@link ToDoItem} to the XML file
+	 * @param item current ToDoItem
+	 */
 	private void addItemXML(ToDoItem item){
 		try {
 			Builder builder = new Builder();			
@@ -199,6 +221,11 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		}
 	}
 	
+	/**
+	 * Removes and adds a new {@link ToDoItem} to the XML file
+	 * @param index current index of the todos in the XML file
+	 * @param item current ToDoItem to be written to the XML file
+	 */
 	private void updateItemXML(int index, ToDoItem item){
 		try {
 			Builder builder = new Builder();	
@@ -215,6 +242,12 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 
 	}
 	
+	/**
+	 * Changes just one field of a {@link ToDoItem} in the XML file
+	 * @param item current ToDoItem to be edited
+	 * @param field which field to be changed
+	 * @param value new value for the field
+	 */
 	private void editItemXML(ToDoItem item, String field, String value){
 		try {
 			Builder builder = new Builder();			
@@ -247,10 +280,12 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		}
 	}
 	
+	
 	@Override
 	public ArrayList<ToDoItem> getAllToDoItems() {
 		return this.tasks;
 	}
+	
 
 	@Override
 	public void updateToDoItem(int index, ToDoItem updatedItem) {
@@ -260,6 +295,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		setChanged();
 		notifyObservers();
 	}
+	
 
 	@Override
 	public ToDoItem createToDoItem(String title) throws ToDoItemExistsException {
