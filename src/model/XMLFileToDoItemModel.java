@@ -20,7 +20,7 @@ import nu.xom.Serializer;
 import exceptions.ToDoItemExistsException;
 
 /**
- * This model loads the {@link ToDoItem}-objects from a XML-file
+ * This model keeps the {@link ToDoItem}-objects in a XML-file
  * @author simon, Mattias
  *
  */
@@ -101,7 +101,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		
 		try {
 			FileOutputStream out = new FileOutputStream(XMLFILEPATH);
-			Serializer ser = new Serializer(out, "ISO-8859-1");
+			Serializer ser = new Serializer(out, "ISO-8859-1"); //TODO: UTF8 possible? would be much better for internationalization
 	        ser.setIndent(4);
 	        ser.write(doc);
 	        out.close();
@@ -235,7 +235,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				}
 			}
 			FileOutputStream out = new FileOutputStream(XMLFILEPATH);
-		    Serializer ser = new Serializer(out, "ISO-8859-1");
+		    Serializer ser = new Serializer(out, "ISO-8859-1"); //TODO: utf8?
 		    ser.setIndent(4);
 		    ser.write(doc);
 		    out.close();
@@ -256,8 +256,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	public void updateToDoItem(int index, ToDoItem updatedItem) {
 		this.tasks.remove(index);
 		this.tasks.add(index, updatedItem);
-		// TODO save to file (here or in separate method; only this item or write complete list?)
-		this.updateItemXML(index, updatedItem);
+		this.updateItemXML(index, updatedItem); // save to file
 		setChanged();
 		notifyObservers();
 	}
@@ -271,8 +270,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			throw new ToDoItemExistsException();
 		else {
 			this.tasks.add(newItem);
-			// TODO save to file (here or in separate method; only this item or write complete list?)
-			this.addItemXML(newItem);
+			this.addItemXML(newItem); // save to file
 			setChanged();
 			notifyObservers();
 		}
@@ -282,8 +280,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	@Override
 	public void markToDoItemAsDone(ToDoItem item) {
 		this.tasks.get(this.getIndexOfToItem(item)).setDone(true);
-		// TODO save to file (here or in separate method; only this item or write complete list?)
-		this.editItemXML(item, "done", "1");
+		this.editItemXML(item, "done", "1"); // save to file
 		setChanged();
 		notifyObservers();
 	}
@@ -291,8 +288,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	@Override
 	public void markToDoItemAsUndone(ToDoItem item) {
 		this.tasks.get(this.getIndexOfToItem(item)).setDone(false);
-		// TODO save to file (here or in separate method; only this item or write complete list?)
-		this.editItemXML(item, "done", "0");
+		this.editItemXML(item, "done", "0"); // save to file
 		setChanged();
 		notifyObservers();
 	}
@@ -300,8 +296,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	@Override
 	public void deleteToDoItem(ToDoItem item) {
 		this.tasks.get(this.getIndexOfToItem(item)).setDeleted(true);
-		// TODO save to file (here or in separate method; only this item or write complete list?)
-		this.editItemXML(item, "deleted", "1");
+		this.editItemXML(item, "deleted", "1"); // save to file
 		setChanged();
 		notifyObservers();
 	}
@@ -309,8 +304,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	@Override
 	public void restoreToDoItem(ToDoItem item) {
 		this.tasks.get(this.getIndexOfToItem(item)).setDeleted(false);
-		// TODO save to file (here or in separate method; only this item or write complete list?)
-		this.editItemXML(item, "deleted", "0");
+		this.editItemXML(item, "deleted", "0"); // save to file
 		setChanged();
 		notifyObservers();
 	}
