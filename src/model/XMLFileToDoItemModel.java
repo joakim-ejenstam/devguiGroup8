@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,7 +26,7 @@ import exceptions.ToDoItemExistsException;
  */
 public class XMLFileToDoItemModel extends ToDoItemModel {
 	
-	private final String XMLFILEPATH = "data\\db.xml";
+	private final String XMLFILEPATH = "data"+File.separator+"db.xml";
 	
 	private ArrayList<ToDoItem> tasks;
 	
