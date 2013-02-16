@@ -68,17 +68,24 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		desc.appendChild(item.getDescription());
 		
 		todo.appendChild(dueDate);
-		String date1 = this.dateFormatter("yyy-MM-dd", item.getDueDate());
+		String date1 = "";
+		if (item.getDueDate() != null){
+			date1 = this.dateFormatter("yyy-MM-dd", item.getDueDate());
+		}
 		dueDate.appendChild(date1);
 		
-		todo.appendChild(category);
-		category.appendChild(item.getCategory().toString());
+		item.getCategory();
+		String cat = "";
+		if(item.getCategory() != null){
+			cat = item.getCategory().toString();
+		}
+		category.appendChild(cat);
 		
 		todo.appendChild(priority);
 		priority.appendChild(Integer.toString(item.getPriority()));
 		
 		todo.appendChild(creationDate);
-		String date2 = this.dateFormatter("yyy-MM-dd'T'HH:mm", item.getDueDate());
+		String date2 = this.dateFormatter("yyy-MM-dd'T'HH:mm", item.getCreationDate());
 		creationDate.appendChild(date2);
 		
 		todo.appendChild(done);
@@ -138,13 +145,19 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 										//as it would add the item as a new item to the xml-file
 				task.setTitle(title.getValue());
 				task.setDescription(desc.getValue());
-				
-				
-				Date date1 = this.dateParser("yyy-MM-dd", dueDate.getValue());
+				Date date1 = null;
+				if (dueDate.getValue() != ""){
+					 date1 = this.dateParser("yyy-MM-dd", dueDate.getValue());
+				}
 				task.setDueDate(date1);
-				task.setCategory(Category.valueOf(category.getValue()));
-				task.setPriority(Integer.parseInt(priority.getValue()));
 				
+				Category cat = null;
+				if(category.getValue() != ""){
+					cat = Category.valueOf(category.getValue());
+				}
+				task.setCategory(cat);
+				
+				task.setPriority(Integer.parseInt(priority.getValue()));
 				
 				Date date2 = this.dateParser("yyy-MM-dd'T'HH:mm", creationDate.getValue());
 				task.setCreationDate(date2);
@@ -250,6 +263,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	public ToDoItem createToDoItem(String title) throws ToDoItemExistsException {
 		ToDoItem newItem = new ToDoItem();
 		newItem.setTitle(title);
+		newItem.setCreationDate(new Date());
 		if(this.tasks.contains(newItem))
 			throw new ToDoItemExistsException();
 		else {
@@ -312,5 +326,5 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	public int getNumberOfToDoItems() {
 		return this.tasks.size();
 	}
-
 }
+
