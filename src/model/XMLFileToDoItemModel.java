@@ -56,7 +56,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	/**
 	 * Parsing a date object to a string
 	 * @param format type of format
-	 * @param date the date
+	 * @param date represents the date
 	 * @return parsed string containing date
 	 */
 	private String dateFormatter(String format, Date date){
@@ -67,7 +67,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	
 	/**
 	 * Adds all specified attributes of a {@link ToDoItem} to an XML file
-	 * @param doc current document
+	 * @param doc represents a complete XML document
 	 * @param item ToDoItem to be saved to the XML file
 	 * @param todo current XML element
 	 */
