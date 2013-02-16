@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import controller.Config;
+
 /**
  * 
  * @author Emma Rangert
@@ -26,9 +28,6 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 
 public class MainView extends JFrame {
-	
-	private static int windowHeight = 600;
-	private static int windowWidth = 500;
 	
 	private static void addMenuBar(JFrame frame) {
 		
@@ -114,11 +113,14 @@ public class MainView extends JFrame {
 	}
 
 //	private static void createAndShowGUI() {
-	public void createAndShowGUI() {
+	public void createAndShowGUI(Config config) {
 		
 		JFrame frame = new JFrame("The Greight TODO Manager");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(windowWidth, windowHeight);
+		frame.setBounds(Integer.valueOf(config.getProp("windowXPos")), 
+				Integer.valueOf(config.getProp("windowYPos")), 
+				Integer.valueOf(config.getProp("windowWidth")), 
+				Integer.valueOf(config.getProp("windowHeight")));
 		
 		addComponentsToPane(frame.getContentPane());
 		addMenuBar(frame);
