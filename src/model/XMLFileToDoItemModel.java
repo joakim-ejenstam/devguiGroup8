@@ -25,6 +25,8 @@ import exceptions.ToDoItemExistsException;
  */
 public class XMLFileToDoItemModel extends ToDoItemModel {
 	
+	private final String XMLFILEPATH = "data\\db.xml";
+	
 	private ArrayList<ToDoItem> tasks;
 	
 	public XMLFileToDoItemModel(){
@@ -74,7 +76,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		}
 		dueDate.appendChild(date1);
 		
-		item.getCategory();
+		todo.appendChild(category);
 		String cat = "";
 		if(item.getCategory() != null){
 			cat = item.getCategory().toString();
@@ -97,7 +99,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		deleted.appendChild(delAttr);
 		
 		try {
-			FileOutputStream out = new FileOutputStream("data\\db.xml");
+			FileOutputStream out = new FileOutputStream(XMLFILEPATH);
 			Serializer ser = new Serializer(out, "ISO-8859-1");
 	        ser.setIndent(4);
 	        ser.write(doc);
@@ -123,7 +125,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	private void parseXML(){		
 		try{
 			Builder builder = new Builder();			
-			Document doc	= builder.build("data\\db.xml");
+			Document doc	= builder.build(XMLFILEPATH);
 			Element root 	= doc.getRootElement();
 			Elements todos	= root.getFirstChildElement("todoitems").getChildElements();
 			ToDoItem task	= null;
@@ -182,7 +184,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	private void addItemXML(ToDoItem item){
 		try {
 			Builder builder = new Builder();			
-			Document doc = builder.build("data\\db.xml");
+			Document doc = builder.build(XMLFILEPATH);
 			Element root 	= doc.getRootElement();
 			Element todos	= root.getFirstChildElement("todoitems");
 			Element todo 	= new Element("todoitem");
@@ -199,7 +201,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	private void updateItemXML(int index, ToDoItem item){
 		try {
 			Builder builder = new Builder();	
-			Document doc = builder.build("data\\db.xml");
+			Document doc = builder.build(XMLFILEPATH);
 			Element root 	= doc.getRootElement();
 			Elements todos	= root.getFirstChildElement("todoitems").getChildElements();
 			todos.get(index).removeChildren();	
@@ -216,7 +218,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		try {
 			Builder builder = new Builder();			
 			Document doc;
-			doc = builder.build("data\\db.xml");
+			doc = builder.build(XMLFILEPATH);
 			Element root 	= doc.getRootElement();
 			Elements todos	= root.getFirstChildElement("todoitems")
 					.getChildElements();
@@ -231,7 +233,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 					break;
 				}
 			}
-			FileOutputStream out = new FileOutputStream("data\\db.xml");
+			FileOutputStream out = new FileOutputStream(XMLFILEPATH);
 		    Serializer ser = new Serializer(out, "ISO-8859-1");
 		    ser.setIndent(4);
 		    ser.write(doc);
