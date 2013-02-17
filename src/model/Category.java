@@ -1,5 +1,7 @@
 package model;
 
+import model.ToDoItem;
+
 /**
  * Class for a category for {@link ToDoItem}s.
  * At the moment a category is just a label (as a String). But later on, we could enhance it with a color and so on...
@@ -21,7 +23,7 @@ public class Category {
 	 * @param label the label of the new category.
 	 */
 	public Category(String label) {
-		this.label = label;
+		this.label = label.toUpperCase();
 	}
 	
 	/**
@@ -35,6 +37,6 @@ public class Category {
 	 * @param label the label to set
 	 */
 	public void setLabel(String label) {
-		this.label = label;
+		this.label = label.toUpperCase();
 	}
 }
