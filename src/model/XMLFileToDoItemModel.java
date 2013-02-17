@@ -101,7 +101,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		todo.appendChild(category);
 		String cat = "";
 		if(item.getCategory() != null){
-			cat = item.getCategory().toString();
+			cat = item.getCategory().getLabel();
 		}
 		category.appendChild(cat);
 		
@@ -149,10 +149,22 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			Builder builder = new Builder();			
 			Document doc	= builder.build(XMLFILEPATH);
 			Element root 	= doc.getRootElement();
+			
+			//Parse Categories
+			this.categories = new ArrayList<Category>();
+			Elements categories = root.getFirstChildElement("categories").getChildElements();
+			System.out.println(categories.size());
+			for(int i = 0; i< categories.size(); i++){
+				System.out.println(categories.get(i).getValue());
+				String cat = categories.get(i).getValue();
+				this.categories.add(new Category(cat));
+			}
+			
+			
+			//Parse ToDoItems
 			Elements todos	= root.getFirstChildElement("todoitems").getChildElements();
 			ToDoItem task	= null;
 			this.tasks 		= new ArrayList<ToDoItem>(todos.size());
-			
 			for(int i = 0; i< todos.size(); i++){
 				Element title			 = todos.get(i).getFirstChildElement("title");
 				Element desc 			 = todos.get(i).getFirstChildElement("description");
@@ -175,11 +187,15 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				}
 				task.setDueDate(date1);
 				
-				Category cat = null;
+				
 				if(category.getValue() != ""){
-					cat = new Category((category.getValue())); //TODO: needs to be changes? to take the categories from this model instead of creating a new object?
+					for(Category cat : this.getAllCategories()){
+						if (cat.getLabel().equals(category.getValue())){
+							task.setCategory(cat);
+						}	
+					}
 				}
-				task.setCategory(cat);
+				
 				
 				task.setPriority(Integer.parseInt(priority.getValue()));
 				
@@ -402,5 +418,6 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		setChanged();
 		notifyObservers();
 	}
+	
 }
 

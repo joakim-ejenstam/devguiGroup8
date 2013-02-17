@@ -23,7 +23,7 @@ public class Category {
 	 * @param label the label of the new category.
 	 */
 	public Category(String label) {
-		this.label = label.toUpperCase();
+		this.label = label;
 	}
 	
 	/**
@@ -37,6 +37,6 @@ public class Category {
 	 * @param label the label to set
 	 */
 	public void setLabel(String label) {
-		this.label = label.toUpperCase();
+		this.label = label;
 	}
 }
