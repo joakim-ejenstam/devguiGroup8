@@ -1,5 +1,4 @@
 package controller;
-
 import model.XMLFileToDoItemModel;
 
 /**
@@ -11,9 +10,13 @@ import model.XMLFileToDoItemModel;
  */
 public class ToDoController {
     private XMLFileToDoItemModel model;
+    private AddAction add;
+    private EditAction edit;
 
     public ToDoController(XMLFileToDoItemModel Xmodel){
         this.model = Xmodel;
+        //this.add = new AddAction();
+        //this.edit = new EditAction();
     }
 
     /**
