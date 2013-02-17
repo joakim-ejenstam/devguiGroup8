@@ -1,4 +1,6 @@
 import controller.Config;
+import controller.ToDoController;
+import model.XMLFileToDoItemModel;
 import view.MainView;
 
 /**
@@ -19,9 +21,11 @@ public class ApplicationStartup {
 			e.printStackTrace();
 			System.exit(1); //we can't run without any configuration values.
 		}
+        XMLFileToDoItemModel model = new XMLFileToDoItemModel();
+        final ToDoController controller = new ToDoController(model);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-            	MainView view = new MainView();
+            	MainView view = new MainView(controller);
             	view.createAndShowGUI(config);
             }
         });

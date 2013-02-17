@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controller.Config;
+import controller.ToDoController;
 
 /**
  * This class sets up the main window of the application
@@ -28,11 +29,16 @@ import controller.Config;
 @SuppressWarnings("serial")
 
 public class MainView extends JFrame {
+    private static ToDoController controller;
 	
 	/**
 	 * Method for setting up the menu bar and adding it to the main frame.
 	 * @param frame the frame where to add the menu bar
 	 */
+    public MainView(ToDoController newController) {
+        this.controller = newController;
+    }
+
 	private static void addMenuBar(JFrame frame) {
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -95,9 +101,9 @@ public class MainView extends JFrame {
 	    JTextField inputFld = new JTextField();
 	    
 	    // Buttons
-	    JButton addBtn = new JButton("Add");
+	    JButton addBtn = new JButton(controller.getAddAction());
 	    
-	    //TODO: tmp for presentation
+	    /*
 	    addBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -107,7 +113,7 @@ public class MainView extends JFrame {
 				editview.setVisible(true);
 			}
 		});
-
+        */
 	    pane.setLayout(new BorderLayout());
 	    scrollPane.add(table);
 	    
