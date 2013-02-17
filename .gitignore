@@ -40,3 +40,13 @@ local.properties
 
 # PDT-specific
 .buildpath
+
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.iws
+.DS_Store
+log/
+target/
