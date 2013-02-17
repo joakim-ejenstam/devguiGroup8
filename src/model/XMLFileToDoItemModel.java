@@ -219,7 +219,9 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			
 			this.addAttributesToXML(doc, item, todo);
 			
-		} catch (ParsingException | IOException e) { //TODO
+		}catch (ParsingException e){
+			e.printStackTrace();
+		}catch (IOException e){
 			e.printStackTrace();
 		}
 	}
@@ -239,7 +241,9 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			
 			this.addAttributesToXML(doc, item, todos.get(index));
 			
-		} catch (ParsingException | IOException e) {
+		}catch (ParsingException e){
+			e.printStackTrace();
+		}catch (IOException e){
 			e.printStackTrace();
 		}
 
