@@ -1,5 +1,7 @@
 package controller;
 
+import view.EditTaskFrame;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -26,5 +28,8 @@ public class EditAction extends AbstractAction {
         Object source = event.getSource();
         /*Todo: Get item from model, display edit frame
         * with fields filled from todoitem.*/
-    }
+        EditTaskFrame editView = new EditTaskFrame("Edit tasks");
+        editView.setSize(400,400);
+        editView.setVisible(true);
+     }
 }
