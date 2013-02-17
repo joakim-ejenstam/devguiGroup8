@@ -1,4 +1,5 @@
 package controller;
+import model.ToDoItem;
 import model.XMLFileToDoItemModel;
 
 /**
@@ -23,12 +24,17 @@ public class ToDoController {
      * Method for adding a new item to the model. This method will sanitize input if needed.
      */
     public void addItem(String title) {
-        //model.createToDoItem(title);
+        ToDoItem item = model.createToDoItem(title);
+        return item;
     }
 
 
-    public void editItem(String title) {
-        //model.getItem(title);
+    public void getEditItem(int index) {
+        //model.getItem(index);
 
+    }
+
+    public void updateEditItem(ToDoItem newItem) {
+        //model.updateTodoItem(newItem)
     }
 }
