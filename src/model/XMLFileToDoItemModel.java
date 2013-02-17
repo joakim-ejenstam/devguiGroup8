@@ -157,7 +157,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			for(int i = 0; i< categories.size(); i++){
 				System.out.println(categories.get(i).getValue());
 				String cat = categories.get(i).getValue();
-				this.categories.add(new Category(cat));
+				this.addCategory(new Category(cat));
 			}
 			
 			

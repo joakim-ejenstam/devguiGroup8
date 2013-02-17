@@ -106,8 +106,7 @@ public class Config {
 			} catch (IOException e) {
 				//We can't do anything here anymore...
 			}
-		}
-		
+		}	
 	}
 
 	/**

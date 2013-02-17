@@ -23,7 +23,6 @@ public class ApplicationStartup {
             public void run() {
             	MainView view = new MainView();
             	view.createAndShowGUI(config);
-                //view.MainView.createAndShowGUI();
             }
         });
         this.config.saveApplicationProperties(); //TODO: is this here the right place to do it? It should happen when the application gets closed
