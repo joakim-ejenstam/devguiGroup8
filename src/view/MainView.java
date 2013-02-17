@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -29,22 +30,51 @@ import controller.Config;
 
 public class MainView extends JFrame {
 	
+	/**
+	 * Method for setting up the menu bar and adding it to the main frame.
+	 * @param frame the frame where to add the menu bar
+	 */
 	private static void addMenuBar(JFrame frame) {
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 
+		// Menus
 		JMenu file = new JMenu("File");
-		menuBar.add(file);
 		JMenu edit = new JMenu("Edit");
-		menuBar.add(edit);
 		JMenu help = new JMenu("Help");
-		menuBar.add(help);
+		JMenu chooseLanguage = new JMenu("Change language");
 		
+		// Sub menus
+		JMenuItem about = new JMenuItem("About");
+		JMenuItem addTodo = new JMenuItem("Add todo");
+		JMenuItem editTodo = new JMenuItem("Edit todo");
+		JMenuItem english = new JMenuItem("English");
+		JMenuItem german = new JMenuItem("German");
+		JMenuItem swedish = new JMenuItem("Swedish");		
+		
+		// Set up menu bar
+		menuBar.add(file);
+		menuBar.add(edit);
+		menuBar.add(help);
+		file.add(chooseLanguage);
+		help.add(about);
+		edit.add(addTodo);
+		edit.add(editTodo);
+		chooseLanguage.add(english);
+		chooseLanguage.add(german);
+		chooseLanguage.add(swedish);
+		
+		/* For later use when we add more sub menus to file menu:
+		file.addSeparator();
+		*/
 	}
 	
+	/**
+	 * Method for adding components to the content pane. 
+	 * @param pane the pane to where the components are added
+	 */
 	private static void addComponentsToPane(Container pane) {
-		
 		
 		// Labels
 		JLabel item = new JLabel("Item");
@@ -64,6 +94,7 @@ public class MainView extends JFrame {
 	    
 	    // Buttons
 	    JButton addBtn = new JButton("Add");
+	    
 	    //TODO: tmp for presentation
 	    addBtn.addActionListener(new ActionListener() {
 			
@@ -91,9 +122,11 @@ public class MainView extends JFrame {
 	    northPanel.setLayout(new GridLayout());
 	    
 	    // Setting background color for help
-        //northPanel.setBackground(Color.ORANGE);
-        //southPanel.setBackground(Color.GREEN);
-        //scrollPane.setBackground(Color.YELLOW);
+        /*
+        northPanel.setBackground(Color.ORANGE);
+        southPanel.setBackground(Color.GREEN);
+        scrollPane.setBackground(Color.YELLOW);
+	    */
 	    
 	    inputFld.setHorizontalAlignment(JTextField.LEFT);
 
@@ -112,7 +145,10 @@ public class MainView extends JFrame {
 	    table.setBorder(BorderFactory.createTitledBorder(""));	    
 	}
 
-//	private static void createAndShowGUI() {
+	/**
+	 * Method for creating and showing the user interface. 
+	 * @param config the instance to be created and shown
+	 */
 	public void createAndShowGUI(Config config) {
 		
 		JFrame frame = new JFrame("The Greight TODO Manager");
@@ -128,12 +164,5 @@ public class MainView extends JFrame {
 		frame.setVisible(true);
 		frame.pack();
     }
-	
-//	public static void main(String[] args) {
-//        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-//            public void run() {
-//                createAndShowGUI();
-//            }
-//        });
-//    }
+
 }
