@@ -21,9 +21,8 @@ import javax.swing.JTextField;
 import controller.Config;
 
 /**
- * 
+ * This class sets up the main window of the application
  * @author Emma Rangert
- *
  */
 
 @SuppressWarnings("serial")
@@ -92,6 +91,9 @@ public class MainView extends JFrame {
 	    JPanel northPanel = new JPanel();
 	    JPanel southPanel = new JPanel();
 	    
+	    // Text fields
+	    JTextField inputFld = new JTextField();
+	    
 	    // Buttons
 	    JButton addBtn = new JButton("Add");
 	    
@@ -105,10 +107,7 @@ public class MainView extends JFrame {
 				editview.setVisible(true);
 			}
 		});
-	   
-	    // Text fields
-	    JTextField inputFld = new JTextField();
-	    
+
 	    pane.setLayout(new BorderLayout());
 	    scrollPane.add(table);
 	    
@@ -121,21 +120,14 @@ public class MainView extends JFrame {
 	    southPanel.setLayout(new BorderLayout());
 	    northPanel.setLayout(new GridLayout());
 	    
-	    // Setting background color for help
-        /*
-        northPanel.setBackground(Color.ORANGE);
-        southPanel.setBackground(Color.GREEN);
-        scrollPane.setBackground(Color.YELLOW);
-	    */
-	    
 	    inputFld.setHorizontalAlignment(JTextField.LEFT);
 
-	    // Adding to southPanel
+	    // Set up south panel
 	    southPanel.add(inputFld, BorderLayout.CENTER);
 	    southPanel.add(addBtn, BorderLayout.EAST);
         southPanel.setBorder(BorderFactory.createTitledBorder("Add to do"));
 
-	    // Adding to northPanel
+	    // Set up north panel
 	    northPanel.add(item);
 	    northPanel.add(category);
 	    northPanel.add(priority);
