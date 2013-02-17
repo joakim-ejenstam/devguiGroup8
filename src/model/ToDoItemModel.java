@@ -3,7 +3,7 @@
  */
 package model;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 import exceptions.ToDoItemExistsException;
@@ -11,6 +11,7 @@ import exceptions.ToDoItemExistsException;
 /**
  * This is a default abstract model for {@link ToDoItem}.s to specify the methods 
  * all Models have to implement.
+ * In addition this model also handles the {@link Category}-objects (as they are pretty simple anyway)
  * I would have preferred an Interface over an abstract class,
  * but Observable is a Class and not an Interface, thus we need
  * a class here to be able to extend it...
@@ -21,10 +22,16 @@ import exceptions.ToDoItemExistsException;
 public abstract class ToDoItemModel extends Observable {
 	
 	/**
-	 * This method doesn't provide any ordering, but just returns all known {@link ToDoItem}-objects.
-	 * @return ArrayList<ToDoItem> the Collection of all {@link ToDoItem}s.
+	 * This method returns all known {@link ToDoItem}-objects, that are not deleted.
+	 * @return List<ToDoItem> the Collection of all {@link ToDoItem}s.
 	 */
-	public abstract ArrayList<ToDoItem> getAllToDoItems();
+	public abstract List<ToDoItem> getAllToDoItems();
+	
+	/**
+	 * This method returns all {@link ToDoItem}s, that are marked as deleted
+	 * @return List<ToDoItem> the list of all deleted {@link ToDoItem}s.
+	 */
+	public abstract List<ToDoItem> getDeletedToDoItems();
 	
 	/**
 	 * Returns a single {@link ToDoItem}.
@@ -86,5 +93,25 @@ public abstract class ToDoItemModel extends Observable {
 	 * @param item the {@link ToDoItem} to restore.
 	 */
 	public abstract void restoreToDoItem(ToDoItem item);
+	
+	
+	/**
+	 * Returns a list of all known {@link Category} objects. 
+	 * @return List<Category> the list of categories
+	 */
+	public abstract List<Category> getAllCategories();
+	
+	/**
+	 * Returns a single {@link Category}
+	 * @param index the index of the {@link Category} to return
+	 * @return the selected {@link Category}
+	 */
+	public abstract Category getCategory(int index);
+	
+	/**
+	 * Adds a new {@link Category}to the list of categories
+	 * @param category the new {@link Category} to add
+	 */
+	public abstract void addCategory(Category category);
 	
 }

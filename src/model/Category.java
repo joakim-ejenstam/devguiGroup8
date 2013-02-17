@@ -1,12 +1,40 @@
 package model;
 
 /**
- * Enum with categories for ToDo-List items.
+ * Class for a category for {@link ToDoItem}s.
+ * At the moment a category is just a label (as a String). But later on, we could enhance it with a color and so on...
  * 
- * TODO: how can this made dynamic 
- * 			(adding enums at runtime, save to file, read from file)?
  * @author simon
  */
-public enum Category {
-	PRIVATE, UNIVERSITY
+public class Category {
+
+	private String label;
+
+	/**
+	 * default constructor (just added explicit, as we have another one...)
+	 */
+	public Category() {
+		
+	}
+	/**
+	 * constructor that sets the attributes of the category
+	 * @param label the label of the new category.
+	 */
+	public Category(String label) {
+		this.label = label;
+	}
+	
+	/**
+	 * @return the label
+	 */
+	public String getLabel() {
+		return label;
+	}
+
+	/**
+	 * @param label the label to set
+	 */
+	public void setLabel(String label) {
+		this.label = label;
+	}
 }

@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import exceptions.ToDoItemExistsException;
 
@@ -14,7 +15,8 @@ import exceptions.ToDoItemExistsException;
  */
 public class StupidToDoItemModel extends ToDoItemModel {
 
-	private ArrayList<ToDoItem> items;
+	private List<ToDoItem> items; //all ToDoItems
+	private List<Category> categories; //all categories
 	
 	/**
 	 * default constructor setting up an initial set of {@link ToDoItem}s
@@ -25,7 +27,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		ToDoItem i = new ToDoItem();
 		i.setCreationDate(new Date());
 		i.setTitle("Remember the milk");
-		i.setCategory(Category.PRIVATE);
+		i.setCategory(new Category("private"));
 		i.setDescription("Buy a liter of organic milk from Uppland.");
 		i.setDueDate(new GregorianCalendar(2013,1,10).getTime());
 		i.setPriority(1);
@@ -36,7 +38,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
 		i.setTitle("Learn for the exam");
-		i.setCategory(Category.UNIVERSITY);
+		i.setCategory(new Category("university"));
 		i.setDescription("Don't forget the book.");
 		i.setDueDate(new GregorianCalendar(2013,2,1).getTime());
 		i.setPriority(3);
@@ -47,7 +49,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
 		i.setTitle("Hand in thesis");
-		i.setCategory(Category.UNIVERSITY);
+		i.setCategory(new Category("university"));
 		i.setDescription("What shall I write about?");
 		i.setDueDate(new GregorianCalendar(2014,6,1).getTime());
 		i.setPriority(2);
@@ -58,7 +60,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i = new ToDoItem();
 		i.setCreationDate(new Date());
 		i.setTitle("Feed the cat");
-		i.setCategory(Category.PRIVATE);
+		i.setCategory(new Category("private"));
 		i.setDescription("and give something to drink too...");
 		i.setDueDate(new GregorianCalendar(2013,1,10).getTime());
 		i.setPriority(1);
@@ -68,8 +70,13 @@ public class StupidToDoItemModel extends ToDoItemModel {
 	}
 	
 	@Override
-	public ArrayList<ToDoItem> getAllToDoItems() {
-		return this.items;
+	public List<ToDoItem> getAllToDoItems() {
+		List<ToDoItem> undeletedItems = new ArrayList<ToDoItem>(this.getNumberOfToDoItems()); // just temporary to filter
+		for(ToDoItem currentItem: this.items) {
+			if(!currentItem.isDeleted())
+				undeletedItems.add(currentItem);
+		}
+		return undeletedItems;
 	}
 
 	@Override
@@ -159,5 +166,32 @@ public class StupidToDoItemModel extends ToDoItemModel {
 	@Override
 	public int getNumberOfToDoItems() {
 		return this.items.size();
+	}
+
+	@Override
+	public List<ToDoItem> getDeletedToDoItems() {
+		List<ToDoItem> deletedItems = new ArrayList<ToDoItem>(this.getNumberOfToDoItems()); // just temporary to filter
+		for(ToDoItem currentItem: this.items) {
+			if(currentItem.isDeleted())
+				deletedItems.add(currentItem);
+		}
+		return deletedItems;
+	}
+
+	@Override
+	public List<Category> getAllCategories() {
+		return this.categories;
+	}
+
+	@Override
+	public Category getCategory(int index) {
+		return this.categories.get(index);
+	}
+
+	@Override
+	public void addCategory(Category category) {
+		this.categories.add(category);
+		setChanged();
+		notifyObservers();
 	}
 }
