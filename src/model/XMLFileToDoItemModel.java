@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import nu.xom.Builder;
 import nu.xom.Document;
@@ -28,7 +29,9 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	
 	private final String XMLFILEPATH = "data"+File.separator+"db.xml";
 	
-	private ArrayList<ToDoItem> tasks;
+	private List<ToDoItem> tasks;//all ToDoItem-objects
+
+	private List<Category> categories;//all Category-objects
 	
 	public XMLFileToDoItemModel(){
 		//read the XML-file and fill the internal data structure with the ToDoItems
@@ -174,7 +177,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				
 				Category cat = null;
 				if(category.getValue() != ""){
-					cat = Category.valueOf(category.getValue());
+					cat = new Category((category.getValue())); //TODO: needs to be changes? to take the categories from this model instead of creating a new object?
 				}
 				task.setCategory(cat);
 				
@@ -216,7 +219,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			
 			this.addAttributesToXML(doc, item, todo);
 			
-		} catch (ParsingException | IOException e) {
+		} catch (ParsingException | IOException e) { //TODO
 			e.printStackTrace();
 		}
 	}
@@ -282,8 +285,13 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	
 	
 	@Override
-	public ArrayList<ToDoItem> getAllToDoItems() {
-		return this.tasks;
+	public List<ToDoItem> getAllToDoItems() {
+		List<ToDoItem> undeletedItems = new ArrayList<ToDoItem>(this.getNumberOfToDoItems()); // just temporary to filter
+		for(ToDoItem currentItem: this.tasks) {
+			if(!currentItem.isDeleted())
+				undeletedItems.add(currentItem);
+		}
+		return undeletedItems;
 	}
 	
 
@@ -358,6 +366,37 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	@Override
 	public int getNumberOfToDoItems() {
 		return this.tasks.size();
+	}
+
+
+	@Override
+	public List<ToDoItem> getDeletedToDoItems() {
+		List<ToDoItem> deletedItems = new ArrayList<ToDoItem>(this.getNumberOfToDoItems()); // just temporary to filter
+		for(ToDoItem currentItem: this.tasks) {
+			if(currentItem.isDeleted())
+				deletedItems.add(currentItem);
+		}
+		return deletedItems;
+	}
+
+
+	@Override
+	public List<Category> getAllCategories() {
+		return this.categories;
+	}
+
+
+	@Override
+	public Category getCategory(int index) {
+		return this.categories.get(index);
+	}
+
+
+	@Override
+	public void addCategory(Category category) {
+		this.categories.add(category);
+		setChanged();
+		notifyObservers();
 	}
 }
 
