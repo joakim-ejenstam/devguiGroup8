@@ -1,6 +1,7 @@
 package controller;
 import exceptions.ToDoItemExistsException;
 import model.ToDoItem;
+import model.ToDoItemModel;
 import model.XMLFileToDoItemModel;
 
 import javax.swing.*;
@@ -13,12 +14,12 @@ import java.awt.event.KeyEvent;
  * Time: 22:12
  */
 public class ToDoController {
-    private XMLFileToDoItemModel model;
+    private ToDoItemModel model;
     private AddAction add;
     private EditAction edit;
 
-    public ToDoController(XMLFileToDoItemModel Xmodel){
-        this.model = Xmodel;
+    public ToDoController(ToDoItemModel model2){
+        this.model = model2;
         this.add = new AddAction("Add",createNavigationIcon("Back24"),"Press to add ToDoItem", KeyEvent.VK_A, this);
         this.edit = new EditAction("Edit",createNavigationIcon("Back24"),"Press to edit ToDoItem", KeyEvent.VK_E, this);
         this.edit = new EditAction("Delete",createNavigationIcon("Back24"),"Press to delete ToDoItem", KeyEvent.VK_D, this);

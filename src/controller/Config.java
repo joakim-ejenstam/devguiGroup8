@@ -49,7 +49,7 @@ public class Config {
 			try {
 				instance = new Config();
 			} catch (IOException e) {
-				throw new InstantiationException("Config values couldn't be loaded from the config file.");
+				throw new InstantiationException("Cannot load config values from the properties file. "+e.getLocalizedMessage());
 			}
 		return instance;
 	}

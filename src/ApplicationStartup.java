@@ -1,5 +1,7 @@
 import controller.Config;
 import controller.ToDoController;
+import exceptions.LoadModelException;
+import model.ToDoItemModel;
 import model.XMLFileToDoItemModel;
 import view.MainView;
 
@@ -21,7 +23,14 @@ public class ApplicationStartup {
 			e.printStackTrace();
 			System.exit(1); //we can't run without any configuration values.
 		}
-        XMLFileToDoItemModel model = new XMLFileToDoItemModel();
+        ToDoItemModel model = null;
+		try {
+			model = new XMLFileToDoItemModel();
+		} catch (LoadModelException e) {
+			System.out.println(e.getLocalizedMessage());
+			e.printStackTrace();
+			System.exit(1);//without a model our application can't run...
+		}
         final ToDoController controller = new ToDoController(model);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {

@@ -18,6 +18,8 @@ import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.ParsingException;
 import nu.xom.Serializer;
+import nu.xom.ValidityException;
+import exceptions.LoadModelException;
 import exceptions.ToDoItemExistsException;
 
 /**
@@ -33,7 +35,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 
 	private List<Category> categories;//all Category-objects
 	
-	public XMLFileToDoItemModel(){
+	public XMLFileToDoItemModel() throws LoadModelException{
 		//read the XML-file and fill the internal data structure with the ToDoItems
 		this.parseXML();
 	}
@@ -142,11 +144,11 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	/**
 	 * This method loads a xml-file that is used as a database and fills the data structure
 	 * of this class with the ToDoItems.
-	 * TODO: exception handling could be improved. :)
+	 * @throws LoadModelException if the XML-file caused some problems...
 	 */
-	private void parseXML(){		
+	private void parseXML() throws LoadModelException{		
 		try{
-			Builder builder = new Builder();			
+			Builder builder = new Builder();
 			Document doc	= builder.build(XMLFILEPATH);
 			Element root 	= doc.getRootElement();
 			
@@ -212,10 +214,10 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				setChanged();
 				notifyObservers();
 			}
-		}catch(ParsingException ex){
-			ex.printStackTrace();
-		}catch(IOException ex){
-			ex.printStackTrace();
+		} catch (ParsingException e) {
+			new LoadModelException("The db-file "+XMLFILEPATH+" could not be parsed.",e.getCause());
+		} catch (IOException e) {
+			new LoadModelException("The db-file "+XMLFILEPATH+" could not be loaded.",e.getCause());
 		}
 	}
 	
