@@ -148,7 +148,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	private void parseXML() throws LoadModelException{		
 		try{
 			Builder builder = new Builder();
-			Document doc	= builder.build(XMLFILEPATH);
+			Document doc	= builder.build(new File(XMLFILEPATH));
 			Element root 	= doc.getRootElement();
 			
 			//Parse Categories
@@ -227,7 +227,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	private void addItemXML(ToDoItem item){
 		try {
 			Builder builder = new Builder();			
-			Document doc = builder.build(XMLFILEPATH);
+			Document doc = builder.build(new File(XMLFILEPATH));
 			Element root 	= doc.getRootElement();
 			Element todos	= root.getFirstChildElement("todoitems");
 			Element todo 	= new Element("todoitem");
@@ -251,7 +251,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	private void updateItemXML(int index, ToDoItem item){
 		try {
 			Builder builder = new Builder();	
-			Document doc = builder.build(XMLFILEPATH);
+			Document doc = builder.build(new File(XMLFILEPATH));
 			Element root 	= doc.getRootElement();
 			Elements todos	= root.getFirstChildElement("todoitems").getChildElements();
 			todos.get(index).removeChildren();	
@@ -276,7 +276,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		try {
 			Builder builder = new Builder();			
 			Document doc;
-			doc = builder.build(XMLFILEPATH);
+			doc = builder.build(new File(XMLFILEPATH));
 			Element root 	= doc.getRootElement();
 			Elements todos	= root.getFirstChildElement("todoitems")
 					.getChildElements();
