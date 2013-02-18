@@ -3,20 +3,21 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
-import java.awt.ScrollPane;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+//import model.TableToDoItemModel;
 
 import controller.Config;
 import controller.ToDoController;
@@ -29,11 +30,12 @@ import controller.ToDoController;
 @SuppressWarnings("serial")
 
 public class MainView extends JFrame {
-    private static ToDoController controller;
 	
+    private static ToDoController controller;
+    // private static TableToDoItemModel tableModel;
 	
     public MainView(ToDoController newController) {
-        this.controller = newController;
+        MainView.controller = newController;
     }
 
     /**
@@ -77,31 +79,40 @@ public class MainView extends JFrame {
 	}
 	
 	/**
+	 * Method for creating and setting up the table for showing to do items to the user.
+	 * @return Returns the table.
+	 */
+	private static JTable createTable() {
+		
+		// TODO: this is temporary added to show the headings in the table
+		// should be a TableToDoItemModel and not DefaultTableModel, 
+		// however I did not yet manage to get the headings working that way
+		String[] columnLabels = {"Title","Category","Priority","Due","Done"};
+
+		DefaultTableModel temp = new DefaultTableModel(columnLabels,0);
+	    JTable table = new JTable(temp); 
+	    //JTable table = new JTable(tableModel);
+	    
+	    return table;
+	}
+	
+	/**
 	 * Method for adding components to the content pane. 
 	 * @param pane the pane to where the components are added
 	 */
 	private static void addComponentsToPane(Container pane) {
+			    
+		pane.setLayout(new BorderLayout());
 		
-		// Labels
-		JLabel item = new JLabel("Item");
-		JLabel category = new JLabel("Category");
-		JLabel priority = new JLabel("Priority");
-	    JLabel deadline = new JLabel("Deadline");
-		
-		// Table
-		JTable table = new JTable();
-		
-		// Scroll pane
-	    ScrollPane scrollPane = new ScrollPane();
-
-	    // Panels
+		// Panels
 	    JPanel northPanel = new JPanel();
 	    JPanel southPanel = new JPanel();
+		
+	    // Scroll pane
+	    JScrollPane scrollPane = new JScrollPane(createTable());
 	    
-	    // Text fields
+	    // Text fields and buttons
 	    JTextField inputFld = new JTextField();
-	    
-	    // Buttons
 	    JButton addBtn = new JButton(controller.getAddAction());
 	    
 	    /*
@@ -115,33 +126,24 @@ public class MainView extends JFrame {
 			}
 		});
         */
-	    pane.setLayout(new BorderLayout());
-	    scrollPane.add(table);
 	    
 	    // Add to pane
 	    pane.add(scrollPane, BorderLayout.CENTER);
 		pane.add(northPanel, BorderLayout.NORTH);
 	    pane.add(southPanel, BorderLayout.SOUTH);
 	    
-	    // Set layouts
+	    // Set layouts and alignment
 	    southPanel.setLayout(new BorderLayout());
 	    northPanel.setLayout(new GridLayout());
-	    
 	    inputFld.setHorizontalAlignment(JTextField.LEFT);
 
 	    // Set up south panel
 	    southPanel.add(inputFld, BorderLayout.CENTER);
 	    southPanel.add(addBtn, BorderLayout.EAST);
         southPanel.setBorder(BorderFactory.createTitledBorder("Add to do"));
-
-	    // Set up north panel
-	    northPanel.add(item);
-	    northPanel.add(category);
-	    northPanel.add(priority);
-	    northPanel.add(deadline);
-	    northPanel.setBorder(BorderFactory.createTitledBorder("To do's"));
-	    
-	    table.setBorder(BorderFactory.createTitledBorder(""));	    
+        
+	    scrollPane.setBorder(BorderFactory.createTitledBorder("To do's"));
+	    scrollPane.setColumnHeaderView(createTable().getTableHeader());
 	}
 
 	/**
