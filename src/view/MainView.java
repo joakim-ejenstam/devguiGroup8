@@ -31,14 +31,15 @@ import controller.ToDoController;
 public class MainView extends JFrame {
     private static ToDoController controller;
 	
-	/**
-	 * Method for setting up the menu bar and adding it to the main frame.
-	 * @param frame the frame where to add the menu bar
-	 */
+	
     public MainView(ToDoController newController) {
         this.controller = newController;
     }
 
+    /**
+	 * Method for setting up the menu bar and adding it to the main frame.
+	 * @param frame the frame where to add the menu bar
+	 */
 	private static void addMenuBar(JFrame frame) {
 		
 		JMenuBar menuBar = new JMenuBar();
