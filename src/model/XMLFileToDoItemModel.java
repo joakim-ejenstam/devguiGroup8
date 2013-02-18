@@ -18,7 +18,6 @@ import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.ParsingException;
 import nu.xom.Serializer;
-import nu.xom.ValidityException;
 import exceptions.LoadModelException;
 import exceptions.ToDoItemExistsException;
 
@@ -215,9 +214,9 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				notifyObservers();
 			}
 		} catch (ParsingException e) {
-			new LoadModelException("The db-file "+XMLFILEPATH+" could not be parsed.",e.getCause());
+			throw new LoadModelException("The db-file "+XMLFILEPATH+" could not be parsed.",e.getCause());
 		} catch (IOException e) {
-			new LoadModelException("The db-file "+XMLFILEPATH+" could not be loaded.",e.getCause());
+			throw new LoadModelException("The db-file "+XMLFILEPATH+" could not be loaded.",e.getCause());
 		}
 	}
 	
