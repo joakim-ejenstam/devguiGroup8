@@ -23,6 +23,7 @@ public class ToDoController {
     private OkAction ok;
     private DeleteAction delete;
     private CancelAction cancel;
+    private ChangeLanguageAction language;
 
     public ToDoController(ToDoItemModel newModel){
         this.model = newModel;
@@ -31,6 +32,7 @@ public class ToDoController {
         this.delete = new DeleteAction("Delete",createNavigationIcon("Back24"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
         this.ok = new OkAction("Save",createNavigationIcon("Back24"),"Press to save ToDoItem", KeyEvent.VK_O, this);
         this.cancel = new CancelAction("Cancel", createNavigationIcon("Back24"),"Press to abort", KeyEvent.VK_C, this);
+        this.language = new ChangeLanguageAction("Change language", createNavigationIcon("Back24"),"Press to change language", KeyEvent.VK_L, this);
     }
 
     public ToDoItem addItem(String title) {
@@ -95,12 +97,25 @@ public class ToDoController {
         return ok;
     }
 
+    public ChangeLanguageAction getLanguage() {
+        return language;
+    }
+
     /**
      * This method is used to add the observer to the observable model.
      * @param arg
      */
     public void addObserver(MainView arg) {
         model.addObserver(arg);
+    }
+
+    /**
+     * This method is used by the controller to update the language of all the actions it has control over.
+     * @param lang
+     */
+    public void updateLanguage(String lang) {
+        //TODO: Functionality to change the language.
+
     }
     /** MAJOR TEMPORARY CODE!!!! Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createNavigationIcon(String imageName) {

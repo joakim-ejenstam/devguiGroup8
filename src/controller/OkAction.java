@@ -1,5 +1,7 @@
 package controller;
 
+import view.EditTaskPanel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 

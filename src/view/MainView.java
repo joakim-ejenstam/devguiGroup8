@@ -47,7 +47,7 @@ public class MainView extends JFrame implements Observer {
 	 * Method for setting up the menu bar and adding it to the main frame.
 	 * @param frame the frame where to add the menu bar
 	 */
-	private static void addMenuBar(JFrame frame) {
+	private void addMenuBar(JFrame frame) {
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -56,16 +56,16 @@ public class MainView extends JFrame implements Observer {
 		JMenu file = new JMenu("File");
 		JMenu edit = new JMenu("Edit");
 		JMenu help = new JMenu("Help");
-		JMenu chooseLanguage = new JMenu("Change language");
+		JMenuItem chooseLanguage = new JMenuItem(controller.getLanguage());
 		
 		// Sub menus
 		JMenuItem about = new JMenuItem("About");
-		JMenuItem addTodo = new JMenuItem("Add todo");
-		JMenuItem editTodo = new JMenuItem("Edit todo");
-		JMenuItem english = new JMenuItem("English");
+		JMenuItem addTodo = new JMenuItem(controller.getAddAction());
+		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
+		/*JMenuItem english = new JMenuItem("English");
 		JMenuItem german = new JMenuItem("German");
 		JMenuItem swedish = new JMenuItem("Swedish");		
-		
+	    */
 		// Set up menu bar
 		menuBar.add(file);
 		menuBar.add(edit);
@@ -74,10 +74,12 @@ public class MainView extends JFrame implements Observer {
 		help.add(about);
 		edit.add(addTodo);
 		edit.add(editTodo);
+        /*
 		chooseLanguage.add(english);
 		chooseLanguage.add(german);
 		chooseLanguage.add(swedish);
-		
+		*/
+
 		/* For later use when we add more sub menus to file menu:
 		file.addSeparator();
 		*/
@@ -169,12 +171,14 @@ public class MainView extends JFrame implements Observer {
 	 * This method is always called if something has changed in the observed object.
 	 * We will have to update our data now to make sure, that we show everything up to date.
 	 * @see  java.util.Observer#update(Observable, Object)
-	 * @param Obersable the observed object
+	 * @param Observable the observed object
 	 * @param Object some arg that the observed object <em>might</em> set
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
+        System.out.println("DEBUG: table data has changed!");
+        this.tableModel.fireTableDataChanged();
 		
 	}
 }
