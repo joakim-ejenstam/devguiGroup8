@@ -43,6 +43,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         
         //add this view as a listener to the changes of the model
         controller.addObserver(this);
+        System.out.println("DEBUG added view as observer to model");
     }
 
     /**
@@ -92,7 +93,8 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	 * @return Returns the table.
 	 */
 	private JTable createTable() {
-		
+		System.out.println("DEBUG: Col: "+tableModel.getColumnCount()
+				+" Row: "+tableModel.getRowCount());
 		JTable table = new JTable(tableModel);
 		table.getModel().addTableModelListener(this);//should catch changes in the table model once we promote them with the fireUpdate() below.
 	    //System.out.println(tableModel.getColumnName(0));
@@ -179,12 +181,14 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
+		System.out.println("DEBUG Update from model");
 		// TODO Auto-generated method stub
 		this.tableModel.fireTableDataChanged(); //informs tableModel-listeners, which in our case is this class as specified above
 	}
 
 	@Override
 	public void tableChanged(TableModelEvent arg0) {
+		System.out.println("DEBUG tableChanged()");
 		// TODO Auto-generated method stub
 		//not sure what we have to do here...
 	}

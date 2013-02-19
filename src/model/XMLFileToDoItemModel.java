@@ -212,6 +212,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				this.tasks.add(task);
 				setChanged();
 				notifyObservers();
+				System.out.println("DEBUG: Model: parsed XML, notified Observers");
 			}
 		} catch (ParsingException e) {
 			throw new LoadModelException("The db-file "+XMLFILEPATH+" could not be parsed.",e.getCause());
