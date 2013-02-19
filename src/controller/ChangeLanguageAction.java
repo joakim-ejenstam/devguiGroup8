@@ -37,10 +37,10 @@ public class ChangeLanguageAction extends AbstractAction {
                     null,
                     possibilities,
                     "English");
-            parent.updateLanguage(s);
-            JOptionPane.showMessageDialog(rp, "You selected " + s + "!");
+            if (s != null) {
+                parent.updateLanguage(s);
+                JOptionPane.showMessageDialog(rp, "You selected " + s + "!");
+            }
         }
-
-
     }
 }
