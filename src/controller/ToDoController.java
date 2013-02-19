@@ -1,11 +1,11 @@
 package controller;
-import exceptions.ToDoItemExistsException;
+import java.awt.event.KeyEvent;
+
+import javax.swing.ImageIcon;
+
 import model.ToDoItem;
 import model.ToDoItemModel;
-import model.XMLFileToDoItemModel;
-
-import javax.swing.*;
-import java.awt.event.KeyEvent;
+import exceptions.ToDoItemExistsException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -72,5 +72,14 @@ public class ToDoController {
         } else {
             return new ImageIcon(imageURL);
         }
+    }
+    
+    /**
+     * This Method will return the current used {@link ToDoItemModel} (which could be by chance a XML-Model :) ) to e.g. the view
+     * @author simon
+     * @return {@link ToDoItemModel} the Model used in the controller
+     */
+    public ToDoItemModel getModel() {
+    	return this.model;
     }
 }

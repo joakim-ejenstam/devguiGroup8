@@ -3,11 +3,12 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 
-
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.BorderFactory;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -16,9 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import model.StupidToDoItemModel;
 import model.TableToDoItemModel;
-
 import controller.Config;
 import controller.ToDoController;
 
@@ -28,18 +27,20 @@ import controller.ToDoController;
  */
 
 @SuppressWarnings("serial")
-public class MainView extends JFrame {
+public class MainView extends JFrame implements Observer {
 	
     private ToDoController controller;
     private TableToDoItemModel tableModel;
 	
     public MainView(ToDoController newController) {
         this.controller = newController;
-        tableModel = new TableToDoItemModel(new StupidToDoItemModel());
-        // 
-        // TODO When this class i working perfectly change the above line to the one below...
-        //
-        // tableModel = new TableToDoItemModel(controller.getModel());
+        //the main view needs a TableModel as it uses a JTable
+        //(as this model is tightly bound to the JTable, it's probably okay to 
+        //create it here and not get it injected by the controller)
+        this.tableModel = new TableToDoItemModel(this.controller.getModel());
+        
+        //add this view as a listener to the changes of the model
+        this.controller.getModel().addObserver(this);
     }
 
     /**
@@ -164,4 +165,16 @@ public class MainView extends JFrame {
 		frame.pack();
     }
 
+	/**
+	 * This method is always called if something has changed in the observed object.
+	 * We will have to update our data now to make sure, that we show everything up to date.
+	 * @see  java.util.Observer#update(Observable, Object)
+	 * @param Obersable the observed object
+	 * @param Object some arg that the observed object <em>might</em> set
+	 */
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
 }

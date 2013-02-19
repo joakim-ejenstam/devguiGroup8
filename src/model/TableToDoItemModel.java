@@ -98,5 +98,16 @@ public class TableToDoItemModel extends AbstractTableModel {
 			return "";
 		}
 	}
+	
+	/**
+	 * Returns the underlying data model, which is a {@link ToDoItemModel}. This is kind of ugly and it would
+	 * probably be better to just extend the ToDoItemModel, to have all methods available directly.
+	 * But as we already extend the AbstractTablemodel and multiple inheritance is not supported in Java, we
+	 * cannot do that... 
+	 * @return ToDoItemModel that is the underlying data model
+	 */
+	public ToDoItemModel getUnderlyingDataModel() {
+		return this.model;
+	}
 
 }

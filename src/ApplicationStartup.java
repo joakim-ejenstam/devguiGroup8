@@ -1,9 +1,9 @@
-import controller.Config;
-import controller.ToDoController;
-import exceptions.LoadModelException;
 import model.ToDoItemModel;
 import model.XMLFileToDoItemModel;
 import view.MainView;
+import controller.Config;
+import controller.ToDoController;
+import exceptions.LoadModelException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,7 +31,7 @@ public class ApplicationStartup {
 			e.printStackTrace();
 			System.exit(1);//without a model our application can't run...
 		}
-        final ToDoController controller = new ToDoController(model);
+		final ToDoController controller = new ToDoController(model);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	MainView view = new MainView(controller);
