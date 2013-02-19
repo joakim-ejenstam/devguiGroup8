@@ -174,7 +174,9 @@ public class MainView extends JFrame implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		// The JTable/AbstractTableModel seems to have their own notification mechanism.
+		// So use this to let the View know that the data has changes.
+		System.out.println("DEBUG: table data has changed!");
+		this.tableModel.fireTableDataChanged();
 	}
 }
