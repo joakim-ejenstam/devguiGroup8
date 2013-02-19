@@ -71,7 +71,7 @@ public class TableToDoItemModel extends AbstractTableModel {
 		    for (Method method : methods) {
 		        if (method.isAnnotationPresent(DisplayInTable.class) && method.getAnnotation(DisplayInTable.class).value() == arg1) {
 		            try {
-						return method.invoke(this.model.getToDoItem(arg0), (Object)null); //it's save to use null, as we just call getters
+						return method.invoke(this.model.getToDoItem(arg0), (Object[])null); //it's save to use null, as we just call getters
 					} catch (IllegalAccessException e) {
 						e.printStackTrace();
 					} catch (IllegalArgumentException e) {
