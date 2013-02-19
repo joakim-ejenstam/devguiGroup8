@@ -3,6 +3,9 @@
  */
 package annotations;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * This annotation is used to define that an attribute which is returned 
  * by a getter-method (of a ToDoItem) should be displayed in the table 
@@ -12,6 +15,7 @@ package annotations;
  * @author simon
  *
  */
+@Retention(RetentionPolicy.RUNTIME) //We need this Annotation at runtime
 public @interface DisplayInTable {
 	/**
 	 * The ordering of the columns is determined by this parameter.
