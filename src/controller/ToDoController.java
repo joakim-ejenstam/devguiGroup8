@@ -2,10 +2,13 @@ package controller;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.plaf.basic.BasicTreeUI;
 
 import model.ToDoItem;
 import model.ToDoItemModel;
 import exceptions.ToDoItemExistsException;
+import model.XMLFileToDoItemModel;
+import view.MainView;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,17 +20,18 @@ public class ToDoController {
     private ToDoItemModel model;
     private AddAction add;
     private EditAction edit;
+    private OkAction ok;
+    private DeleteAction delete;
+    private CancelAction cancel;
 
-    public ToDoController(ToDoItemModel model2){
-        this.model = model2;
+    public ToDoController(ToDoItemModel newModel){
+        this.model = newModel;
         this.add = new AddAction("Add",createNavigationIcon("Back24"),"Press to add ToDoItem", KeyEvent.VK_A, this);
         this.edit = new EditAction("Edit",createNavigationIcon("Back24"),"Press to edit ToDoItem", KeyEvent.VK_E, this);
-        this.edit = new EditAction("Delete",createNavigationIcon("Back24"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
+        this.delete = new DeleteAction("Delete",createNavigationIcon("Back24"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
+        this.ok = new OkAction("Save",createNavigationIcon("Back24"),"Press to save ToDoItem", KeyEvent.VK_O, this);
+        this.cancel = new CancelAction("Cancel", createNavigationIcon("Back24"),"Press to abort", KeyEvent.VK_C, this);
     }
-
-    /**
-     * Method for adding a new item to the model. This method will sanitize input if needed.
-     */
 
     public ToDoItem addItem(String title) {
         ToDoItem item = null;
@@ -35,7 +39,7 @@ public class ToDoController {
         try{
         item = (ToDoItem)model.createToDoItem(title);
         } catch (ToDoItemExistsException e) {
-            e.printStackTrace();
+            item = null;
         }
 
         return item;
@@ -51,12 +55,52 @@ public class ToDoController {
         //model.updateTodoItem(newItem)
     }
 
+    /**
+     * Get method for the Add action.
+     * @return
+     */
     public AddAction getAddAction() {
         return add;
     }
 
+    /**
+     * Get method for the Edit action.
+     * @return
+     */
     public EditAction getEditAction() {
         return edit;
+    }
+
+    /**
+     * Get method for the Delete action.
+     * @return
+     */
+    public DeleteAction getDeleteAction() {
+        return delete;
+    }
+
+    /**
+     * Get method for the Cancel action.
+     * @return
+     */
+    public CancelAction getCancelAction() {
+        return cancel;
+    }
+
+    /**
+     * Get method for the Ok action.
+     * @return
+     */
+    public OkAction getOkAction() {
+        return ok;
+    }
+
+    /**
+     * This method is used to add the observer to the observable model.
+     * @param arg
+     */
+    public void addObserver(MainView arg) {
+        model.addObserver(arg);
     }
     /** MAJOR TEMPORARY CODE!!!! Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createNavigationIcon(String imageName) {
@@ -73,13 +117,5 @@ public class ToDoController {
             return new ImageIcon(imageURL);
         }
     }
-    
-    /**
-     * This Method will return the current used {@link ToDoItemModel} (which could be by chance a XML-Model :) ) to e.g. the view
-     * @author simon
-     * @return {@link ToDoItemModel} the Model used in the controller
-     */
-    public ToDoItemModel getModel() {
-    	return this.model;
-    }
 }
+
