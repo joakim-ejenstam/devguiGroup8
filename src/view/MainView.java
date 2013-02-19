@@ -32,15 +32,15 @@ public class MainView extends JFrame implements Observer {
     private ToDoController controller;
     private TableToDoItemModel tableModel;
 	
-    public MainView(ToDoController newController) {
+    public MainView(ToDoController newController, TableToDoItemModel tbModel) {
         this.controller = newController;
         //the main view needs a TableModel as it uses a JTable
         //(as this model is tightly bound to the JTable, it's probably okay to 
         //create it here and not get it injected by the controller)
-        this.tableModel = new TableToDoItemModel(this.controller.getModel());
+        this.tableModel = tbModel;
         
         //add this view as a listener to the changes of the model
-        this.controller.getModel().addObserver(this);
+        controller.addObserver(this);
     }
 
     /**
