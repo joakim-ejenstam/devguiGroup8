@@ -28,14 +28,13 @@ import controller.ToDoController;
  */
 
 @SuppressWarnings("serial")
-
 public class MainView extends JFrame {
 	
-    private static ToDoController controller;
-    private static TableToDoItemModel tableModel;
+    private ToDoController controller;
+    private TableToDoItemModel tableModel;
 	
     public MainView(ToDoController newController) {
-        MainView.controller = newController;
+        this.controller = newController;
         tableModel = new TableToDoItemModel(new StupidToDoItemModel());
         // 
         // TODO When this class i working perfectly change the above line to the one below...
@@ -87,7 +86,7 @@ public class MainView extends JFrame {
 	 * Method for creating and setting up the table for showing to do items to the user.
 	 * @return Returns the table.
 	 */
-	private static JTable createTable() {
+	private JTable createTable() {
 		
 		JTable table = new JTable(tableModel);
 	    //System.out.println(tableModel.getColumnName(0));
@@ -99,7 +98,7 @@ public class MainView extends JFrame {
 	 * Method for adding components to the content pane. 
 	 * @param pane the pane to where the components are added
 	 */
-	private static void addComponentsToPane(Container pane) {
+	private void addComponentsToPane(Container pane) {
 			    
 		pane.setLayout(new BorderLayout());
 		
