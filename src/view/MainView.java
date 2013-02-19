@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
 import model.TableToDoItemModel;
 import controller.Config;
@@ -27,7 +29,7 @@ import controller.ToDoController;
  */
 
 @SuppressWarnings("serial")
-public class MainView extends JFrame implements Observer {
+public class MainView extends JFrame implements Observer, TableModelListener {
 	
     private ToDoController controller;
     private TableToDoItemModel tableModel;
@@ -92,6 +94,7 @@ public class MainView extends JFrame implements Observer {
 	private JTable createTable() {
 		
 		JTable table = new JTable(tableModel);
+		table.getModel().addTableModelListener(this);//should catch changes in the table model once we promote them with the fireUpdate() below.
 	    //System.out.println(tableModel.getColumnName(0));
 	    
 	    return table;
@@ -177,8 +180,12 @@ public class MainView extends JFrame implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-        System.out.println("DEBUG: table data has changed!");
-        this.tableModel.fireTableDataChanged();
-		
+		this.tableModel.fireTableDataChanged(); //informs tableModel-listeners, which in our case is this class as specified above
+	}
+
+	@Override
+	public void tableChanged(TableModelEvent arg0) {
+		// TODO Auto-generated method stub
+		//not sure what we have to do here...
 	}
 }
