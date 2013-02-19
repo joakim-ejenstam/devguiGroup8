@@ -19,7 +19,6 @@ public class AddAction extends AbstractAction {
         this.parent = controller;
 	}
 
-
     public void actionPerformed(ActionEvent event) {
         JButton source;
         JPanel panel;
@@ -29,12 +28,20 @@ public class AddAction extends AbstractAction {
 
         tf = (JTextField)panel.getComponent(0);
         String title = tf.getText();
+        System.out.println("Input text: "+title+".");
+        if(title.trim().length() == 0){
+            JOptionPane.showMessageDialog(panel, "You have not entered a task title!");
+        } else {
+            ToDoItem item;
+            item = (ToDoItem) parent.addItem(title);
+            if(item != null){
+                EditTaskFrame editView = new EditTaskFrame(parent, item);
+                editView.setSize(400,400);
+                editView.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(panel, "This task already exists!");
+            }
+        }
 
-        ToDoItem item;
-        item = (ToDoItem) parent.addItem(title);
-
-        EditTaskFrame editView = new EditTaskFrame("Edit tasks");
-        editView.setSize(400,400);
-        editView.setVisible(true);
     }
 }

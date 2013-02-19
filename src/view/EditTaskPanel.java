@@ -17,6 +17,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
+import controller.ToDoController;
+import model.ToDoItem;
 
 /**
  * The add/edit task panel.
@@ -47,10 +49,10 @@ public class EditTaskPanel extends JPanel {
     private JTextArea descriptionArea    = new JTextArea(0,0);
     private JScrollPane	scrollArea 		 = new JScrollPane(descriptionArea);
     
-    //Buttons
+    /*Buttons
     private JButton saveButton           = new JButton("Save");
     private JButton cancelButton         = new JButton("Cancel");        
-
+    */
     //Priority JRadioButtons
     private ButtonGroup priorityGroup    = new ButtonGroup();
     private JRadioButton lowPriority     = new JRadioButton("Low", true);
@@ -78,11 +80,11 @@ public class EditTaskPanel extends JPanel {
     private JDateChooser fromDateCal	 = new JDateChooser();
     private JDateChooser toDateCal		 = new JDateChooser();
     
-    EditTaskPanel(String borderTitle){
+    EditTaskPanel(ToDoController controller, ToDoItem item){
 
     	//Setup the different layoutManagers
         setLayout(new BorderLayout());
-        setBorder(BorderFactory.createTitledBorder(borderTitle));
+        setBorder(BorderFactory.createTitledBorder("Add/Edit Task"));
         topPanel.setLayout(new BorderLayout());
         subTopPanel.setLayout(new BorderLayout());
         topLabelPanel.setLayout(new BoxLayout(topLabelPanel, BoxLayout.PAGE_AXIS));
@@ -181,9 +183,9 @@ public class EditTaskPanel extends JPanel {
 
         
         //Configuration for buttonPanel
-        buttonPanel.add(saveButton);
+        buttonPanel.add(new JButton(controller.getOkAction()));
         buttonPanel.add(Box.createRigidArea(new Dimension(30,0)));
-        buttonPanel.add(cancelButton);
+        buttonPanel.add(new JButton(controller.getCancelAction()));
        
         
         //Configuration for bottomCenterPanel
@@ -208,5 +210,16 @@ public class EditTaskPanel extends JPanel {
         ////////Configuration for the main panel, EditTaskPanel
         add(topPanel, BorderLayout.CENTER);
         add(bottomPanel,BorderLayout.PAGE_END);
+
+        fillFields(item);
+    }
+
+    private void fillFields(ToDoItem item)  {
+        if(item.getTitle() != null)
+            this.titleField.setText(item.getTitle());
+        if(item.getCategory() != null)
+            this.categoryField.setText(item.getCategory().toString());
+        if(item.getDescription() != null)
+            this.descriptionArea.setText(item.getDescription());
     }
 }

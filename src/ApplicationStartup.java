@@ -1,3 +1,4 @@
+import model.TableToDoItemModel;
 import model.ToDoItemModel;
 import model.XMLFileToDoItemModel;
 import view.MainView;
@@ -10,7 +11,6 @@ import exceptions.LoadModelException;
  * User: Joakim
  * Date: 2013-02-07
  * Time: 09:50
- * To change this template use File | Settings | File Templates.
  */
 public class ApplicationStartup {
 

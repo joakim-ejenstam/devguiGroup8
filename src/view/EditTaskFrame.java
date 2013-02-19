@@ -1,5 +1,8 @@
 package view;
 
+import controller.ToDoController;
+import model.ToDoItem;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 
@@ -11,11 +14,12 @@ import javax.swing.JFrame;
  */
 public class EditTaskFrame extends JFrame {
     
-    private EditTaskPanel editTaskPanel = new EditTaskPanel("Add/Edit Task");
+    private EditTaskPanel editTaskPanel;
     
-    public EditTaskFrame(String title){
-        super(title);
+    public EditTaskFrame(ToDoController controller, ToDoItem item){
+        super("Edit Tasks");
         Container c = getContentPane();
+        this.editTaskPanel = new EditTaskPanel(controller, item);
         c.add(editTaskPanel, BorderLayout.CENTER);
         this.setVisible(true);
         this.pack();

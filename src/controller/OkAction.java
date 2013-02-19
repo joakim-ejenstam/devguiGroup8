@@ -1,21 +1,19 @@
 package controller;
 
-import view.EditTaskFrame;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Joakim
- * Date: 2013-02-17
- * Time: 16:58
+ * Date: 2013-02-19
+ * Time: 16:38
  * To change this template use File | Settings | File Templates.
  */
-public class EditAction extends AbstractAction {
-    private ToDoController parent;
+public class OkAction extends AbstractAction {
+    ToDoController parent;
 
-    public EditAction(String text, ImageIcon icon,
+    public OkAction(String text, ImageIcon icon,
                      String desc, Integer mnemonic,
                      ToDoController controller) {
         super(text, icon);
@@ -25,11 +23,6 @@ public class EditAction extends AbstractAction {
     }
 
     public void actionPerformed(ActionEvent event) {
-        Object source = event.getSource();
-        /*Todo: Get item from model, display edit frame
-        * with fields filled from todoitem.
-        EditTaskFrame editView = new EditTaskFrame();
-        editView.setSize(400,400);
-        editView.setVisible(true);*/
-     }
+        System.out.println("Jag gillar ponnysar...");
+    }
 }
