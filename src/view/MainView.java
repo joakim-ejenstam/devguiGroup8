@@ -6,9 +6,10 @@ import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.BorderFactory;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.BorderFactory;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -16,10 +17,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
-import model.TableToDoItemModel;
+//import model.TableToDoItemModel;
+
 import controller.Config;
 import controller.ToDoController;
+import model.TableToDoItemModel;
 
 /**
  * This class sets up the main window of the application
@@ -27,20 +31,16 @@ import controller.ToDoController;
  */
 
 @SuppressWarnings("serial")
+
 public class MainView extends JFrame implements Observer {
-	
-    private ToDoController controller;
-    private TableToDoItemModel tableModel;
-	
-    public MainView(ToDoController newController) {
-        this.controller = newController;
-        //the main view needs a TableModel as it uses a JTable
-        //(as this model is tightly bound to the JTable, it's probably okay to 
-        //create it here and not get it injected by the controller)
-        this.tableModel = new TableToDoItemModel(this.controller.getModel());
-        
-        //add this view as a listener to the changes of the model
-        this.controller.getModel().addObserver(this);
+
+    private static ToDoController controller;
+    private static TableToDoItemModel tableModel;
+
+    public MainView(ToDoController newController, TableToDoItemModel tbModel) {
+        MainView.controller = newController;
+        MainView.tableModel = tbModel;
+        controller.addObserver(this);
     }
 
     /**
@@ -48,7 +48,7 @@ public class MainView extends JFrame implements Observer {
 	 * @param frame the frame where to add the menu bar
 	 */
 	private static void addMenuBar(JFrame frame) {
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 
@@ -57,15 +57,15 @@ public class MainView extends JFrame implements Observer {
 		JMenu edit = new JMenu("Edit");
 		JMenu help = new JMenu("Help");
 		JMenu chooseLanguage = new JMenu("Change language");
-		
+
 		// Sub menus
 		JMenuItem about = new JMenuItem("About");
 		JMenuItem addTodo = new JMenuItem("Add todo");
 		JMenuItem editTodo = new JMenuItem("Edit todo");
 		JMenuItem english = new JMenuItem("English");
 		JMenuItem german = new JMenuItem("German");
-		JMenuItem swedish = new JMenuItem("Swedish");		
-		
+		JMenuItem swedish = new JMenuItem("Swedish");
+
 		// Set up menu bar
 		menuBar.add(file);
 		menuBar.add(edit);
@@ -77,60 +77,54 @@ public class MainView extends JFrame implements Observer {
 		chooseLanguage.add(english);
 		chooseLanguage.add(german);
 		chooseLanguage.add(swedish);
-		
+
 		/* For later use when we add more sub menus to file menu:
 		file.addSeparator();
 		*/
 	}
-	
+
 	/**
 	 * Method for creating and setting up the table for showing to do items to the user.
 	 * @return Returns the table.
 	 */
-	private JTable createTable() {
-		
-		JTable table = new JTable(tableModel);
-	    //System.out.println(tableModel.getColumnName(0));
-	    
+	private static JTable createTable() {
+
+		// TODO: this is temporary added to show the headings in the table
+		// should be a TableToDoItemModel and not DefaultTableModel,
+		// however I did not yet manage to get the headings working that way
+		String[] columnLabels = {"Title","Category","Priority","Due","Done"};
+
+		//DefaultTableModel temp = new DefaultTableModel(columnLabels,0);
+	    //JTable table = new JTable(tableModel);
+	    JTable table = new JTable(tableModel);
+
 	    return table;
 	}
-	
+
 	/**
-	 * Method for adding components to the content pane. 
+	 * Method for adding components to the content pane.
 	 * @param pane the pane to where the components are added
 	 */
-	private void addComponentsToPane(Container pane) {
-			    
+	private static void addComponentsToPane(Container pane) {
+
 		pane.setLayout(new BorderLayout());
-		
+
 		// Panels
 	    JPanel northPanel = new JPanel();
 	    JPanel southPanel = new JPanel();
-		
+
 	    // Scroll pane
 	    JScrollPane scrollPane = new JScrollPane(createTable());
-	    
+
 	    // Text fields and buttons
 	    JTextField inputFld = new JTextField();
 	    JButton addBtn = new JButton(controller.getAddAction());
-	    
-	    /*
-	    addBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				EditTaskFrame editview = new EditTaskFrame("Edit tasks");
-				editview.setSize(400,400);
-				editview.setVisible(true);
-			}
-		});
-        */
-	    
+
 	    // Add to pane
 	    pane.add(scrollPane, BorderLayout.CENTER);
 		pane.add(northPanel, BorderLayout.NORTH);
 	    pane.add(southPanel, BorderLayout.SOUTH);
-	    
+
 	    // Set layouts and alignment
 	    southPanel.setLayout(new BorderLayout());
 	    northPanel.setLayout(new GridLayout());
@@ -140,41 +134,42 @@ public class MainView extends JFrame implements Observer {
 	    southPanel.add(inputFld, BorderLayout.CENTER);
 	    southPanel.add(addBtn, BorderLayout.EAST);
         southPanel.setBorder(BorderFactory.createTitledBorder("Add to do"));
-        
+
 	    scrollPane.setBorder(BorderFactory.createTitledBorder("To do's"));
 	    scrollPane.setColumnHeaderView(createTable().getTableHeader());
 	}
 
 	/**
-	 * Method for creating and showing the user interface. 
+	 * Method for creating and showing the user interface.
 	 * @param config the instance to be created and shown
 	 */
 	public void createAndShowGUI(Config config) {
-		
+
 		JFrame frame = new JFrame("The Greight TODO Manager");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(Integer.valueOf(config.getProp("windowXPos")), 
-				Integer.valueOf(config.getProp("windowYPos")), 
-				Integer.valueOf(config.getProp("windowWidth")), 
+		frame.setBounds(Integer.valueOf(config.getProp("windowXPos")),
+				Integer.valueOf(config.getProp("windowYPos")),
+				Integer.valueOf(config.getProp("windowWidth")),
 				Integer.valueOf(config.getProp("windowHeight")));
-		
+
 		addComponentsToPane(frame.getContentPane());
 		addMenuBar(frame);
-		
+
 		frame.setVisible(true);
 		frame.pack();
     }
 
-	/**
-	 * This method is always called if something has changed in the observed object.
-	 * We will have to update our data now to make sure, that we show everything up to date.
-	 * @see  java.util.Observer#update(Observable, Object)
-	 * @param Obersable the observed object
-	 * @param Object some arg that the observed object <em>might</em> set
-	 */
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * This method is always called if something has changed in the observed object.
+     * We will have to update our data now to make sure, that we show everything up to date.
+     * @see  java.util.Observer#update(Observable, Object)
+     * @param Obersable the observed object
+     * @param Object some arg that the observed object <em>might</em> set
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        // TODO Auto-generated method stub
+
+    }
+
 }

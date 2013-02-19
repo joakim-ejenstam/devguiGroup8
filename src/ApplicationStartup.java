@@ -32,9 +32,10 @@ public class ApplicationStartup {
 			System.exit(1);//without a model our application can't run...
 		}
 		final ToDoController controller = new ToDoController(model);
+        final TableToDoItemModel tbModel = new TableToDoItemModel(model);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-            	MainView view = new MainView(controller);
+            	MainView view = new MainView(controller, tbModel);
             	view.createAndShowGUI(config);
             }
         });
