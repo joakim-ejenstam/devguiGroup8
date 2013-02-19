@@ -15,9 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
-//import model.TableToDoItemModel;
+import model.StupidToDoItemModel;
+import model.TableToDoItemModel;
 
 import controller.Config;
 import controller.ToDoController;
@@ -32,10 +32,15 @@ import controller.ToDoController;
 public class MainView extends JFrame {
 	
     private static ToDoController controller;
-    // private static TableToDoItemModel tableModel;
+    private static TableToDoItemModel tableModel;
 	
     public MainView(ToDoController newController) {
         MainView.controller = newController;
+        tableModel = new TableToDoItemModel(new StupidToDoItemModel());
+        // 
+        // TODO When this class i working perfectly change the above line to the one below...
+        //
+        // tableModel = new TableToDoItemModel(controller.getModel());
     }
 
     /**
@@ -84,14 +89,8 @@ public class MainView extends JFrame {
 	 */
 	private static JTable createTable() {
 		
-		// TODO: this is temporary added to show the headings in the table
-		// should be a TableToDoItemModel and not DefaultTableModel, 
-		// however I did not yet manage to get the headings working that way
-		String[] columnLabels = {"Title","Category","Priority","Due","Done"};
-
-		DefaultTableModel temp = new DefaultTableModel(columnLabels,0);
-	    JTable table = new JTable(temp); 
-	    //JTable table = new JTable(tableModel);
+		JTable table = new JTable(tableModel);
+	    //System.out.println(tableModel.getColumnName(0));
 	    
 	    return table;
 	}
