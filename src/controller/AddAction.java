@@ -30,7 +30,7 @@ public class AddAction extends AbstractAction {
         String title = tf.getText();
         System.out.println("Input text: "+title+".");
         if(title.trim().length() == 0){
-            JOptionPane.showMessageDialog(panel, "You have not entered a task title!");
+            JOptionPane.showMessageDialog(panel, "You have not entered a task title!","Enter title",JOptionPane.WARNING_MESSAGE);
         } else {
             ToDoItem item;
             item = (ToDoItem) parent.addItem(title);
@@ -39,7 +39,7 @@ public class AddAction extends AbstractAction {
                 editView.setSize(400,400);
                 editView.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(panel, "This task already exists!");
+                JOptionPane.showMessageDialog(panel, "This task already exists!","Task already exists",JOptionPane.WARNING_MESSAGE);
             }
         }
 
