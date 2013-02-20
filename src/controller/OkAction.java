@@ -1,5 +1,6 @@
 package controller;
 
+import model.LocaliziedTexts;
 import model.ToDoItem;
 import view.EditTaskPanel;
 
@@ -35,5 +36,8 @@ public class OkAction extends AbstractAction {
             ToDoItem item = panel.getTodoItem();
             parent.updateEditItem(item);
         }
+    }
+    public void updateLanguage(LocaliziedTexts lang) {
+        putValue(NAME, lang.getText("ui.editview.button.ok"));
     }
 }

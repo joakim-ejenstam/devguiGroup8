@@ -1,5 +1,7 @@
 package controller;
 
+import model.LocaliziedTexts;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -25,5 +27,9 @@ public class CancelAction extends AbstractAction {
     public void actionPerformed(ActionEvent event) {
         JButton source = (JButton)event.getSource();
         source.getParent();
+    }
+
+    public void updateLanguage(LocaliziedTexts lang) {
+        putValue(NAME, lang.getText("ui.editview.button.cancel"));
     }
 }

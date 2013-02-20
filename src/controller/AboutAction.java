@@ -1,5 +1,7 @@
 package controller;
 
+import model.LocaliziedTexts;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -17,7 +19,11 @@ public class AboutAction extends AbstractAction{
     }
 
     public void actionPerformed(ActionEvent event) {
-        JOptionPane.showMessageDialog(((JMenuItem)event.getSource()).getParent(), "PEW PEW!!!");
+        JOptionPane.showMessageDialog(((JMenuItem) event.getSource()).getParent(), "PEW PEW!!!");
+    }
+
+    public void updateLanguage(LocaliziedTexts lang) {
+        putValue(NAME, lang.getText("ui.mainview.menu.help.about"));
     }
 	
 }

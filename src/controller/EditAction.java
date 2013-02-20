@@ -1,5 +1,6 @@
 package controller;
 
+import model.LocaliziedTexts;
 import view.EditTaskFrame;
 
 import javax.swing.*;
@@ -32,4 +33,8 @@ public class EditAction extends AbstractAction {
         editView.setSize(400,400);
         editView.setVisible(true);*/
      }
+
+    public void updateLanguage(LocaliziedTexts lang) {
+        putValue(NAME, lang.getText("ui.mainview.menu.edit.edit"));
+    }
 }

@@ -133,6 +133,7 @@ public class ToDoController {
         //TODO: Functionality to change the language.
         Locale.setDefault(lang);
         conf.setProp("locale",lang.toString());
+        setLanguage();
     }
     /** MAJOR TEMPORARY CODE!!!! Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createNavigationIcon(String imageName) {
@@ -148,6 +149,14 @@ public class ToDoController {
         } else {
             return new ImageIcon(imageURL);
         }
+    }
+    private void setLanguage() {
+        this.edit.updateLanguage(lang);
+        this.add.updateLanguage(lang);
+        this.delete.updateLanguage(lang);
+        this.language.updateLanguage(lang);
+        this.cancel.updateLanguage(lang);
+        this.about.updateLanguage(lang);
     }
 }
 

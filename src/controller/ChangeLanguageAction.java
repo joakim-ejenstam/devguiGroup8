@@ -1,5 +1,7 @@
 package controller;
 
+import model.LocaliziedTexts;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.Locale;
@@ -45,5 +47,9 @@ public class ChangeLanguageAction extends AbstractAction {
                 JOptionPane.showMessageDialog(rp, "You selected " + l.getDisplayLanguage() + "!");
             }
         }
+    }
+
+    public void updateLanguage(LocaliziedTexts lang) {
+        putValue(NAME, lang.getText("ui.mainview.menu.file.changeLanguage"));
     }
 }

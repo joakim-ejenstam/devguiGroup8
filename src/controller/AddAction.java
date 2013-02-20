@@ -2,6 +2,7 @@ package controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+import model.LocaliziedTexts;
 import model.ToDoItem;
 import view.*;
 
@@ -47,5 +48,8 @@ public class AddAction extends AbstractAction {
             JOptionPane.showMessageDialog(((JComponent)source).getParent(), "Ah, ah, ah! You didn't say the magic word!","Magic word request!",JOptionPane.WARNING_MESSAGE);
         }
 
+    }
+    public void updateLanguage(LocaliziedTexts lang) {
+        putValue(NAME, lang.getText("ui.mainview.menu.edit.add"));
     }
 }
