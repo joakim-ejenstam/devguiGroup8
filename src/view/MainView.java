@@ -87,6 +87,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		System.out.println("DEBUG: Col: "+tableModel.getColumnCount()
 				+" Row: "+tableModel.getRowCount());
 		JTable table = new JTable(tableModel);
+		table.setAutoCreateRowSorter(true);
 		table.getModel().addTableModelListener(this);//should catch changes in the table model once we promote them with the fireUpdate() below.
 	    //System.out.println(tableModel.getColumnName(0));
 	    
