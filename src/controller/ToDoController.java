@@ -35,12 +35,12 @@ public class ToDoController {
         this.model = newModel;
         this.lang = newLang;
         this.add = new AddAction(lang.getText("ui.mainview.menu.edit.add"),createNavigationIcon("/Add16"),"Press to add ToDoItem", KeyEvent.VK_A, this);
-        this.edit = new EditAction("Edit",createNavigationIcon("/Edit16"),"Press to edit ToDoItem", KeyEvent.VK_E, this);
-        this.delete = new DeleteAction("Delete",createNavigationIcon("/Delete16"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
-        this.ok = new OkAction("Save",createNavigationIcon("uknownicon"),"Press to save ToDoItem", KeyEvent.VK_O, this);
+        this.edit = new EditAction(lang.getText("ui.mainview.menu.edit.edit"),createNavigationIcon("/Edit16"),"Press to edit ToDoItem", KeyEvent.VK_E, this);
+        this.delete = new DeleteAction(lang.getText("ui.mainview.menu.edit.delete"),createNavigationIcon("/Delete16"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
+        this.ok = new OkAction("Ok",createNavigationIcon("uknownicon"),"Press to save ToDoItem", KeyEvent.VK_O, this);
         this.cancel = new CancelAction("Cancel", createNavigationIcon("unkownicon"),"Press to abort", KeyEvent.VK_C, this);
-        this.language = new ChangeLanguageAction("Change language", createNavigationIcon("Back24"),"Press to change language", KeyEvent.VK_L, this);
-        this.about = new AboutAction(lang.getText("ui.mainview.menu.help.about"),createNavigationIcon("/About16")));
+        this.language = new ChangeLanguageAction(lang.getText("ui.mainview.menu.file.changeLanguage"), createNavigationIcon("Back24"),"Press to change language", KeyEvent.VK_L, this);
+        this.about = new AboutAction(lang.getText("ui.mainview.menu.help.about"),createNavigationIcon("/About16"),"Press to get info", KeyEvent.VK_F, this);
     }
 
     public ToDoItem addItem(String title) {
@@ -91,6 +91,10 @@ public class ToDoController {
      */
     public DeleteAction getDeleteAction() {
         return delete;
+    }
+
+    public AboutAction getAboutAction() {
+        return about;
     }
 
     /**

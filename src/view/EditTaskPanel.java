@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 import controller.ToDoController;
+import model.Category;
 import model.ToDoItem;
 
 /**
@@ -233,6 +234,7 @@ public class EditTaskPanel extends JPanel {
         item.setTitle(titleField.getText());
         item.setDescription(descriptionArea.getText());
         item.setPriority(1);
+        item.setCategory(new Category(categoryField.getText()));
 
         return item;
     }

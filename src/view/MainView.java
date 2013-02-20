@@ -61,7 +61,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		JMenuItem chooseLanguage = new JMenuItem(controller.getLanguage());
 
 		// Sub menus
-		JMenuItem about = new JMenuItem("About");
+		JMenuItem about = new JMenuItem(controller.getAboutAction());
 		JMenuItem addTodo = new JMenuItem(controller.getAddAction());
 		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
 		JMenuItem deleteTodo = new JMenuItem(controller.getDeleteAction());
