@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -65,10 +64,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		JMenuItem about = new JMenuItem("About");
 		JMenuItem addTodo = new JMenuItem(controller.getAddAction());
 		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
-		/*JMenuItem english = new JMenuItem("English");
-		JMenuItem german = new JMenuItem("German");
-		JMenuItem swedish = new JMenuItem("Swedish");		
-	    */
+		
 		// Set up menu bar
 		menuBar.add(file);
 		menuBar.add(edit);
@@ -77,11 +73,6 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		help.add(about);
 		edit.add(addTodo);
 		edit.add(editTodo);
-        /*
-		chooseLanguage.add(english);
-		chooseLanguage.add(german);
-		chooseLanguage.add(swedish);
-		*/
 
 		/* For later use when we add more sub menus to file menu:
 		file.addSeparator();
@@ -121,18 +112,6 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    JTextField inputFld = new JTextField();
 	    JButton addBtn = new JButton(controller.getAddAction());
 	    
-	    /*
-	    addBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				EditTaskFrame editview = new EditTaskFrame("Edit tasks");
-				editview.setSize(400,400);
-				editview.setVisible(true);
-			}
-		});
-        */
-	    
 	    // Add to pane
 	    pane.add(scrollPane, BorderLayout.CENTER);
 		pane.add(northPanel, BorderLayout.NORTH);
@@ -146,9 +125,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    // Set up south panel
 	    southPanel.add(inputFld, BorderLayout.CENTER);
 	    southPanel.add(addBtn, BorderLayout.EAST);
-        southPanel.setBorder(BorderFactory.createTitledBorder("Add to do"));
-        
-	    scrollPane.setBorder(BorderFactory.createTitledBorder("To do's"));
+
 	    scrollPane.setColumnHeaderView(createTable().getTableHeader());
 	}
 
