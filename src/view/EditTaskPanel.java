@@ -102,6 +102,8 @@ public class EditTaskPanel extends JPanel {
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
         
         //Configuration for topLabelPanel
+        
+        titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         topLabelPanel.add(Box.createRigidArea(new Dimension(0,10)));
         topLabelPanel.add(titleLabel);
         topLabelPanel.add(Box.createRigidArea(new Dimension(0,5)));
@@ -113,9 +115,9 @@ public class EditTaskPanel extends JPanel {
         
         
         //Configuration for datePanel
-        datePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        datePanel.add(Box.createRigidArea(new Dimension(5,0)));
-        datePanel.add(Box.createRigidArea(new Dimension(5,0)));
+        datePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
+       // datePanel.add(Box.createRigidArea(new Dimension(5,0)));
+       // datePanel.add(Box.createRigidArea(new Dimension(5,0)));
         datePanel.add(dueDateCal);
         datePanel.add(Box.createRigidArea(new Dimension(5,0)));
 //        datePanel.add(new JLabel("To"));
@@ -144,6 +146,8 @@ public class EditTaskPanel extends JPanel {
         //Configuration for topCenterPanel
         topCenterPanel.add(Box.createRigidArea(new Dimension(0,8)));
         titleField.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        //topLabelPanel.add(Box.createRigidArea(new Dimension(20,0)));
+
         topCenterPanel.add(titleField);
         topCenterPanel.add(Box.createRigidArea(new Dimension(0,2)));
         topCenterPanel.add(datePanel);
@@ -155,9 +159,9 @@ public class EditTaskPanel extends JPanel {
 
         
         //Configuration for bottomLabels
-        bottomLabelPanel.add(Box.createRigidArea(new Dimension(0,10)));
+        bottomLabelPanel.add(Box.createRigidArea(new Dimension(0,15)));
         //bottomLabelPanel.add(reminderLabel);
-        bottomLabelPanel.add(Box.createRigidArea(new Dimension(0,5)));
+        
         bottomLabelPanel.add(priorityLabel);
         
         
@@ -207,7 +211,6 @@ public class EditTaskPanel extends JPanel {
         subBottomPanel.add(bottomCenterPanel,BorderLayout.CENTER);
         //subBottomPanel.add(buttonPanel, BorderLayout.PAGE_END);
         bottomPanel.add(subBottomPanel, BorderLayout.PAGE_END);  /// CENTER????
-        
         ////////Configuration for the main panel, EditTaskPanel
         add(topPanel, BorderLayout.CENTER);
         add(bottomPanel,BorderLayout.PAGE_END);
