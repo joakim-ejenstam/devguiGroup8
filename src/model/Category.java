@@ -39,4 +39,12 @@ public class Category {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+	
+	/**
+	 * @return String the label of the Category
+	 */
+	@Override
+	public String toString() {
+		return this.label;
+	}
 }
