@@ -26,6 +26,7 @@ public class ToDoController {
     private DeleteAction delete;
     private CancelAction cancel;
     private ChangeLanguageAction language;
+    private AboutAction about;
     private Config conf;
     private LocaliziedTexts lang;
 
@@ -39,6 +40,7 @@ public class ToDoController {
         this.ok = new OkAction("Save",createNavigationIcon("uknownicon"),"Press to save ToDoItem", KeyEvent.VK_O, this);
         this.cancel = new CancelAction("Cancel", createNavigationIcon("unkownicon"),"Press to abort", KeyEvent.VK_C, this);
         this.language = new ChangeLanguageAction("Change language", createNavigationIcon("Back24"),"Press to change language", KeyEvent.VK_L, this);
+        this.about = new AboutAction(lang.getText("ui.mainview.menu.help.about"),createNavigationIcon("/About16")));
     }
 
     public ToDoItem addItem(String title) {
