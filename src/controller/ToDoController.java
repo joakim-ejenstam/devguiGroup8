@@ -5,6 +5,7 @@ import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.plaf.basic.BasicTreeUI;
 
+import model.LocaliziedTexts;
 import model.ToDoItem;
 import model.ToDoItemModel;
 import exceptions.ToDoItemExistsException;
@@ -26,11 +27,13 @@ public class ToDoController {
     private CancelAction cancel;
     private ChangeLanguageAction language;
     private Config conf;
+    private LocaliziedTexts lang;
 
-    public ToDoController(ToDoItemModel newModel){
+    public ToDoController(ToDoItemModel newModel, LocaliziedTexts newLang){
         this.model = newModel;
+        this.lang = newLang;
         // TODO: change string "add", "edit" etc to load local instead (for different language support)
-        this.add = new AddAction("Add",createNavigationIcon("Back24"),"Press to add ToDoItem", KeyEvent.VK_A, this);
+        this.add = new AddAction(lang.getText("ui.mainview.menu.edit.add"),createNavigationIcon("Back24"),"Press to add ToDoItem", KeyEvent.VK_A, this);
         this.edit = new EditAction("Edit",createNavigationIcon("Back24"),"Press to edit ToDoItem", KeyEvent.VK_E, this);
         this.delete = new DeleteAction("Delete",createNavigationIcon("Back24"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
         this.ok = new OkAction("Save",createNavigationIcon("Back24"),"Press to save ToDoItem", KeyEvent.VK_O, this);
