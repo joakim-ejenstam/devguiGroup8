@@ -57,7 +57,13 @@ public class LocaliziedTexts {
 		// load the locale from the config
     	this.locale = new Locale(this.config.getProp("locale"));
     	// load language dependent text from the resource bundle
-    	this.rb = ResourceBundle.getBundle("lang",this.locale); //TODO: path
+    	// Obs!
+    	// To make the following line work, you have to add the "data"
+    	// folder to the runtime path. (Eclipse: properties of project ->
+    	// "Run/Debug settings" -> choose the "launch configuration" item and press
+    	// Edit -> tab Classpath -> select "User Entries" -> button "Advanced" ->
+    	// Add folder -> chose the "data" folder... Done :) )
+    	this.rb = ResourceBundle.getBundle("lang",this.locale);
 	}
 
 }
