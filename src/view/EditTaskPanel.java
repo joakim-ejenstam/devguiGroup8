@@ -24,6 +24,7 @@ import model.ToDoItem;
  * The add/edit task panel.
  * @author Mattias
  */
+@SuppressWarnings("serial")
 public class EditTaskPanel extends JPanel {
     
     //Labels

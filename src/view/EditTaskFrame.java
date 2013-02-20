@@ -12,6 +12,7 @@ import javax.swing.JFrame;
  * The window for the add/edit task panel.
  * @author Mattias
  */
+@SuppressWarnings("serial")
 public class EditTaskFrame extends JFrame {
     
     private EditTaskPanel editTaskPanel;
