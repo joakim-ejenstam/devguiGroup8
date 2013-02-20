@@ -23,6 +23,7 @@ public class ApplicationStartup {
 			e.printStackTrace();
 			System.exit(1); //we can't run without any configuration values.
 		}
+    	
         ToDoItemModel model = null;
 		try {
 			model = new XMLFileToDoItemModel();
