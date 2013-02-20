@@ -6,6 +6,8 @@ import controller.Config;
 import controller.ToDoController;
 import exceptions.LoadModelException;
 
+import java.util.Locale;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Joakim
@@ -17,7 +19,7 @@ public class ApplicationStartup {
 	private Config config = null; //the configuration values of the application
 	
     public ApplicationStartup(String[] args) {
-    	try {
+        try {
     		config = Config.getInstance();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
@@ -34,6 +36,7 @@ public class ApplicationStartup {
 		}
 		final ToDoController controller = new ToDoController(model);
         final TableToDoItemModel tbModel = new TableToDoItemModel(model);
+        controller.setConfig(config);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	MainView view = new MainView(controller, tbModel);

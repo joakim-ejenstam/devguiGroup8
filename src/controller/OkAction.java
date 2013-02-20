@@ -1,5 +1,6 @@
 package controller;
 
+import model.ToDoItem;
 import view.EditTaskPanel;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
  */
 public class OkAction extends AbstractAction {
     ToDoController parent;
+    EditTaskPanel panel;
 
     public OkAction(String text, ImageIcon icon,
                      String desc, Integer mnemonic,
@@ -23,8 +25,15 @@ public class OkAction extends AbstractAction {
         putValue(MNEMONIC_KEY, mnemonic);
         this.parent = controller;
     }
+    public void addPanel(EditTaskPanel newPanel) {
+        this.panel = newPanel;
+    }
 
     public void actionPerformed(ActionEvent event) {
         System.out.println("Jag gillar ponnysar...");
+        if (panel != null) {
+            ToDoItem item = panel.getTodoItem();
+            parent.updateEditItem(item);
+        }
     }
 }

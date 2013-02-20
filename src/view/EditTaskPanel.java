@@ -82,7 +82,7 @@ public class EditTaskPanel extends JPanel {
  //   private JDateChooser toDateCal		 = new JDateChooser();
     
     EditTaskPanel(ToDoController controller, ToDoItem item){
-
+        controller.getOkAction().addPanel(this);
     	//Setup the different layoutManagers
         setLayout(new BorderLayout());
         //setBorder(BorderFactory.createEmptyBorder());		TODO: fix padding instead
@@ -225,5 +225,15 @@ public class EditTaskPanel extends JPanel {
             this.categoryField.setText(item.getCategory().toString());
         if(item.getDescription() != null)
             this.descriptionArea.setText(item.getDescription());
+    }
+
+    public ToDoItem getTodoItem() {
+        ToDoItem item = new ToDoItem();
+
+        item.setTitle(titleField.getText());
+        item.setDescription(descriptionArea.getText());
+        item.setPriority(1);
+
+        return item;
     }
 }

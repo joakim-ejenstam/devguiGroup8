@@ -1,5 +1,6 @@
 package controller;
 import java.awt.event.KeyEvent;
+import java.util.Locale;
 
 import javax.swing.ImageIcon;
 import javax.swing.plaf.basic.BasicTreeUI;
@@ -24,6 +25,7 @@ public class ToDoController {
     private DeleteAction delete;
     private CancelAction cancel;
     private ChangeLanguageAction language;
+    private Config conf;
 
     public ToDoController(ToDoItemModel newModel){
         this.model = newModel;
@@ -55,7 +57,7 @@ public class ToDoController {
     }
 
     public void updateEditItem(ToDoItem newItem) {
-        //model.updateTodoItem(newItem)
+        model.updateToDoItem(5, newItem);
     }
 
     /**
@@ -64,6 +66,10 @@ public class ToDoController {
      */
     public AddAction getAddAction() {
         return add;
+    }
+
+    public void setConfig(Config newConf) {
+        this.conf = newConf;
     }
 
     /**
@@ -114,9 +120,10 @@ public class ToDoController {
      * This method is used by the controller to update the language of all the actions it has control over.
      * @param lang
      */
-    public void updateLanguage(String lang) {
+    public void updateLanguage(Locale lang) {
         //TODO: Functionality to change the language.
-
+        Locale.setDefault(lang);
+        conf.setProp("locale",lang.toString());
     }
     /** MAJOR TEMPORARY CODE!!!! Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createNavigationIcon(String imageName) {

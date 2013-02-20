@@ -2,6 +2,7 @@ package controller;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,22 +25,24 @@ public class ChangeLanguageAction extends AbstractAction {
 
     public void actionPerformed(ActionEvent event) {
         Object source = event.getSource();
+        Locale se = new Locale("sv", "SE");
+        Locale en = new Locale("en", "UK");
+        Locale de = new Locale("de", "DE");
 
         if (source instanceof JMenuItem) {
             JRootPane rp = ((JMenuItem) source).getRootPane();
-
-            Object[] possibilities = {"English", "German", "Swedish"};
-            String s = (String)JOptionPane.showInputDialog(
+            Object[] possibilities = {en,de,se};
+            Locale l = (Locale)JOptionPane.showInputDialog(
                     rp,
                     "Choose your preferred language!",
                     "Customized Dialog",
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     possibilities,
-                    "English");
-            if (s != null) {
-                parent.updateLanguage(s);
-                JOptionPane.showMessageDialog(rp, "You selected " + s + "!");
+                    en.getDisplayLanguage());
+            if (l != null) {
+                parent.updateLanguage(l);
+                JOptionPane.showMessageDialog(rp, "You selected " + l.getDisplayLanguage() + "!");
             }
         }
     }
