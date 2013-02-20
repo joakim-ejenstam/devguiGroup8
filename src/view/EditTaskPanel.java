@@ -33,18 +33,18 @@ public class EditTaskPanel extends JPanel {
     private JLabel timeLabel             = new JLabel("Time:");
     private JLabel descriptionLabel      = new JLabel("Description:");
     private JLabel categoryLabel         = new JLabel("Category:");
-    private JLabel reminderLabel         = new JLabel("Reminder:");
+    //private JLabel reminderLabel         = new JLabel("Reminder:");
     private JLabel priorityLabel         = new JLabel("Priority:");
 
     //TextFields
     private JTextField titleField       	= new JTextField(10);
-    private JTextField dueDateField			= new JTextField(5);
- //   private JTextField dateToField      = new JTextField(5);
+    //private JTextField dueDateField			= new JTextField(5);
+    //private JTextField dateToField      = new JTextField(5);
     private JTextField dueTimeField			= new JTextField(5);
     //private JTextField endTimeField     = new JTextField(5);
     private JTextField categoryField    	= new JTextField(5);
-    private JTextField reminderTimeField	= new JTextField(5);
-   // private JTextField remEndField      = new JTextField(5);
+    //private JTextField reminderTimeField	= new JTextField(5);
+    //private JTextField remEndField      = new JTextField(5);
     
     //Text area
     private JTextArea descriptionArea    = new JTextArea(0,0);
@@ -67,7 +67,7 @@ public class EditTaskPanel extends JPanel {
     private JPanel bottomPanel           = new JPanel();
     private JPanel bottomLabelPanel		 = new JPanel();
     private JPanel priorityPanel	 	 = new JPanel();
-    private JPanel reminderPanel		 = new JPanel();
+    //private JPanel reminderPanel		 = new JPanel();
     private JPanel subBottomPanel		 = new JPanel();
     private JPanel bottomCenterPanel	 = new JPanel();
     private JPanel topPanel              = new JPanel();
@@ -77,7 +77,7 @@ public class EditTaskPanel extends JPanel {
     private JPanel buttonPanel			 = new JPanel();
     
     //JDates
-    private JDateChooser reminderCal	= new JDateChooser();
+    //private JDateChooser reminderCal	= new JDateChooser();
     private JDateChooser dueDateCal		= new JDateChooser();
  //   private JDateChooser toDateCal		 = new JDateChooser();
     
@@ -85,7 +85,7 @@ public class EditTaskPanel extends JPanel {
 
     	//Setup the different layoutManagers
         setLayout(new BorderLayout());
-        setBorder(BorderFactory.createTitledBorder("Add/Edit Task"));
+        //setBorder(BorderFactory.createEmptyBorder());		TODO: fix padding instead
         topPanel.setLayout(new BorderLayout());
         subTopPanel.setLayout(new BorderLayout());
         topLabelPanel.setLayout(new BoxLayout(topLabelPanel, BoxLayout.PAGE_AXIS));
@@ -98,7 +98,7 @@ public class EditTaskPanel extends JPanel {
         bottomCenterPanel.setLayout(new BoxLayout(bottomCenterPanel, BoxLayout.PAGE_AXIS));
         subBottomPanel.setLayout(new BorderLayout());
         priorityPanel.setLayout(new BoxLayout(priorityPanel, BoxLayout.LINE_AXIS));
-        reminderPanel.setLayout(new BoxLayout(reminderPanel, BoxLayout.LINE_AXIS));
+        //reminderPanel.setLayout(new BoxLayout(reminderPanel, BoxLayout.LINE_AXIS));
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
         
         //Configuration for topLabelPanel
@@ -156,16 +156,16 @@ public class EditTaskPanel extends JPanel {
         
         //Configuration for bottomLabels
         bottomLabelPanel.add(Box.createRigidArea(new Dimension(0,10)));
-        bottomLabelPanel.add(reminderLabel);
+        //bottomLabelPanel.add(reminderLabel);
         bottomLabelPanel.add(Box.createRigidArea(new Dimension(0,5)));
         bottomLabelPanel.add(priorityLabel);
         
         
         //Configuration for reminderPanel
-        reminderPanel.add(Box.createRigidArea(new Dimension(5,0)));
-        reminderPanel.add(reminderCal);
-        reminderPanel.add(Box.createRigidArea(new Dimension(5,0)));
-        reminderPanel.add(reminderTimeField);
+        //reminderPanel.add(Box.createRigidArea(new Dimension(5,0)));
+        //reminderPanel.add(reminderCal);
+        //reminderPanel.add(Box.createRigidArea(new Dimension(5,0)));
+        //reminderPanel.add(reminderTimeField);
 //        reminderPanel.add(Box.createRigidArea(new Dimension(5,0)));
 //        reminderPanel.add(new JLabel("-"));
 //        reminderPanel.add(Box.createRigidArea(new Dimension(5,0)));	//TODO some padding still needed?
@@ -191,7 +191,7 @@ public class EditTaskPanel extends JPanel {
         
         //Configuration for bottomCenterPanel
         bottomCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
-        bottomCenterPanel.add(reminderPanel);
+        //bottomCenterPanel.add(reminderPanel);
         bottomCenterPanel.add(priorityPanel);
         bottomCenterPanel.add(buttonPanel);
         
