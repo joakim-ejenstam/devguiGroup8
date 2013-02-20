@@ -27,6 +27,7 @@ public class ToDoController {
 
     public ToDoController(ToDoItemModel newModel){
         this.model = newModel;
+        // TODO: change string "add", "edit" etc to load local instead (for different language support)
         this.add = new AddAction("Add",createNavigationIcon("Back24"),"Press to add ToDoItem", KeyEvent.VK_A, this);
         this.edit = new EditAction("Edit",createNavigationIcon("Back24"),"Press to edit ToDoItem", KeyEvent.VK_E, this);
         this.delete = new DeleteAction("Delete",createNavigationIcon("Back24"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
