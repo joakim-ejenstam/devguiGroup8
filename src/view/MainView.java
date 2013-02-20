@@ -64,6 +64,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		JMenuItem about = new JMenuItem("About");
 		JMenuItem addTodo = new JMenuItem(controller.getAddAction());
 		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
+		JMenuItem deleteTodo = new JMenuItem(controller.getDeleteAction());
 		
 		// Set up menu bar
 		menuBar.add(file);
@@ -73,6 +74,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		help.add(about);
 		edit.add(addTodo);
 		edit.add(editTodo);
+		edit.add(deleteTodo);
 
 		/* For later use when we add more sub menus to file menu:
 		file.addSeparator();

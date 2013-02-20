@@ -35,7 +35,7 @@ public class ToDoController {
         this.lang = newLang;
         this.add = new AddAction(lang.getText("ui.mainview.menu.edit.add"),createNavigationIcon("/Add16"),"Press to add ToDoItem", KeyEvent.VK_A, this);
         this.edit = new EditAction("Edit",createNavigationIcon("/Edit16"),"Press to edit ToDoItem", KeyEvent.VK_E, this);
-        this.delete = new DeleteAction("Delete",createNavigationIcon("/Delete24"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
+        this.delete = new DeleteAction("Delete",createNavigationIcon("/Delete16"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
         this.ok = new OkAction("Save",createNavigationIcon("uknownicon"),"Press to save ToDoItem", KeyEvent.VK_O, this);
         this.cancel = new CancelAction("Cancel", createNavigationIcon("unkownicon"),"Press to abort", KeyEvent.VK_C, this);
         this.language = new ChangeLanguageAction("Change language", createNavigationIcon("Back24"),"Press to change language", KeyEvent.VK_L, this);
