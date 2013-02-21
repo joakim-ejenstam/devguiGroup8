@@ -170,6 +170,7 @@ public class ToDoController extends ComponentAdapter {
     public void componentMoved(ComponentEvent e) {
     	//save position of MainWindow
     	if(e.getComponent().getClass().equals(MainView.class)){
+    		System.out.println("DEBUG: component moved");
     		this.conf.setProp("windowXPos",Integer.toString(e.getComponent().getX()));
     		this.conf.setProp("windowYPos",Integer.toString(e.getComponent().getY()));
     	}
@@ -184,6 +185,7 @@ public class ToDoController extends ComponentAdapter {
     public void componentResized(ComponentEvent e) {
     	//save position of MainWindow
     	if(e.getComponent().getClass().equals(MainView.class)){
+    		System.out.println("DEBUG component got resized");
     		this.conf.setProp("windowHeight",Integer.toString(e.getComponent().getHeight()));
     		this.conf.setProp("windowWidth",Integer.toString(e.getComponent().getWidth()));
     	}
