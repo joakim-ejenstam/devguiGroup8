@@ -14,7 +14,6 @@ import model.LocaliziedTexts;
 import model.ToDoItem;
 import model.ToDoItemModel;
 import view.MainView;
-import model.XMLFileToDoItemModel;
 import exceptions.ToDoItemExistsException;
 
 /**
@@ -207,6 +206,7 @@ public class ToDoController extends ComponentAdapter {
         this.language.updateLanguage(lang);
         this.cancel.updateLanguage(lang);
         this.about.updateLanguage(lang);
+        view.table.setModel(new TableToDoItemModel(model, lang));
         this.view.repaint();
     }
     

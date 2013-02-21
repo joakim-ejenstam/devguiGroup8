@@ -95,7 +95,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		todo.appendChild(dueDate);
 		String date1 = "";
 		if (item.getDueDate() != null){
-			date1 = this.dateFormatter("yyy-MM-dd", item.getDueDate());
+			date1 = this.dateFormatter("yyyy-MM-dd", item.getDueDate());
 		}
 		dueDate.appendChild(date1);
 		
