@@ -100,7 +100,7 @@ public class ToDoController extends ComponentAdapter {
     }
 
     public void updateEditItem(ToDoItem newItem) {
-        model.updateToDoItem(5, newItem);
+        model.updateToDoItem(model.getIndexOfToItem(newItem), newItem);
     }
 
     /**
