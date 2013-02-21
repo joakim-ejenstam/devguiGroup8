@@ -34,6 +34,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	private ToDoController controller;
     private TableToDoItemModel tableModel;
     private LocaliziedTexts lang;
+    public JTable table;
 	
     public MainView(ToDoController newController, TableToDoItemModel tbModel, LocaliziedTexts newLang) {
         this.controller = newController;
@@ -118,7 +119,8 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    JPanel southPanel = new JPanel();
 		
 	    // Scroll pane
-	    JScrollPane scrollPane = new JScrollPane(createTable());
+        this.table = createTable();
+	    JScrollPane scrollPane = new JScrollPane(table);
 	    
 	    // Text fields and buttons
 	    JTextField inputFld = new JTextField();
