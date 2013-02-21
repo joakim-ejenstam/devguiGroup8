@@ -161,7 +161,7 @@ public class ToDoController extends ComponentAdapter {
         return ok;
     }
 
-    public ChangeLanguageAction getLanguage() {
+    public ChangeLanguageAction getLanguageAction() {
         return language;
     }
 
@@ -242,5 +242,10 @@ public class ToDoController extends ComponentAdapter {
     		this.conf.setProp("windowWidth",Integer.toString(e.getComponent().getWidth()));
     	}
     }
+
+	public LocaliziedTexts getLanguage() {
+		// TODO Auto-generated method stub
+		return this.lang;
+	}
 }
 

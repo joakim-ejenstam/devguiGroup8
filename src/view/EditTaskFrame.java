@@ -2,6 +2,7 @@ package view;
 
 import controller.ToDoController;
 import model.Category;
+import model.LocaliziedTexts;
 import model.ToDoItem;
 
 import java.awt.BorderLayout;
@@ -17,12 +18,12 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class EditTaskFrame extends JFrame {
     
-    private EditTaskPanel editTaskPanel;
+	private EditTaskPanel editTaskPanel;
     
-    public EditTaskFrame(ToDoController controller, ToDoItem item, List<Category> categories){
-        super("Edit Tasks");
+    public EditTaskFrame(ToDoController controller, ToDoItem item, List<Category> categories, LocaliziedTexts language){
+        super(language.getText("ui.editview.windowTitle"));
         Container c = getContentPane();
-        this.editTaskPanel = new EditTaskPanel(controller, item , categories);
+        this.editTaskPanel = new EditTaskPanel(controller, item , categories, language);
         c.add(editTaskPanel, BorderLayout.CENTER);
         this.setVisible(true);
         this.pack();

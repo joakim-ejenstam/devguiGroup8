@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 import controller.ToDoController;
 import model.Category;
+import model.LocaliziedTexts;
 import model.ToDoItem;
 
 /**
@@ -34,13 +35,15 @@ public class EditTaskPanel extends JPanel {
 	private ToDoController controller;
 	private ToDoItem item;
 	private String[] categories;
+	private LocaliziedTexts lang;
+	
     //Labels
-    private JLabel titleLabel            = new JLabel("Title:");
-    private JLabel dateLabel             = new JLabel("Date:");
-    private JLabel timeLabel             = new JLabel("Time:");
-    private JLabel descriptionLabel      = new JLabel("Description:");
-    private JLabel categoryLabel         = new JLabel("Category:");
-    private JLabel priorityLabel         = new JLabel("Priority:");
+    private JLabel titleLabel;//            = new JLabel(lang.getText("ui.editview.title"));
+    private JLabel dateLabel;//             = new JLabel(lang.getText("ui.editview.dueDate"));
+    private JLabel timeLabel;//             = new JLabel(lang.getText("ui.editview.dueTime"));
+    private JLabel descriptionLabel;//      = new JLabel(lang.getText("ui.editview.description"));
+    private JLabel categoryLabel;//         = new JLabel(lang.getText("ui.editview.category"));
+    private JLabel priorityLabel;//         = new JLabel(lang.getText("ui.editview.priotity"));
 
     //TextFields
     private JTextField titleField       	= new JTextField(10);
@@ -57,9 +60,9 @@ public class EditTaskPanel extends JPanel {
     
     //Priority JRadioButtons
     private ButtonGroup priorityGroup    = new ButtonGroup();
-    private JRadioButton lowPriority     = new JRadioButton("Low", true);
-    private JRadioButton mediumPriority  = new JRadioButton("Medium", false);
-    private JRadioButton highPriority    = new JRadioButton("High", false);
+    private JRadioButton lowPriority;//     = new JRadioButton(lang.getText("ui.editview.low"), true);
+    private JRadioButton mediumPriority;//  = new JRadioButton(lang.getText("ui.editview.medium"), false);
+    private JRadioButton highPriority;//    = new JRadioButton(lang.getText("ui.editview.high"), false);
 
     //Extra Panels
     private JPanel topTitlePanel		 = new JPanel();
@@ -85,11 +88,24 @@ public class EditTaskPanel extends JPanel {
      * @param item
      * @param categories
      */
-    EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories){
+    EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories, LocaliziedTexts lang){
+    	
+    	titleLabel            = new JLabel(lang.getText("ui.editview.label.title"));
+    	dateLabel             = new JLabel(lang.getText("ui.editview.label.dueDate"));
+    	timeLabel             = new JLabel(lang.getText("ui.editview.label.dueTime"));
+    	descriptionLabel      = new JLabel(lang.getText("ui.editview.label.description"));
+    	categoryLabel         = new JLabel(lang.getText("ui.editview.label.category"));
+    	priorityLabel         = new JLabel(lang.getText("ui.editview.label.priority"));
+    	
+    	lowPriority     = new JRadioButton(lang.getText("ui.editview.priority.low"), true);
+    	mediumPriority  = new JRadioButton(lang.getText("ui.editview.priority.medium"), false);
+    	highPriority    = new JRadioButton(lang.getText("ui.editview.priority.high"), false);
+    	
     	this.item = item;
     	this.controller = controller;
     	this.categories = new String[categories.size()+1];
     	this.categories[0] = "None";
+    	this.lang = lang;
     	System.out.println(categories.size());
     	for(int i = 1; i<categories.size()+1; i++){
     		this.categories[i] = categories.get(i-1).getLabel();
