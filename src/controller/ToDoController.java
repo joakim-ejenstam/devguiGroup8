@@ -4,12 +4,14 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.util.Locale;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicTreeUI;
 
 import model.LocaliziedTexts;
 import model.ToDoItem;
 import model.ToDoItemModel;
 import view.MainView;
+import model.XMLFileToDoItemModel;
 import exceptions.ToDoItemExistsException;
 
 /**
@@ -29,18 +31,54 @@ public class ToDoController extends ComponentAdapter {
     private AboutAction about;
     private Config conf;
     private LocaliziedTexts lang;
+    private MainView view;
 
 
     public ToDoController(ToDoItemModel newModel, LocaliziedTexts newLang){
         this.model = newModel;
         this.lang = newLang;
-        this.add = new AddAction(lang.getText("ui.mainview.menu.edit.add"),createNavigationIcon("/Add16"),"Press to add ToDoItem", KeyEvent.VK_A, this);
-        this.edit = new EditAction(lang.getText("ui.mainview.menu.edit.edit"),createNavigationIcon("/Edit16"),"Press to edit ToDoItem", KeyEvent.VK_E, this);
-        this.delete = new DeleteAction(lang.getText("ui.mainview.menu.edit.delete"),createNavigationIcon("/Delete16"),"Press to delete ToDoItem", KeyEvent.VK_D, this);
-        this.ok = new OkAction("Ok",createNavigationIcon("uknownicon"),"Press to save ToDoItem", KeyEvent.VK_O, this);
-        this.cancel = new CancelAction("Cancel", createNavigationIcon("unkownicon"),"Press to abort", KeyEvent.VK_C, this);
-        this.language = new ChangeLanguageAction(lang.getText("ui.mainview.menu.file.changeLanguage"), createNavigationIcon("/Information16"),"Press to change language", KeyEvent.VK_L, this);
-        this.about = new AboutAction(lang.getText("ui.mainview.menu.help.about"),createNavigationIcon("/About16"),"Press to get info", KeyEvent.VK_F, this);
+        this.add =
+                new AddAction(
+                        lang.getText("ui.mainview.menu.edit.add"),
+                        createNavigationIcon("/Add16"),
+                        "Press to add ToDoItem",
+                        KeyEvent.VK_A, this);
+        this.edit =
+                new EditAction(
+                        lang.getText("ui.mainview.menu.edit.edit"),
+                        createNavigationIcon("/Edit16"),
+                        "Press to edit ToDoItem",
+                        KeyEvent.VK_E, this);
+        this.delete =
+                new DeleteAction(
+                        lang.getText("ui.mainview.menu.edit.delete"),
+                        createNavigationIcon("/Delete16"),
+                        "Press to delete ToDoItem",
+                        KeyEvent.VK_D, this);
+        this.ok =
+                new OkAction(
+                        "Ok",
+                        createNavigationIcon("uknownicon"),
+                        "Press to save ToDoItem",
+                        KeyEvent.VK_O, this);
+        this.cancel =
+                new CancelAction(
+                        "Cancel",
+                        createNavigationIcon("unkownicon"),
+                        "Press to abort",
+                        KeyEvent.VK_C, this);
+        this.language =
+                new ChangeLanguageAction(
+                        lang.getText("ui.mainview.menu.file.changeLanguage"),
+                        createNavigationIcon("/Information16"),
+                        "Press to change language",
+                        KeyEvent.VK_L, this);
+        this.about =
+                new AboutAction(
+                        lang.getText("ui.mainview.menu.help.about"),
+                        createNavigationIcon("/About16"),
+                        "Press to get info",
+                        KeyEvent.VK_F, this);
     }
 
     public ToDoItem addItem(String title) {
@@ -122,17 +160,19 @@ public class ToDoController extends ComponentAdapter {
      * @param arg
      */
     public void addObserver(MainView arg) {
-        model.addObserver(arg);
+        this.view = arg;
+        model.addObserver(view);
     }
 
     /**
      * This method is used by the controller to update the language of all the actions it has control over.
      * @param lang
      */
-    public void updateLanguage(Locale lang) {
+    public void updateLanguage(Locale arg) {
         //TODO: Functionality to change the language.
-        Locale.setDefault(lang);
-        conf.setProp("locale",lang.toString());
+        Locale.setDefault(arg);
+        conf.setProp("locale",arg.getLanguage());
+        lang.refreshTexts();
         setLanguage();
     }
     /** MAJOR TEMPORARY CODE!!!! Returns an ImageIcon, or null if the path was invalid. */
@@ -157,6 +197,7 @@ public class ToDoController extends ComponentAdapter {
         this.language.updateLanguage(lang);
         this.cancel.updateLanguage(lang);
         this.about.updateLanguage(lang);
+        this.view.repaint();
     }
     
     /**

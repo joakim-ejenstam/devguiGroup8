@@ -56,6 +56,7 @@ public class LocaliziedTexts {
 	private void loadLocale() {
 		// load the locale from the config
     	this.locale = new Locale(this.config.getProp("locale"));
+        Locale.setDefault(locale);
     	// load language dependent text from the resource bundle
     	// Obs!
     	// To make the following line work, you have to add the "data"
