@@ -43,13 +43,13 @@ public class ApplicationStartup {
 			e.printStackTrace();
 			System.exit(1);//without a model our application can't run...
 		}
-        LocaliziedTexts lang = new LocaliziedTexts(config);
+        final LocaliziedTexts lang = new LocaliziedTexts(config);
 		final ToDoController controller = new ToDoController(model,lang);
         final TableToDoItemModel tbModel = new TableToDoItemModel(model,lang);
         controller.setConfig(config);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-            	MainView view = new MainView(controller, tbModel);
+            	MainView view = new MainView(controller, tbModel,lang);
             	view.createAndShowGUI(config);
             }
         });

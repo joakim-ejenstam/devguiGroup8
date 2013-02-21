@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
+import model.LocaliziedTexts;
 import model.TableToDoItemModel;
 import controller.Config;
 import controller.ToDoController;
@@ -32,13 +33,15 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	
     private ToDoController controller;
     private TableToDoItemModel tableModel;
+    private LocaliziedTexts lang;
 	
-    public MainView(ToDoController newController, TableToDoItemModel tbModel) {
+    public MainView(ToDoController newController, TableToDoItemModel tbModel, LocaliziedTexts newLang) {
         this.controller = newController;
         //the main view needs a TableModel as it uses a JTable
         //(as this model is tightly bound to the JTable, it's probably okay to 
         //create it here and not get it injected by the controller)
         this.tableModel = tbModel;
+        this.lang = newLang;
         
         //add this view as a listener to the changes of the model
         controller.addObserver(this);
@@ -55,9 +58,9 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		frame.setJMenuBar(menuBar);
 
 		// Menus
-		JMenu file = new JMenu("File");
-		JMenu edit = new JMenu("Edit");
-		JMenu help = new JMenu("Help");
+		JMenu file = new JMenu(lang.getText("ui.mainview.menu.file"));
+		JMenu edit = new JMenu(lang.getText("ui.mainview.menu.edit"));
+		JMenu help = new JMenu(lang.getText("ui.mainview.menu.help"));
 		JMenuItem chooseLanguage = new JMenuItem(controller.getLanguage());
 
 		// Sub menus
