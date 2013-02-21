@@ -41,6 +41,9 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         //(as this model is tightly bound to the JTable, it's probably okay to 
         //create it here and not get it injected by the controller)
         this.tableModel = tbModel;
+        //we add the controller as a listener to observe changes
+        this.addComponentListener(this.controller);
+        
         this.lang = newLang;
         
         //add this view as a listener to the changes of the model
