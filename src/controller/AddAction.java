@@ -37,7 +37,7 @@ public class AddAction extends AbstractAction {
                 ToDoItem item;
                 item = (ToDoItem) parent.addItem(title);
                 if(item != null){
-                    EditTaskFrame editView = new EditTaskFrame(parent, item);
+                    EditTaskFrame editView = new EditTaskFrame(parent, item ,parent.getCategories());
                     editView.setSize(400,400);
                     editView.setVisible(true);
                 } else {

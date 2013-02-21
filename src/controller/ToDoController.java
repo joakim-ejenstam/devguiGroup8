@@ -2,11 +2,14 @@ package controller;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicTreeUI;
 
+import model.Category;
 import model.LocaliziedTexts;
 import model.ToDoItem;
 import model.ToDoItemModel;
@@ -93,7 +96,14 @@ public class ToDoController extends ComponentAdapter {
         return item;
     }
 
-
+    /**
+     * Fetches all the categories.
+     * @return list with categories
+     */
+    public List<Category> getCategories(){
+    	return model.getAllCategories();
+    }
+    
     public ToDoItem getEditItem(int index) {
         //model.getItem(index);
         return null;

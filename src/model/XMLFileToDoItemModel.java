@@ -154,9 +154,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			//Parse Categories
 			this.categories = new ArrayList<Category>();
 			Elements categories = root.getFirstChildElement("categories").getChildElements();
-			System.out.println(categories.size());
 			for(int i = 0; i< categories.size(); i++){
-				System.out.println(categories.get(i).getValue());
 				String cat = categories.get(i).getValue();
 				this.addCategory(new Category(cat));
 			}

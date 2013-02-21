@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.Date;
+import java.util.List;
 
 //import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -32,7 +33,7 @@ public class EditTaskPanel extends JPanel {
     
 	private ToDoController controller;
 	private ToDoItem item;
-	
+	private String[] categories;
     //Labels
     private JLabel titleLabel            = new JLabel("Title:");
     private JLabel dateLabel             = new JLabel("Date:");
@@ -78,10 +79,17 @@ public class EditTaskPanel extends JPanel {
     //JDates
     private JDateChooser dueDateCal		= new JDateChooser();
     
-    EditTaskPanel(ToDoController controller, ToDoItem item){
+    EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories){
     	this.item = item;
     	this.controller = controller;
-    	this.categoryBox = new JComboBox(); //TODO need reference to the category list from the controller
+    	this.categories = new String[categories.size()+1];
+    	this.categories[0] = "None";
+    	System.out.println(categories.size());
+    	for(int i = 1; i<categories.size()+1; i++){
+    		this.categories[i] = categories.get(i-1).getLabel();
+    	}
+    	this.categoryBox = new JComboBox(this.categories);
+    	this.categoryBox.setSelectedIndex(0);
         controller.getOkAction().addPanel(this);
         
         
