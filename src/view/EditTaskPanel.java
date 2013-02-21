@@ -79,6 +79,12 @@ public class EditTaskPanel extends JPanel {
     //JDates
     private JDateChooser dueDateCal		= new JDateChooser();
     
+    /**
+     * The constructor for the class.
+     * @param controller
+     * @param item
+     * @param categories
+     */
     EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories){
     	this.item = item;
     	this.controller = controller;
@@ -204,16 +210,21 @@ public class EditTaskPanel extends JPanel {
 
         fillFields(item);
     }
+    
 
     private void fillFields(ToDoItem item)  {
         if(item.getTitle() != null)
             this.titleField.setText(item.getTitle());
-        if(item.getCategory() != null)
-            this.categoryField.setText(item.getCategory().toString());
+        //if(item.getCategory() != null)
+        //    this.categoryField.setText(item.getCategory().toString());
         if(item.getDescription() != null)
             this.descriptionArea.setText(item.getDescription());
     }
-
+    
+    /**
+     * Fetches the panels ToDoItem
+     * @return a ToDoItem
+     */
     public ToDoItem getTodoItem() {
         	item.setDescription(descriptionArea.getText());
         	item.setPriority(1);
