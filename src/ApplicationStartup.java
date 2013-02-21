@@ -45,7 +45,7 @@ public class ApplicationStartup {
 		}
         LocaliziedTexts lang = new LocaliziedTexts(config);
 		final ToDoController controller = new ToDoController(model,lang);
-        final TableToDoItemModel tbModel = new TableToDoItemModel(model);
+        final TableToDoItemModel tbModel = new TableToDoItemModel(model,lang);
         controller.setConfig(config);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
