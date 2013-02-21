@@ -30,8 +30,8 @@ import controller.ToDoController;
 
 @SuppressWarnings("serial")
 public class MainView extends JFrame implements Observer, TableModelListener {
-	private JButton addBtn;
-    private ToDoController controller;
+
+	private ToDoController controller;
     private TableToDoItemModel tableModel;
     private LocaliziedTexts lang;
 	
