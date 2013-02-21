@@ -11,6 +11,7 @@ import javax.swing.plaf.basic.BasicTreeUI;
 
 import model.Category;
 import model.LocaliziedTexts;
+import model.TableToDoItemModel;
 import model.ToDoItem;
 import model.ToDoItemModel;
 import view.MainView;
