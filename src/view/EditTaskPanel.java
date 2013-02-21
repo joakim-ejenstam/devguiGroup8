@@ -3,7 +3,6 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.sql.Time;
 import java.util.Enumeration;
 
 //import javax.swing.BorderFactory;
