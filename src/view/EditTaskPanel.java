@@ -119,7 +119,7 @@ public class EditTaskPanel extends JPanel {
         //Configuration for topTitlePanel
         topTitlePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
         topTitlePanel.add(Box.createRigidArea(new Dimension(10,0)));
-        titleLabel.setPreferredSize(new Dimension(30,10));
+        titleLabel.setPreferredSize(titleLabel.getPreferredSize());
         topTitlePanel.add(titleLabel);
         topTitlePanel.add(titleField);
         
@@ -127,7 +127,7 @@ public class EditTaskPanel extends JPanel {
         //Configuration for datePanel
         topDatePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
         topDatePanel.add(Box.createRigidArea(new Dimension(10,0)));
-        dateLabel.setPreferredSize(new Dimension(30,10));
+        dateLabel.setPreferredSize(dateLabel.getPreferredSize());
         topDatePanel.add(dateLabel);
         topDatePanel.add(dueDateCal);
         
@@ -135,7 +135,7 @@ public class EditTaskPanel extends JPanel {
         //Configuration for topTimePanel
         topTimePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
         topTimePanel.add(Box.createRigidArea(new Dimension(10,0)));
-        timeLabel.setPreferredSize(new Dimension(30,10));
+        timeLabel.setPreferredSize(timeLabel.getPreferredSize());
         topTimePanel.add(timeLabel);
         topTimePanel.add(dueTimeField);
         
