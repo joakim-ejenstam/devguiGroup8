@@ -21,6 +21,8 @@ import model.ToDoItem;
 @SuppressWarnings("serial")
 public class EditTaskPanel extends JPanel {
     
+	ToDoItem item;
+	
     //Labels
     private JLabel titleLabel            = new JLabel("Title:");
     private JLabel dateLabel             = new JLabel("Date:");
@@ -76,6 +78,8 @@ public class EditTaskPanel extends JPanel {
  //   private JDateChooser toDateCal		 = new JDateChooser();
     
     EditTaskPanel(ToDoController controller, ToDoItem item){
+    	
+    	this.item = item;
         controller.getOkAction().addPanel(this);
     	//Setup the different layoutManagers
         setLayout(new BorderLayout());
@@ -222,9 +226,6 @@ public class EditTaskPanel extends JPanel {
     }
 
     public ToDoItem getTodoItem() {
-        ToDoItem item = new ToDoItem();
-
-        item.setTitle(titleField.getText());
         item.setDescription(descriptionArea.getText());
         item.setDueDate(dueDateCal.getDate());
         item.setCategory(new Category(categoryField.getText()));
