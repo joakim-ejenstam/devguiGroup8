@@ -3,18 +3,11 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.sql.Time;
+import java.util.Enumeration;
 
 //import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import com.toedter.calendar.JDateChooser;
 import controller.ToDoController;
@@ -233,9 +226,28 @@ public class EditTaskPanel extends JPanel {
 
         item.setTitle(titleField.getText());
         item.setDescription(descriptionArea.getText());
-        item.setPriority(1);
+        item.setDueDate(dueDateCal.getDate());
         item.setCategory(new Category(categoryField.getText()));
-
+        item.setPriority(getSelectedPriority(priorityGroup));
         return item;
+    }
+
+    public int getSelectedPriority(ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                String text = button.getText();
+
+                if (text == "Low") {
+                    return 1;
+                } else if(text == "Medium") {
+                    return 2;
+                } else {
+                    return 3;
+                }
+            }
+        }
+        return 0;
     }
 }
