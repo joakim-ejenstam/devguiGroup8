@@ -1,4 +1,6 @@
 package controller;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.util.Locale;
 
@@ -18,7 +20,7 @@ import view.MainView;
  * Date: 2013-02-14
  * Time: 22:12
  */
-public class ToDoController {
+public class ToDoController extends ComponentAdapter {
     private ToDoItemModel model;
     private AddAction add;
     private EditAction edit;
@@ -157,6 +159,34 @@ public class ToDoController {
         this.language.updateLanguage(lang);
         this.cancel.updateLanguage(lang);
         this.about.updateLanguage(lang);
+    }
+    
+    /**
+     * This method detects all movements of observed windows and saves the new position to the config,
+     * so that we can show them at the same position at next start.
+     * @see ComponentAdapter#componentMoved(ComponentEvent)
+     */
+    @Override
+    public void componentMoved(ComponentEvent e) {
+    	//save position of MainWindow
+    	if(e.getComponent().getClass().equals(MainView.class)){
+    		this.conf.setProp("windowXPos",Integer.toString(e.getComponent().getX()));
+    		this.conf.setProp("windowYPos",Integer.toString(e.getComponent().getY()));
+    	}
+    }
+    
+    /**
+     * This method detects if a observed window is resized and saves the new position to the config,
+     * so that we can show them with the same size at next start.
+     * @see ComponentAdapter#componentResized(ComponentEvent)
+     */
+    @Override
+    public void componentResized(ComponentEvent e) {
+    	//save position of MainWindow
+    	if(e.getComponent().getClass().equals(MainView.class)){
+    		this.conf.setProp("windowHeight",Integer.toString(e.getComponent().getHeight()));
+    		this.conf.setProp("windowWidth",Integer.toString(e.getComponent().getWidth()));
+    	}
     }
 }
 
