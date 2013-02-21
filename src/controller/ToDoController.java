@@ -5,14 +5,12 @@ import java.awt.event.KeyEvent;
 import java.util.Locale;
 
 import javax.swing.ImageIcon;
-import javax.swing.plaf.basic.BasicTreeUI;
 
 import model.LocaliziedTexts;
 import model.ToDoItem;
 import model.ToDoItemModel;
-import exceptions.ToDoItemExistsException;
-import model.XMLFileToDoItemModel;
 import view.MainView;
+import exceptions.ToDoItemExistsException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -168,9 +166,10 @@ public class ToDoController extends ComponentAdapter {
      */
     @Override
     public void componentMoved(ComponentEvent e) {
+		System.out.println("DEBUG: any component moved");
     	//save position of MainWindow
     	if(e.getComponent().getClass().equals(MainView.class)){
-    		System.out.println("DEBUG: component moved");
+    		System.out.println("DEBUG: mainview moved");
     		this.conf.setProp("windowXPos",Integer.toString(e.getComponent().getX()));
     		this.conf.setProp("windowYPos",Integer.toString(e.getComponent().getY()));
     	}
@@ -183,9 +182,10 @@ public class ToDoController extends ComponentAdapter {
      */
     @Override
     public void componentResized(ComponentEvent e) {
+		System.out.println("DEBUG any component got resized");
     	//save position of MainWindow
     	if(e.getComponent().getClass().equals(MainView.class)){
-    		System.out.println("DEBUG component got resized");
+    		System.out.println("DEBUG mainview got resized");
     		this.conf.setProp("windowHeight",Integer.toString(e.getComponent().getHeight()));
     		this.conf.setProp("windowWidth",Integer.toString(e.getComponent().getWidth()));
     	}
