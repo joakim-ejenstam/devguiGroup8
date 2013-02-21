@@ -68,7 +68,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		JMenu edit = new JMenu(lang.getText("ui.mainview.menu.edit"));
 		JMenu help = new JMenu(lang.getText("ui.mainview.menu.help"));
 		JMenuItem chooseLanguage = new JMenuItem(controller.getLanguage());
-
+		
 		// Sub menus
 		JMenuItem about = new JMenuItem(controller.getAboutAction());
 		JMenuItem addTodo = new JMenuItem(controller.getAddAction());
@@ -147,7 +147,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	 */
 	public void createAndShowGUI(Config config) {
 		
-		JFrame frame = new JFrame("The Greight TODO Manager");
+		JFrame frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(Integer.valueOf(config.getProp("windowXPos")), 
 				Integer.valueOf(config.getProp("windowYPos")), 
