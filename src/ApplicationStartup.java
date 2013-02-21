@@ -9,6 +9,8 @@ import exceptions.LoadModelException;
 
 import java.util.Locale;
 
+import javax.swing.UIManager;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Joakim
@@ -20,6 +22,12 @@ public class ApplicationStartup {
 	private Config config = null; //the configuration values of the application
 	
     public ApplicationStartup(String[] args) {
+    	//set look & feel of system
+    	try {
+	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	    } catch (Exception e) {
+	    	//we don't have to do anything, as the dault l&f will be used now anyway
+	    }
         try {
     		config = Config.getInstance();
 		} catch (InstantiationException e) {
