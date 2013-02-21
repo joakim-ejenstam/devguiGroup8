@@ -110,7 +110,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		priority.appendChild(Integer.toString(item.getPriority()));
 		
 		todo.appendChild(creationDate);
-		String date2 = this.dateFormatter("yyy-MM-dd'T'HH:mm", item.getCreationDate());
+		String date2 = this.dateFormatter("yyyy-MM-dd'T'HH:mm", item.getCreationDate());
 		creationDate.appendChild(date2);
 		
 		todo.appendChild(done);
