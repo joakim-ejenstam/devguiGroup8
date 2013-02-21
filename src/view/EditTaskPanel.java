@@ -23,13 +23,13 @@ public class EditTaskPanel extends JPanel {
 	ToDoItem item;
 	
     //Labels
-    private JLabel titleLabel            = new JLabel("Title:");
-    private JLabel dateLabel             = new JLabel("Date:");
-    private JLabel timeLabel             = new JLabel("Time:");
-    private JLabel descriptionLabel      = new JLabel("Description:");
-    private JLabel categoryLabel         = new JLabel("Category:");
-    //private JLabel reminderLabel         = new JLabel("Reminder:");
-    private JLabel priorityLabel         = new JLabel("Priority:");
+    private JLabel titleLabel            = new JLabel("Title:"); //lang.getText("ui.editview.label.title")
+    private JLabel dateLabel             = new JLabel("Date:"); //lang.getText("ui.editview.label.dueDate")
+    private JLabel timeLabel             = new JLabel("Time:"); //lang.getText("ui.editview.label.dueTime")
+    private JLabel descriptionLabel      = new JLabel("Description:"); //lang.getText("ui.editview.label.description")
+    private JLabel categoryLabel         = new JLabel("Category:"); //lang.getText("ui.editview.label.category")
+    //private JLabel reminderLabel         = new JLabel("Reminder:"); 
+    private JLabel priorityLabel         = new JLabel("Priority:"); //lang.getText("ui.editview.label.priority")
 
     //TextFields
     private JTextField titleField       	= new JTextField(10);
