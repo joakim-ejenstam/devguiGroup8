@@ -16,6 +16,14 @@ import java.awt.event.ActionEvent;
 public class DeleteAction extends AbstractAction {
     private ToDoController parent;
 
+    /**
+     * Constructor, nothing fancy!
+     * @param text The title for the component using this action.
+     * @param icon The icon for the component using this action.
+     * @param desc The hovertext of the component using this action.
+     * @param mnemonic The mnemonic of the component using this action.
+     * @param controller This actions controller parent.
+     */
     public DeleteAction(String text, ImageIcon icon,
                       String desc, Integer mnemonic,
                       ToDoController controller) {
@@ -25,10 +33,18 @@ public class DeleteAction extends AbstractAction {
         this.parent = controller;
     }
 
+    /**
+     * Override method to handle the event that the user want's to delete an item.
+     * @param event the event fired from the user.
+     */
     public void actionPerformed(ActionEvent event){
         /*TODO: Remove ToDoItem from model.*/
     }
 
+    /**
+     * Language set method. Sets the strings of this object according to the input language localization object.
+     * @param lang Language localization class to get correct textstrings.
+     */
     public void updateLanguage(LocaliziedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.edit.delete"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.deleteAction"));

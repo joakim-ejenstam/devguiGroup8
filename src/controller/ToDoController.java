@@ -35,6 +35,11 @@ public class ToDoController extends ComponentAdapter {
     private MainView view;
 
 
+    /**
+     * Constructor for the controller. Creates all actions and sets object fields from input parameters.
+     * @param newModel The model of the current application
+     * @param newLang The language object of the application
+     */
     public ToDoController(ToDoItemModel newModel, LocaliziedTexts newLang){
         this.model = newModel;
         this.lang = newLang;
@@ -82,6 +87,11 @@ public class ToDoController extends ComponentAdapter {
                         KeyEvent.VK_F, this);
     }
 
+    /**
+     * Method to add a new item to the model.
+     * @param title title string input by the user
+     * @return null or the new item
+     */
     public ToDoItem addItem(String title) {
         ToDoItem item = null;
 
@@ -101,12 +111,21 @@ public class ToDoController extends ComponentAdapter {
     public List<Category> getCategories(){
     	return model.getAllCategories();
     }
-    
+
+    /**
+     * Method to get item to delete or inject to the editframe
+     * @param index The place in the table where the item resides.
+     * @return the requested item or null.
+     */
     public ToDoItem getEditItem(int index) {
         //model.getItem(index);
         return null;
     }
 
+    /**
+     * Update the corresponding item in the model.
+     * @param newItem Item supplied by the edit frame.
+     */
     public void updateEditItem(ToDoItem newItem) {
         model.updateToDoItem(model.getIndexOfToItem(newItem), newItem);
     }
@@ -119,6 +138,10 @@ public class ToDoController extends ComponentAdapter {
         return add;
     }
 
+    /**
+     * Set method for the config object.
+     * @param newConf
+     */
     public void setConfig(Config newConf) {
         this.conf = newConf;
     }
@@ -139,6 +162,10 @@ public class ToDoController extends ComponentAdapter {
         return delete;
     }
 
+    /**
+     * Get method for the about action
+     * @return
+     */
     public AboutAction getAboutAction() {
         return about;
     }
@@ -159,6 +186,10 @@ public class ToDoController extends ComponentAdapter {
         return ok;
     }
 
+    /**
+     * Get method for the change language action.
+     * @return
+     */
     public ChangeLanguageAction getLanguageAction() {
         return language;
     }
@@ -182,7 +213,12 @@ public class ToDoController extends ComponentAdapter {
         lang.refreshTexts();
         setLanguage();
     }
-    /** MAJOR TEMPORARY CODE!!!! Returns an ImageIcon, or null if the path was invalid. */
+
+    /**
+     * Method to get the image from the datapath.
+     * @param imageName string name of the image file
+     * @return null or the image file.
+     */
     protected static ImageIcon createNavigationIcon(String imageName) {
         String imgLocation = ""
                 + imageName
@@ -197,6 +233,11 @@ public class ToDoController extends ComponentAdapter {
             return new ImageIcon(imageURL);
         }
     }
+
+    /**
+     * Method to set the language of the application. Will call all update methods in all the classes
+     * the controller have control over.
+     */
     private void setLanguage() {
         this.edit.updateLanguage(lang);
         this.add.updateLanguage(lang);
@@ -241,6 +282,10 @@ public class ToDoController extends ComponentAdapter {
 //    	}
     }
 
+    /**
+     * Method to supplie the actions with the text load file
+     * @return the objects language object.
+     */
 	public LocaliziedTexts getLanguage() {
 		// TODO Auto-generated method stub
 		return this.lang;
