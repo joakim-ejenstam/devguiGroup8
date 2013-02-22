@@ -155,10 +155,11 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			doc = builder.build(new File(XMLFILEPATH)); //let's try to open an existing db
 			} catch(IOException e) {
 				//we might run for the first time and just don't have a db yet. So let's create one...
-				System.out.println("WARNING couldn't load the db.xml, creating a new one.");
+				System.out.println("WARNING couldn't load the file "+this.XMLFILEPATH+", creating a new one.");
 				File file = new File(XMLFILEPATH);
 				if (!file.exists()) {
-					file.createNewFile();
+					file.getParentFile().mkdirs();//path
+					file.createNewFile();//file
 				}
 				FileWriter fw = new FileWriter(file.getAbsoluteFile());
 				BufferedWriter bw = new BufferedWriter(fw);
@@ -250,6 +251,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		} catch (ParsingException e) {
 			throw new LoadModelException("The db-file "+XMLFILEPATH+" could not be parsed.",e.getCause());
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new LoadModelException("The db-file "+XMLFILEPATH+" could not be loaded.",e.getCause());
 		}
 	}
