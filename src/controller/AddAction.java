@@ -8,6 +8,7 @@ import view.*;
 
 
 
+@SuppressWarnings("serial")
 public class AddAction extends AbstractAction {
     private ToDoController parent;
 
@@ -21,7 +22,7 @@ public class AddAction extends AbstractAction {
 	}
 
     public void actionPerformed(ActionEvent event) {
-        Object source;
+    	Object source;
         JPanel panel;
         JTextField tf;
         source = event.getSource();
@@ -30,6 +31,7 @@ public class AddAction extends AbstractAction {
 
             tf = (JTextField)panel.getComponent(0);
             String title = tf.getText();
+            tf.setText(null); //empties the quick-add-textField.
             System.out.println("Input text: "+title+".");
             if(title.trim().length() == 0){
                 JOptionPane.showMessageDialog(panel, "You have not entered a task title!","Enter title",JOptionPane.WARNING_MESSAGE);
