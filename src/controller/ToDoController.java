@@ -44,43 +44,43 @@ public class ToDoController extends ComponentAdapter {
                 new AddAction(
                         lang.getText("ui.mainview.menu.edit.add"),
                         createNavigationIcon("/Add16"),
-                        lang.getText("ui.mainview.addAction"),//"Press to add ToDoItem",
+                        lang.getText("ui.mainview.addAction"),
                         KeyEvent.VK_A, this);
         this.edit =
                 new EditAction(
                         lang.getText("ui.mainview.menu.edit.edit"),
                         createNavigationIcon("/Edit16"),
-                        lang.getText("ui.mainview.editAction"),//"Press to edit ToDoItem",
+                        lang.getText("ui.mainview.editAction"),
                         KeyEvent.VK_E, this);
         this.delete =
                 new DeleteAction(
                         lang.getText("ui.mainview.menu.edit.delete"),
                         createNavigationIcon("/Delete16"),
-                        lang.getText("ui.mainview.deleteAction"),//"Press to delete ToDoItem",
+                        lang.getText("ui.mainview.deleteAction"),
                         KeyEvent.VK_D, this);
         this.ok =
                 new OkAction(
-                		lang.getText("ui.editview.button.ok"), //"Ok",
+                		lang.getText("ui.editview.button.ok"),
                         createNavigationIcon("uknownicon"),
-                        lang.getText("ui.mainview.okAction"),//"Press to save ToDoItem",
+                        lang.getText("ui.mainview.okAction"),
                         KeyEvent.VK_O, this);
         this.cancel =
                 new CancelAction(
                         "Cancel",
                         createNavigationIcon("unkownicon"),
-                        lang.getText("ui.mainview.cancelAction"),//"Press to abort",
+                        lang.getText("ui.mainview.cancelAction"),
                         KeyEvent.VK_C, this);
         this.language =
                 new ChangeLanguageAction(
                         lang.getText("ui.mainview.menu.file.changeLanguage"),
                         createNavigationIcon("/Information16"),
-                        lang.getText("ui.mainview.languageAction"),//"Press to change language",
+                        lang.getText("ui.mainview.languageAction"),
                         KeyEvent.VK_L, this);
         this.about =
                 new AboutAction(
                         lang.getText("ui.mainview.menu.help.about"),
                         createNavigationIcon("/About16"),
-                        lang.getText("ui.mainview.aboutAction"),//"Press to get info",
+                        lang.getText("ui.mainview.aboutAction"),
                         KeyEvent.VK_F, this);
     }
 
@@ -179,7 +179,6 @@ public class ToDoController extends ComponentAdapter {
      * @param lang
      */
     public void updateLanguage(Locale arg) {
-        //TODO: Functionality to change the language.
         Locale.setDefault(arg);
         conf.setProp("locale",arg.getLanguage());
         lang.refreshTexts();
