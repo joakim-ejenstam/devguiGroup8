@@ -190,7 +190,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         this.edit.setText(lang.getText("ui.mainview.menu.edit"));
         this.help.setText(lang.getText("ui.mainview.menu.help"));
         this.setTitle(lang.getText("ui.mainview.windowTitle"));
-        this.revalidate();
+        this.validate();
         this.repaint();
     }
 }
