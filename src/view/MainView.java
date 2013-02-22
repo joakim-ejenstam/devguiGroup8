@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
@@ -149,18 +150,15 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		
 		JFrame frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.setBounds(Integer.valueOf(config.getProp("windowXPos")), 
-//				Integer.valueOf(config.getProp("windowYPos")), 
-//				Integer.valueOf(config.getProp("windowWidth")), 
-//				Integer.valueOf(config.getProp("windowHeight")));
-		frame.setSize(Integer.valueOf(config.getProp("windowWidth")), Integer.valueOf(config.getProp("windowHeight")));
+		frame.setPreferredSize(new Dimension(Integer.valueOf(config.getProp("windowWidth")), 
+				Integer.valueOf(config.getProp("windowHeight"))));
 		frame.setLocation(Integer.valueOf(config.getProp("windowXPos")), Integer.valueOf(config.getProp("windowYPos")));
 		
 		addComponentsToPane(frame.getContentPane());
 		addMenuBar(frame);
 		
-		frame.setVisible(true);
 		frame.pack();
+		frame.setVisible(true);
 		
 		//we add the controller as a listener to observe changes
 		frame.addComponentListener(this.controller);
@@ -177,7 +175,6 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	@Override
 	public void update(Observable o, Object arg) {
 		System.out.println("DEBUG Update from model");
-		// TODO Auto-generated method stub
 		this.tableModel.fireTableDataChanged(); //informs tableModel-listeners, which in our case is this class as specified above
 	}
 

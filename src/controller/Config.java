@@ -96,7 +96,7 @@ public class Config {
 		FileOutputStream out = null;
 		try {
 			out = new FileOutputStream(APP_PROPS);
-			this.appProps.store(out, "saved as program exit");
+			this.appProps.store(out, "saved as program exited.");
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace(); //Not the best handling, but the user will have to live with an unsaved config
