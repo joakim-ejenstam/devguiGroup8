@@ -182,6 +182,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 						+"\t</categories>\n"
 						+"</model>\n");
 				bw.close();
+				doc = builder.build(new File(XMLFILEPATH)); //let's try a second time
 			}
 			Element root 	= doc.getRootElement();
 			
