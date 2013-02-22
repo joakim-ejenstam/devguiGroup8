@@ -9,11 +9,7 @@ import java.util.Locale;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicTreeUI;
 
-import model.Category;
-import model.LocaliziedTexts;
-import model.TableToDoItemModel;
-import model.ToDoItem;
-import model.ToDoItemModel;
+import model.*;
 import view.MainView;
 import exceptions.ToDoItemExistsException;
 
@@ -208,7 +204,7 @@ public class ToDoController extends ComponentAdapter {
         this.about.updateLanguage(lang);
         this.ok.updateLanguage(lang); 
         view.table.setModel(new TableToDoItemModel(model, lang));
-        this.view.repaint();
+        this.view.updateLanguage(lang);
     }
     
     /**

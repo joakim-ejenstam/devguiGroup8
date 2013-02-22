@@ -35,7 +35,10 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     private TableToDoItemModel tableModel;
     private LocaliziedTexts lang;
     public JTable table;
-	
+    private JMenu file;
+    private JMenu edit;
+    private JMenu help;
+
     public MainView(ToDoController newController, TableToDoItemModel tbModel, LocaliziedTexts newLang) {
         this.controller = newController;
         //the main view needs a TableModel as it uses a JTable
@@ -60,9 +63,9 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		frame.setJMenuBar(menuBar);
 
 		// Menus
-		JMenu file = new JMenu(lang.getText("ui.mainview.menu.file"));
-		JMenu edit = new JMenu(lang.getText("ui.mainview.menu.edit"));
-		JMenu help = new JMenu(lang.getText("ui.mainview.menu.help"));
+		file = new JMenu(lang.getText("ui.mainview.menu.file"));
+		edit = new JMenu(lang.getText("ui.mainview.menu.edit"));
+		help = new JMenu(lang.getText("ui.mainview.menu.help"));
 		JMenuItem chooseLanguage = new JMenuItem(controller.getLanguageAction());
 		
 		// Sub menus
@@ -184,4 +187,13 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		// TODO Auto-generated method stub
 		//not sure what we have to do here...
 	}
+
+    public void updateLanguage(LocaliziedTexts lang) {
+        this.file.setText(lang.getText("ui.mainview.menu.file"));
+        this.edit.setText(lang.getText("ui.mainview.menu.edit"));
+        this.help.setText(lang.getText("ui.mainview.menu.help"));
+        this.setTitle(lang.getText("ui.mainview.windowTitle"));
+        this.revalidate();
+        this.repaint();
+    }
 }

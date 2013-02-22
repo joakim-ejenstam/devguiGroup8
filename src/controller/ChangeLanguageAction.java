@@ -44,7 +44,6 @@ public class ChangeLanguageAction extends AbstractAction {
                     en.getDisplayLanguage());
             if (l != null) {
                 parent.updateLanguage(l);
-                JOptionPane.showMessageDialog(rp, "You selected " + l.getDisplayLanguage() + "!");
             }
         }
     }
