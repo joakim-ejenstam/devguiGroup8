@@ -33,8 +33,8 @@ public class ChangeLanguageAction extends AbstractAction {
 
         if (source instanceof JMenuItem) {
             JRootPane rp = ((JMenuItem) source).getRootPane();
-            Object[] possibilities = {en,de,se};
-            Locale l = (Locale)JOptionPane.showInputDialog(
+            Object[] possibilities = {en.getDisplayLanguage(),de.getDisplayLanguage(),se.getDisplayLanguage()};
+            String l = (String)JOptionPane.showInputDialog(
                     rp,
                     "Choose your preferred language!",
                     "Customized Dialog",
@@ -43,7 +43,13 @@ public class ChangeLanguageAction extends AbstractAction {
                     possibilities,
                     en.getDisplayLanguage());
             if (l != null) {
-                parent.updateLanguage(l);
+                if (l == en.getDisplayLanguage()) {
+                    parent.updateLanguage(en);
+                } else if(l == de.getDisplayLanguage()) {
+                    parent.updateLanguage(de);
+                } else {
+                    parent.updateLanguage(se);
+                }
             }
         }
     }
