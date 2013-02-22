@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
  * Time: 20:23
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings("serial")
 public class DeleteAction extends AbstractAction {
     private ToDoController parent;
 

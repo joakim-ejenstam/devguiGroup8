@@ -3,10 +3,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.Date;
 import java.util.List;
 
-//import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -19,11 +17,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.toedter.calendar.JDateChooser;
-import controller.ToDoController;
 import model.Category;
 import model.LocaliziedTexts;
 import model.ToDoItem;
+
+import com.toedter.calendar.JDateChooser;
+
+import controller.ToDoController;
+//import javax.swing.BorderFactory;
 
 /**
  * The add/edit task panel.
@@ -56,7 +57,7 @@ public class EditTaskPanel extends JPanel {
     private JScrollPane	scrollArea 		 = new JScrollPane(descriptionArea);
     
     //Category JComboBox
-    private JComboBox categoryBox;
+    private JComboBox<String> categoryBox;
     
     //Priority JRadioButtons
     private ButtonGroup priorityGroup    = new ButtonGroup();
@@ -110,7 +111,7 @@ public class EditTaskPanel extends JPanel {
     	for(int i = 1; i<categories.size()+1; i++){
     		this.categories[i] = categories.get(i-1).getLabel();
     	}
-    	this.categoryBox = new JComboBox(this.categories);
+    	this.categoryBox = new JComboBox<String>(this.categories);
     	this.categoryBox.setSelectedIndex(0);
         controller.getOkAction().addPanel(this);
         

@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
  * Time: 16:38
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings("serial")
 public class OkAction extends AbstractAction {
     ToDoController parent;
     EditTaskPanel panel;

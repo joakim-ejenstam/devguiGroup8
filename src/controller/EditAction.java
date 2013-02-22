@@ -1,10 +1,11 @@
 package controller;
 
-import model.LocaliziedTexts;
-import view.EditTaskFrame;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.ImageIcon;
+
+import model.LocaliziedTexts;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,6 +14,7 @@ import java.awt.event.ActionEvent;
  * Time: 16:58
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings("serial")
 public class EditAction extends AbstractAction {
     private ToDoController parent;
 

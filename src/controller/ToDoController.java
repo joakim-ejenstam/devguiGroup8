@@ -2,14 +2,16 @@ package controller;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import javax.swing.*;
-import javax.swing.plaf.basic.BasicTreeUI;
+import javax.swing.ImageIcon;
 
-import model.*;
+import model.Category;
+import model.LocaliziedTexts;
+import model.TableToDoItemModel;
+import model.ToDoItem;
+import model.ToDoItemModel;
 import view.MainView;
 import exceptions.ToDoItemExistsException;
 

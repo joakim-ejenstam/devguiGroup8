@@ -5,6 +5,7 @@ import model.LocaliziedTexts;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class AboutAction extends AbstractAction{
 
 	private ToDoController parent;

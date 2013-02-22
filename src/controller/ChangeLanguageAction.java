@@ -13,6 +13,7 @@ import java.util.Locale;
  * Time: 19:13
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings("serial")
 public class ChangeLanguageAction extends AbstractAction {
     private ToDoController parent;
 
