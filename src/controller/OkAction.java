@@ -39,5 +39,6 @@ public class OkAction extends AbstractAction {
     }
     public void updateLanguage(LocaliziedTexts lang) {
         putValue(NAME, lang.getText("ui.editview.button.ok"));
+        putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.okAction"));
     }
 }

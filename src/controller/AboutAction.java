@@ -24,6 +24,7 @@ public class AboutAction extends AbstractAction{
 
     public void updateLanguage(LocaliziedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.help.about"));
+        putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.aboutAction"));
     }
 	
 }

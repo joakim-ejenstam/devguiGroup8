@@ -36,5 +36,6 @@ public class EditAction extends AbstractAction {
 
     public void updateLanguage(LocaliziedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.edit.edit"));
+        putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.editAction"));
     }
 }

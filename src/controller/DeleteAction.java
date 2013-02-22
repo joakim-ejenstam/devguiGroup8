@@ -30,6 +30,7 @@ public class DeleteAction extends AbstractAction {
 
     public void updateLanguage(LocaliziedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.edit.delete"));
+        putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.deleteAction"));
     }
 
 }
