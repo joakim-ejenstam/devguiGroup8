@@ -1,8 +1,10 @@
 package model;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
@@ -148,7 +150,39 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	private void parseXML() throws LoadModelException{		
 		try{
 			Builder builder = new Builder();
-			Document doc	= builder.build(new File(XMLFILEPATH));
+			Document doc	= null;
+			try {
+			doc = builder.build(new File(XMLFILEPATH)); //let's try to open an existing db
+			} catch(IOException e) {
+				//we might run for the first time and just don't have a db yet. So let's create one...
+				System.out.println("WARNING couldn't load the db.xml, creating a new one.");
+				File file = new File(XMLFILEPATH);
+				if (!file.exists()) {
+					file.createNewFile();
+				}
+				FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+						+"<model>\n"
+						+"\t<todoitems>\n"
+						+"\t\t<todoitem>\n"
+						+"\t\t\t<title>Enter all ToDo's</title>\n"
+						+"\t\t\t<description>Use your new ToDo-application wisley.</description>\n"
+						+"\t\t\t<duedate>"+new SimpleDateFormat("yyyy-mm-dd").format(new Date())+"</duedate>\n"
+						+"\t\t\t<category>Private</category>\n"
+						+"\t\t\t<priority>1</priority>\n"
+						+"\t\t\t<creationdate>"+new SimpleDateFormat("yyyy-mm-dd'T'hh:mm").format(new Date())+"</creationdate>\n"
+						+"\t\t\t<done>0</done>\n"
+						+"\t\t\t<deleted>0</deleted>\n"
+						+"\t\t</todoitem>\n"
+						+"\t</todoitems>\n"
+						+"\t<categories>\n"
+						+"\t\t<category>Private</category>\n"
+						+"\t\t<category>University</category>\n"
+						+"\t</categories>\n"
+						+"</model>\n");
+				bw.close();
+			}
 			Element root 	= doc.getRootElement();
 			
 			//Parse Categories
