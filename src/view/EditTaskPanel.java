@@ -57,7 +57,8 @@ public class EditTaskPanel extends JPanel {
     private JScrollPane	scrollArea 		 = new JScrollPane(descriptionArea);
     
     //Category JComboBox
-    private JComboBox<String> categoryBox;
+    @SuppressWarnings("rawtypes")
+	private JComboBox categoryBox;
     
     //Priority JRadioButtons
     private ButtonGroup priorityGroup    = new ButtonGroup();
@@ -89,7 +90,8 @@ public class EditTaskPanel extends JPanel {
      * @param item
      * @param categories
      */
-    EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories, LocaliziedTexts lang){
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories, LocaliziedTexts lang){
     	
     	titleLabel            = new JLabel(lang.getText("ui.editview.label.title"));
     	dateLabel             = new JLabel(lang.getText("ui.editview.label.dueDate"));
@@ -111,7 +113,7 @@ public class EditTaskPanel extends JPanel {
     	for(int i = 1; i<categories.size()+1; i++){
     		this.categories[i] = categories.get(i-1).getLabel();
     	}
-    	this.categoryBox = new JComboBox<String>(this.categories);
+    	this.categoryBox = new JComboBox(this.categories);
     	this.categoryBox.setSelectedIndex(0);
         controller.getOkAction().addPanel(this);
         
