@@ -42,11 +42,6 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         //(as this model is tightly bound to the JTable, it's probably okay to 
         //create it here and not get it injected by the controller)
         this.tableModel = tbModel;
-        //we add the controller as a listener to observe changes
-        this.addComponentListener(this.controller);
-        System.out.println("DEBUG: added controller as component listener to view");
-        
-        System.out.println("DEBUG: Component listener: "+this.getComponentListeners()[0].getClass());
         
         this.lang = newLang;
         
@@ -151,16 +146,22 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		
 		JFrame frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(Integer.valueOf(config.getProp("windowXPos")), 
-				Integer.valueOf(config.getProp("windowYPos")), 
-				Integer.valueOf(config.getProp("windowWidth")), 
-				Integer.valueOf(config.getProp("windowHeight")));
+//		frame.setBounds(Integer.valueOf(config.getProp("windowXPos")), 
+//				Integer.valueOf(config.getProp("windowYPos")), 
+//				Integer.valueOf(config.getProp("windowWidth")), 
+//				Integer.valueOf(config.getProp("windowHeight")));
+		frame.setSize(Integer.valueOf(config.getProp("windowWidth")), Integer.valueOf(config.getProp("windowHeight")));
+		frame.setLocation(Integer.valueOf(config.getProp("windowXPos")), Integer.valueOf(config.getProp("windowYPos")));
 		
 		addComponentsToPane(frame.getContentPane());
 		addMenuBar(frame);
 		
 		frame.setVisible(true);
 		frame.pack();
+		
+		//we add the controller as a listener to observe changes
+		frame.addComponentListener(this.controller);
+        System.out.println("DEBUG frame added component listener");
     }
 
 	/**

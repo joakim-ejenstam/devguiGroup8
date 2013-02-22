@@ -1,3 +1,6 @@
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
 import model.LocaliziedTexts;
 import model.TableToDoItemModel;
 import model.ToDoItemModel;
@@ -6,10 +9,6 @@ import view.MainView;
 import controller.Config;
 import controller.ToDoController;
 import exceptions.LoadModelException;
-
-import java.util.Locale;
-
-import javax.swing.UIManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -47,13 +46,26 @@ public class ApplicationStartup {
 		final ToDoController controller = new ToDoController(model,lang);
         final TableToDoItemModel tbModel = new TableToDoItemModel(model,lang);
         controller.setConfig(config);
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	MainView view = new MainView(controller, tbModel,lang);
             	view.createAndShowGUI(config);
             }
         });
-        this.config.saveApplicationProperties(); //TODO: is this here the right place to do it? It should happen when the application gets closed
+        
+//        //following stuff happens at exiting the application 
+//        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+//
+//            public void run() {
+//            	//save state of the application
+//            	 try {
+//             		config = Config.getInstance();
+//             		config.saveApplicationProperties();
+//         		} catch (InstantiationException e) {
+//         			e.printStackTrace();//we can't do anything here anymore, the config will just not be saved.
+//         		}
+//            }
+//        }));
 	}
 
     

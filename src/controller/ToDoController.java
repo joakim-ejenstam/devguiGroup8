@@ -220,11 +220,11 @@ public class ToDoController extends ComponentAdapter {
     public void componentMoved(ComponentEvent e) {
 		System.out.println("DEBUG: any component moved");
     	//save position of MainWindow
-    	if(e.getComponent().getClass().equals(MainView.class)){
+//    	if(e.getComponent().getClass().equals(MainView.class)){ //as we have a local jframe *inside* the mainview, that doesn't work
     		System.out.println("DEBUG: mainview moved");
     		this.conf.setProp("windowXPos",Integer.toString(e.getComponent().getX()));
     		this.conf.setProp("windowYPos",Integer.toString(e.getComponent().getY()));
-    	}
+//    	}
     }
     
     /**
@@ -236,11 +236,11 @@ public class ToDoController extends ComponentAdapter {
     public void componentResized(ComponentEvent e) {
 		System.out.println("DEBUG any component got resized");
     	//save position of MainWindow
-    	if(e.getComponent().getClass().equals(MainView.class)){
+//    	if(e.getComponent().getClass().equals(MainView.class)){ //as we have a local jframe *inside* the mainview, that doesn't work
     		System.out.println("DEBUG mainview got resized");
     		this.conf.setProp("windowHeight",Integer.toString(e.getComponent().getHeight()));
     		this.conf.setProp("windowWidth",Integer.toString(e.getComponent().getWidth()));
-    	}
+//    	}
     }
 
 	public LocaliziedTexts getLanguage() {
