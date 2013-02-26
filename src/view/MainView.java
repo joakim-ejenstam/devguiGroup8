@@ -21,6 +21,9 @@ import javax.swing.event.TableModelListener;
 
 import model.LocaliziedTexts;
 import model.TableToDoItemModel;
+
+import org.java.ayatana.ApplicationMenu;
+
 import controller.Config;
 import controller.ToDoController;
 
@@ -156,6 +159,9 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		
 		addComponentsToPane(frame.getContentPane());
 		addMenuBar(frame);
+		
+		//support for ubuntu global menu, using the jayanta-lib
+		ApplicationMenu.tryInstall(frame);
 		
 		frame.pack();
 		frame.setVisible(true);
