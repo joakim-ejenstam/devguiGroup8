@@ -21,12 +21,6 @@ public class ApplicationStartup {
 	private Config config = null; //the configuration values of the application
 	
     public ApplicationStartup(String[] args) {
-    	//set look & feel of system
-    	try {
-	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	    } catch (Exception e) {
-	    	//we don't have to do anything, as the dault l&f will be used now anyway
-	    }
         try {
     		config = Config.getInstance();
 		} catch (InstantiationException e) {
@@ -46,6 +40,22 @@ public class ApplicationStartup {
 		final ToDoController controller = new ToDoController(model,lang);
         final TableToDoItemModel tbModel = new TableToDoItemModel(model,lang);
         controller.setConfig(config);
+        
+        //let's do some ui finetuning
+        //apple needs of course some extra attention...
+    	if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")) {
+    		//move program menu up to system bar
+    		System.setProperty("apple.laf.useScreenMenuBar", "true");
+    		//change program name
+    		System.setProperty("com.apple.mrj.application.apple.menu.about.name", lang.getText("ui.mainview.windowTitle"));
+    	}
+    	//set look & feel of system
+    	try {
+	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	    } catch (Exception e) {
+	    	//we don't have to do anything, as the dault l&f will be used now anyway
+	    }
+        
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	MainView view = new MainView(controller, tbModel,lang);
