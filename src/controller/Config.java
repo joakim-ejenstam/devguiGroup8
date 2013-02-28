@@ -25,7 +25,6 @@ public class Config {
 	/**
 	 * Private constructor, so that other classes have to use the method {@link getInstance} to make it an Singleton.
 	 * Loads first the default properties, than the application properties as saved last invocation.
-	 * @throws IOException if config values couldn't be loaded
 	 */
 	private Config() {
 		this.loadDefaultProperties();
@@ -37,9 +36,8 @@ public class Config {
 	 * public method to return an instance of the config class. By using this technique, 
 	 * we can control how many instances are created and thus use it as a Singleton.
 	 * @return the only possible instance of the {@link Config} object
-	 * @throws InstantiationException if the config values could not be loaded
 	 */
-	public static Config getInstance() throws InstantiationException {
+	public static Config getInstance() {
 		if(instance == null)
 			instance = new Config();
 		return instance;

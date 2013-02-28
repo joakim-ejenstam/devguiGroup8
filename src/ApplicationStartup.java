@@ -21,13 +21,8 @@ public class ApplicationStartup {
 	private Config config = null; //the configuration values of the application
 	
     public ApplicationStartup(String[] args) {
-        try {
-    		config = Config.getInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-			System.exit(1); //we can't run without any configuration values.
-		}
-    	
+    	config = Config.getInstance();
+		
         ToDoItemModel model = null;
 		try {
 			model = new XMLFileToDoItemModel();
