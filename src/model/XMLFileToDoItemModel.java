@@ -458,7 +458,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 
 
 	@Override
-	public int getMinimumPriority() {
+	public int getMinPriority() {
 		int minPrio = Integer.MAX_VALUE;
 		for (ToDoItem currItem : this.tasks) {
 			if(currItem.getPriority() < minPrio)
@@ -469,7 +469,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 
 
 	@Override
-	public int getMaximumPriority() {
+	public int getMaxPriority() {
 		int maxPrio = Integer.MIN_VALUE;
 		for (ToDoItem currItem : this.tasks) {
 			if(currItem.getPriority() > maxPrio)
@@ -487,6 +487,17 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				maxDueDate = currItem.getDueDate();
 		}
 		return maxDueDate;
+	}
+
+
+	@Override
+	public Date getMinDueDate() {
+		Date minDueDate = new Date(); //min should be smaller than today
+		for (ToDoItem currItem : this.tasks) {
+			if(currItem.getDueDate().compareTo(minDueDate) < 0) //is DueDate < (current) maxDueDate?
+				minDueDate = currItem.getDueDate();
+		}
+		return minDueDate;
 	}
 	
 }

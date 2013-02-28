@@ -196,17 +196,22 @@ public class StupidToDoItemModel extends ToDoItemModel {
 	}
 
 	@Override
-	public int getMinimumPriority() {
+	public int getMinPriority() {
 		return 1; //copied from constructor
 	}
 
 	@Override
-	public int getMaximumPriority() {
+	public int getMaxPriority() {
 		return 3; //copied from constructor
 	}
 
 	@Override
 	public Date getMaxDueDate() {
 		return new GregorianCalendar(2014,6,1).getTime(); //copied from constructor
+	}
+
+	@Override
+	public Date getMinDueDate() {
+		return new GregorianCalendar(2013,1,10).getTime();  //copied from constructor
 	}
 }

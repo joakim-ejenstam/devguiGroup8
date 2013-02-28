@@ -119,14 +119,20 @@ public abstract class ToDoItemModel extends Observable {
 	 * as we can't sort our items...
 	 * @return the minimum priority found in all <em>present</em> ToDoItems as int
 	 */
-	public abstract int getMinimumPriority();
+	public abstract int getMinPriority();
 
 	/**
 	 * as we can't sort our items...
 	 * @return the maximum priority found in all <em>present</em> ToDoItems as int
 	 */
-	public abstract int getMaximumPriority();
+	public abstract int getMaxPriority();
 
+	/**
+	 * as we can't sort our items...
+	 * @return the minimum due date found in all <em>present</em> ToDoItems as a Date or today (if all duedates are bigger)
+	 */
+	public abstract Date getMinDueDate();
+	
 	/**
 	 * as we can't sort our items...
 	 * @return the maximum due date found in all <em>present</em> ToDoItems as a Date or today (if all duedates are smaller)
