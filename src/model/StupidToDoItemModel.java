@@ -51,7 +51,7 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		i.setTitle("Hand in thesis");
 		i.setCategory(new Category("university"));
 		i.setDescription("What shall I write about?");
-		i.setDueDate(new GregorianCalendar(2014,6,1).getTime());
+		i.setDueDate(new GregorianCalendar(2013,3,1).getTime());
 		i.setPriority(2);
 		this.items.add(i); //dirty (see following two lines)
 		setChanged();
@@ -206,12 +206,12 @@ public class StupidToDoItemModel extends ToDoItemModel {
 	}
 
 	@Override
-	public Date getMaxDueDate() {
-		return new GregorianCalendar(2014,6,1).getTime(); //copied from constructor
-	}
-
-	@Override
 	public Date getMinDueDate() {
 		return new GregorianCalendar(2013,1,10).getTime();  //copied from constructor
+	}
+	
+	@Override
+	public Date getMaxDueDate() {
+		return new GregorianCalendar(2013,3,1).getTime(); //copied from constructor
 	}
 }
