@@ -194,4 +194,19 @@ public class StupidToDoItemModel extends ToDoItemModel {
 		setChanged();
 		notifyObservers();
 	}
+
+	@Override
+	public int getMinimumPriority() {
+		return 1; //copied from constructor
+	}
+
+	@Override
+	public int getMaximumPriority() {
+		return 3; //copied from constructor
+	}
+
+	@Override
+	public Date getMaxDueDate() {
+		return new GregorianCalendar(2014,6,1).getTime(); //copied from constructor
+	}
 }

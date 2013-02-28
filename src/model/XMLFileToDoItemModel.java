@@ -455,6 +455,39 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		setChanged();
 		notifyObservers();
 	}
+
+
+	@Override
+	public int getMinimumPriority() {
+		int minPrio = Integer.MAX_VALUE;
+		for (ToDoItem currItem : this.tasks) {
+			if(currItem.getPriority() < minPrio)
+				minPrio = currItem.getPriority();
+		}
+		return minPrio;
+	}
+
+
+	@Override
+	public int getMaximumPriority() {
+		int maxPrio = Integer.MIN_VALUE;
+		for (ToDoItem currItem : this.tasks) {
+			if(currItem.getPriority() > maxPrio)
+				maxPrio = currItem.getPriority();
+		}
+		return maxPrio;
+	}
+
+
+	@Override
+	public Date getMaxDueDate() {
+		Date maxDueDate = new Date(); //max should be greater than today
+		for (ToDoItem currItem : this.tasks) {
+			if(currItem.getDueDate().compareTo(maxDueDate) > 0) //is DueDate > (current) maxDueDate?
+				maxDueDate = currItem.getDueDate();
+		}
+		return maxDueDate;
+	}
 	
 }
 

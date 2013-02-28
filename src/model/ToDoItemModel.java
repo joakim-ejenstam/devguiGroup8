@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
@@ -113,5 +114,23 @@ public abstract class ToDoItemModel extends Observable {
 	 * @param category the new {@link Category} to add
 	 */
 	public abstract void addCategory(Category category);
+
+	/**
+	 * as we can't sort our items...
+	 * @return the minimum priority found in all <em>present</em> ToDoItems as int
+	 */
+	public abstract int getMinimumPriority();
+
+	/**
+	 * as we can't sort our items...
+	 * @return the maximum priority found in all <em>present</em> ToDoItems as int
+	 */
+	public abstract int getMaximumPriority();
+
+	/**
+	 * as we can't sort our items...
+	 * @return the maximum due date found in all <em>present</em> ToDoItems as a Date or today (if all duedates are smaller)
+	 */
+	public abstract Date getMaxDueDate();
 	
 }
