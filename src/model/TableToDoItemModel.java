@@ -109,11 +109,29 @@ public class TableToDoItemModel extends AbstractTableModel {
 	 * Used to be able to show for example check box in the done column of the table instead of text "true/false".
 	 * @return Class the class of the data in the cell
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public Class getColumnClass(int column) {
+	public Class<?> getColumnClass(int column) {
 		return getValueAt(0,column).getClass();
 	}
+	
+	/**
+	 * Method for making the check boxes in the table check-able.
+	 */
+	@Override
+    public boolean isCellEditable(int row, int col) {
+        return (col == 4);
+    }
+	
+	/**
+	 * 
+	 */
+	// not needed for now?
+	// TODO: add listener to table column with the check box
+	@Override
+	public void setValueAt(Object value, int row, int col) {
+		super.setValueAt(value, row, col);
+		fireTableCellUpdated(row,col);
+    }
 	
 	/**
 	 * Returns the underlying data model, which is a {@link ToDoItemModel}. This is kind of ugly and it would
