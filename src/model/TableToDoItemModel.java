@@ -87,7 +87,8 @@ public class TableToDoItemModel extends AbstractTableModel {
 	}
 	
 	/**
-	 * Returns 
+	 * Method for setting the column names of the table. 
+	 * @returns String the name of the column column.
 	 */
 	@Override
 	public String getColumnName(int column) {
@@ -103,6 +104,11 @@ public class TableToDoItemModel extends AbstractTableModel {
 		}
 	}
 
+	/**
+	 * Method to determine default renderer of cell content. 
+	 * Used to be able to show for example check box in the done column of the table instead of text "true/false".
+	 * @return Class the class of the data in the cell
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Class getColumnClass(int column) {
