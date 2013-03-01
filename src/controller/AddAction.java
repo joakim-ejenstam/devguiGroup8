@@ -1,9 +1,8 @@
 package controller;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 
-import model.LocaliziedTexts;
+import model.LocalizedTexts;
 import model.ToDoItem;
 import view.*;
 
@@ -70,7 +69,7 @@ public class AddAction extends AbstractAction {
      * Language set method. Sets the strings of this object according to the input language localization object.
      * @param lang Language localization class to get correct textstrings.
      */
-    public void updateLanguage(LocaliziedTexts lang) {
+    public void updateLanguage(LocalizedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.edit.add"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.addAction"));
 

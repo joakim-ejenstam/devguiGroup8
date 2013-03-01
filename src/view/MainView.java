@@ -20,7 +20,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
 import controller.AddAction;
-import model.LocaliziedTexts;
+import model.LocalizedTexts;
 import model.TableToDoItemModel;
 
 import org.java.ayatana.ApplicationMenu;
@@ -38,13 +38,13 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 
 	private ToDoController controller;
     private TableToDoItemModel tableModel;
-    private LocaliziedTexts lang;
+    private LocalizedTexts lang;
     public JTable table;
     private JMenu file;
     private JMenu edit;
     private JMenu help;
 
-    public MainView(ToDoController newController, TableToDoItemModel tbModel, LocaliziedTexts newLang) {
+    public MainView(ToDoController newController, TableToDoItemModel tbModel, LocalizedTexts newLang) {
         this.controller = newController;
         //the main view needs a TableModel as it uses a JTable
         //(as this model is tightly bound to the JTable, it's probably okay to 
@@ -194,7 +194,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		//not sure what we have to do here...
 	}
 
-    public void updateLanguage(LocaliziedTexts lang) {
+    public void updateLanguage(LocalizedTexts lang) {
         this.file.setText(lang.getText("ui.mainview.menu.file"));
         this.edit.setText(lang.getText("ui.mainview.menu.edit"));
         this.help.setText(lang.getText("ui.mainview.menu.help"));

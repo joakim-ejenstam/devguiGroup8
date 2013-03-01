@@ -12,12 +12,12 @@ import controller.Config;
  * This class is the provider for the localizied texts.
  * We loud pass the resourcebundle directly to the views, but maybe we want to change
  * to a db as the language backend next version and then we just have to change it in one place: here.
- * Usage: if you want a localized text, just call {@link LocaliziedTexts#getText(String)}
- * if you want to change the locale, save it to the {@link Config} and then call {@link LocaliziedTexts#refreshTexts()}
+ * Usage: if you want a localized text, just call {@link LocalizedTexts#getText(String)}
+ * if you want to change the locale, save it to the {@link Config} and then call {@link LocalizedTexts#refreshTexts()}
  * @author simon
  *
  */
-public class LocaliziedTexts {
+public class LocalizedTexts {
 
 	private Config config; //the Config for this application
 	private Locale locale; //the current locale, read from the Config
@@ -27,14 +27,14 @@ public class LocaliziedTexts {
 	 * Constructor, nothing fancy here.
 	 * @param config the {@link Config} object that holds the application configuration
 	 */
-	public LocaliziedTexts(Config config) {
+	public LocalizedTexts(Config config) {
 		this.config = config;
 		loadLocale();
 	}
 	
 	/**
 	 * Call this method if the locale has changed. It will reload the resourcebundle with the new language.
-	 * You can then call {@link LocaliziedTexts#getText()} to get a text in the new language.
+	 * You can then call {@link LocalizedTexts#getText()} to get a text in the new language.
 	 */
 	public void refreshTexts() {
 		loadLocale();

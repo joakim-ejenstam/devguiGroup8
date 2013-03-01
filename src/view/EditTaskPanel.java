@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import model.Category;
-import model.LocaliziedTexts;
+import model.LocalizedTexts;
 import model.ToDoItem;
 
 import com.toedter.calendar.JDateChooser;
@@ -36,7 +36,7 @@ public class EditTaskPanel extends JPanel {
 	private ToDoController controller;
 	private ToDoItem item;
 	private String[] categories;
-	private LocaliziedTexts lang;
+	private LocalizedTexts lang;
 	
     //Labels
     private JLabel titleLabel;//            = new JLabel(lang.getText("ui.editview.title"));
@@ -91,7 +91,7 @@ public class EditTaskPanel extends JPanel {
      * @param categories
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories, LocaliziedTexts lang){
+	EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories, LocalizedTexts lang){
     	
     	titleLabel            = new JLabel(lang.getText("ui.editview.label.title"));
     	dateLabel             = new JLabel(lang.getText("ui.editview.label.dueDate"));

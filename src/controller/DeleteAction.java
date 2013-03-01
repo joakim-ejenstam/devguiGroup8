@@ -1,6 +1,6 @@
 package controller;
 
-import model.LocaliziedTexts;
+import model.LocalizedTexts;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -55,7 +55,7 @@ public class DeleteAction extends AbstractAction {
      * Language set method. Sets the strings of this object according to the input language localization object.
      * @param lang Language localization class to get correct textstrings.
      */
-    public void updateLanguage(LocaliziedTexts lang) {
+    public void updateLanguage(LocalizedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.edit.delete"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.deleteAction"));
     }

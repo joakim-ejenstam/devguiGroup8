@@ -20,13 +20,13 @@ public class TableToDoItemModel extends AbstractTableModel {
 
 	//The underlying data model
 	private ToDoItemModel model;
-    private LocaliziedTexts lang;
+    private LocalizedTexts lang;
 	
 	/**
 	 * constructor to initialize the model
 	 * @param model the {@link ToDoItemModel} to set via dependency injection
 	 */
-	public TableToDoItemModel(ToDoItemModel model, LocaliziedTexts newLang) {
+	public TableToDoItemModel(ToDoItemModel model, LocalizedTexts newLang) {
 		this.model = model;
 		this.lang = newLang;
 	}

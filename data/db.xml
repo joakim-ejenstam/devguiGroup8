@@ -53,10 +53,10 @@
         </todoitem>
         <todoitem>
             <title>HEJ2</title>
-            <description/>
+            <description>Nu har jag uppdaterat den här! Jag uppdaterar igen!</description>
             <duedate/>
             <category/>
-            <priority>1</priority>
+            <priority>3</priority>
             <creationdate>2013-02-21T18:47</creationdate>
             <done>0</done>
             <deleted>0</deleted>
@@ -69,7 +69,7 @@
             <priority>1</priority>
             <creationdate>2013-02-21T18:48</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>hik</title>
@@ -78,6 +78,36 @@
             <category/>
             <priority>0</priority>
             <creationdate>2013-02-21T19:33</creationdate>
+            <done>0</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>kajsdöfkjasfdökljsdfl</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-02-27T12:40</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>intervjua nästa</title>
+            <description>Han heter niklas</description>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-02-28T20:05</creationdate>
+            <done>0</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>JAAAA</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-01T09:37</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>

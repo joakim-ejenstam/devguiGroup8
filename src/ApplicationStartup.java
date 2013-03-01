@@ -1,7 +1,7 @@
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import model.LocaliziedTexts;
+import model.LocalizedTexts;
 import model.TableToDoItemModel;
 import model.ToDoItemModel;
 import model.XMLFileToDoItemModel;
@@ -31,7 +31,7 @@ public class ApplicationStartup {
 			e.printStackTrace();
 			System.exit(1);//without a model our application can't run...
 		}
-        final LocaliziedTexts lang = new LocaliziedTexts(config);
+        final LocalizedTexts lang = new LocalizedTexts(config);
 		final ToDoController controller = new ToDoController(model,lang);
         final TableToDoItemModel tbModel = new TableToDoItemModel(model,lang);
         controller.setConfig(config);

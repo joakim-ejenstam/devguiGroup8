@@ -7,11 +7,7 @@ import java.util.Locale;
 
 import javax.swing.*;
 
-import model.Category;
-import model.LocaliziedTexts;
-import model.TableToDoItemModel;
-import model.ToDoItem;
-import model.ToDoItemModel;
+import model.*;
 import view.MainView;
 import exceptions.ToDoItemExistsException;
 
@@ -31,7 +27,7 @@ public class ToDoController extends ComponentAdapter {
     private ChangeLanguageAction language;
     private AboutAction about;
     private Config conf;
-    private LocaliziedTexts lang;
+    private LocalizedTexts lang;
     private MainView view;
 
 
@@ -40,7 +36,7 @@ public class ToDoController extends ComponentAdapter {
      * @param newModel The model of the current application
      * @param newLang The language object of the application
      */
-    public ToDoController(ToDoItemModel newModel, LocaliziedTexts newLang){
+    public ToDoController(ToDoItemModel newModel, LocalizedTexts newLang){
         this.model = newModel;
         this.lang = newLang;
         this.add =
@@ -301,7 +297,7 @@ public class ToDoController extends ComponentAdapter {
      * Method to supplie the actions with the text load file
      * @return the objects language object.
      */
-	public LocaliziedTexts getLanguage() {
+	public LocalizedTexts getLanguage() {
 		// TODO Auto-generated method stub
 		return this.lang;
 	}
