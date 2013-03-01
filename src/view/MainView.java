@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
+import controller.AddAction;
 import model.LocaliziedTexts;
 import model.TableToDoItemModel;
 
@@ -143,6 +144,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    southPanel.add(addBtn, BorderLayout.EAST);
 
 	    scrollPane.setColumnHeaderView(createTable().getTableHeader());
+        ((AddAction)addBtn.getAction()).setTextField(inputFld);
 	}
 
 	/**
@@ -168,6 +170,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		
 		//we add the controller as a listener to observe changes
 		frame.addComponentListener(this.controller);
+        controller.setTable(table);
         System.out.println("DEBUG frame added component listener");
     }
 
@@ -198,5 +201,9 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         this.setTitle(lang.getText("ui.mainview.windowTitle"));
         this.validate();
         this.repaint();
+    }
+
+    public JTable getTable() {
+        return this.table;
     }
 }

@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class DeleteAction extends AbstractAction {
     private ToDoController parent;
+    private JTable table;
 
     /**
      * Constructor, nothing fancy!
@@ -34,11 +35,20 @@ public class DeleteAction extends AbstractAction {
     }
 
     /**
+     * Setmethod for the actions table reference.
+     * @param newTable the current table of the mainview.
+     */
+    public void setTable(JTable newTable) {
+        this.table = newTable;
+    }
+
+    /**
      * Override method to handle the event that the user want's to delete an item.
      * @param event the event fired from the user.
      */
     public void actionPerformed(ActionEvent event){
-        /*TODO: Remove ToDoItem from model.*/
+        int index = table.getSelectedRow();
+        parent.removeItem(index);
     }
 
     /**

@@ -2,10 +2,10 @@ package controller;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.AbstractAction;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 import model.LocaliziedTexts;
+import view.EditTaskFrame;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +17,7 @@ import model.LocaliziedTexts;
 @SuppressWarnings("serial")
 public class EditAction extends AbstractAction {
     private ToDoController parent;
+    private JTable table;
 
     /**
      * Constructor, nothing fancy!
@@ -35,13 +36,22 @@ public class EditAction extends AbstractAction {
         this.parent = controller;
     }
 
+    /**
+     * Setmethod for the actions table reference.
+     * @param newTable the current table of the mainview.
+     */
+    public void setTable(JTable newTable) {
+        this.table = newTable;
+    }
+
     public void actionPerformed(ActionEvent event) {
-        Object source = event.getSource();
-        /*Todo: Get item from model, display edit frame
-        * with fields filled from todoitem.
-        EditTaskFrame editView = new EditTaskFrame();
+        int index = table.getSelectedRow();
+
+        EditTaskFrame editView =
+                new EditTaskFrame
+                        (parent, parent.getEditItem(index),parent.getCategories(),parent.getLanguage());
         editView.setSize(400,400);
-        editView.setVisible(true);*/
+        editView.setVisible(true);
      }
 
     /**

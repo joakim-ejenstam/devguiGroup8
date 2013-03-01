@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Locale;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 import model.Category;
 import model.LocaliziedTexts;
@@ -118,8 +118,13 @@ public class ToDoController extends ComponentAdapter {
      * @return the requested item or null.
      */
     public ToDoItem getEditItem(int index) {
-        //model.getItem(index);
-        return null;
+        return model.getToDoItem(index);
+    }
+
+    public void removeItem(int index) {
+        ToDoItem item = model.getToDoItem(index);
+        JOptionPane.showMessageDialog(view, item.isDeleted());
+        model.deleteToDoItem(item);
     }
 
     /**
@@ -204,8 +209,18 @@ public class ToDoController extends ComponentAdapter {
     }
 
     /**
+     * This is a method to add the reference to the current view table to the edit and
+     * delete actions. Can be updated to take containers instead.
+     * @param newTable the views table.
+     */
+    public void setTable(JTable newTable) {
+        edit.setTable(newTable);
+        delete.setTable(newTable);
+    }
+
+    /**
      * This method is used by the controller to update the language of all the actions it has control over.
-     * @param lang
+     * @param arg the locale passed as the argument.
      */
     public void updateLanguage(Locale arg) {
         Locale.setDefault(arg);

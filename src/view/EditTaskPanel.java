@@ -246,7 +246,7 @@ public class EditTaskPanel extends JPanel {
      */
     public ToDoItem getTodoItem() {
         	item.setDescription(descriptionArea.getText());
-        	item.setPriority(1);
+        	item.setPriority(3);
         	item.setCategory(new Category(categoryField.getText()));
         return item;
     }

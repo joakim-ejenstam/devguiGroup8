@@ -1,5 +1,6 @@
 package controller;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 import model.LocaliziedTexts;
@@ -11,6 +12,7 @@ import view.*;
 @SuppressWarnings("serial")
 public class AddAction extends AbstractAction {
     private ToDoController parent;
+    private JTextField tf;
 
     /**
      * Constructor, nothing fancy!
@@ -29,24 +31,25 @@ public class AddAction extends AbstractAction {
         this.parent = controller;
 	}
 
+    /**
+     * Setter for the textfield attribute. Needed for the actionPerformed later on.
+     * @param textField Main input field.
+     */
+    public void setTextField(JTextField textField){
+        this.tf = textField;
+    }
 
+    /*This method is huge and ugly! Needs to be cleansed later */
     /**
      * Override method for the actionEvent. When the user sends the event, we fetch the textfield, check the text and
      * create a new todoitem or send a warning to the user that an error has occurred. The method also fires a EditTaskFrame.
      * @param event the ActionEvent when the user clicks on any component containing this action.
      */
     public void actionPerformed(ActionEvent event) {
-    	Object source;
-        JPanel panel;
-        JTextField tf;
-        source = event.getSource();
-        if (source instanceof JButton){
-            panel = (JPanel)((JButton)source).getParent();
-
-            tf = (JTextField)panel.getComponent(0);
+    	    JPanel panel = (JPanel)tf.getParent();
             String title = tf.getText();
             tf.setText(null); //empties the quick-add-textField.
-            System.out.println("Input text: "+title+".");
+            System.out.println("Input text: "+title);
             if(title.trim().length() == 0){     // The user have not put in any text in the textfield.
                 JOptionPane.showMessageDialog(panel, "You have not entered a task title!","Enter title",JOptionPane.WARNING_MESSAGE);
             } else {
@@ -60,10 +63,7 @@ public class AddAction extends AbstractAction {
                     JOptionPane.showMessageDialog(panel, "This task already exists!","Task already exists",JOptionPane.WARNING_MESSAGE);
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(((JComponent)source).getParent(), "Ah, ah, ah! You didn't say the magic word!","Magic word request!",JOptionPane.WARNING_MESSAGE);
-        }
-
+            //JOptionPane.showMessageDialog(((JComponent)source).getParent(), "Ah, ah, ah! You didn't say the magic word!","Magic word request!",JOptionPane.WARNING_MESSAGE);
     }
 
     /**
