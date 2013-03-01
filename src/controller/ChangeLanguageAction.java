@@ -47,7 +47,7 @@ public class ChangeLanguageAction extends AbstractAction {
 
         if (source instanceof JMenuItem) {
             JRootPane rp = ((JMenuItem) source).getRootPane();
-            Object[] possibilities = {en.getDisplayLanguage(),de.getDisplayLanguage(),se.getDisplayLanguage()};
+            Object[] possibilities = {"English","Deutsch","Svenska"};
             String l = (String)JOptionPane.showInputDialog(
                     rp,
                     "Choose your preferred language!",
@@ -57,9 +57,9 @@ public class ChangeLanguageAction extends AbstractAction {
                     possibilities,
                     en.getDisplayLanguage());
             if (l != null) {
-                if (l == en.getDisplayLanguage()) {
+                if (l == "English") {
                     parent.updateLanguage(en);
-                } else if(l == de.getDisplayLanguage()) {
+                } else if(l == "Deutsch") {
                     parent.updateLanguage(de);
                 } else {
                     parent.updateLanguage(se);
