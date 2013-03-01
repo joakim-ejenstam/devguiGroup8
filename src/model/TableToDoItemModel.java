@@ -102,6 +102,11 @@ public class TableToDoItemModel extends AbstractTableModel {
 			return "";
 		}
 	}
+
+	@Override
+	public Class getColumnClass(int column) {
+		return getValueAt(0,column).getClass();
+	}
 	
 	/**
 	 * Returns the underlying data model, which is a {@link ToDoItemModel}. This is kind of ugly and it would
