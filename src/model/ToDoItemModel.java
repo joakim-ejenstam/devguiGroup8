@@ -42,10 +42,16 @@ public abstract class ToDoItemModel extends Observable {
 	public abstract ToDoItem getToDoItem(int index);
 	
 	/**
-	 * gives a sum of all stored {@link ToDoItem}s
+	 * gives a sum of all stored and not deleted {@link ToDoItem}s
 	 * @return int the number of ToDoItems
 	 */
 	public abstract int getNumberOfToDoItems();
+
+	/**
+	 * gives a sum of all stored and deleted {@link ToDoItem}s
+	 * @return int the number of ToDoItems
+	 */
+	public abstract int getNumberOfDeletedToDoItems();
 	
 	/**
 	 * Gives us the index of an {@link ToDoItem} in the internal data structure.

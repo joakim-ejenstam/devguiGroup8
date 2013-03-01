@@ -155,7 +155,12 @@ public class StupidToDoItemModel extends ToDoItemModel {
 
 	@Override
 	public ToDoItem getToDoItem(int index) {
-		return this.items.get(index);
+		List<ToDoItem> undeletedItems = new ArrayList<ToDoItem>(this.getNumberOfToDoItems()); // just temporary to filter
+		for(ToDoItem currentItem: this.items) {
+			if(!currentItem.isDeleted())
+				undeletedItems.add(currentItem);
+		}
+		return undeletedItems.get(index);
 	}
 
 	@Override
@@ -165,12 +170,17 @@ public class StupidToDoItemModel extends ToDoItemModel {
 
 	@Override
 	public int getNumberOfToDoItems() {
-		return this.items.size();
+		List<ToDoItem> undeletedItems = new ArrayList<ToDoItem>(this.items.size()); // just temporary to filter
+		for(ToDoItem currentItem: this.items) {
+			if(!currentItem.isDeleted())
+				undeletedItems.add(currentItem);
+		}
+		return undeletedItems.size();
 	}
 
 	@Override
 	public List<ToDoItem> getDeletedToDoItems() {
-		List<ToDoItem> deletedItems = new ArrayList<ToDoItem>(this.getNumberOfToDoItems()); // just temporary to filter
+		List<ToDoItem> deletedItems = new ArrayList<ToDoItem>(this.getNumberOfDeletedToDoItems()); // just temporary to filter
 		for(ToDoItem currentItem: this.items) {
 			if(currentItem.isDeleted())
 				deletedItems.add(currentItem);
@@ -213,5 +223,15 @@ public class StupidToDoItemModel extends ToDoItemModel {
 	@Override
 	public Date getMaxDueDate() {
 		return new GregorianCalendar(2013,GregorianCalendar.APRIL,1).getTime(); //copied from constructor
+	}
+
+	@Override
+	public int getNumberOfDeletedToDoItems() {
+		List<ToDoItem> deletedItems = new ArrayList<ToDoItem>(this.items.size()); // just temporary to filter
+		for(ToDoItem currentItem: this.items) {
+			if(currentItem.isDeleted())
+				deletedItems.add(currentItem);
+		}
+		return deletedItems.size();
 	}
 }

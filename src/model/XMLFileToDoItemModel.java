@@ -412,7 +412,12 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 
 	@Override
 	public ToDoItem getToDoItem(int index) {
-		return this.tasks.get(index);
+		List<ToDoItem> undeletedItems = new ArrayList<ToDoItem>(this.getNumberOfToDoItems()); // just temporary to filter
+		for(ToDoItem currentItem: this.tasks) {
+			if(!currentItem.isDeleted())
+				undeletedItems.add(currentItem);
+		}
+		return undeletedItems.get(index);
 	}
 
 	@Override
@@ -422,13 +427,18 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 
 	@Override
 	public int getNumberOfToDoItems() {
-		return this.tasks.size();
+		List<ToDoItem> undeletedItems = new ArrayList<ToDoItem>(this.tasks.size()); // just temporary to filter
+		for(ToDoItem currentItem: this.tasks) {
+			if(!currentItem.isDeleted())
+				undeletedItems.add(currentItem);
+		}
+		return undeletedItems.size();//only number of not deleted items
 	}
 
 
 	@Override
 	public List<ToDoItem> getDeletedToDoItems() {
-		List<ToDoItem> deletedItems = new ArrayList<ToDoItem>(this.getNumberOfToDoItems()); // just temporary to filter
+		List<ToDoItem> deletedItems = new ArrayList<ToDoItem>(this.getNumberOfDeletedToDoItems()); // just temporary to filter
 		for(ToDoItem currentItem: this.tasks) {
 			if(currentItem.isDeleted())
 				deletedItems.add(currentItem);
@@ -498,6 +508,17 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				minDueDate = currItem.getDueDate();
 		}
 		return minDueDate;
+	}
+
+
+	@Override
+	public int getNumberOfDeletedToDoItems() {
+		List<ToDoItem> deletedItems = new ArrayList<ToDoItem>(this.tasks.size()); // just temporary to filter
+		for(ToDoItem currentItem: this.tasks) {
+			if(currentItem.isDeleted())
+				deletedItems.add(currentItem);
+		}
+		return deletedItems.size();//only number of deleted items
 	}
 	
 }
