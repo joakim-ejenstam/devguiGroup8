@@ -103,6 +103,7 @@ public class TableToDoItemModel extends AbstractTableModel {
 		}
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Class getColumnClass(int column) {
 		return getValueAt(0,column).getClass();
