@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -70,9 +72,9 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         
         this.lang = newLang;
         
-        viewAll = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewall"), true);
-        viewDone = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewdone"), false);
-        viewOverDue = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewoverdue"), false);
+        viewAll = new JRadioButton("All", true);//lang.getText("ui.mainview.radiobutton.viewall"), true);
+        viewDone = new JRadioButton("Done", false);//lang.getText("ui.mainview.radiobutton.viewdone"), false);
+        viewOverDue = new JRadioButton("Overdue", false);//lang.getText("ui.mainview.radiobutton.viewoverdue"), false);
         
         //add this view as a listener to the changes of the model
         controller.addObserver(this);
@@ -146,6 +148,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		
 	    // Scroll pane
         this.table = createTable();
+        this.table.addMouseListener(new TodoMouseListener());
 	    JScrollPane scrollPane = new JScrollPane(table);
 	    
 	    // Text fields and buttons
@@ -258,5 +261,42 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 
     public JTable getTable() {
         return this.table;
+    }
+    protected class TodoMouseListener implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 2 && !e.isConsumed()) {
+                e.consume();
+                System.out.println("Double click");
+//handle double click.
+            }
+            else
+              System.out.println("Click");
+
+            System.out.println(e.getButton());
+
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
     }
 }
