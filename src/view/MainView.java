@@ -269,7 +269,14 @@ public class MainView extends JFrame implements Observer, TableModelListener {
             if (e.getClickCount() == 2 && !e.isConsumed()) {
                 e.consume();
                 System.out.println("Double click");
-//handle double click.
+                EditTaskFrame editView =
+                        new EditTaskFrame(
+                                controller,
+                                controller.getEditItem(table.getSelectedRow()),
+                                controller.getCategories(),
+                                controller.getLanguage());
+                editView.setSize(400,400);
+                editView.setVisible(true);
             }
             else
               System.out.println("Click");
