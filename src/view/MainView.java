@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -12,6 +13,7 @@ import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +21,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -52,6 +55,11 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     private JMenu help;
     
     final JLabel timeLabel = new JLabel(); 
+    
+    //View button group for showing certain lists
+    private JRadioButton viewDone;
+    private JRadioButton viewOverDue;
+    private JRadioButton viewAll;
 
     public MainView(ToDoController newController, TableToDoItemModel tbModel, LocalizedTexts newLang) {
         this.controller = newController;
@@ -61,6 +69,10 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         this.tableModel = tbModel;
         
         this.lang = newLang;
+        
+        viewAll = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewall"), true);
+        viewDone = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewdone"), false);
+        viewOverDue = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewoverdue"), false);
         
         //add this view as a listener to the changes of the model
         controller.addObserver(this);
@@ -128,6 +140,8 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		
 		// Panels
 	    JPanel northPanel = new JPanel();
+	    JPanel northRightPanel = new JPanel();
+	    JPanel northLeftPanel = new JPanel();
 	    JPanel southPanel = new JPanel();
 		
 	    // Scroll pane
@@ -145,16 +159,24 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    
 	    // Set layouts and alignment
 	    southPanel.setLayout(new BorderLayout());
-	    northPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+	    northPanel.setLayout(new BorderLayout());//FlowLayout(FlowLayout.LEFT));
 	    inputFld.setHorizontalAlignment(JTextField.LEFT);
 
 	    // Set up south panel
 	    southPanel.add(inputFld, BorderLayout.CENTER);
 	    southPanel.add(addBtn, BorderLayout.EAST);
 	    
-	    // Set up north panel with clock to display current time
-	    northPanel.add(timeLabel);
+	    // Set up north panel 
+	    northPanel.add(northLeftPanel, BorderLayout.CENTER);
+	    northPanel.add(northRightPanel, BorderLayout.EAST);
+
+	    // Adding radio buttons and clock to north panels 
+	    northLeftPanel.add(viewAll);
+	    northLeftPanel.add(viewDone);
+	    northLeftPanel.add(viewOverDue);
+	    northRightPanel.add(timeLabel);
 	    
+	    // creates the clock
 	    final DateFormat timeFormat = new SimpleDateFormat("HH:mm");  
 	    ActionListener timerListener = new ActionListener()  
 	    {  
@@ -226,6 +248,9 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         this.file.setText(lang.getText("ui.mainview.menu.file"));
         this.edit.setText(lang.getText("ui.mainview.menu.edit"));
         this.help.setText(lang.getText("ui.mainview.menu.help"));
+        this.viewAll.setText(lang.getText("ui.mainview.radiobutton.viewall"));
+        this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
+        this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
         this.setTitle(lang.getText("ui.mainview.windowTitle"));
         this.validate();
         this.repaint();
