@@ -12,7 +12,7 @@ import javax.swing.AbstractListModel;
 @SuppressWarnings("serial")
 public class ListToDoItemModel extends AbstractListModel {
 
-	private ToDoItemModel model;
+	private TableToDoItemModel model;
     // language not necessary for the view yet since the list will only show data that the user has put in
 	// private LocalizedTexts lang;  
 	
@@ -20,7 +20,7 @@ public class ListToDoItemModel extends AbstractListModel {
 	 * The constructor to create a list to do item model
 	 * @param listModel the underlying model
 	 */
-	public ListToDoItemModel(ToDoItemModel listModel) {	//, LocalizedTexts newLang) {
+	public ListToDoItemModel(TableToDoItemModel listModel) {	//, LocalizedTexts newLang) {
 		this.model = listModel;
 		//this.lang = newLang;	same as above
 	}
@@ -31,8 +31,8 @@ public class ListToDoItemModel extends AbstractListModel {
 	 * @return the value at the specified index.
 	 */
 	@Override
-	public Object getElementAt(int arg0) {
-		return this.model.getToDoItem(arg0);
+	public Object getElementAt(int row) {  
+		return this.model.getValueAt(row, 0); // specified row and column 0
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class ListToDoItemModel extends AbstractListModel {
 	 */
 	@Override
 	public int getSize() {
-		return this.model.getNumberOfToDoItems();
+		return this.model.getRowCount();
 	}
 	
 	
