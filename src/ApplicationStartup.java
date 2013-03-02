@@ -1,5 +1,15 @@
+import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import model.LocalizedTexts;
 import model.TableToDoItemModel;
@@ -19,6 +29,9 @@ import exceptions.LoadModelException;
 public class ApplicationStartup {
 
 	private Config config = null; //the configuration values of the application
+	
+	//Color theme
+	private static final String THEME = "data"+File.separator+"theme.properties";
 	
     public ApplicationStartup(String[] args) {
     	config = Config.getInstance();
@@ -46,10 +59,30 @@ public class ApplicationStartup {
     	}
     	//set look & feel of system
     	try {
-	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	    } catch (Exception e) {
-	    	//we don't have to do anything, as the dault l&f will be used now anyway
-	    }
+    		Properties colorProp = loadColorProperties();
+    		System.out.println("heej");
+    		UIManager.put("Table.showGrid", true);
+    		
+    		UIManager.put("nimbusBase", Color.decode(colorProp.getProperty("ui.primeColor1")));
+    		UIManager.put("nimbusBlueGrey",Color.decode(colorProp.getProperty("ui.primeColor2")));
+    		UIManager.put("control",Color.decode(colorProp.getProperty("ui.primeColor3")));
+    		
+    	    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+    	        if ("Nimbus".equals(info.getName())) {
+    	            UIManager.setLookAndFeel(info.getClassName());
+    	            break;
+    	        }
+    	    }
+    	} catch (Exception e) {
+    	    // If Nimbus is not available, you can set the GUI to another look and feel.
+        	try {
+    	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    	       //MetalLookAndFeel.setCurrentTheme(new CustomTheme());
+    	    } catch (Exception ex) {
+    	    	//we don't have to do anything, as the dault l&f will be used now anyway
+    	    }
+    	}
+
         
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -74,7 +107,25 @@ public class ApplicationStartup {
 //        }));
 	}
 
-    
+	/**
+	 * Loads the color configuration
+	 */
+	private Properties loadColorProperties(){
+		Properties colorTheme = new Properties();
+		FileInputStream in;
+		try {
+			in = new FileInputStream(THEME);
+			colorTheme.load(in);
+			in.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return colorTheme;
+	}
     
 	public static void main(String[] args) {
     	new ApplicationStartup(args);
