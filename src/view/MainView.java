@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -145,7 +146,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    
 	    // Set layouts and alignment
 	    southPanel.setLayout(new BorderLayout());
-	    northPanel.setLayout(new GridLayout());
+	    northPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 	    inputFld.setHorizontalAlignment(JTextField.LEFT);
 
 	    // Set up south panel
