@@ -4,11 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -16,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
@@ -43,6 +50,8 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     private JMenu file;
     private JMenu edit;
     private JMenu help;
+    
+    final JLabel timeLabel = new JLabel(); 
 
     public MainView(ToDoController newController, TableToDoItemModel tbModel, LocalizedTexts newLang) {
         this.controller = newController;
@@ -142,7 +151,26 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    // Set up south panel
 	    southPanel.add(inputFld, BorderLayout.CENTER);
 	    southPanel.add(addBtn, BorderLayout.EAST);
-
+	    
+	    // Set up north panel with clock to display current time
+	    northPanel.add(timeLabel);
+	    
+	    final DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");  
+	    ActionListener timerListener = new ActionListener()  
+	    {  
+	        public void actionPerformed(ActionEvent e)  
+	        {  
+	            Date date = new Date();  
+	            String time = timeFormat.format(date);  
+	            timeLabel.setText(time);  
+	        }  
+	    };  
+	    Timer timer = new Timer(1000, timerListener);  
+	    // to make sure it doesn't wait one second at the start  
+	    timer.setInitialDelay(0);  
+	    timer.start();  
+		
+	    
 	    scrollPane.setColumnHeaderView(createTable().getTableHeader());
         ((AddAction)addBtn.getAction()).setTextField(inputFld);
 	}
