@@ -44,7 +44,7 @@ public class ToDoController extends ComponentAdapter {
                         lang.getText("ui.mainview.menu.edit.add"),
                         createNavigationIcon("/Add16"),
                         lang.getText("ui.mainview.addAction"),
-                        KeyEvent.VK_A, this);
+                        KeyEvent.VK_A, this, lang);
         this.edit =
                 new EditAction(
                         lang.getText("ui.mainview.menu.edit.edit"),

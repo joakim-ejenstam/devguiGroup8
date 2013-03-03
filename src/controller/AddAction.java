@@ -12,6 +12,7 @@ import view.*;
 public class AddAction extends AbstractAction {
     private ToDoController parent;
     private JTextField tf;
+    private LocalizedTexts lang;
 
     /**
      * Constructor, nothing fancy!
@@ -23,11 +24,12 @@ public class AddAction extends AbstractAction {
      */
 	public AddAction(String text, ImageIcon icon,
 					 String desc, Integer mnemonic,
-                     ToDoController controller) {
+                     ToDoController controller, LocalizedTexts newLang) {
 		super(text, icon);
 		putValue(SHORT_DESCRIPTION, desc);
 		putValue(MNEMONIC_KEY, mnemonic);
         this.parent = controller;
+        this.lang = newLang;
 	}
 
     /**
@@ -50,7 +52,7 @@ public class AddAction extends AbstractAction {
             tf.setText(null); //empties the quick-add-textField.
             System.out.println("Input text: "+title);
             if(title.trim().length() == 0){     // The user have not put in any text in the textfield.
-                JOptionPane.showMessageDialog(panel, "You have not entered a task title!","Enter title",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(panel, lang.getText("ui.addaction.optionpane.entertitle"),lang.getText("ui.addaction.optionpanetitle.entertitle"),JOptionPane.WARNING_MESSAGE);
             } else {
                 ToDoItem item;
                 item = (ToDoItem) parent.addItem(title);
@@ -59,7 +61,7 @@ public class AddAction extends AbstractAction {
                     editView.setSize(400,400);
                     editView.setVisible(true);
                 } else {        // This dialogue will be shown if the user wants to create an item that already exists.
-                    JOptionPane.showMessageDialog(panel, "This task already exists!","Task already exists",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, lang.getText("ui.addaction.optionpane.re_entertitle"),lang.getText("ui.addaction.optionpane.exitstitle"),JOptionPane.WARNING_MESSAGE);
                 }
             }
             //JOptionPane.showMessageDialog(((JComponent)source).getParent(), "Ah, ah, ah! You didn't say the magic word!","Magic word request!",JOptionPane.WARNING_MESSAGE);

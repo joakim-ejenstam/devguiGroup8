@@ -17,6 +17,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -30,6 +31,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
 import controller.AddAction;
+import model.ListToDoItemModel;
 import model.LocalizedTexts;
 import model.TableToDoItemModel;
 
@@ -48,8 +50,12 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 
 	private ToDoController controller;
     private TableToDoItemModel tableModel;
+    private ListToDoItemModel listModel;
     private LocalizedTexts lang;
     public JTable table;
+    public JList doneList;
+    public JList overdueList;
+    public JList deletedList;
     private JMenu file;
     private JMenu edit;
     private JMenu help;
@@ -61,6 +67,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     private JRadioButton viewDone;
     private JRadioButton viewOverDue;
     private JRadioButton viewAll;
+    private JRadioButton viewDeleted;
 
     public MainView(ToDoController newController, TableToDoItemModel tbModel, LocalizedTexts newLang) {
         this.controller = newController;
@@ -74,6 +81,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         viewAll = new JRadioButton("All", true);//lang.getText("ui.mainview.radiobutton.viewall"), true);
         viewDone = new JRadioButton("Done", false);//lang.getText("ui.mainview.radiobutton.viewdone"), false);
         viewOverDue = new JRadioButton("Overdue", false);//lang.getText("ui.mainview.radiobutton.viewoverdue"), false);
+        viewDeleted = new JRadioButton("Deleted", false);//lang.getText("ui.mainview.radiobutton.viewdeleted"), false);
         
         //add this view as a listener to the changes of the model
         controller.addObserver(this);
@@ -131,6 +139,11 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    return table;
 	}
 	
+	private JList createDoneList() {
+		JList list = new JList(listModel);
+		return list;
+	}
+	
 	/**
 	 * Method for adding components to the content pane. 
 	 * @param pane the pane to where the components are added
@@ -176,11 +189,13 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    viewItems.add(viewAll);
 	    viewItems.add(viewDone);
 	    viewItems.add(viewOverDue);
+	    viewItems.add(viewDeleted);
 
 	    // Adding radio buttons and clock to north panels 
 	    northLeftPanel.add(viewAll);
 	    northLeftPanel.add(viewDone);
 	    northLeftPanel.add(viewOverDue);
+	    northLeftPanel.add(viewDeleted);
 	    northRightPanel.add(timeLabel);
 	    
 	    // creates the clock
