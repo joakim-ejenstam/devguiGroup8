@@ -56,6 +56,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     private JMenu edit;
     private JMenu help;
     
+    private ButtonGroup viewItems = new ButtonGroup();
     final JLabel timeLabel = new JLabel(); 
     
     //View button group for showing certain lists
@@ -172,6 +173,11 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    // Set up north panel 
 	    northPanel.add(northLeftPanel, BorderLayout.CENTER);
 	    northPanel.add(northRightPanel, BorderLayout.EAST);
+
+	    // Add radio buttons to button group to make it so only one can be selected at a time 
+	    viewItems.add(viewAll);
+	    viewItems.add(viewDone);
+	    viewItems.add(viewOverDue);
 
 	    // Adding radio buttons and clock to north panels 
 	    northLeftPanel.add(viewAll);
