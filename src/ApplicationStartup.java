@@ -8,9 +8,6 @@ import java.util.Properties;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.metal.MetalLookAndFeel;
-
 import model.LocalizedTexts;
 import model.TableToDoItemModel;
 import model.ToDoItemModel;

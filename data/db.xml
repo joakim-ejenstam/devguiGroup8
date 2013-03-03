@@ -261,6 +261,16 @@
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
+        <todoitem>
+            <title>rfbh</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-02T20:39</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
     </todoitems>
     <categories>
         <category>Private</category>
