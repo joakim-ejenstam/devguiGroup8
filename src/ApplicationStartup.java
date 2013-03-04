@@ -8,6 +8,8 @@ import java.util.Properties;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
+
+import model.ListToDoItemModel;
 import model.LocalizedTexts;
 import model.TableToDoItemModel;
 import model.ToDoItemModel;
@@ -42,6 +44,7 @@ public class ApplicationStartup {
 		final LocalizedTexts lang = new LocalizedTexts(config);
 		final ToDoController controller = new ToDoController(model, lang);
 		final TableToDoItemModel tbModel = new TableToDoItemModel(model, lang);
+		final ListToDoItemModel lModel = new ListToDoItemModel(tbModel);
 		controller.setConfig(config);
 
 		// let's do some ui finetuning
@@ -90,7 +93,7 @@ public class ApplicationStartup {
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				MainView view = new MainView(controller, tbModel, lang);
+				MainView view = new MainView(controller, tbModel,lModel, lang);
 				view.createAndShowGUI(config);
 			}
 		});

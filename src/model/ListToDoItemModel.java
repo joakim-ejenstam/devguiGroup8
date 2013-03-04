@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import javax.swing.AbstractListModel;
 
 /**
@@ -12,9 +14,8 @@ import javax.swing.AbstractListModel;
 @SuppressWarnings("serial")
 public class ListToDoItemModel extends AbstractListModel {
 
+	private ToDoItemModel itemModel;
 	private TableToDoItemModel model;
-    // language not necessary for the view yet since the list will only show data that the user has put in
-	// private LocalizedTexts lang;  
 	
 	/**
 	 * The constructor to create a list to do item model
@@ -45,5 +46,8 @@ public class ListToDoItemModel extends AbstractListModel {
 	}
 	
 	
+	public List<ToDoItem> getDeletedItems() {
+		return this.itemModel.getDeletedToDoItems();
+	}
 
 }

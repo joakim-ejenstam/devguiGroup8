@@ -41,13 +41,9 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     private LocalizedTexts lang;
     public JTable table;
     
-    String[] choices = {"A", "long", "array", "of", "strings"};
-    String[] choices2 = {"b", "long", "array", "of", "strings"};
-    String[] choices3 = {"c", "long", "array", "of", "strings"};
-    
-    public JList doneList = new JList(choices);
-    public JList overdueList = new JList(choices2);
-    public JList deletedList = new JList(choices3);
+    public JList doneList;// = new JList(choices);
+    public JList overdueList;// = new JList(choices2);
+    public JList deletedList;// = new JList(choices3);
     
     private JMenu file;
     private JMenu edit;
@@ -60,19 +56,19 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     //View button group for showing certain lists
     private JRadioButton viewDone;
     private JRadioButton viewOverDue;
-    private JRadioButton viewAll;
+    private JRadioButton viewPending;
     private JRadioButton viewDeleted;
 
-    public MainView(ToDoController newController, TableToDoItemModel tbModel, LocalizedTexts newLang) {
+    public MainView(ToDoController newController, TableToDoItemModel tbModel, ListToDoItemModel lModel, LocalizedTexts newLang) {
         this.controller = newController;
         //the main view needs a TableModel as it uses a JTable
         //(as this model is tightly bound to the JTable, it's probably okay to 
         //create it here and not get it injected by the controller)
         this.tableModel = tbModel;
-        
+        this.listModel = lModel;
         this.lang = newLang;
         
-        viewAll = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewall"), true);
+        viewPending = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewpending"), true);
         viewDone = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewdone"), false);
         viewOverDue = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewoverdue"), false);
         viewDeleted = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewdeleted"), false);
@@ -138,11 +134,6 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    return table;
 	}
 	
-	private JList createDoneList() {
-		JList list = new JList(listModel);
-		return list;
-	}
-	
 	/**
 	 * Method for adding components to the content pane. 
 	 * @param pane the pane to where the components are added
@@ -157,10 +148,20 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    JPanel northLeftPanel = new JPanel();
 	    JPanel southPanel = new JPanel();
 		
-	    // Scroll pane
+	    // list
+        this.doneList = new JList(listModel);
+        this.doneList.addMouseListener(new TodoMouseListener());
+        this.deletedList = new JList(listModel);
+        this.deletedList.addMouseListener(new TodoMouseListener());
+        this.overdueList = new JList(listModel);
+        this.overdueList.addMouseListener(new TodoMouseListener());
+        
+        // table
         this.table = createTable();
         this.table.addMouseListener(new TodoMouseListener());
-	    final JScrollPane scrollPane = new JScrollPane(table);
+	    
+        // Scroll pane
+        final JScrollPane scrollPane = new JScrollPane(table);
 
 	    // Text fields and buttons
 	    JTextField inputFld = new JTextField();
@@ -185,12 +186,12 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    northPanel.add(northRightPanel, BorderLayout.EAST);
 
 	    // Add radio buttons to button group to make it so only one can be selected at a time 
-	    viewItems.add(viewAll);
+	    viewItems.add(viewPending);
 	    viewItems.add(viewDone);
 	    viewItems.add(viewOverDue);
 	    viewItems.add(viewDeleted);
 
-	    viewAll.addActionListener(new ActionListener(){
+	    viewPending.addActionListener(new ActionListener(){
 	        public void actionPerformed(ActionEvent e) {
 	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
 	          scrollPane.getViewport().add(table);
@@ -231,7 +232,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    });
 	    
 	    // Adding radio buttons and clock to north panels 
-	    northLeftPanel.add(viewAll);
+	    northLeftPanel.add(viewPending);
 	    northLeftPanel.add(viewDone);
 	    northLeftPanel.add(viewOverDue);
 	    northLeftPanel.add(viewDeleted);
@@ -309,7 +310,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         this.file.setText(lang.getText("ui.mainview.menu.file"));
         this.edit.setText(lang.getText("ui.mainview.menu.edit"));
         this.help.setText(lang.getText("ui.mainview.menu.help"));
-        this.viewAll.setText(lang.getText("ui.mainview.radiobutton.viewall"));
+        this.viewPending.setText(lang.getText("ui.mainview.radiobutton.viewall"));
         this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
         this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
         this.setTitle("Greigth To Do Manager");			// no real need to translate this... (lang.getText("ui.mainview.windowTitle"));
