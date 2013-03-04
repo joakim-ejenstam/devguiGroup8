@@ -237,7 +237,7 @@ public class EditTaskPanel extends JPanel {
         reminderPanelRight.add(Box.createRigidArea(new Dimension(10,0)));
         enableRemTime = new JCheckBox(controller.getEnableDueTimeAction());
         reminderPanelRight.add(enableRemTime);
-        reminderPanelRight.add(Box.createRigidArea(new Dimension(65,0)));
+        reminderPanelRight.add(Box.createRigidArea(new Dimension(30,0)));
         
         reminderPanel.add(Box.createRigidArea(new Dimension(10,0)));
         reminderPanel.setAlignmentX(RIGHT_ALIGNMENT);
@@ -304,6 +304,14 @@ public class EditTaskPanel extends JPanel {
             this.descriptionArea.setText(item.getDescription());
         if(item.getCreationDate() != null)
             this.dueDateCal.setDate(item.getDueDate());
+        if(item.getDueTime() != null){
+        	this.enableDueTime.setSelected(true);
+        	this.dueTimeSpinner.setEnabled(true);
+        }
+        if(item.getReminderTime() != null){
+        	this.enableRemTime.setSelected(true);
+        	this.remTimeSpinner.setEnabled(true);
+        }
     }
     
     /**
