@@ -59,7 +59,7 @@
             <priority>0</priority>
             <creationdate>2013-03-04T21:26</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>wdwd</title>
@@ -69,7 +69,7 @@
             <priority>0</priority>
             <creationdate>2013-03-04T21:26</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>wdwdqwefgv</title>
@@ -79,7 +79,17 @@
             <priority>1</priority>
             <creationdate>2013-03-04T21:50</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>dwddfg</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-04T22:24</creationdate>
+            <done>0</done>
+            <deleted>1</deleted>
         </todoitem>
     </todoitems>
     <categories>

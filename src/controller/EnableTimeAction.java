@@ -36,20 +36,30 @@ public class EnableTimeAction extends AbstractAction {
         putValue(MNEMONIC_KEY, mnemonic);
     }
 
-
+    /**
+     * Overrided method. Enables one of the two JSpinner fields in the view.
+     * @param event
+     */
     public void actionPerformed(ActionEvent event) {
         if (panel != null) {
         	JCheckBox cBox = (JCheckBox)event.getSource();
         	JSpinner timeSpinner = panel.getEnableTime(cBox);
-        	if(cBox.isSelected()){
-        		timeSpinner.setEnabled(true);
-        	}else{
-        		timeSpinner.setEnabled(false);
+        	if(timeSpinner != null){
+            	if(cBox.isSelected()){
+            		timeSpinner.setEnabled(true);
+            	}else{
+            		timeSpinner.setEnabled(false);
+            	}
         	}
         }
 
     }
     
+    
+    /**
+     * This method adds an EditTaskPanel to the action so it can be accessed in the actionPerformed method.
+     * @param newPanel  an EditTaskPanel
+     */
     public void addPanel(EditTaskPanel newPanel) {
         this.panel = newPanel;
     }
