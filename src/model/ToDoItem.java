@@ -18,6 +18,9 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	private String	 title;
 	private String	 description;
 	private Date	 dueDate;
+	private Date 	 dueTime;
+	private Date	 reminderDate;
+	private Date	 reminderTime;
 	private int		 priority;
 	private Category category;
 	private boolean	 done;
@@ -57,12 +60,55 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	public Date getDueDate() {
 		return dueDate;
 	}
+	
+	/**
+	 * @return the dueTime
+	 */
+	public Date getDueTime(){
+		return dueTime;
+	}
+	
+	/**
+	 * @return the reminderDate
+	 */
+	public Date getReminderDate(){
+		return reminderDate;
+	}
+	
+	/**
+	 * @return the reminderTime
+	 */
+	public Date getReminderTime(){
+		return reminderTime;
+	}
 	/**
 	 * @param dueDate the dueDate to set
 	 */
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
+	
+	/**
+	 * @param dueTime the dueTime to set
+	 */
+	public void setDueTime(Date dueTime){
+		 this.dueTime = dueTime;
+	}
+	
+	/**
+	 * @param reminderDate the reminderDate to set
+	 */
+	public void setReminderDate(Date reminderDate){
+		 this.reminderDate = reminderDate;
+	}
+	
+	/**
+	 * @param reminderTime the reminderTime to set
+	 */
+	public void setReminderTime(Date reminderTime){
+		 this.reminderTime = reminderTime;
+	}
+	
 	/**
 	 * @return the priority
 	 */
