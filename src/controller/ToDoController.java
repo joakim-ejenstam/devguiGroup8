@@ -26,6 +26,7 @@ public class ToDoController extends ComponentAdapter {
     private CancelAction cancel;
     private ChangeLanguageAction language;
     private AboutAction about;
+    private EnableTimeAction enableDueTime;
     private Config conf;
     private LocalizedTexts lang;
     private MainView view;
@@ -81,6 +82,13 @@ public class ToDoController extends ComponentAdapter {
                         createNavigationIcon("/About16"),
                         lang.getText("ui.mainview.aboutAction"),
                         KeyEvent.VK_F, this);
+        
+        this.enableDueTime =
+                new EnableTimeAction(
+                        "Enable",
+                        createNavigationIcon("uknownicon"),
+                        lang.getText("ui.mainview.enableTimeAction"),
+                        null, this);
     }
 
     /**
@@ -186,6 +194,11 @@ public class ToDoController extends ComponentAdapter {
     public OkAction getOkAction() {
         return ok;
     }
+    
+
+	public EnableTimeAction getEnableDueTimeAction() {	
+		return enableDueTime;
+	}
 
     /**
      * Get method for the change language action.
@@ -301,6 +314,9 @@ public class ToDoController extends ComponentAdapter {
 		// TODO Auto-generated method stub
 		return this.lang;
 	}
+
+
+
 	
 }
 
