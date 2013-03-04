@@ -60,6 +60,11 @@ public class ApplicationStartup {
     		System.out.println("heej");
     		UIManager.put("Table.showGrid", true);
     		
+    		//TEMPORARY TEST
+    		if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")){
+    			UIManager.put("apple.laf.useScreenMenuBar", "true");
+    		}
+
     		UIManager.put("nimbusBase", Color.decode(colorProp.getProperty("ui.primeColor1")));
     		UIManager.put("nimbusBlueGrey",Color.decode(colorProp.getProperty("ui.primeColor2")));
     		UIManager.put("control",Color.decode(colorProp.getProperty("ui.primeColor3")));
