@@ -18,101 +18,104 @@ import controller.ToDoController;
 import exceptions.LoadModelException;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Joakim
- * Date: 2013-02-07
- * Time: 09:50
+ * Created with IntelliJ IDEA. User: Joakim Date: 2013-02-07 Time: 09:50
  */
 public class ApplicationStartup {
 
-	private Config config = null; //the configuration values of the application
-	
-	//Color theme
-	private static final String THEME = "data"+File.separator+"theme.properties";
-	
-    public ApplicationStartup(String[] args) {
-    	config = Config.getInstance();
-		
-        ToDoItemModel model = null;
+	private Config config = null; // the configuration values of the application
+
+	// Color theme
+	private static final String THEME = "data" + File.separator
+			+ "theme.properties";
+
+	public ApplicationStartup(String[] args) {
+		config = Config.getInstance();
+
+		ToDoItemModel model = null;
 		try {
 			model = new XMLFileToDoItemModel();
 		} catch (LoadModelException e) {
 			System.out.println(e.getLocalizedMessage());
 			e.printStackTrace();
-			System.exit(1);//without a model our application can't run...
+			System.exit(1);// without a model our application can't run...
 		}
-        final LocalizedTexts lang = new LocalizedTexts(config);
-		final ToDoController controller = new ToDoController(model,lang);
-        final TableToDoItemModel tbModel = new TableToDoItemModel(model,lang);
-        controller.setConfig(config);
-        
-        //let's do some ui finetuning
-        //apple needs of course some extra attention...
-    	if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")) {
-    		//move program menu up to system bar
-    		System.setProperty("apple.laf.useScreenMenuBar", "true");
-    		//change program name
-    		System.setProperty("com.apple.mrj.application.apple.menu.about.name", lang.getText("ui.mainview.windowTitle"));
-    	}
-    	//set look & feel of system
-    	try {
-    		Properties colorProp = loadColorProperties();
-    		System.out.println("heej");
-    		UIManager.put("Table.showGrid", true);
-    		
-    		//TEMPORARY TEST
-    		if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")){
-    			UIManager.put("apple.laf.useScreenMenuBar", "true");
-    		}
+		final LocalizedTexts lang = new LocalizedTexts(config);
+		final ToDoController controller = new ToDoController(model, lang);
+		final TableToDoItemModel tbModel = new TableToDoItemModel(model, lang);
+		controller.setConfig(config);
 
-    		UIManager.put("nimbusBase", Color.decode(colorProp.getProperty("ui.primeColor1")));
-    		UIManager.put("nimbusBlueGrey",Color.decode(colorProp.getProperty("ui.primeColor2")));
-    		UIManager.put("control",Color.decode(colorProp.getProperty("ui.primeColor3")));
-    		
-    	    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-    	        if ("Nimbus".equals(info.getName())) {
-    	            UIManager.setLookAndFeel(info.getClassName());
-    	            break;
-    	        }
-    	    }
-    	} catch (Exception e) {
-    	    // If Nimbus is not available, you can set the GUI to another look and feel.
-        	try {
-    	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    	       //MetalLookAndFeel.setCurrentTheme(new CustomTheme());
-    	    } catch (Exception ex) {
-    	    	//we don't have to do anything, as the dault l&f will be used now anyway
-    	    }
-    	}
+		// let's do some ui finetuning
+		// apple needs of course some extra attention...
+		if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")) {
+			// move program menu up to system bar
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
+			// change program name
+			System.setProperty(
+					"com.apple.mrj.application.apple.menu.about.name",
+					lang.getText("ui.mainview.windowTitle"));
 
-        
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-            	MainView view = new MainView(controller, tbModel,lang);
-            	view.createAndShowGUI(config);
-            }
-        });
-        
-//        //following stuff happens at exiting the application 
-//        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-//
-//            public void run() {
-//            	//save state of the application
-//            	 try {
-//             		config = Config.getInstance();
-//             		config.saveApplicationProperties();
-//             		System.out.println("DEBUG state got saved to file!");
-//         		} catch (InstantiationException e) {
-//         			e.printStackTrace();//we can't do anything here anymore, the config will just not be saved.
-//         		}
-//            }
-//        }));
+			try {
+				//Apple's menu is not compatible with the nimbus theme with custom colors
+				//so we set to system default instead
+				UIManager.setLookAndFeel(UIManager
+						.getSystemLookAndFeelClassName());
+			} catch (Exception ex) {
+				// default l&f will be used
+			}
+		} else {
+			// else set custom look and feel for the other OS's
+			try {
+				Properties colorProp = loadColorProperties();
+				UIManager.put("Table.showGrid", true);
+				
+				//Add custom colors from the property
+				UIManager.put("nimbusBase",
+						Color.decode(colorProp.getProperty("ui.primeColor1")));
+				UIManager.put("nimbusBlueGrey",
+						Color.decode(colorProp.getProperty("ui.primeColor2")));
+				UIManager.put("control",
+						Color.decode(colorProp.getProperty("ui.primeColor3")));
+
+				for (LookAndFeelInfo info : UIManager
+						.getInstalledLookAndFeels()) {
+					if ("Nimbus".equals(info.getName())) {
+						UIManager.setLookAndFeel(info.getClassName());
+						break;
+					}
+				}
+			} catch (Exception e) {
+				//default theme will be used.
+			}
+		}
+
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				MainView view = new MainView(controller, tbModel, lang);
+				view.createAndShowGUI(config);
+			}
+		});
+
+		// //following stuff happens at exiting the application
+		// Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+		//
+		// public void run() {
+		// //save state of the application
+		// try {
+		// config = Config.getInstance();
+		// config.saveApplicationProperties();
+		// System.out.println("DEBUG state got saved to file!");
+		// } catch (InstantiationException e) {
+		// e.printStackTrace();//we can't do anything here anymore, the config
+		// will just not be saved.
+		// }
+		// }
+		// }));
 	}
 
 	/**
 	 * Loads the color configuration
 	 */
-	private Properties loadColorProperties(){
+	private Properties loadColorProperties() {
 		Properties colorTheme = new Properties();
 		FileInputStream in;
 		try {
@@ -128,8 +131,8 @@ public class ApplicationStartup {
 		}
 		return colorTheme;
 	}
-    
+
 	public static void main(String[] args) {
-    	new ApplicationStartup(args);
-    }
+		new ApplicationStartup(args);
+	}
 }
