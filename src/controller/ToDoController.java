@@ -51,7 +51,7 @@ public class ToDoController extends ComponentAdapter {
                         lang.getText("ui.mainview.menu.edit.edit"),
                         createNavigationIcon("/Edit16"),
                         lang.getText("ui.mainview.editAction"),
-                        KeyEvent.VK_E, this);
+                        KeyEvent.VK_E, this, lang);
         this.delete =
                 new DeleteAction(
                         lang.getText("ui.mainview.menu.edit.delete"),
@@ -127,7 +127,6 @@ public class ToDoController extends ComponentAdapter {
 
     public void removeItem(int index) {
         ToDoItem item = model.getToDoItem(index);
-        JOptionPane.showMessageDialog(view, item.isDeleted());
         model.deleteToDoItem(item);
     }
 
@@ -196,7 +195,7 @@ public class ToDoController extends ComponentAdapter {
     }
     
 
-	public EnableTimeAction getEnableDueTimeAction() {	
+	public EnableTimeAction getEnableDueTimeAction() {
 		return enableDueTime;
 	}
 

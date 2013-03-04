@@ -33,7 +33,14 @@ public class AboutAction extends AbstractAction{
      */
     public void actionPerformed(ActionEvent event) {
         //TODO: Create a nice about window.
-        JOptionPane.showMessageDialog(((JMenuItem) event.getSource()).getParent(), "PEW PEW!!!");
+        JOptionPane.showMessageDialog(
+                ((JMenuItem) event.getSource()).getParent(),
+                "The Greight ToDo Manager. v1.0 " +
+                        "\n Authors: " +
+                        "\n Joakim Ejenstam, " +
+                        "\n Simon Harhues, " +
+                        "\n Emma Rangert, " +
+                        "\n Mattias Öst");
     }
 
     /**
