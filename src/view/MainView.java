@@ -40,9 +40,15 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     private ListToDoItemModel listModel;
     private LocalizedTexts lang;
     public JTable table;
-    public JList doneList;
-    public JList overdueList;
-    public JList deletedList;
+    
+    String[] choices = {"A", "long", "array", "of", "strings"};
+    String[] choices2 = {"b", "long", "array", "of", "strings"};
+    String[] choices3 = {"c", "long", "array", "of", "strings"};
+    
+    public JList doneList = new JList(choices);
+    public JList overdueList = new JList(choices2);
+    public JList deletedList = new JList(choices3);
+    
     private JMenu file;
     private JMenu edit;
     private JMenu help;
@@ -154,9 +160,8 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    // Scroll pane
         this.table = createTable();
         this.table.addMouseListener(new TodoMouseListener());
-	    JScrollPane scrollPane = new JScrollPane(table);
-	    //JScrollPane doneScrollPane = new JScrollPane(doneList);
-	    
+	    final JScrollPane scrollPane = new JScrollPane(table);
+
 	    // Text fields and buttons
 	    JTextField inputFld = new JTextField();
 	    JButton addBtn = new JButton(controller.getAddAction());
@@ -185,9 +190,43 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    viewItems.add(viewOverDue);
 	    viewItems.add(viewDeleted);
 
+	    viewAll.addActionListener(new ActionListener(){
+	        public void actionPerformed(ActionEvent e) {
+	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
+	          scrollPane.getViewport().add(table);
+	          System.out.println("view all action");
+	          scrollPane.revalidate();
+	          scrollPane.repaint();
+	        }
+	    });
+	    
 	    viewDone.addActionListener(new ActionListener(){
 	        public void actionPerformed(ActionEvent e) {
-	          // Do something here...
+	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
+	          scrollPane.getViewport().add(doneList);
+	          System.out.println("view done action");
+	          scrollPane.revalidate();
+	          scrollPane.repaint();
+	        }
+	    });
+	    
+	    viewOverDue.addActionListener(new ActionListener(){
+	        public void actionPerformed(ActionEvent e) {
+	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
+	          scrollPane.getViewport().add(overdueList);
+	          System.out.println("view over due action");
+	          scrollPane.revalidate();
+	          scrollPane.repaint();
+	        }
+	    });
+	    
+	    viewDeleted.addActionListener(new ActionListener(){
+	        public void actionPerformed(ActionEvent e) {
+	          scrollPane.getViewport().remove(table);
+	          scrollPane.getViewport().add(deletedList);
+	          System.out.println("view deleted action");
+	          scrollPane.revalidate();
+	          scrollPane.repaint();
 	        }
 	    });
 	    
