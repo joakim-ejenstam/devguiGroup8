@@ -127,6 +127,12 @@ public class TableToDoItemModel extends AbstractTableModel {
 	@Override
 	public void setValueAt(Object value, int row, int col) {
 		super.setValueAt(value, row, col);
+        if (isCellEditable(row, col)) {
+            if (this.model.getToDoItem(row).isDone())
+                this.model.markToDoItemAsUndone(this.model.getToDoItem(row));
+            else
+                this.model.markToDoItemAsDone(this.model.getToDoItem(row));
+        }
 		fireTableCellUpdated(row,col);
     }
 	
