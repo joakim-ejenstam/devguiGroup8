@@ -13,20 +13,7 @@ import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.Timer;
+import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
@@ -59,6 +46,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     private JMenu file;
     private JMenu edit;
     private JMenu help;
+    private JPopupMenu popupMenu;
     
     private ButtonGroup viewItems = new ButtonGroup();
     final JLabel timeLabel = new JLabel(); 
@@ -78,10 +66,10 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         
         this.lang = newLang;
         
-        viewAll = new JRadioButton("All", true);//lang.getText("ui.mainview.radiobutton.viewall"), true);
-        viewDone = new JRadioButton("Done", false);//lang.getText("ui.mainview.radiobutton.viewdone"), false);
-        viewOverDue = new JRadioButton("Overdue", false);//lang.getText("ui.mainview.radiobutton.viewoverdue"), false);
-        viewDeleted = new JRadioButton("Deleted", false);//lang.getText("ui.mainview.radiobutton.viewdeleted"), false);
+        viewAll = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewall"), true);
+        viewDone = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewdone"), false);
+        viewOverDue = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewoverdue"), false);
+        viewDeleted = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewdeleted"), false);
         
         //add this view as a listener to the changes of the model
         controller.addObserver(this);
@@ -119,6 +107,12 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		edit.add(editTodo);
 		edit.add(deleteTodo);
 
+        popupMenu = new JPopupMenu("Pew pew!");
+        JMenuItem popEdit = new JMenuItem(controller.getEditAction());
+        JMenuItem popDel = new JMenuItem(controller.getDeleteAction());
+        popupMenu.add(popEdit);
+        popupMenu.add(popDel);
+
 		/* For later use when we add more sub menus to file menu:
 		file.addSeparator();
 		*/
@@ -134,7 +128,6 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		JTable table = new JTable(tableModel);
 		table.setAutoCreateRowSorter(true);
 		table.getModel().addTableModelListener(this);//should catch changes in the table model once we promote them with the fireUpdate() below.
-	    //System.out.println(tableModel.getColumnName(0));
 	    
 	    return table;
 	}
@@ -162,6 +155,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         this.table = createTable();
         this.table.addMouseListener(new TodoMouseListener());
 	    JScrollPane scrollPane = new JScrollPane(table);
+	    //JScrollPane doneScrollPane = new JScrollPane(doneList);
 	    
 	    // Text fields and buttons
 	    JTextField inputFld = new JTextField();
@@ -191,6 +185,12 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 	    viewItems.add(viewOverDue);
 	    viewItems.add(viewDeleted);
 
+	    viewDone.addActionListener(new ActionListener(){
+	        public void actionPerformed(ActionEvent e) {
+	          // Do something here...
+	        }
+	    });
+	    
 	    // Adding radio buttons and clock to north panels 
 	    northLeftPanel.add(viewAll);
 	    northLeftPanel.add(viewDone);
@@ -281,11 +281,12 @@ public class MainView extends JFrame implements Observer, TableModelListener {
     public JTable getTable() {
         return this.table;
     }
+    
     protected class TodoMouseListener implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2 && !e.isConsumed()) {
+            if (e.getClickCount() == 2 && !e.isConsumed() && e.getButton() == 1) {
                 e.consume();
                 System.out.println("Double click");
                 EditTaskFrame editView =
@@ -305,15 +306,28 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 
         }
 
-        @Override
-        public void mousePressed(MouseEvent e) {
-            //To change body of implemented methods use File | Settings | File Templates.
+        public void mousePressed(MouseEvent ev) {
+            if (ev.isPopupTrigger()) {
+                System.out.println("DEBUG: popuptrigger " + ev.isPopupTrigger());
+                popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
+            }
+            System.out.println("DEBUG: popuptrigger " + ev.isPopupTrigger());
         }
 
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            //To change body of implemented methods use File | Settings | File Templates.
+        public void mouseReleased(MouseEvent ev) {
+            if (ev.isPopupTrigger()) {
+                int r = table.rowAtPoint(ev.getPoint());
+                if (r >= 0 && r < table.getRowCount()) {
+                    table.setRowSelectionInterval(r, r);
+                } else {
+                    table.clearSelection();
+                }
+                System.out.println("DEBUG: popuptrigger " + ev.isPopupTrigger());
+                popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
+            }
+            System.out.println("DEBUG: popuptrigger " + ev.isPopupTrigger());
         }
+
 
         @Override
         public void mouseEntered(MouseEvent e) {

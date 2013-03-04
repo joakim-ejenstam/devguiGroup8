@@ -326,7 +326,7 @@ public class EditTaskPanel extends JPanel {
             item.setPriority(2);
         if(highPriority.isSelected())
             item.setPriority(3);
-        item.setCategory(new Category(categoryField.getText()));
+        item.setCategory(new Category((String)categoryBox.getSelectedItem()));
         item.setDueDate(dueDateCal.getDate());
         return item;
     }
