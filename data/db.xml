@@ -4,7 +4,7 @@
         <todoitem>
             <title>Enter all ToDo's</title>
             <description>Use your new ToDo-application wisley.</description>
-            <duedate>2013-03-05</duedate>
+            <duedate>2013-03-01</duedate>
             <category>Private</category>
             <priority>1</priority>
             <creationdate>2013-03-05T07:03</creationdate>
@@ -18,8 +18,68 @@
             <category/>
             <priority>0</priority>
             <creationdate>2013-03-05T19:05</creationdate>
+            <done>1</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Testdata</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <priority>1</priority>
+            <creationdate>2013-03-05T21:12</creationdate>
             <done>0</done>
             <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Testdata1</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <priority>1</priority>
+            <creationdate>2013-03-05T21:12</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Testdata2</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <priority>1</priority>
+            <creationdate>2013-03-05T21:12</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Testdata3</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <priority>1</priority>
+            <creationdate>2013-03-05T21:12</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Testdata4</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <priority>1</priority>
+            <creationdate>2013-03-05T21:12</creationdate>
+            <done>0</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Testdata5</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <priority>1</priority>
+            <creationdate>2013-03-05T21:12</creationdate>
+            <done>0</done>
+            <deleted>1</deleted>
         </todoitem>
     </todoitems>
     <categories>
