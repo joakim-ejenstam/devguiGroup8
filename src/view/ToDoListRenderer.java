@@ -23,11 +23,14 @@ public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
         setBackground(list.getBackground());
         setForeground(list.getForeground());
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String dueDate = "";
+        if (((ToDoItem) value).getDueDate() != null)
+            dueDate = dateFormat.format(((ToDoItem) value).getDueDate());
         setText(
                 ((ToDoItem) value).getTitle() +
                         "         "+
                         "Due:" +
-                        dateFormat.format(((ToDoItem) value).getDueDate()));
+                        dueDate);
         return this;
     }
 }
