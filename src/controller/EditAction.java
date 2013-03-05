@@ -54,6 +54,7 @@ public class EditAction extends AbstractAction {
                     new EditTaskFrame
                             (parent, parent.getEditItem(index),parent.getCategories(),parent.getLanguage());
             editView.setSize(400,400);
+            editView.setLocationRelativeTo(table);
             editView.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(

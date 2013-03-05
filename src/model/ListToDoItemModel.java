@@ -17,7 +17,7 @@ import javax.swing.AbstractListModel;
 public class ListToDoItemModel extends AbstractListModel {
 
 	private ToDoItemModel itemModel;
-	private ArrayList<ToDoItem> overdue;
+	private List<ToDoItem> overdue;
 	final Date currDate = new Date();
 
 	/**
@@ -26,13 +26,14 @@ public class ListToDoItemModel extends AbstractListModel {
 	 */
 	public ListToDoItemModel(ToDoItemModel listModel) {	//, LocalizedTexts newLang) {
 		this.itemModel = listModel;
-		getDeletedItems();
+        this.overdue = new ArrayList<ToDoItem>(10);
+		getOverdueItems();
 		//this.lang = newLang;	same as above
 	}
 	
 	/**
 	 * Returns the value at the specified index.
-	 * @param the index where to retrieve the value.
+	 * @param row index where to retrieve the value.
 	 * @return the value at the specified index.
 	 */
 	@Override
@@ -46,8 +47,8 @@ public class ListToDoItemModel extends AbstractListModel {
 	 */
 	@Override
 	public int getSize() {
-		return this.itemModel.getNumberOfToDoItems();
-	}
+        return overdue.size();
+    	}
 	
 	
 	public List<ToDoItem> getDeletedItems() {
@@ -55,13 +56,18 @@ public class ListToDoItemModel extends AbstractListModel {
 	}
 	
 	public void getOverdueItems() {
-		int iter = 0;
-		ArrayList<ToDoItem> allItems = (ArrayList<ToDoItem>) this.itemModel.getAllToDoItems();
-		for (int i = 0; i < this.getSize(); i++) {
-			if (allItems.get(i).getDueDate().compareTo(currDate) < 0) {
-				this.overdue.set(iter, allItems.get(i));
-				iter++;
-			}
+		List<ToDoItem> allItems = this.itemModel.getAllToDoItems();
+        int bound = allItems.size();
+        System.out.println("number of items" + bound);
+		for (int i = 0; i < bound; i++) {
+            System.out.println("Debug: Time to check if item added to list");
+            ToDoItem item = allItems.get(i);
+            if (item.getDueDate() != null) {
+			    if (item.getDueDate().compareTo(currDate) < 0) {
+                    System.out.println("Debug: Overdue item added to list");
+				    this.overdue.add(item);
+			    }
+            }
 		}
 	}
 

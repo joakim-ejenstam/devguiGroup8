@@ -2,63 +2,23 @@
 <model>
     <todoitems>
         <todoitem>
-            <title>Remember the milk</title>
-            <description>Buy a liter of organic milk from Uppland.</description>
-            <duedate>2013-03-28</duedate>
+            <title>Enter all ToDo's</title>
+            <description>Use your new ToDo-application wisley.</description>
+            <duedate>2013-03-05</duedate>
             <category>Private</category>
             <priority>1</priority>
-            <creationdate>2013-02-07T12:32</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Learn for the exam</title>
-            <description>Don't forget the book.</description>
-            <duedate>2013-02-01</duedate>
-            <category>University</category>
-            <priority>3</priority>
-            <creationdate>2013-01-17T12:32</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Do Interviews</title>
-            <description>Find some people to interview.</description>
-            <duedate>2013-02-18</duedate>
-            <category/>
-            <priority>1</priority>
-            <creationdate>2012-02-05T09:12</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>efgg</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-05T18:37</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>gg</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-05T18:40</creationdate>
+            <creationdate>2013-03-05T07:03</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>rge</title>
+            <title>lökasjdf</title>
             <description/>
             <duedate/>
             <category/>
             <priority>0</priority>
-            <creationdate>2013-03-05T18:40</creationdate>
-            <done>1</done>
+            <creationdate>2013-03-05T19:05</creationdate>
+            <done>0</done>
             <deleted>0</deleted>
         </todoitem>
     </todoitems>
