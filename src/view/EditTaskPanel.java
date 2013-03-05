@@ -3,7 +3,6 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.Box;
