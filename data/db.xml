@@ -32,84 +32,34 @@
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>on</title>
+            <title>efgg</title>
             <description/>
             <duedate/>
-            <category>Private</category>
-            <priority>2</priority>
-            <creationdate>2013-03-04T21:21</creationdate>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-05T18:37</creationdate>
             <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>efef</title>
+            <title>gg</title>
             <description/>
             <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-04T21:23</creationdate>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-05T18:40</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>rge</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-05T18:40</creationdate>
             <done>1</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wdw</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-04T21:26</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wdwd</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-04T21:26</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wdwdqwefgv</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>1</priority>
-            <creationdate>2013-03-04T21:50</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>dwddfg</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-04T22:24</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>aslkjdjfllkasödf</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-03T13:30</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>laskdjfölzksdfjsadföljk</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T14:04</creationdate>
-            <done>1</done>
-            <deleted>1</deleted>
+            <deleted>0</deleted>
         </todoitem>
     </todoitems>
     <categories>

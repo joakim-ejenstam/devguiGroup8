@@ -86,7 +86,7 @@ public class ToDoController extends ComponentAdapter {
         
         this.enableDueTime =
                 new EnableTimeAction(
-                        "Enable",
+                		lang.getText("ui.editview.checkbox.enable"),
                         createNavigationIcon("uknownicon"),
                         lang.getText("ui.mainview.enableTimeAction"),
                         null, this);
