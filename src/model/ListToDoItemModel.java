@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
@@ -15,6 +17,8 @@ import javax.swing.AbstractListModel;
 public class ListToDoItemModel extends AbstractListModel {
 
 	private ToDoItemModel itemModel;
+	private ArrayList<ToDoItem> overdue;
+	final Date currDate = new Date();
 
 	/**
 	 * The constructor to create a list to do item model
@@ -22,6 +26,7 @@ public class ListToDoItemModel extends AbstractListModel {
 	 */
 	public ListToDoItemModel(ToDoItemModel listModel) {	//, LocalizedTexts newLang) {
 		this.itemModel = listModel;
+		getDeletedItems();
 		//this.lang = newLang;	same as above
 	}
 	
@@ -32,9 +37,7 @@ public class ListToDoItemModel extends AbstractListModel {
 	 */
 	@Override
 	public Object getElementAt(int row) {
-        if(this.itemModel.getToDoItem(row).isDone())
-            return this.itemModel.getToDoItem(row).getTitle();
-        return "Det här är en båt!";
+        return this.overdue.get(row);
 	}
 
 	/**
@@ -49,6 +52,17 @@ public class ListToDoItemModel extends AbstractListModel {
 	
 	public List<ToDoItem> getDeletedItems() {
 		return this.itemModel.getDeletedToDoItems();
+	}
+	
+	public void getOverdueItems() {
+		int iter = 0;
+		ArrayList<ToDoItem> allItems = (ArrayList<ToDoItem>) this.itemModel.getAllToDoItems();
+		for (int i = 0; i < this.getSize(); i++) {
+			if (allItems.get(i).getDueDate().compareTo(currDate) < 0) {
+				this.overdue.set(iter, allItems.get(i));
+				iter++;
+			}
+		}
 	}
 
 }
