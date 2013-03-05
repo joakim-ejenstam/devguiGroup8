@@ -14,7 +14,7 @@ import javax.swing.AbstractListModel;
  */
 
 @SuppressWarnings("serial")
-public class ListToDoItemModel extends AbstractListModel {
+public class OverdueListModel extends AbstractListModel {
 
 	private ToDoItemModel itemModel;
 	private List<ToDoItem> overdue;
@@ -24,11 +24,10 @@ public class ListToDoItemModel extends AbstractListModel {
 	 * The constructor to create a list to do item model
 	 * @param listModel the underlying model
 	 */
-	public ListToDoItemModel(ToDoItemModel listModel) {	//, LocalizedTexts newLang) {
+	public OverdueListModel(ToDoItemModel listModel) {
 		this.itemModel = listModel;
         this.overdue = new ArrayList<ToDoItem>(10);
 		getOverdueItems();
-		//this.lang = newLang;	same as above
 	}
 	
 	/**
@@ -48,16 +47,12 @@ public class ListToDoItemModel extends AbstractListModel {
 	@Override
 	public int getSize() {
         return overdue.size();
-    	}
-	
-	
-	public List<ToDoItem> getDeletedItems() {
-		return this.itemModel.getDeletedToDoItems();
-	}
+    }
 	
 	public void getOverdueItems() {
 		List<ToDoItem> allItems = this.itemModel.getAllToDoItems();
         int bound = allItems.size();
+        
         System.out.println("number of items" + bound);
 		for (int i = 0; i < bound; i++) {
             System.out.println("Debug: Time to check if item added to list");

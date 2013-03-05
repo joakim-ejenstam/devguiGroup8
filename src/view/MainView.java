@@ -18,7 +18,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
 import controller.AddAction;
-import model.ListToDoItemModel;
+import model.DoneListModel;
+import model.OverdueListModel;
 import model.LocalizedTexts;
 import model.TableToDoItemModel;
 
@@ -37,7 +38,8 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 
 	private ToDoController controller;
     private TableToDoItemModel tableModel;
-    private ListToDoItemModel listModel;
+    private OverdueListModel overdueListModel;
+    private DoneListModel doneListModel;
     private LocalizedTexts lang;
     public JTable table;
     
@@ -59,13 +61,14 @@ public class MainView extends JFrame implements Observer, TableModelListener{
     private JRadioButton viewPending;
     private JRadioButton viewDeleted;
 
-    public MainView(ToDoController newController, TableToDoItemModel tbModel, ListToDoItemModel lModel, LocalizedTexts newLang) {
+    public MainView(ToDoController newController, TableToDoItemModel tbModel, OverdueListModel overdueModel, DoneListModel doneModel, LocalizedTexts newLang) {
         this.controller = newController;
         //the main view needs a TableModel as it uses a JTable
         //(as this model is tightly bound to the JTable, it's probably okay to 
         //create it here and not get it injected by the controller)
         this.tableModel = tbModel;
-        this.listModel = lModel;
+        this.overdueListModel = overdueModel;
+        this.doneListModel = doneModel;
         this.lang = newLang;
         
         viewPending = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewpending"), true);
@@ -154,11 +157,11 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    JPanel southPanel = new JPanel();
 		
 	    // list
-        this.doneList = new JList(listModel);
+        this.doneList = new JList(doneListModel);
         this.doneList.addMouseListener(new TodoMouseListener());
-        this.deletedList = new JList(listModel);
+        this.deletedList = new JList(doneListModel);
         this.deletedList.addMouseListener(new TodoMouseListener());
-        this.overdueList = new JList(listModel);
+        this.overdueList = new JList(overdueListModel);
         this.overdueList.addMouseListener(new TodoMouseListener());
         
         // table
