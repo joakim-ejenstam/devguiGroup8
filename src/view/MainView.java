@@ -31,6 +31,7 @@ import controller.ToDoController;
 /**
  * This class sets up the main window of the application
  * @author Emma Rangert
+ * 
  */
 
 @SuppressWarnings("serial")

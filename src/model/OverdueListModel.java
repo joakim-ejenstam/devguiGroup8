@@ -54,6 +54,7 @@ public class OverdueListModel extends AbstractListModel {
         int bound = allItems.size();
         
         System.out.println("number of items" + bound);
+        System.out.println("currdate = " + currDate);
 		for (int i = 0; i < bound; i++) {
             System.out.println("Debug: Time to check if item added to list");
             ToDoItem item = allItems.get(i);
