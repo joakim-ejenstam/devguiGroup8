@@ -163,7 +163,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    // list
         this.doneList = new JList(doneListModel);
         this.doneList.addMouseListener(new TodoMouseListener());
-
         this.deletedList = new JList(deletedListModel);
         this.doneList.setCellRenderer(new ToDoListRenderer());
         this.deletedList.addMouseListener(new TodoMouseListener());
@@ -313,6 +312,9 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	public void update(Observable o, Object arg) {
 		System.out.println("DEBUG Update from model");
 		this.tableModel.fireTableDataChanged(); //informs tableModel-listeners, which in our case is this class as specified above
+        this.doneListModel.getDoneItems();
+        this.deletedListModel.getDeletedItems();
+        this.overdueListModel.getOverdueItems();
 	}
 
 	@Override
@@ -329,7 +331,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.viewPending.setText(lang.getText("ui.mainview.radiobutton.viewpending"));
         this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
         this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
-        this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdelete"));
+        this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdeleted"));
         this.setTitle("Greigth To Do Manager");			// no real need to translate this... (lang.getText("ui.mainview.windowTitle"));
         this.validate();
         this.repaint();
@@ -338,7 +340,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
     public JTable getTable() {
         return this.table;
     }
-    
+
     protected class TodoMouseListener implements MouseListener {
 
         @Override
