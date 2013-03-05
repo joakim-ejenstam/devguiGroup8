@@ -1,0 +1,33 @@
+package view;
+
+import model.ToDoItem;
+
+import javax.swing.*;
+import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: Joakim
+ * Date: 2013-03-05
+ * Time: 20:49
+ * To change this template use File | Settings | File Templates.
+ */
+public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
+
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {
+        setEnabled(list.isEnabled());
+        setSelected(((ToDoItem) value).isDone());
+        setFont(list.getFont());
+        setBackground(list.getBackground());
+        setForeground(list.getForeground());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        setText(
+                ((ToDoItem) value).getTitle() +
+                        "         "+
+                        "Due:" +
+                        dateFormat.format(((ToDoItem) value).getDueDate()));
+        return this;
+    }
+}
