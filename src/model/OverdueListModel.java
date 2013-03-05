@@ -1,10 +1,11 @@
 package model;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.AbstractListModel;
+import javax.swing.*;
 
 /**
  * This class provides the model of the list to be used in the main view. 
@@ -66,5 +67,4 @@ public class OverdueListModel extends AbstractListModel {
             }
 		}
 	}
-
 }

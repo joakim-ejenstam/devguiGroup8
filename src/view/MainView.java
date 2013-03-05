@@ -163,10 +163,14 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    // list
         this.doneList = new JList(doneListModel);
         this.doneList.addMouseListener(new TodoMouseListener());
+
         this.deletedList = new JList(deletedListModel);
+        //this.doneList.setCellRenderer(new ToDoListRenderer());
         this.deletedList.addMouseListener(new TodoMouseListener());
+        //this.deletedList.setCellRenderer(new ToDoListRenderer());
         this.overdueList = new JList(overdueListModel);
         this.overdueList.addMouseListener(new TodoMouseListener());
+        this.overdueList.setCellRenderer(new ToDoListRenderer());
         
         // table
         this.table = createTable();
