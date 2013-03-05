@@ -332,7 +332,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.viewPending.setText(lang.getText("ui.mainview.radiobutton.viewpending"));
         this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
         this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
-        this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdelete"));
+        this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdeleted"));
         this.setTitle("Greigth To Do Manager");			// no real need to translate this... (lang.getText("ui.mainview.windowTitle"));
         this.validate();
         this.repaint();
