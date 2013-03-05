@@ -92,9 +92,9 @@ public class ToDoController extends ComponentAdapter {
                         null, this);
         this.setDone =
                 new SetDoneAction(
-                        "båtknapp",
-                        createNavigationIcon("/Unknown16"),
-                        "det här är en...",
+                        lang.getText("ui.tableview.setdone"),
+                        createNavigationIcon("/Setdone16"),
+                        lang.getText("ui.tableview.setdone"),
                         KeyEvent.VK_D, this);
     }
 
