@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.AbstractListModel;
@@ -12,12 +11,13 @@ import javax.swing.AbstractListModel;
  *
  */
 
+@SuppressWarnings("serial")
 public class DoneListModel extends AbstractListModel {
 
 	private ToDoItemModel itemModel;
 	private List<ToDoItem> done;
 	
-	public DoneListModel(ToDoItemModel listModel) {	//, LocalizedTexts newLang) {
+	public DoneListModel(ToDoItemModel listModel) {	
 		this.itemModel = listModel;
         this.done = new ArrayList<ToDoItem>(10);
 		getDoneItems();
