@@ -2,38 +2,54 @@
 <model>
     <todoitems>
         <todoitem>
-            <title>Enter all ToDo's</title>
-            <description>Use your new ToDo-application wisley.</description>
-            <duedate>2013-03-01</duedate>
+            <title>Remember the milk</title>
+            <description>Buy a liter of organic milk from Uppland.</description>
+            <duedate>2013-03-28</duedate>
             <category>Private</category>
             <priority>1</priority>
-            <creationdate>2013-03-05T07:03</creationdate>
+            <creationdate>2013-02-07T12:32</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>lökasjdf</title>
+            <title>Learn for the exam</title>
+            <description>Don't forget the book.</description>
+            <duedate>2013-02-01</duedate>
+            <category>University</category>
+            <priority>3</priority>
+            <creationdate>2013-01-17T12:32</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Do Interviews</title>
+            <description>Find some people to interview.</description>
+            <duedate>2013-02-18</duedate>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2012-02-05T09:12</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>on</title>
             <description/>
             <duedate/>
             <category/>
             <priority>0</priority>
-            <creationdate>2013-03-05T19:05</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
+            <creationdate>2013-03-04T21:21</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>Testdata1</title>
+            <title>efef</title>
             <description/>
+            <duedate/>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-04T21:23</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
             <duedate>2013-03-01</duedate>
             <category>None</category>
             <priority>1</priority>
@@ -42,29 +58,23 @@
             <deleted>1</deleted>
         </todoitem>
         <todoitem>
-            <title>Testdata2</title>
+            <title>wdw</title>
             <description/>
             <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-04T21:26</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
-            <title>Testdata3</title>
+            <title>wdwd</title>
             <description/>
+            <duedate/>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-04T21:26</creationdate>
             <duedate>2013-03-01</duedate>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata4</title>
-            <description/>
-            <duedate/>
             <category>None</category>
             <priority>1</priority>
             <creationdate>2013-03-05T21:12</creationdate>
@@ -72,12 +82,22 @@
             <deleted>1</deleted>
         </todoitem>
         <todoitem>
-            <title>Testdata5</title>
+            <title>wdwdqwefgv</title>
             <description/>
             <duedate/>
-            <category>None</category>
+            <category/>
             <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
+            <creationdate>2013-03-04T21:50</creationdate>
+            <done>0</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>dwddfg</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-04T22:24</creationdate>
             <done>0</done>
             <deleted>1</deleted>
         </todoitem>
