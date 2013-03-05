@@ -14,6 +14,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.*;
+import javax.swing.event.ListDataListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
@@ -163,7 +164,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    // list
         this.doneList = new JList(doneListModel);
         this.doneList.addMouseListener(new TodoMouseListener());
-
         this.deletedList = new JList(deletedListModel);
         this.doneList.setCellRenderer(new ToDoListRenderer());
         this.deletedList.addMouseListener(new TodoMouseListener());
@@ -313,6 +313,9 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	public void update(Observable o, Object arg) {
 		System.out.println("DEBUG Update from model");
 		this.tableModel.fireTableDataChanged(); //informs tableModel-listeners, which in our case is this class as specified above
+        this.doneListModel.getDoneItems();
+        this.deletedListModel.getDeletedItems();
+        this.overdueListModel.getOverdueItems();
 	}
 
 	@Override
@@ -338,7 +341,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
     public JTable getTable() {
         return this.table;
     }
-    
+
     protected class TodoMouseListener implements MouseListener {
 
         @Override

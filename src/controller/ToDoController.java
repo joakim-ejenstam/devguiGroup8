@@ -139,7 +139,10 @@ public class ToDoController extends ComponentAdapter {
 
     public void setSelected(int index) {
         ToDoItem item = model.getToDoItem(index);
-        model.markToDoItemAsDone(item);
+        if(item.isDone())
+            model.markToDoItemAsUndone(item);
+        else
+            model.markToDoItemAsDone(item);
     }
 
     /**
