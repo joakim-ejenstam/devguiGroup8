@@ -15,14 +15,13 @@ import javax.swing.AbstractListModel;
 public class ListToDoItemModel extends AbstractListModel {
 
 	private ToDoItemModel itemModel;
-	private TableToDoItemModel model;
-	
+
 	/**
 	 * The constructor to create a list to do item model
 	 * @param listModel the underlying model
 	 */
-	public ListToDoItemModel(TableToDoItemModel listModel) {	//, LocalizedTexts newLang) {
-		this.model = listModel;
+	public ListToDoItemModel(ToDoItemModel listModel) {	//, LocalizedTexts newLang) {
+		this.itemModel = listModel;
 		//this.lang = newLang;	same as above
 	}
 	
@@ -32,8 +31,10 @@ public class ListToDoItemModel extends AbstractListModel {
 	 * @return the value at the specified index.
 	 */
 	@Override
-	public Object getElementAt(int row) {  
-		return this.model.getValueAt(row, 0); // specified row and column 0
+	public Object getElementAt(int row) {
+        if(this.itemModel.getToDoItem(row).isDone())
+            return this.itemModel.getToDoItem(row).getTitle();
+        return "";
 	}
 
 	/**
@@ -42,7 +43,7 @@ public class ListToDoItemModel extends AbstractListModel {
 	 */
 	@Override
 	public int getSize() {
-		return this.model.getRowCount();
+		return this.itemModel.getNumberOfToDoItems();
 	}
 	
 	

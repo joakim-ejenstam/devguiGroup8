@@ -44,7 +44,7 @@ public class ApplicationStartup {
 		final LocalizedTexts lang = new LocalizedTexts(config);
 		final ToDoController controller = new ToDoController(model, lang);
 		final TableToDoItemModel tbModel = new TableToDoItemModel(model, lang);
-		final ListToDoItemModel lModel = new ListToDoItemModel(tbModel);
+		final ListToDoItemModel lModel = new ListToDoItemModel(model);
 		controller.setConfig(config);
 
 		// let's do some ui finetuning

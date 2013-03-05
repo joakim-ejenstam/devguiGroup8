@@ -8,7 +8,7 @@
             <category>Private</category>
             <priority>1</priority>
             <creationdate>2013-02-07T12:32</creationdate>
-            <done>0</done>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
@@ -18,7 +18,7 @@
             <category>University</category>
             <priority>3</priority>
             <creationdate>2013-01-17T12:32</creationdate>
-            <done>0</done>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
@@ -28,28 +28,28 @@
             <category/>
             <priority>1</priority>
             <creationdate>2012-02-05T09:12</creationdate>
-            <done>0</done>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
             <title>on</title>
             <description/>
             <duedate/>
-            <category/>
-            <priority>0</priority>
+            <category>Private</category>
+            <priority>2</priority>
             <creationdate>2013-03-04T21:21</creationdate>
-            <done>0</done>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
             <title>efef</title>
             <description/>
             <duedate/>
-            <category/>
-            <priority>0</priority>
+            <category>None</category>
+            <priority>1</priority>
             <creationdate>2013-03-04T21:23</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
+            <done>1</done>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>wdw</title>
@@ -89,6 +89,26 @@
             <priority>0</priority>
             <creationdate>2013-03-04T22:24</creationdate>
             <done>0</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>aslkjdjfllkasödf</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <priority>1</priority>
+            <creationdate>2013-03-03T13:30</creationdate>
+            <done>0</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>laskdjfölzksdfjsadföljk</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <priority>1</priority>
+            <creationdate>2013-03-05T14:04</creationdate>
+            <done>1</done>
             <deleted>1</deleted>
         </todoitem>
     </todoitems>

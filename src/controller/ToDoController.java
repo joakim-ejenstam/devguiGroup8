@@ -27,6 +27,7 @@ public class ToDoController extends ComponentAdapter {
     private ChangeLanguageAction language;
     private AboutAction about;
     private EnableTimeAction enableDueTime;
+    private SetDoneAction setDone;
     private Config conf;
     private LocalizedTexts lang;
     private MainView view;
@@ -89,6 +90,12 @@ public class ToDoController extends ComponentAdapter {
                         createNavigationIcon("uknownicon"),
                         lang.getText("ui.mainview.enableTimeAction"),
                         null, this);
+        this.setDone =
+                new SetDoneAction(
+                        lang.getText("ui.mainview.menu.edit.delete"),
+                        createNavigationIcon("/Delete16"),
+                        lang.getText("ui.mainview.deleteAction"),
+                        KeyEvent.VK_D, this);
     }
 
     /**
@@ -128,6 +135,11 @@ public class ToDoController extends ComponentAdapter {
     public void removeItem(int index) {
         ToDoItem item = model.getToDoItem(index);
         model.deleteToDoItem(item);
+    }
+
+    public void setSelected(int index) {
+        ToDoItem item = model.getToDoItem(index);
+        model.markToDoItemAsDone(item);
     }
 
     /**
@@ -199,6 +211,10 @@ public class ToDoController extends ComponentAdapter {
 		return enableDueTime;
 	}
 
+    public SetDoneAction getDoneAction() {
+        return setDone;
+    }
+
     /**
      * Get method for the change language action.
      * @return
@@ -224,6 +240,7 @@ public class ToDoController extends ComponentAdapter {
     public void setTable(JTable newTable) {
         edit.setTable(newTable);
         delete.setTable(newTable);
+        setDone.setTable(newTable);
     }
 
     /**
@@ -310,7 +327,6 @@ public class ToDoController extends ComponentAdapter {
      * @return the objects language object.
      */
 	public LocalizedTexts getLanguage() {
-		// TODO Auto-generated method stub
 		return this.lang;
 	}
 

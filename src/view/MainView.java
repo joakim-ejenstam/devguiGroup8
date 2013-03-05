@@ -33,7 +33,7 @@ import controller.ToDoController;
  */
 
 @SuppressWarnings("serial")
-public class MainView extends JFrame implements Observer, TableModelListener {
+public class MainView extends JFrame implements Observer, TableModelListener{
 
 	private ToDoController controller;
     private TableToDoItemModel tableModel;
@@ -98,6 +98,7 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		JMenuItem addTodo = new JMenuItem(controller.getAddAction());
 		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
 		JMenuItem deleteTodo = new JMenuItem(controller.getDeleteAction());
+        JMenuItem setTodo = new JMenuItem(controller.getDoneAction());
 		
 		// Set up menu bar
 		menuBar.add(file);
@@ -108,12 +109,15 @@ public class MainView extends JFrame implements Observer, TableModelListener {
 		edit.add(addTodo);
 		edit.add(editTodo);
 		edit.add(deleteTodo);
+        edit.add(setTodo);
 
         popupMenu = new JPopupMenu("Pew pew!");
         JMenuItem popEdit = new JMenuItem(controller.getEditAction());
         JMenuItem popDel = new JMenuItem(controller.getDeleteAction());
+        JMenuItem popSet = new JMenuItem(controller.getDoneAction());
         popupMenu.add(popEdit);
         popupMenu.add(popDel);
+        popupMenu.add(popSet);
 
 		/* For later use when we add more sub menus to file menu:
 		file.addSeparator();
@@ -311,9 +315,10 @@ public class MainView extends JFrame implements Observer, TableModelListener {
         this.file.setText(lang.getText("ui.mainview.menu.file"));
         this.edit.setText(lang.getText("ui.mainview.menu.edit"));
         this.help.setText(lang.getText("ui.mainview.menu.help"));
-        this.viewPending.setText(lang.getText("ui.mainview.radiobutton.viewall"));
+        this.viewPending.setText(lang.getText("ui.mainview.radiobutton.viewpending"));
         this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
         this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
+        this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdelete"));
         this.setTitle("Greigth To Do Manager");			// no real need to translate this... (lang.getText("ui.mainview.windowTitle"));
         this.validate();
         this.repaint();
@@ -341,9 +346,6 @@ public class MainView extends JFrame implements Observer, TableModelListener {
             }
             else
               System.out.println("Click");
-
-            System.out.println(e.getButton());
-
 
         }
 
