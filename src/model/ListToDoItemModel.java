@@ -34,7 +34,7 @@ public class ListToDoItemModel extends AbstractListModel {
 	public Object getElementAt(int row) {
         if(this.itemModel.getToDoItem(row).isDone())
             return this.itemModel.getToDoItem(row).getTitle();
-        return "";
+        return "Det här är en båt!";
 	}
 
 	/**

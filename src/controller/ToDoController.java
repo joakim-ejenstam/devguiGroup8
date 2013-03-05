@@ -92,9 +92,9 @@ public class ToDoController extends ComponentAdapter {
                         null, this);
         this.setDone =
                 new SetDoneAction(
-                        lang.getText("ui.mainview.menu.edit.delete"),
-                        createNavigationIcon("/Delete16"),
-                        lang.getText("ui.mainview.deleteAction"),
+                        "båtknapp",
+                        createNavigationIcon("/Unknown16"),
+                        "det här är en...",
                         KeyEvent.VK_D, this);
     }
 
