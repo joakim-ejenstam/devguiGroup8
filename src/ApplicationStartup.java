@@ -11,6 +11,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 import model.DoneListModel;
 import model.OverdueListModel;
+import model.DeletedListModel;
 import model.LocalizedTexts;
 import model.TableToDoItemModel;
 import model.ToDoItemModel;
@@ -47,6 +48,7 @@ public class ApplicationStartup {
 		final TableToDoItemModel tbModel = new TableToDoItemModel(model, lang);
 		final OverdueListModel overdueModel = new OverdueListModel(model);
 		final DoneListModel doneModel = new DoneListModel(model);
+		final DeletedListModel deleteModel = new DeletedListModel(model);
 		controller.setConfig(config);
 
 		// let's do some ui finetuning
@@ -95,7 +97,7 @@ public class ApplicationStartup {
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				MainView view = new MainView(controller, tbModel, overdueModel, doneModel, lang);
+				MainView view = new MainView(controller, tbModel, overdueModel, doneModel, deleteModel, lang);
 				view.createAndShowGUI(config);
 			}
 		});
