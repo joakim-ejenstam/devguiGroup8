@@ -17,22 +17,38 @@ public class DoneListModel extends AbstractListModel {
 	private ToDoItemModel itemModel;
 	private List<ToDoItem> done;
 	
+	/**
+	 * The constructor to create a list to do item model
+	 * @param listModel the underlying model
+	 */
 	public DoneListModel(ToDoItemModel listModel) {	
 		this.itemModel = listModel;
-        this.done = new ArrayList<ToDoItem>(10);
+        this.done = new ArrayList<ToDoItem>();
 		getDoneItems();
 	}
 	
+	/**
+	 * Returns the value at the specified index.
+	 * @param row index where to retrieve the value.
+	 * @return the value at the specified index.
+	 */
 	@Override
 	public Object getElementAt(int index) {
         return this.done.get(index);
 	}
 
+	/**
+	 * Method for calculating the size (length) of the list.
+	 * @return the number of to do items in the list.
+	 */
 	@Override
 	public int getSize() {
 		return done.size();
 	}
 
+	/**
+	 * Method for retrieving the done items
+	 */
 	public void getDoneItems() {
 		List<ToDoItem> allItems = this.itemModel.getAllToDoItems();
 		int bound = allItems.size();

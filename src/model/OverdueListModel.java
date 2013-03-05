@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.List;
 import javax.swing.*;
 
 /**
- * This class provides the model of the list to be used in the main view. 
+ * This class provides the list model for the items that are overdue to be used in the main view. 
  * 
  * @author Emma Rangert
  *
@@ -27,7 +26,7 @@ public class OverdueListModel extends AbstractListModel {
 	 */
 	public OverdueListModel(ToDoItemModel listModel) {
 		this.itemModel = listModel;
-        this.overdue = new ArrayList<ToDoItem>(10);
+        this.overdue = new ArrayList<ToDoItem>();
 		getOverdueItems();
 	}
 	
@@ -50,6 +49,9 @@ public class OverdueListModel extends AbstractListModel {
         return overdue.size();
     }
 	
+	/**
+	 * Method for retrieving the overdue items.
+	 */
 	public void getOverdueItems() {
 		List<ToDoItem> allItems = this.itemModel.getAllToDoItems();
         int bound = allItems.size();
@@ -67,4 +69,5 @@ public class OverdueListModel extends AbstractListModel {
             }
 		}
 	}
+	
 }
