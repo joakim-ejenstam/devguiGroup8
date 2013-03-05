@@ -66,7 +66,7 @@ public class ToDoController extends ComponentAdapter {
                         KeyEvent.VK_O, this);
         this.cancel =
                 new CancelAction(
-                        "Cancel",
+                        lang.getText("ui.editview.button.cancel"),
                         createNavigationIcon("unkownicon"),
                         lang.getText("ui.mainview.cancelAction"),
                         KeyEvent.VK_C, this);
