@@ -288,7 +288,8 @@ public class ToDoController extends ComponentAdapter {
         this.language.updateLanguage(lang);
         this.cancel.updateLanguage(lang);
         this.about.updateLanguage(lang);
-        this.ok.updateLanguage(lang); 
+        this.ok.updateLanguage(lang);
+        this.enableDueTime.updateLanguage(lang);
         view.table.setModel(new TableToDoItemModel(model, lang));
         this.view.updateLanguage(lang);
     }
