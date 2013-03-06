@@ -309,9 +309,9 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	@Override
 	public void update(Observable o, Object arg) {
 		this.tableModel.fireTableDataChanged(); //informs tableModel-listeners, which in our case is this class as specified above
-        //this.doneListModel.getDoneItems();
-        //this.deletedListModel.getDeletedItems();
-        //this.overdueListModel.getOverdueItems();
+        this.doneListModel.getDoneItems();
+        this.deletedListModel.getDeletedItems();
+        this.overdueListModel.getOverdueItems();
 	}
 
 	@Override
