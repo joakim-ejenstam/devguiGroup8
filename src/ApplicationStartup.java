@@ -116,8 +116,8 @@ public class ApplicationStartup {
 		try {
 			today = df.parse(df.format(new Date()));
 			for (ToDoItem item : model.getAllToDoItems()) {
-				if (item.getReminderDate() != null) {
-					if (item.getReminderDate().equals(today)) {
+				if (item.getDueDate() != null) {
+					if (item.getDueDate().equals(today)) {
 						message.append("- " + item.getTitle() + ", ");
 						message.append(df.format(item.getDueDate()) + "\n\n");
 					}

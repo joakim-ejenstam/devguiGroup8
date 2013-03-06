@@ -21,7 +21,16 @@
             <done>0</done>
             <deleted>1</deleted>
         </todoitem>
-
+        <todoitem>
+            <title>TESTING NEW VER</title>
+            <description/>
+            <duedate>2013-03-06</duedate>
+            <category/>
+            <priority>0</priority>
+            <creationdate>2013-03-06T20:39</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
     </todoitems>
     <categories>
         <category>Private</category>
