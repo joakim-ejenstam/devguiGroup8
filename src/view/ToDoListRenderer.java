@@ -15,6 +15,7 @@ import java.util.Date;
  * Time: 20:49
  * To change this template use File | Settings | File Templates.
  */
+@SuppressWarnings("serial")
 public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
 
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {
