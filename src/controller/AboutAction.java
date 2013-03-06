@@ -40,7 +40,7 @@ public class AboutAction extends AbstractAction{
                         "\n Joakim Ejenstam, " +
                         "\n Simon Harhues, " +
                         "\n Emma Rangert, " +
-                        "\n Mattias Öst");
+                        "\n Mattias \u00F6st");
     }
 
     /**
