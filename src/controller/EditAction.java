@@ -48,6 +48,7 @@ public class EditAction extends AbstractAction {
 
     public void actionPerformed(ActionEvent event) {
         int index = table.getSelectedRow();
+       index = table.convertRowIndexToModel(index);
 
         if(index >= 0) {
             EditTaskFrame editView =

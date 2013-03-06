@@ -6,80 +6,66 @@
             <description>Use your new ToDo-application wisley.</description>
             <duedate>2013-03-01</duedate>
             <category>Private</category>
+            <reminderdate>2013-03-06</reminderdate>
             <priority>1</priority>
             <creationdate>2013-03-05T07:03</creationdate>
             <done>0</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>HEj</title>
+            <description/>
+            <duedate>2013-03-06</duedate>
+            <category>University</category>
+            <reminderdate/>
+            <priority>1</priority>
+            <creationdate>2013-03-06T11:22</creationdate>
+            <done>0</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>LOL</title>
+            <description/>
+            <duedate>2013-03-26</duedate>
+            <category>Private</category>
+            <reminderdate/>
+            <priority>1</priority>
+            <creationdate>2013-03-06T11:22</creationdate>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>lökasjdf</title>
+            <title>wd</title>
             <description/>
             <duedate/>
             <category/>
+            <reminderdate/>
             <priority>0</priority>
-            <creationdate>2013-03-05T19:05</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
+            <creationdate>2013-03-06T11:38</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>Testdata1</title>
+            <title>wdw</title>
             <description/>
-            <duedate>2013-03-01</duedate>
-            <category>None</category>
+            <duedate/>
+            <category>Private</category>
+            <reminderdate/>
             <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
+            <creationdate>2013-03-06T11:50</creationdate>
             <done>1</done>
             <deleted>1</deleted>
         </todoitem>
         <todoitem>
-            <title>Testdata2</title>
+            <title>Buy milk</title>
             <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
+            <duedate>2013-03-06</duedate>
+            <category>Private</category>
+            <reminderdate>2013-03-06</reminderdate>
+            <priority>2</priority>
+            <creationdate>2013-03-06T12:19</creationdate>
             <done>0</done>
             <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata3</title>
-            <description/>
-            <duedate>2013-03-01</duedate>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata4</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata5</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
         </todoitem>
     </todoitems>
     <categories>

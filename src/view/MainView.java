@@ -139,7 +139,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 		System.out.println("DEBUG: Col: "+tableModel.getColumnCount()
 				+" Row: "+tableModel.getRowCount());
 		JTable table = new JTable(tableModel);
-		table.setAutoCreateRowSorter(false); //removed the autosorting so we can implement our own sorting algorithm.
+		table.setAutoCreateRowSorter(true); //removed the autosorting so we can implement our own sorting algorithm.
         table.getTableHeader().setReorderingAllowed(false);
 		table.getModel().addTableModelListener(this);//should catch changes in the table model once we promote them with the fireUpdate() below.
 	    
@@ -165,6 +165,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.doneList.addMouseListener(new TodoMouseListener());
         this.deletedList = new JList(deletedListModel);
         this.doneList.setCellRenderer(new ToDoListRenderer());
+        this.doneList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.deletedList.addMouseListener(new TodoMouseListener());
         this.deletedList.setCellRenderer(new ToDoListRenderer());
         this.overdueList = new JList(overdueListModel);
@@ -347,27 +348,34 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         public void mouseClicked(MouseEvent e) {
             if (e.getClickCount() == 2 && !e.isConsumed() && e.getButton() == 1) {
                 e.consume();
-                System.out.println("Double click");
+
+                int index;
+                if (e.getSource() instanceof JTable)
+                    index = ((JTable) e.getSource()).convertColumnIndexToModel(((JTable) e.getSource()).getSelectedRow());
+                else
+                    index = ((JList)e.getSource()).getSelectedIndex();
+
                 EditTaskFrame editView =
                         new EditTaskFrame(
                                 controller,
-                                controller.getEditItem(table.getSelectedRow()),
+                                controller.getEditItem(index),
                                 controller.getCategories(),
                                 controller.getLanguage());
                 editView.setSize(400,400);
                 editView.setVisible(true);
-            }
-            else
-              System.out.println("Click");
-
+             }
         }
 
         public void mousePressed(MouseEvent ev) {
             if (ev.isPopupTrigger()) {
-                System.out.println("DEBUG: popuptrigger " + ev.isPopupTrigger());
+                int r = table.rowAtPoint(ev.getPoint());
+                if (r >= 0 && r < table.getRowCount()) {
+                    table.setRowSelectionInterval(r, r);
+                } else {
+                    table.clearSelection();
+                }
                 popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
             }
-            System.out.println("DEBUG: popuptrigger " + ev.isPopupTrigger());
         }
 
         public void mouseReleased(MouseEvent ev) {
@@ -378,10 +386,8 @@ public class MainView extends JFrame implements Observer, TableModelListener{
                 } else {
                     table.clearSelection();
                 }
-                System.out.println("DEBUG: popuptrigger " + ev.isPopupTrigger());
                 popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
             }
-            System.out.println("DEBUG: popuptrigger " + ev.isPopupTrigger());
         }
 
 

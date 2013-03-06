@@ -82,6 +82,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		Element desc 			= new Element("description");
 		Element dueDate			= new Element("duedate");
 		Element category		= new Element("category");
+		Element remDate			= new Element("reminderdate");
 		Element priority 		= new Element("priority");
 		Element creationDate 	= new Element("creationdate");
 		Element done		 	= new Element("done");
@@ -95,11 +96,11 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		desc.appendChild(item.getDescription());
 		
 		todo.appendChild(dueDate);
-		String date1 = "";
+		String dDate = "";
 		if (item.getDueDate() != null){
-			date1 = this.dateFormatter("yyyy-MM-dd", item.getDueDate());
+			dDate = this.dateFormatter("yyyy-MM-dd", item.getDueDate());
 		}
-		dueDate.appendChild(date1);
+		dueDate.appendChild(dDate);
 		
 		todo.appendChild(category);
 		String cat = "";
@@ -108,12 +109,20 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		}
 		category.appendChild(cat);
 		
+		
+		todo.appendChild(remDate);
+		String rDate = "";
+		if (item.getReminderDate() != null){
+			rDate = this.dateFormatter("yyyy-MM-dd", item.getReminderDate());
+		}
+		remDate.appendChild(rDate);
+		
 		todo.appendChild(priority);
 		priority.appendChild(Integer.toString(item.getPriority()));
 		
 		todo.appendChild(creationDate);
-		String date2 = this.dateFormatter("yyyy-MM-dd'T'HH:mm", item.getCreationDate());
-		creationDate.appendChild(date2);
+		String cDate = this.dateFormatter("yyyy-MM-dd'T'HH:mm", item.getCreationDate());
+		creationDate.appendChild(cDate);
 		
 		todo.appendChild(done);
 		String doneAttr = (true == item.isDone() ? "1" : "0");
@@ -171,6 +180,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 						+"\t\t\t<description>Use your new ToDo-application wisley.</description>\n"
 						+"\t\t\t<duedate>"+new SimpleDateFormat("yyyy-mm-dd").format(new Date())+"</duedate>\n"
 						+"\t\t\t<category>Private</category>\n"
+						+"\t\t\t<reminderdate>"+new SimpleDateFormat("yyyy-mm-dd").format(new Date())+"</reminderdate>\n"
 						+"\t\t\t<priority>1</priority>\n"
 						+"\t\t\t<creationdate>"+new SimpleDateFormat("yyyy-mm-dd'T'hh:mm").format(new Date())+"</creationdate>\n"
 						+"\t\t\t<done>0</done>\n"
@@ -205,6 +215,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				Element desc 			 = todos.get(i).getFirstChildElement("description");
 				Element dueDate			 = todos.get(i).getFirstChildElement("duedate");
 				Element category		 = todos.get(i).getFirstChildElement("category");
+				Element remDate			 = todos.get(i).getFirstChildElement("reminderdate");
 				Element priority 		 = todos.get(i).getFirstChildElement("priority");
 				Element creationDate 	 = todos.get(i).getFirstChildElement("creationdate");
 				Element done		 	 = todos.get(i).getFirstChildElement("done");
@@ -216,11 +227,11 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 										//as it would add the item as a new item to the xml-file
 				task.setTitle(title.getValue());
 				task.setDescription(desc.getValue());
-				Date date1 = null;
+				Date dDate = null;
 				if (dueDate.getValue() != ""){
-					 date1 = this.dateParser("yyy-MM-dd", dueDate.getValue());
+					dDate = this.dateParser("yyyy-MM-dd", dueDate.getValue());
 				}
-				task.setDueDate(date1);
+				task.setDueDate(dDate);
 				
 				
 				if(category.getValue() != ""){
@@ -231,11 +242,16 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 					}
 				}
 				
+				Date rDate = null;
+				if (remDate.getValue() != ""){
+					rDate = this.dateParser("yyyy-MM-dd", remDate.getValue());
+				}
+				task.setReminderDate(rDate);
 				
 				task.setPriority(Integer.parseInt(priority.getValue()));
 				
-				Date date2 = this.dateParser("yyy-MM-dd'T'HH:mm", creationDate.getValue());
-				task.setCreationDate(date2);
+				Date cDate = this.dateParser("yyyy-MM-dd'T'HH:mm", creationDate.getValue());
+				task.setCreationDate(cDate);
 				boolean doneAttr = (1 == Integer.parseInt(done.getValue())) ? true : false;
 				task.setDone(doneAttr);
 				

@@ -56,8 +56,8 @@ public class SetDoneAction extends AbstractAction {
      * @param lang Language localization class to get correct textstrings.
      */
     public void updateLanguage(LocalizedTexts lang) {
-        putValue(NAME, lang.getText("ui.mainview.menu.edit.delete"));
-        putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.deleteAction"));
+        putValue(NAME, lang.getText("ui.tableview.setdone"));
+        putValue(SHORT_DESCRIPTION,lang.getText("ui.tableview.setdone"));
     }
 
 }

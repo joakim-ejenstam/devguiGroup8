@@ -3,8 +3,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -14,6 +18,7 @@ import model.OverdueListModel;
 import model.DeletedListModel;
 import model.LocalizedTexts;
 import model.TableToDoItemModel;
+import model.ToDoItem;
 import model.ToDoItemModel;
 import model.XMLFileToDoItemModel;
 import view.MainView;
@@ -22,7 +27,7 @@ import controller.ToDoController;
 import exceptions.LoadModelException;
 
 /**
- * Created with IntelliJ IDEA. User: Joakim Date: 2013-02-07 Time: 09:50
+ * @author Joakim, Mattias
  */
 public class ApplicationStartup {
 
@@ -62,8 +67,9 @@ public class ApplicationStartup {
 					lang.getText("ui.mainview.windowTitle"));
 
 			try {
-				//Apple's menu is not compatible with the nimbus theme with custom colors
-				//so we set to system default instead
+				// Apple's menu is not compatible with the nimbus theme with
+				// custom colors
+				// so we set to system default instead
 				UIManager.setLookAndFeel(UIManager
 						.getSystemLookAndFeelClassName());
 			} catch (Exception ex) {
@@ -74,8 +80,8 @@ public class ApplicationStartup {
 			try {
 				Properties colorProp = loadColorProperties();
 				UIManager.put("Table.showGrid", true);
-				
-				//Add custom colors from the property
+
+				// Add custom colors from the property
 				UIManager.put("nimbusBase",
 						Color.decode(colorProp.getProperty("ui.primeColor1")));
 				UIManager.put("nimbusBlueGrey",
@@ -91,17 +97,40 @@ public class ApplicationStartup {
 					}
 				}
 			} catch (Exception e) {
-				//default theme will be used.
+				// default theme will be used.
 			}
 		}
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				MainView view = new MainView(controller, tbModel, overdueModel, doneModel, deleteModel, lang);
+				MainView view = new MainView(controller, tbModel, overdueModel,
+						doneModel, deleteModel, lang);
 				view.createAndShowGUI(config);
 			}
 		});
 
+		StringBuilder message = new StringBuilder(lang.getText("ui.mainview.optionpane.remindertext"));
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date today = null;
+		try {
+			today = df.parse(df.format(new Date()));
+			for (ToDoItem item : model.getAllToDoItems()) {
+				if (item.getReminderDate() != null) {
+					if (item.getReminderDate().equals(today)) {
+						message.append("- "+item.getTitle()+", ");
+						message.append(df.format(item.getDueDate()) + "\n\n");
+					}
+				}
+
+			}
+		} catch (ParseException e) {
+			JOptionPane.showMessageDialog(null,"Error parsing date");
+		}
+		JOptionPane.showMessageDialog(null, message,
+				lang.getText("ui.mainview.optionpane.remindertitle"),
+				JOptionPane.INFORMATION_MESSAGE );
+		
+		
 		// //following stuff happens at exiting the application
 		// Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 		//
