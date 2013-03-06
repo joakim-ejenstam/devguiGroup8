@@ -82,7 +82,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         
         //add this view as a listener to the changes of the model
         controller.addObserver(this);
-        System.out.println("DEBUG added view as observer to model");
     }
 
     /**
@@ -163,11 +162,13 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    // list
         this.doneList = new JList(doneListModel);
         this.doneList.addMouseListener(new TodoMouseListener());
-        this.deletedList = new JList(deletedListModel);
         this.doneList.setCellRenderer(new ToDoListRenderer());
         this.doneList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        this.deletedList = new JList(deletedListModel);
         this.deletedList.addMouseListener(new TodoMouseListener());
         this.deletedList.setCellRenderer(new ToDoListRenderer());
+
         this.overdueList = new JList(overdueListModel);
         this.overdueList.addMouseListener(new TodoMouseListener());
         this.overdueList.setCellRenderer(new ToDoListRenderer());
@@ -211,7 +212,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	        public void actionPerformed(ActionEvent e) {
 	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
 	          scrollPane.getViewport().add(table);
-	          System.out.println("view all action");
 	          scrollPane.revalidate();
 	          scrollPane.repaint();
 	        }
@@ -221,7 +221,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	        public void actionPerformed(ActionEvent e) {
 	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
 	          scrollPane.getViewport().add(doneList);
-	          System.out.println("view done action");
 	          scrollPane.revalidate();
 	          scrollPane.repaint();
 	        }
@@ -231,7 +230,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	        public void actionPerformed(ActionEvent e) {
 	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
 	          scrollPane.getViewport().add(overdueList);
-	          System.out.println("view over due action");
 	          scrollPane.revalidate();
 	          scrollPane.repaint();
 	        }
@@ -241,7 +239,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	        public void actionPerformed(ActionEvent e) {
 	          scrollPane.getViewport().remove(table);
 	          scrollPane.getViewport().add(deletedList);
-	          System.out.println("view deleted action");
 	          scrollPane.revalidate();
 	          scrollPane.repaint();
 	        }
@@ -311,16 +308,14 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("DEBUG Update from model");
 		this.tableModel.fireTableDataChanged(); //informs tableModel-listeners, which in our case is this class as specified above
-        this.doneListModel.getDoneItems();
-        this.deletedListModel.getDeletedItems();
-        this.overdueListModel.getOverdueItems();
+        //this.doneListModel.getDoneItems();
+        //this.deletedListModel.getDeletedItems();
+        //this.overdueListModel.getOverdueItems();
 	}
 
 	@Override
 	public void tableChanged(TableModelEvent arg0) {
-		System.out.println("DEBUG tableChanged()");
 		// TODO Auto-generated method stub
 		//not sure what we have to do here...
 	}

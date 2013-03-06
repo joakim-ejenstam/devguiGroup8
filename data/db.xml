@@ -10,7 +10,7 @@
             <priority>1</priority>
             <creationdate>2013-03-05T07:03</creationdate>
             <done>0</done>
-            <deleted>1</deleted>
+            <deleted>0</deleted>
         </todoitem>
         <todoitem>
             <title>HEj</title>
@@ -26,18 +26,18 @@
         <todoitem>
             <title>LOL</title>
             <description/>
-            <duedate>2013-03-26</duedate>
+            <duedate>2013-03-06</duedate>
             <category>Private</category>
             <reminderdate/>
             <priority>1</priority>
             <creationdate>2013-03-06T11:22</creationdate>
             <done>1</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>wd</title>
             <description/>
-            <duedate/>
+            <duedate>2013-03-06</duedate>
             <category/>
             <reminderdate/>
             <priority>0</priority>
@@ -64,6 +64,28 @@
             <reminderdate>2013-03-06</reminderdate>
             <priority>2</priority>
             <creationdate>2013-03-06T12:19</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>sdfgfdg</title>
+            <description/>
+            <duedate>2013-03-05</duedate>
+            <category>University</category>
+            <reminderdate/>
+            <priority>2</priority>
+            <creationdate>2013-03-06T19:23</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>dgfhjfghjk</title>
+            <description/>
+            <duedate/>
+            <category>None</category>
+            <reminderdate/>
+            <priority>1</priority>
+            <creationdate>2013-03-06T19:24</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
