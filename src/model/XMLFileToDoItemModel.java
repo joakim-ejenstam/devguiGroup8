@@ -229,7 +229,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				task.setDescription(desc.getValue());
 				Date dDate = null;
 				if (dueDate.getValue() != ""){
-					dDate = this.dateParser("yyy-MM-dd", dueDate.getValue());
+					dDate = this.dateParser("yyyy-MM-dd", dueDate.getValue());
 				}
 				task.setDueDate(dDate);
 				
@@ -244,13 +244,13 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				
 				Date rDate = null;
 				if (remDate.getValue() != ""){
-					rDate = this.dateParser("yyy-MM-dd", remDate.getValue());
+					rDate = this.dateParser("yyyy-MM-dd", remDate.getValue());
 				}
 				task.setReminderDate(rDate);
 				
 				task.setPriority(Integer.parseInt(priority.getValue()));
 				
-				Date cDate = this.dateParser("yyy-MM-dd'T'HH:mm", creationDate.getValue());
+				Date cDate = this.dateParser("yyyy-MM-dd'T'HH:mm", creationDate.getValue());
 				task.setCreationDate(cDate);
 				boolean doneAttr = (1 == Integer.parseInt(done.getValue())) ? true : false;
 				task.setDone(doneAttr);
