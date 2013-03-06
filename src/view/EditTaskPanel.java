@@ -48,7 +48,6 @@ public class EditTaskPanel extends JPanel {
     private JLabel descriptionLabel;//      = new JLabel(lang.getText("ui.editview.description"));
     private JLabel categoryLabel;//         = new JLabel(lang.getText("ui.editview.category"));
     private JLabel priorityLabel;//         = new JLabel(lang.getText("ui.editview.priotity"));
-    private JLabel reminderLabel;
     
     
     //TextFields
@@ -82,12 +81,9 @@ public class EditTaskPanel extends JPanel {
     private JPanel topPanel              = new JPanel();
     private JPanel subTopPanel			 = new JPanel();
     private JPanel buttonPanel			 = new JPanel();
-    private JPanel reminderPanelRight	 = new JPanel();
-    private JPanel reminderPanel		 = new JPanel();  
 
     //JDates
     private JDateChooser dueDateCal		= new JDateChooser();
-    private JDateChooser remDateCal		= new JDateChooser();
     
     /**
      * The constructor for the class.
@@ -103,7 +99,6 @@ public class EditTaskPanel extends JPanel {
     	descriptionLabel      = new JLabel(lang.getText("ui.editview.label.description"));
     	categoryLabel         = new JLabel(lang.getText("ui.editview.label.category"));
     	priorityLabel         = new JLabel(lang.getText("ui.editview.label.priority"));
-    	reminderLabel		  = new JLabel(lang.getText("ui.editview.label.reminder"));
     	
     	lowPriority     = new JRadioButton(lang.getText("ui.editview.priority.low"), true);
     	mediumPriority  = new JRadioButton(lang.getText("ui.editview.priority.medium"), false);
@@ -136,8 +131,6 @@ public class EditTaskPanel extends JPanel {
         subBottomPanel.setLayout(new BorderLayout());
         priorityPanel.setLayout(new BoxLayout(priorityPanel, BoxLayout.LINE_AXIS));
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
-        reminderPanel.setLayout(new BoxLayout(reminderPanel, BoxLayout.LINE_AXIS));
-        reminderPanelRight.setLayout(new BoxLayout(reminderPanelRight, BoxLayout.LINE_AXIS));
         
         //Configuration for topTitlePanel
         topTitlePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -181,14 +174,7 @@ public class EditTaskPanel extends JPanel {
         //Configuration for bottomLabels
         bottomLabelPanel.add(Box.createRigidArea(new Dimension(0,15)));
         bottomLabelPanel.add(Box.createRigidArea(new Dimension(20,0)));
-        bottomLabelPanel.add(priorityLabel);
-        
-        
-        //Configuration for reminderPanel    
-        reminderPanel.add(Box.createRigidArea(new Dimension(10,0)));
-        reminderPanel.add(reminderLabel);
-        reminderPanel.add(remDateCal);
-        reminderPanel.add(Box.createRigidArea(new Dimension(180,0)));
+        bottomLabelPanel.add(priorityLabel);      
         
         
         //Configuration for priorityPanel
@@ -219,7 +205,6 @@ public class EditTaskPanel extends JPanel {
         topPanel.add(Box.createRigidArea(new Dimension(0,5)));
         descriptionArea.setLineWrap(true);
         topPanel.add(scrollArea, BorderLayout.CENTER);
-        subBottomPanel.add(reminderPanel,BorderLayout.PAGE_START);
         subBottomPanel.add(bottomLabelPanel, BorderLayout.LINE_START);
         subBottomPanel.add(bottomCenterPanel,BorderLayout.CENTER);
         bottomPanel.add(subBottomPanel, BorderLayout.PAGE_END);
