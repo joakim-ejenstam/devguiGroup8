@@ -38,8 +38,9 @@ public class OverdueListModel extends AbstractListModel {
 			today = df.parse(df.format(new Date()));
 
 		} catch (ParseException e) {
-			getOverdueItems();
+			e.printStackTrace();
 		}
+		getOverdueItems();
 	}
 	
 	/**
@@ -73,7 +74,9 @@ public class OverdueListModel extends AbstractListModel {
             ToDoItem item = allItems.get(i);
             if (item.getDueDate() != null) {
 
-			    if (item.getDueDate().compareTo(today) < 0) {
+            	int compare = item.getDueDate().compareTo(today);
+			    
+            	if (compare < 0 && compare != 0) {
 				    this.overdue.add(item);
 			    }
             }
