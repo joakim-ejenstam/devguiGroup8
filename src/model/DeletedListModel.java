@@ -45,6 +45,6 @@ public class DeletedListModel extends AbstractListModel {
 	 */
 	public void getDeletedItems() {
 		this.deleted = this.itemModel.getDeletedToDoItems();
-    	super.fireContentsChanged(this.deleted, 0, getSize());
+        super.fireContentsChanged(this,0,deleted.size());
 	}
 }

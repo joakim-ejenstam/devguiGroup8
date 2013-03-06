@@ -52,17 +52,14 @@ public class DoneListModel extends AbstractListModel {
 	public void getDoneItems() {
 		List<ToDoItem> allItems = this.itemModel.getAllToDoItems();
 		int bound = allItems.size();
-        
-        System.out.println("number of items" + bound);
-        
+        this.done = new ArrayList<ToDoItem>();
+
 		for (int i = 0; i < bound; i++) {
-            System.out.println("Debug: Time to check if item added to list");
             ToDoItem item = allItems.get(i);
             
             if (item.isDone()) {
-            	System.out.println("Debug: Overdue item added to list");
             	this.done.add(item);
-            	super.fireContentsChanged(this.done, 0, getSize());
+                super.fireContentsChanged(this,0,bound);
             }
 		}
 	}
