@@ -46,10 +46,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
     private LocalizedTexts lang;
     public JTable table;
     
-    public JList doneList;// = new JList(choices);
-    public JList overdueList;// = new JList(choices2);
-    public JList deletedList;// = new JList(choices3);
-    
     private JMenu file;
     private JMenu edit;
     private JMenu help;
@@ -64,6 +60,19 @@ public class MainView extends JFrame implements Observer, TableModelListener{
     private JRadioButton viewPending;
     private JRadioButton viewDeleted;
 
+    public JList doneList;
+    public JList overdueList;
+    public JList deletedList;
+    
+    /**
+     * Constructor
+     * @param newController the controller 
+     * @param tbModel the underlaying table model 
+     * @param overdueModel the over due item list model
+     * @param doneModel the done item list model
+     * @param deleteModel the deleted item list model
+     * @param newLang the language resource
+     */
     public MainView(ToDoController newController, TableToDoItemModel tbModel, OverdueListModel overdueModel, DoneListModel doneModel, DeletedListModel deleteModel, LocalizedTexts newLang) {
         this.controller = newController;
         //the main view needs a TableModel as it uses a JTable
@@ -124,10 +133,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         popupMenu.add(popEdit);
         popupMenu.add(popDel);
         popupMenu.add(popSet);
-
-		/* For later use when we add more sub menus to file menu:
-		file.addSeparator();
-		*/
 	}
 	
 	/**
@@ -320,6 +325,10 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 		//not sure what we have to do here...
 	}
 
+	/**
+	 * Method for updating the language of the user interface
+	 * @param lang the language to update to. 
+	 */
     public void updateLanguage(LocalizedTexts lang) {
         this.file.setText(lang.getText("ui.mainview.menu.file"));
         this.edit.setText(lang.getText("ui.mainview.menu.edit"));
@@ -333,6 +342,10 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.repaint();
     }
 
+    /**
+     * Method for returning the table. 
+     * @return the table
+     */
     public JTable getTable() {
         return this.table;
     }
