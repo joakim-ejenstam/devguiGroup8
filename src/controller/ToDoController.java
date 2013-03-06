@@ -43,19 +43,19 @@ public class ToDoController extends ComponentAdapter {
         this.add =
                 new AddAction(
                         lang.getText("ui.mainview.menu.edit.add"),
-                        createNavigationIcon("/Add16"),
+                        createNavigationIcon("/Add"),
                         lang.getText("ui.mainview.addAction"),
                         KeyEvent.VK_A, this, lang);
         this.edit =
                 new EditAction(
                         lang.getText("ui.mainview.menu.edit.edit"),
-                        createNavigationIcon("/Edit16"),
+                        createNavigationIcon("/Overlay-edit"),
                         lang.getText("ui.mainview.editAction"),
                         KeyEvent.VK_E, this, lang);
         this.delete =
                 new DeleteAction(
                         lang.getText("ui.mainview.menu.edit.delete"),
-                        createNavigationIcon("/Delete16"),
+                        createNavigationIcon("/Trash"),
                         lang.getText("ui.mainview.deleteAction"),
                         KeyEvent.VK_D, this);
         this.ok =
@@ -73,20 +73,20 @@ public class ToDoController extends ComponentAdapter {
         this.language =
                 new ChangeLanguageAction(
                         lang.getText("ui.mainview.menu.file.changeLanguage"),
-                        createNavigationIcon("/Information16"),
+                        createNavigationIcon("/Compile"),
                         lang.getText("ui.mainview.languageAction"),
                         KeyEvent.VK_L, this);
         this.about =
                 new AboutAction(
                         lang.getText("ui.mainview.menu.help.about"),
-                        createNavigationIcon("/About16"),
+                        createNavigationIcon("/Info"),
                         lang.getText("ui.mainview.aboutAction"),
                         KeyEvent.VK_F, this);
         
         this.setDone =
                 new SetDoneAction(
                         lang.getText("ui.tableview.setdone"),
-                        createNavigationIcon("/Setdone16"),
+                        createNavigationIcon("/Ok"),
                         lang.getText("ui.tableview.setdone"),
                         KeyEvent.VK_D, this);
     }
