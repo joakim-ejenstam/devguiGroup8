@@ -121,7 +121,7 @@ public class ApplicationStartup {
 					if (item.getReminderDate().equals(today)) {
 						System.out.println("LIKA");
 						message.append("- "+item.getTitle()+", ");
-						message.append(item.getDueDate() + "\n\n");
+						message.append(df.format(item.getDueDate()) + "\n\n");
 					}
 				}
 
