@@ -1,5 +1,8 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,16 +21,25 @@ public class OverdueListModel extends AbstractListModel {
 
 	private ToDoItemModel itemModel;
 	private List<ToDoItem> overdue;
-	final Date currDate = new Date();
 
+	Date today;
+	
 	/**
 	 * The constructor to create a list to do item model
-	 * @param listModel the underlying model
+	 * @param listModel the underlying model 
 	 */
 	public OverdueListModel(ToDoItemModel listModel) {
 		this.itemModel = listModel;
         this.overdue = new ArrayList<ToDoItem>();
-		getOverdueItems();
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try {
+			today = df.parse(df.format(new Date()));
+
+		} catch (ParseException e) {
+			getOverdueItems();
+		}
 	}
 	
 	/**
@@ -57,12 +69,12 @@ public class OverdueListModel extends AbstractListModel {
         int bound = allItems.size();
         
         System.out.println("number of items" + bound);
-        System.out.println("currdate = " + currDate);
+        System.out.println("currdate = " + this.today);
 		for (int i = 0; i < bound; i++) {
             System.out.println("Debug: Time to check if item added to list");
             ToDoItem item = allItems.get(i);
             if (item.getDueDate() != null) {
-			    if (item.getDueDate().compareTo(currDate) < 0) {
+			    if (item.getDueDate().compareTo(this.today) < 0) {
                     System.out.println("Debug: Overdue item added to list");
 				    this.overdue.add(item);
 	            	super.fireContentsChanged(this.overdue, 0, getSize());
