@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -147,6 +148,8 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         table.getTableHeader().setReorderingAllowed(false);
 		table.getModel().addTableModelListener(this);//should catch changes in the table model once we promote them with the fireUpdate() below.
 	    
+		table.getTableHeader().setFont(new Font( "Arial" , Font.PLAIN, 13));
+		
 	    return table;
 	}
 	
@@ -196,7 +199,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    
 	    // Set layouts and alignment
 	    southPanel.setLayout(new BorderLayout());
-	    northPanel.setLayout(new BorderLayout());//FlowLayout(FlowLayout.LEFT));
+	    northPanel.setLayout(new BorderLayout());
 	    inputFld.setHorizontalAlignment(JTextField.LEFT);
 
 	    // Set up south panel
@@ -337,7 +340,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
         this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
         this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdeleted"));
-        this.setTitle("Greigth To Do Manager");			// no real need to translate this... (lang.getText("ui.mainview.windowTitle"));
+        this.setTitle(lang.getText("ui.mainview.windowTitle"));
         this.validate();
         this.repaint();
     }
