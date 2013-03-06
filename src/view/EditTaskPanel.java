@@ -54,8 +54,6 @@ public class EditTaskPanel extends JPanel {
     
     //TextFields
     private JTextField titleField       	= new JTextField(10);
-    private JTextField dueTimeField			= new JTextField(5);
-    private JTextField categoryField    	= new JTextField(5);
 
     
     //Text area
@@ -77,7 +75,6 @@ public class EditTaskPanel extends JPanel {
     private JPanel topDatePanel			 = new JPanel();
     private JPanel categoryPanel		 = new JPanel();
     private JPanel descCatPanel			 = new JPanel();
-    private JPanel topTimePanel			 = new JPanel();
     private JPanel bottomPanel           = new JPanel();
     private JPanel bottomLabelPanel		 = new JPanel();
     private JPanel priorityPanel	 	 = new JPanel();
@@ -142,7 +139,6 @@ public class EditTaskPanel extends JPanel {
         subTopPanel.setLayout(new BoxLayout(subTopPanel, BoxLayout.PAGE_AXIS));
         topTitlePanel.setLayout(new BoxLayout(topTitlePanel, BoxLayout.LINE_AXIS));
         topDatePanel.setLayout(new BoxLayout(topDatePanel,BoxLayout.LINE_AXIS));
-        topTimePanel.setLayout(new BoxLayout(topTimePanel,BoxLayout.LINE_AXIS));
         descCatPanel.setLayout(new BoxLayout(descCatPanel, BoxLayout.LINE_AXIS));
         categoryPanel.setLayout(new BoxLayout(categoryPanel, BoxLayout.LINE_AXIS));
         bottomPanel.setLayout(new BorderLayout());
@@ -174,22 +170,7 @@ public class EditTaskPanel extends JPanel {
         dateLabel.setPreferredSize(dateLabel.getPreferredSize());
         topDatePanel.add(dateLabel);
         topDatePanel.add(dueDateCal);
-        
-        
-        //Configuration for topTimePanel
-        topTimePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        topTimePanel.add(Box.createRigidArea(new Dimension(10,0)));
-        timeLabel.setPreferredSize(timeLabel.getPreferredSize());
-        topTimePanel.add(timeLabel);
-        DateEditor timeEditor = new JSpinner.DateEditor(dueTimeSpinner, "HH:mm");
-        dueTimeSpinner.setEditor(timeEditor);
-       // dueTimeSpinner.setValue("HH:mm");
-        dueTimeSpinner.setEnabled(false);
-        topTimePanel.add(dueTimeSpinner);
-        topTimePanel.add(Box.createRigidArea(new Dimension(10,0)));
-        enableDueTime = new JCheckBox(controller.getEnableDueTimeAction());
-        topTimePanel.add(enableDueTime);
-        
+
         
         //Configuration for category panel
         categoryPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -211,8 +192,6 @@ public class EditTaskPanel extends JPanel {
         subTopPanel.add(Box.createRigidArea(new Dimension(0,2)));
         subTopPanel.add(topDatePanel);
         subTopPanel.add(Box.createRigidArea(new Dimension(0,2)));
-        subTopPanel.add(topTimePanel);
-        subTopPanel.add(Box.createRigidArea(new Dimension(0,2)));
         subTopPanel.add(descCatPanel);
         subTopPanel.add(Box.createRigidArea(new Dimension(0,5)));
 
@@ -222,26 +201,11 @@ public class EditTaskPanel extends JPanel {
         bottomLabelPanel.add(Box.createRigidArea(new Dimension(20,0)));
         bottomLabelPanel.add(priorityLabel);
         
-        //Configuration for reminderPanel
-        
-
-        
-        //reminderPanel.add(reminderLabel);
-        reminderPanelRight.add(remDateCal);
-        DateEditor timeRemEditor = new JSpinner.DateEditor(remTimeSpinner, "HH:mm");
-        remTimeSpinner.setEditor(timeRemEditor);
-        reminderPanelRight.add(Box.createRigidArea(new Dimension(5,0)));
-        remTimeSpinner.setEnabled(false);
-        reminderPanelRight.add(remTimeSpinner);
-        reminderPanelRight.add(Box.createRigidArea(new Dimension(10,0)));
-        enableRemTime = new JCheckBox(controller.getEnableDueTimeAction());
-        reminderPanelRight.add(enableRemTime);
-        reminderPanelRight.add(Box.createRigidArea(new Dimension(30,0)));
-        
+        //Configuration for reminderPanel    
         reminderPanel.add(Box.createRigidArea(new Dimension(10,0)));
-        reminderPanel.setAlignmentX(RIGHT_ALIGNMENT);
         reminderPanel.add(reminderLabel);
-        reminderPanel.add(reminderPanelRight);
+        reminderPanel.add(remDateCal);
+        reminderPanel.add(Box.createRigidArea(new Dimension(180,0)));
         
         //Configuration for priorityPanel
         priorityGroup.add(lowPriority);
@@ -303,14 +267,6 @@ public class EditTaskPanel extends JPanel {
             this.descriptionArea.setText(item.getDescription());
         if(item.getCreationDate() != null)
             this.dueDateCal.setDate(item.getDueDate());
-        if(item.getDueTime() != null){
-        	this.enableDueTime.setSelected(true);
-        	this.dueTimeSpinner.setEnabled(true);
-        }
-        if(item.getReminderTime() != null){
-        	this.enableRemTime.setSelected(true);
-        	this.remTimeSpinner.setEnabled(true);
-        }
     }
     
     /**
