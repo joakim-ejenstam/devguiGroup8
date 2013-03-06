@@ -3,10 +3,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
@@ -111,7 +109,8 @@ public class ApplicationStartup {
 			}
 		});
 
-		StringBuilder message = new StringBuilder("*REMINDER*\nThe following task(s) have duedate:\n\n");
+		StringBuilder message = new StringBuilder(
+				lang.getText("ui.mainview.optionpane.remindertext"));
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date today = null;
 		try {
@@ -119,8 +118,7 @@ public class ApplicationStartup {
 			for (ToDoItem item : model.getAllToDoItems()) {
 				if (item.getReminderDate() != null) {
 					if (item.getReminderDate().equals(today)) {
-						System.out.println("LIKA");
-						message.append("- "+item.getTitle()+", ");
+						message.append("- " + item.getTitle() + ", ");
 						message.append(df.format(item.getDueDate()) + "\n\n");
 					}
 				}
@@ -129,9 +127,10 @@ public class ApplicationStartup {
 		} catch (ParseException e) {
 			JOptionPane.showMessageDialog(null, "Error parsing date");
 		}
-		System.out.println(message);
-		//System.out.println(today);
-		JOptionPane.showMessageDialog(null, message);
+		JOptionPane.showMessageDialog(null, message,
+				lang.getText("ui.mainview.optionpane.remindertitle"),
+				JOptionPane.INFORMATION_MESSAGE);
+
 		// //following stuff happens at exiting the application
 		// Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 		//
