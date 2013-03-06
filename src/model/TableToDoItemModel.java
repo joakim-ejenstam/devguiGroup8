@@ -71,6 +71,9 @@ public class TableToDoItemModel extends AbstractTableModel {
 		        if (method.isAnnotationPresent(DisplayInTable.class) && method.getAnnotation(DisplayInTable.class).value() == arg1) {
 		            try {
                         //System.out.println(this.model.getToDoItem(arg0).getTitle() + " " + this.model.getToDoItem(arg0).getCategory() + " " + arg1);
+
+                        /*So this method returns null if the fields of the first item that is not deleted are not set, should do some error checking
+                        * TODO: Look for solution to returning null since we absolutely don't want that.*/
 						return method.invoke(this.model.getToDoItem(arg0), (Object[])null); //it's save to use null, as we just call getters
 					} catch (IllegalAccessException e) {
 						e.printStackTrace();
