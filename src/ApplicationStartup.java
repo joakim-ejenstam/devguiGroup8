@@ -109,7 +109,8 @@ public class ApplicationStartup {
 			}
 		});
 
-		StringBuilder message = new StringBuilder(lang.getText("ui.mainview.optionpane.remindertext"));
+		StringBuilder message = new StringBuilder(
+				lang.getText("ui.mainview.optionpane.remindertext"));
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date today = null;
 		try {
@@ -117,20 +118,19 @@ public class ApplicationStartup {
 			for (ToDoItem item : model.getAllToDoItems()) {
 				if (item.getReminderDate() != null) {
 					if (item.getReminderDate().equals(today)) {
-						message.append("- "+item.getTitle()+", ");
+						message.append("- " + item.getTitle() + ", ");
 						message.append(df.format(item.getDueDate()) + "\n\n");
 					}
 				}
 
 			}
 		} catch (ParseException e) {
-			JOptionPane.showMessageDialog(null,"Error parsing date");
+			JOptionPane.showMessageDialog(null, "Error parsing date");
 		}
 		JOptionPane.showMessageDialog(null, message,
 				lang.getText("ui.mainview.optionpane.remindertitle"),
-				JOptionPane.INFORMATION_MESSAGE );
-		
-		
+				JOptionPane.INFORMATION_MESSAGE);
+
 		// //following stuff happens at exiting the application
 		// Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 		//
