@@ -6,188 +6,31 @@
             <description>Use your new ToDo-application wisley.</description>
             <duedate>2013-03-01</duedate>
             <category>Private</category>
+            <reminderdate>2013-03-06</reminderdate>
             <priority>1</priority>
             <creationdate>2013-03-05T07:03</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>lökasjdf</title>
+            <title>HEj</title>
             <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-05T19:05</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata</title>
-            <description/>
-            <duedate>2013-03-01</duedate>
-            <category>None</category>
+            <duedate>2013-03-20</duedate>
+            <category>University</category>
+            <reminderdate/>
             <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
+            <creationdate>2013-03-06T11:22</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>Testdata1</title>
+            <title>LOL</title>
             <description/>
-            <duedate>2013-03-01</duedate>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>1</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata2</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata3</title>
-            <description/>
-            <duedate>2013-03-01</duedate>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata4</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Testdata5</title>
-            <description/>
-            <duedate/>
-            <category>None</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T21:12</creationdate>
-            <done>0</done>
-            <deleted>1</deleted>
-        </todoitem>
-        <todoitem>
-            <title>Hej hopp</title>
-            <description/>
-            <duedate>2013-03-01</duedate>
+            <duedate>2013-03-26</duedate>
             <category>Private</category>
-            <priority>2</priority>
-            <creationdate>2013-03-05T22:20</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wddw</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:28</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wd</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:43</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>dv</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:43</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wff</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:44</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>jdf</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:45</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wdwd</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:46</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wfwf</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:47</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wf</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:48</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>wfw</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:48</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
-            <title>n</title>
-            <description/>
-            <duedate/>
-            <category/>
-            <priority>0</priority>
-            <creationdate>2013-03-06T10:50</creationdate>
+            <reminderdate/>
+            <priority>3</priority>
+            <creationdate>2013-03-06T11:22</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
