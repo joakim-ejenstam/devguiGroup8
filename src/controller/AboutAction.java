@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 public class AboutAction extends AbstractAction{
 
 	private ToDoController parent;
+	private LocalizedTexts lang;
 
     /**
      * Constructor, nothing fancy!
@@ -28,18 +29,16 @@ public class AboutAction extends AbstractAction{
     }
 
     /**
-     * Here we display the useful aboutinformation to the user.
+     * Here we display the useful about information to the user.
      * @param event Event that is triggered by the user.
      */
     public void actionPerformed(ActionEvent event) {
-        //TODO: Create a nice about window.
         JOptionPane.showMessageDialog(
                 ((JMenuItem) event.getSource()).getParent(),
-                "The Greight ToDo Manager. v1.0 " +
-                        "\n Authors: " +
-                        "\n Joakim Ejenstam, " +
-                        "\n Simon Harhues, " +
-                        "\n Emma Rangert, " +
+                "Greight ToDo Manager v1.0 \n" +
+                        "\n Joakim Ejenstam " +
+                        "\n Simon Harhues " +
+                        "\n Emma Rangert " +
                         "\n Mattias \u00F6st");
     }
 
