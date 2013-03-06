@@ -26,7 +26,6 @@ public class ToDoController extends ComponentAdapter {
     private CancelAction cancel;
     private ChangeLanguageAction language;
     private AboutAction about;
-    private EnableTimeAction enableDueTime;
     private SetDoneAction setDone;
     private Config conf;
     private LocalizedTexts lang;
@@ -84,12 +83,6 @@ public class ToDoController extends ComponentAdapter {
                         lang.getText("ui.mainview.aboutAction"),
                         KeyEvent.VK_F, this);
         
-        this.enableDueTime =
-                new EnableTimeAction(
-                		lang.getText("ui.editview.checkbox.enable"),
-                        createNavigationIcon("uknownicon"),
-                        lang.getText("ui.mainview.enableTimeAction"),
-                        null, this);
         this.setDone =
                 new SetDoneAction(
                         lang.getText("ui.tableview.setdone"),
@@ -208,11 +201,6 @@ public class ToDoController extends ComponentAdapter {
     public OkAction getOkAction() {
         return ok;
     }
-    
-
-	public EnableTimeAction getEnableDueTimeAction() {
-		return enableDueTime;
-	}
 
     public SetDoneAction getDoneAction() {
         return setDone;
@@ -289,7 +277,6 @@ public class ToDoController extends ComponentAdapter {
         this.cancel.updateLanguage(lang);
         this.about.updateLanguage(lang);
         this.ok.updateLanguage(lang);
-        this.enableDueTime.updateLanguage(lang);
         view.table.setModel(new TableToDoItemModel(model, lang));
         this.view.updateLanguage(lang);
     }
