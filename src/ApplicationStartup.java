@@ -120,7 +120,7 @@ public class ApplicationStartup {
 				if (item.getReminderDate() != null) {
 					if (item.getReminderDate().equals(today)) {
 						System.out.println("LIKA");
-						message.append("- "+item.getTitle()+"\n- Duedate: ");
+						message.append("- "+item.getTitle()+", ");
 						message.append(item.getDueDate() + "\n\n");
 					}
 				}
