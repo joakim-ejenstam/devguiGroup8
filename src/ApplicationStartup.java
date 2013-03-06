@@ -113,11 +113,14 @@ public class ApplicationStartup {
 				lang.getText("ui.mainview.optionpane.remindertext"));
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date today = null;
+		int counter = 0;
 		try {
 			today = df.parse(df.format(new Date()));
+
 			for (ToDoItem item : model.getAllToDoItems()) {
 				if (item.getDueDate() != null) {
 					if (item.getDueDate().equals(today)) {
+						counter++;
 						message.append("- " + item.getTitle() + ", ");
 						message.append(df.format(item.getDueDate()) + "\n\n");
 					}
@@ -127,9 +130,12 @@ public class ApplicationStartup {
 		} catch (ParseException e) {
 			JOptionPane.showMessageDialog(null, "Error parsing date");
 		}
-		JOptionPane.showMessageDialog(null, message,
-				lang.getText("ui.mainview.optionpane.remindertitle"),
-				JOptionPane.INFORMATION_MESSAGE);
+		if(counter>0){
+			JOptionPane.showMessageDialog(null, message,
+					lang.getText("ui.mainview.optionpane.remindertitle"),
+					JOptionPane.INFORMATION_MESSAGE);	
+		}
+
 
 		// //following stuff happens at exiting the application
 		// Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
