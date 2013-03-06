@@ -45,7 +45,6 @@ public class EditTaskPanel extends JPanel {
     //Labels
     private JLabel titleLabel;//            = new JLabel(lang.getText("ui.editview.title"));
     private JLabel dateLabel;//             = new JLabel(lang.getText("ui.editview.dueDate"));
-    private JLabel timeLabel;//             = new JLabel(lang.getText("ui.editview.dueTime"));
     private JLabel descriptionLabel;//      = new JLabel(lang.getText("ui.editview.description"));
     private JLabel categoryLabel;//         = new JLabel(lang.getText("ui.editview.category"));
     private JLabel priorityLabel;//         = new JLabel(lang.getText("ui.editview.priotity"));
@@ -108,7 +107,6 @@ public class EditTaskPanel extends JPanel {
     	
     	titleLabel            = new JLabel(lang.getText("ui.editview.label.title"));
     	dateLabel             = new JLabel(lang.getText("ui.editview.label.dueDate"));
-    	timeLabel             = new JLabel(lang.getText("ui.editview.label.dueTime"));
     	descriptionLabel      = new JLabel(lang.getText("ui.editview.label.description"));
     	categoryLabel         = new JLabel(lang.getText("ui.editview.label.category"));
     	priorityLabel         = new JLabel(lang.getText("ui.editview.label.priority"));
@@ -130,8 +128,6 @@ public class EditTaskPanel extends JPanel {
     	this.categoryBox = new JComboBox(this.categories);
     	this.categoryBox.setSelectedIndex(0);
         controller.getOkAction().addPanel(this);
-        controller.getEnableDueTimeAction().addPanel(this);
-        //controller.getEnableRemTimeAction().addPanel(this);
         
     	//Setup the different layoutManagers
         setLayout(new BorderLayout());
