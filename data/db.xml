@@ -21,7 +21,7 @@
             <priority>1</priority>
             <creationdate>2013-03-06T11:22</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>LOL</title>
@@ -31,7 +31,7 @@
             <reminderdate/>
             <priority>1</priority>
             <creationdate>2013-03-06T11:22</creationdate>
-            <done>0</done>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
@@ -49,12 +49,12 @@
             <title>wdw</title>
             <description/>
             <duedate/>
-            <category/>
+            <category>Private</category>
             <reminderdate/>
-            <priority>0</priority>
+            <priority>1</priority>
             <creationdate>2013-03-06T11:50</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
+            <done>1</done>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>Buy milk</title>
