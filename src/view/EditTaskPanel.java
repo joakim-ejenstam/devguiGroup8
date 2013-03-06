@@ -162,7 +162,6 @@ public class EditTaskPanel extends JPanel {
         categoryPanel.add(categoryBox);
         categoryPanel.add(Box.createRigidArea(new Dimension(30,0)));
         
-        
         descCatPanel.add(Box.createRigidArea(new Dimension(10,0)));
         descCatPanel.add(descriptionLabel);
         descCatPanel.add(Box.createHorizontalGlue());
