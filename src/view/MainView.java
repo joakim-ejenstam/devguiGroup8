@@ -14,6 +14,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
@@ -105,7 +107,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
 		JMenuItem deleteTodo = new JMenuItem(controller.getDeleteAction());
         JMenuItem setTodo = new JMenuItem(controller.getDoneAction());
-		
+
 		// Set up menu bar
 		menuBar.add(file);
 		menuBar.add(edit);

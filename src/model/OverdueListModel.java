@@ -67,20 +67,18 @@ public class OverdueListModel extends AbstractListModel {
 	public void getOverdueItems() {
 		List<ToDoItem> allItems = this.itemModel.getAllToDoItems();
         int bound = allItems.size();
-        
-        System.out.println("number of items" + bound);
-        System.out.println("currdate = " + this.today);
+        overdue = new ArrayList<ToDoItem>();
+
 		for (int i = 0; i < bound; i++) {
-            System.out.println("Debug: Time to check if item added to list");
             ToDoItem item = allItems.get(i);
             if (item.getDueDate() != null) {
-			    if (item.getDueDate().compareTo(this.today) < 0) {
-                    System.out.println("Debug: Overdue item added to list");
+
+			    if (item.getDueDate().compareTo(today) < 0) {
 				    this.overdue.add(item);
-	            	super.fireContentsChanged(this.overdue, 0, getSize());
 			    }
             }
 		}
+        super.fireContentsChanged(this,0,bound);
 	}
 	
 }

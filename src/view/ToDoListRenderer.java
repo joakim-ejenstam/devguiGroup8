@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,13 +25,20 @@ public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
         setForeground(list.getForeground());
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         String dueDate = "";
-        if (((ToDoItem) value).getDueDate() != null)
+        if (((ToDoItem) value).getDueDate() != null){
             dueDate = dateFormat.format(((ToDoItem) value).getDueDate());
+            if(((ToDoItem) value).getDueDate().compareTo(new Date()) < 0)
+                setForeground(Color.RED);
+        }
         setText(
                 ((ToDoItem) value).getTitle() +
                         "         "+
                         "Due:" +
                         dueDate);
+        if (isSelected)
+            setBackground(Color.red);
+
+
         return this;
     }
 }
