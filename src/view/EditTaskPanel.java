@@ -83,15 +83,8 @@ public class EditTaskPanel extends JPanel {
     private JPanel subTopPanel			 = new JPanel();
     private JPanel buttonPanel			 = new JPanel();
     private JPanel reminderPanelRight	 = new JPanel();
-    private JPanel reminderPanel		 = new JPanel();
-    
-    //JSpinners
-    JSpinner dueTimeSpinner = new JSpinner(new SpinnerDateModel());
-    JSpinner remTimeSpinner = new JSpinner(new SpinnerDateModel());
-    
-    //JCheckbox
-    private JCheckBox enableDueTime;//		 = new JCheckBox();
-    private JCheckBox enableRemTime;//		 = new JCheckBox();
+    private JPanel reminderPanel		 = new JPanel();  
+
     //JDates
     private JDateChooser dueDateCal		= new JDateChooser();
     private JDateChooser remDateCal		= new JDateChooser();
@@ -153,12 +146,6 @@ public class EditTaskPanel extends JPanel {
         topTitlePanel.add(titleLabel);
         topTitlePanel.add(titleField);
         
-        /*
-        JSpinner timeSpinner = new JSpinner( new SpinnerDateModel() );
-        JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "HH:mm:ss");
-        timeSpinner.setEditor(timeEditor);
-        timeSpinner.setValue(new Date()); 
-        */
         
         //Configuration for datePanel
         topDatePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -197,11 +184,13 @@ public class EditTaskPanel extends JPanel {
         bottomLabelPanel.add(Box.createRigidArea(new Dimension(20,0)));
         bottomLabelPanel.add(priorityLabel);
         
+        
         //Configuration for reminderPanel    
         reminderPanel.add(Box.createRigidArea(new Dimension(10,0)));
         reminderPanel.add(reminderLabel);
         reminderPanel.add(remDateCal);
         reminderPanel.add(Box.createRigidArea(new Dimension(180,0)));
+        
         
         //Configuration for priorityPanel
         priorityGroup.add(lowPriority);
@@ -280,18 +269,6 @@ public class EditTaskPanel extends JPanel {
         item.setCategory(new Category((String)categoryBox.getSelectedItem()));
         item.setDueDate(dueDateCal.getDate());
         return item;
-    }
-    
-    public JSpinner getEnableTime(JCheckBox box){
-    	//REFERENCE COMPARISON
-    	if(box == this.enableDueTime){
-    		return this.dueTimeSpinner;
-    	}
-    	else if (box == this.enableRemTime){
-        	return this.remTimeSpinner;
-    	}else{
-    		return null;
-    	}
     }
     
     
