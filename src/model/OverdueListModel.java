@@ -65,6 +65,7 @@ public class OverdueListModel extends AbstractListModel {
 			    if (item.getDueDate().compareTo(currDate) < 0) {
                     System.out.println("Debug: Overdue item added to list");
 				    this.overdue.add(item);
+	            	super.fireContentsChanged(this.overdue, 0, getSize());
 			    }
             }
 		}

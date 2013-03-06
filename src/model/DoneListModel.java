@@ -62,6 +62,7 @@ public class DoneListModel extends AbstractListModel {
             if (item.isDone()) {
             	System.out.println("Debug: Overdue item added to list");
             	this.done.add(item);
+            	super.fireContentsChanged(this.done, 0, getSize());
             }
 		}
 	}
