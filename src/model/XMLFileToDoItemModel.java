@@ -156,7 +156,6 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			doc = builder.build(new File(XMLFILEPATH)); //let's try to open an existing db
 			} catch(IOException e) {
 				//we might run for the first time and just don't have a db yet. So let's create one...
-				System.out.println("WARNING couldn't load the file "+this.XMLFILEPATH+", creating a new one.");
 				File file = new File(XMLFILEPATH);
 				if (!file.exists()) {
 					file.getParentFile().mkdirs();//path
@@ -247,7 +246,6 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 				this.tasks.add(task);
 				setChanged();
 				notifyObservers();
-				System.out.println("DEBUG: Model: parsed XML, notified Observers");
 			}
 		} catch (ParsingException e) {
 			throw new LoadModelException("The db-file "+XMLFILEPATH+" could not be parsed.",e.getCause());
