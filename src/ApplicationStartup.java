@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,7 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
-
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 import model.DoneListModel;
 import model.OverdueListModel;
 import model.DeletedListModel;
@@ -21,6 +21,7 @@ import model.TableToDoItemModel;
 import model.ToDoItem;
 import model.ToDoItemModel;
 import model.XMLFileToDoItemModel;
+import view.CustomTheme;
 import view.MainView;
 import controller.Config;
 import controller.ToDoController;
@@ -76,31 +77,35 @@ public class ApplicationStartup {
 				// default l&f will be used
 			}
 		} else {
-			// else set custom look and feel for the other OS's
+			/*
+			 * // else set custom look and feel for the other OS's try {
+			 * Properties colorProp = loadColorProperties();
+			 * UIManager.put("Table.showGrid", true);
+			 * 
+			 * // Add custom colors from the property
+			 * UIManager.put("nimbusBase",
+			 * Color.decode(colorProp.getProperty("ui.primeColor1")));
+			 * UIManager.put("nimbusBlueGrey",
+			 * Color.decode(colorProp.getProperty("ui.primeColor2")));
+			 * UIManager.put("control",
+			 * Color.decode(colorProp.getProperty("ui.primeColor3")));
+			 * 
+			 * for (LookAndFeelInfo info : UIManager
+			 * .getInstalledLookAndFeels()) { if
+			 * ("Nimbus".equals(info.getName())) {
+			 * UIManager.setLookAndFeel(info.getClassName()); break; } } } catch
+			 * (Exception e) { // default theme will be used. } }
+			 */
+			// NEW CODE CHECK IF U GET THE WEIRD ERROR
 			try {
-				Properties colorProp = loadColorProperties();
-				UIManager.put("Table.showGrid", true);
-
-				// Add custom colors from the property
-				UIManager.put("nimbusBase",
-						Color.decode(colorProp.getProperty("ui.primeColor1")));
-				UIManager.put("nimbusBlueGrey",
-						Color.decode(colorProp.getProperty("ui.primeColor2")));
-				UIManager.put("control",
-						Color.decode(colorProp.getProperty("ui.primeColor3")));
-
-				for (LookAndFeelInfo info : UIManager
-						.getInstalledLookAndFeels()) {
-					if ("Nimbus".equals(info.getName())) {
-						UIManager.setLookAndFeel(info.getClassName());
-						break;
-					}
-				}
-			} catch (Exception e) {
-				// default theme will be used.
+				MetalLookAndFeel mlf = new MetalLookAndFeel();
+				MetalLookAndFeel.setCurrentTheme(new CustomTheme());
+				UIManager.setLookAndFeel(mlf);
+			} catch (UnsupportedLookAndFeelException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
-
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				MainView view = new MainView(controller, tbModel, overdueModel,
@@ -119,7 +124,8 @@ public class ApplicationStartup {
 
 			for (ToDoItem item : model.getAllToDoItems()) {
 				if (item.getDueDate() != null) {
-					if (item.getDueDate().compareTo(today) == 1 || item.getDueDate().compareTo(today) == -1 ) {
+					if (item.getDueDate().compareTo(today) == 1
+							|| item.getDueDate().compareTo(today) == -1) {
 						counter++;
 						message.append("- " + item.getTitle() + ", ");
 						message.append(df.format(item.getDueDate()) + "\n\n");
@@ -130,12 +136,11 @@ public class ApplicationStartup {
 		} catch (ParseException e) {
 			JOptionPane.showMessageDialog(null, "Error parsing date");
 		}
-		if(counter>0){
+		if (counter > 0) {
 			JOptionPane.showMessageDialog(null, message,
 					lang.getText("ui.mainview.optionpane.remindertitle"),
-					JOptionPane.INFORMATION_MESSAGE);	
+					JOptionPane.INFORMATION_MESSAGE);
 		}
-
 
 		// //following stuff happens at exiting the application
 		// Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -154,9 +159,11 @@ public class ApplicationStartup {
 		// }));
 	}
 
+	
 	/**
 	 * Loads the color configuration
 	 */
+	/*
 	private Properties loadColorProperties() {
 		Properties colorTheme = new Properties();
 		FileInputStream in;
@@ -173,7 +180,7 @@ public class ApplicationStartup {
 		}
 		return colorTheme;
 	}
-
+	*/
 	public static void main(String[] args) {
 		new ApplicationStartup(args);
 	}
