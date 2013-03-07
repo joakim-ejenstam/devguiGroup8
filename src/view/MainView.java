@@ -216,10 +216,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    northPanel.add(northLeftPanel, BorderLayout.CENTER);
 	    northPanel.add(northRightPanel, BorderLayout.EAST);
 
-	    // Add radio buttons to button group to make it so only one can be selected at a time 
-
-	    // Adding radio buttons and clock to north panels 
-
+	    // Adding clock to north panels 
 	    northRightPanel.add(timeLabel);
 	    
 	    // creates the clock
@@ -242,6 +239,20 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    
 	    scrollPane.setColumnHeaderView(createTable().getTableHeader());
         ((AddAction)addBtn.getAction()).setTextField(inputFld);
+        
+        inputFld.addKeyListener(new KeyAdapter() {
+        	public void keyReleased(KeyEvent e) {
+        		if(e.getKeyCode() == KeyEvent.VK_ENTER){
+        			JTextField textField = (JTextField) e.getSource();
+        			String text = textField.getText();
+        			controller.addItem(text);
+        			textField.setText("");
+        		}
+                //String text = textField.getText();
+                //textField.setText(text.toUpperCase());
+                
+            }
+        });
 	}
 
 	/**
