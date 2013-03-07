@@ -64,13 +64,13 @@ public class ToDoController extends ComponentAdapter {
         this.ok =
                 new OkAction(
                 		lang.getText("ui.editview.button.ok"),
-                        createNavigationIcon("uknownicon"),
+                        null,
                         lang.getText("ui.mainview.okAction"),
                         KeyEvent.VK_O, this);
         this.cancel =
                 new CancelAction(
                         lang.getText("ui.editview.button.cancel"),
-                        createNavigationIcon("unkownicon"),
+                        null,
                         lang.getText("ui.mainview.cancelAction"),
                         KeyEvent.VK_C, this);
         this.language =
