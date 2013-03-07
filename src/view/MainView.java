@@ -41,6 +41,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
     private LocalizedTexts lang;
     public JTable table;
     
+    private JFrame frame;
     private JMenu file;
     private JMenu edit;
     private JMenu help;
@@ -254,23 +255,23 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	 */
 	public void createAndShowGUI(Config config) {
 		
-		JFrame frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(Integer.valueOf(config.getProp("windowWidth")), 
+		this.frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setPreferredSize(new Dimension(Integer.valueOf(config.getProp("windowWidth")), 
 				Integer.valueOf(config.getProp("windowHeight"))));
-		frame.setLocation(Integer.valueOf(config.getProp("windowXPos")), Integer.valueOf(config.getProp("windowYPos")));
+		this.frame.setLocation(Integer.valueOf(config.getProp("windowXPos")), Integer.valueOf(config.getProp("windowYPos")));
 		
-		addComponentsToPane(frame.getContentPane());
-		addMenuBar(frame);
+		addComponentsToPane(this.frame.getContentPane());
+		addMenuBar(this.frame);
 		
 		//support for ubuntu global menu, using the jayanta-lib
-		ApplicationMenu.tryInstall(frame);
+		ApplicationMenu.tryInstall(this.frame);
 		
-		frame.pack();
-		frame.setVisible(true);
+		this.frame.pack();
+		this.frame.setVisible(true);
 		
 		//we add the controller as a listener to observe changes
-		frame.addComponentListener(this.controller);
+		this.frame.addComponentListener(this.controller);
         controller.setTable(table);
     }
 
