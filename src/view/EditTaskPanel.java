@@ -213,7 +213,7 @@ public class EditTaskPanel extends JPanel {
     }
     /**
      * Fills the fields in the current frame from a ToDo item
-     * @param item
+     * @param item the ToDo item to be used for the frame
      */
     private void fillFields(ToDoItem item)  {
         if(item.getTitle() != null)
