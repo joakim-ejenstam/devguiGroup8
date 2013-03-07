@@ -123,14 +123,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 		edit.add(editTodo);
 		edit.add(deleteTodo);
         edit.add(setTodo);
-
-        popupMenu = new JPopupMenu("Pew pew!");
-        JMenuItem popEdit = new JMenuItem(controller.getEditAction());
-        JMenuItem popDel = new JMenuItem(controller.getDeleteAction());
-        JMenuItem popSet = new JMenuItem(controller.getDoneAction());
-        popupMenu.add(popEdit);
-        popupMenu.add(popDel);
-        popupMenu.add(popSet);
 	}
 	
 	/**
@@ -138,8 +130,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	 * @return Returns the table.
 	 */
 	private JTable createTable() {
-		System.out.println("DEBUG: Col: "+tableModel.getColumnCount()
-				+" Row: "+tableModel.getRowCount());
 		JTable table = new JTable(tableModel);
 		table.setAutoCreateRowSorter(true); //removed the autosorting so we can implement our own sorting algorithm.
         table.getTableHeader().setReorderingAllowed(false);
