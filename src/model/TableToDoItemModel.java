@@ -95,7 +95,7 @@ public class TableToDoItemModel extends AbstractTableModel {
 	public String getColumnName(int column) {
 		//TODO the following definition should be happen in a file (for many different languages) 
 		String[] columnLabels = {lang.getText("ui.mainview.table.column.title"),lang.getText("ui.mainview.table.column.category"),
-				lang.getText("ui.mainview.table.column.priority"),lang.getText("ui.mainview.table.column.due"),
+				lang.getText("ui.mainview.table.column.due"),lang.getText("ui.mainview.table.column.priority"),
 				lang.getText("ui.mainview.table.column.done")};
 		
 		try {

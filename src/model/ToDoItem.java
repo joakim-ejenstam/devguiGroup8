@@ -54,7 +54,7 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	/**
 	 * @return the dueDate
 	 */
-	@DisplayInTable(3)
+	@DisplayInTable(2)
 	public Date getDueDate() {
 		return dueDate;
 	}
@@ -83,7 +83,7 @@ public class ToDoItem implements Serializable, Comparable<ToDoItem> {
 	/**
 	 * @return the priority
 	 */
-	@DisplayInTable(2)
+	@DisplayInTable(3)
 	public int getPriority() {
 		return priority;
 	}

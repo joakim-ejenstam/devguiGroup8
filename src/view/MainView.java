@@ -175,7 +175,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         // table
         this.table = createTable();
         this.table.addMouseListener(new TodoMouseListener());
-        this.table.getColumnModel().getColumn(2).setCellRenderer(new ToDoTableRenderer());
+        this.table.getColumnModel().getColumn(3).setCellRenderer(new ToDoTableRenderer());
         	    
         // Scroll pane
         JScrollPane scrollPane = new JScrollPane(table);
