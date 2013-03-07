@@ -9,18 +9,13 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JSpinner.DateEditor;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
-
 import model.Category;
 import model.LocalizedTexts;
 import model.ToDoItem;
@@ -216,7 +211,10 @@ public class EditTaskPanel extends JPanel {
 
         fillFields(item);
     }
-
+    /**
+     * Fills the fields in the current frame from a ToDo item
+     * @param item
+     */
     private void fillFields(ToDoItem item)  {
         if(item.getTitle() != null)
             this.titleField.setText(item.getTitle());
