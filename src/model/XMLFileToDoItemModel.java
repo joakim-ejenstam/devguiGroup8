@@ -495,7 +495,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	public Date getMaxDueDate() {
 		Date maxDueDate = new Date(); //max should be greater than today
 		for (ToDoItem currItem : this.tasks) {
-			if(currItem.getDueDate().compareTo(maxDueDate) > 0) //is DueDate > (current) maxDueDate?
+			if(currItem.getDueDate() != null && currItem.getDueDate().compareTo(maxDueDate) > 0) //is DueDate > (current) maxDueDate?
 				maxDueDate = currItem.getDueDate();
 		}
 		return maxDueDate;
@@ -506,7 +506,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	public Date getMinDueDate() {
 		Date minDueDate = new Date(); //min should be smaller than today
 		for (ToDoItem currItem : this.tasks) {
-			if(currItem.getDueDate().compareTo(minDueDate) < 0) //is DueDate < (current) maxDueDate?
+			if(currItem.getDueDate() != null && currItem.getDueDate().compareTo(minDueDate) < 0) //is DueDate < (current) maxDueDate?
 				minDueDate = currItem.getDueDate();
 		}
 		return minDueDate;
