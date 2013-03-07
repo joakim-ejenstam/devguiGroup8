@@ -2,16 +2,6 @@
 <model>
     <todoitems>
         <todoitem>
-            <title>Enter all ToDo's</title>
-            <description>Use your new ToDo-application wisley.</description>
-            <duedate>2013-03-01</duedate>
-            <category>Private</category>
-            <priority>1</priority>
-            <creationdate>2013-03-05T07:03</creationdate>
-            <done>1</done>
-            <deleted>0</deleted>
-        </todoitem>
-        <todoitem>
             <title>HEj</title>
             <description/>
             <duedate>2013-03-06</duedate>
@@ -19,7 +9,7 @@
             <priority>1</priority>
             <creationdate>2013-03-06T11:22</creationdate>
             <done>0</done>
-            <deleted>1</deleted>
+            <deleted>0</deleted>
         </todoitem>
         <todoitem>
             <title>TESTING NEW VER</title>
@@ -65,8 +55,8 @@
             <title>yjj</title>
             <description/>
             <duedate/>
-            <category/>
-            <priority>0</priority>
+            <category>Hunden</category>
+            <priority>1</priority>
             <creationdate>2013-03-07T18:32</creationdate>
             <done>0</done>
             <deleted>0</deleted>
@@ -75,8 +65,8 @@
             <title>we</title>
             <description/>
             <duedate/>
-            <category/>
-            <priority>0</priority>
+            <category>Hästar</category>
+            <priority>1</priority>
             <creationdate>2013-03-07T19:13</creationdate>
             <done>0</done>
             <deleted>1</deleted>
@@ -118,6 +108,56 @@
             <category/>
             <priority>1</priority>
             <creationdate>2013-03-07T21:15</creationdate>
+            <done>1</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>jkkhgkhfkjhkh</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-07T21:57</creationdate>
+            <done>1</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>wdw</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-07T22:36</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>jkkhgkhfkjhkh</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-07T21:57</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>penis</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-07T22:16</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>penis igen</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-07T22:16</creationdate>
             <done>0</done>
             <deleted>1</deleted>
         </todoitem>

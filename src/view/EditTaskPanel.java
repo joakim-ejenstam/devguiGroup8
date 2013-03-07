@@ -216,17 +216,6 @@ public class EditTaskPanel extends JPanel {
 
         fillFields(item);
     }
-    
-
-    private int getIdx(String cat) {
-        if(cat == "Private")
-            return 1;
-        else if (cat == "University")
-            return 2;
-        else
-            return 0;
-
-    }
 
     private void fillFields(ToDoItem item)  {
         if(item.getTitle() != null)
