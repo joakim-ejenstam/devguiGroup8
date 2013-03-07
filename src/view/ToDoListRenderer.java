@@ -19,6 +19,7 @@ import java.util.Date;
 public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
 
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {
+    	
         setEnabled(list.isEnabled());
         setSelected(((ToDoItem) value).isDone());
         setFont(list.getFont());
@@ -38,7 +39,6 @@ public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
                         dueDate);
         if (isSelected)
             setBackground(Color.RED);
-
 
         return this;
     }

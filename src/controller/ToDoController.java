@@ -253,7 +253,7 @@ public class ToDoController extends ComponentAdapter {
      * @param imageName string name of the image file
      * @return null or the image file.
      */
-    protected static ImageIcon createNavigationIcon(String imageName) {
+    public static ImageIcon createNavigationIcon(String imageName) {
         String imgLocation = ""
                 + imageName
                 + ".gif";
