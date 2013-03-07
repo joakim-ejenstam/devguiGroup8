@@ -19,7 +19,6 @@ import java.util.Date;
 public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
 
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {
-    	
         setEnabled(list.isEnabled());
         setSelected(((ToDoItem) value).isDone());
         setFont(list.getFont());
@@ -32,7 +31,7 @@ public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
             if(((ToDoItem) value).getDueDate().compareTo(new Date()) < 0)
                 setForeground(Color.RED);
         }
-        setText(String.format("%100s Due:%s",((ToDoItem) value).getTitle(),dueDate));
+        setText(String.format("%-50s Due:%s",((ToDoItem) value).getTitle(),dueDate));
         if (isSelected)
             setBackground(Color.LIGHT_GRAY);
 
