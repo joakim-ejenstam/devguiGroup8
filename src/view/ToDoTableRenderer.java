@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.ImageIcon;
@@ -35,6 +36,8 @@ public class ToDoTableRenderer extends DefaultTableCellRenderer {
 		
 		lbl.setText("");
 		lbl.setIcon(icon);
+		lbl.setOpaque(isSelected);
+		
 		return lbl;
 	}
 }
