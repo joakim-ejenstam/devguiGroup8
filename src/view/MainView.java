@@ -319,10 +319,10 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.file.setText(lang.getText("ui.mainview.menu.file"));
         this.edit.setText(lang.getText("ui.mainview.menu.edit"));
         this.help.setText(lang.getText("ui.mainview.menu.help"));
-        this.viewPending.setText(lang.getText("ui.mainview.radiobutton.viewpending"));
-        this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
-        this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
-        this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdeleted"));
+//        this.viewPending.setText(lang.getText("ui.mainview.radiobutton.viewpending"));
+//        this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
+//        this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
+//        this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdeleted"));
         this.setTitle(lang.getText("ui.mainview.windowTitle"));
         this.validate();
         this.repaint();
