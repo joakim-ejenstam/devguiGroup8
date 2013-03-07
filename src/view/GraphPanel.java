@@ -5,12 +5,14 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -91,6 +93,7 @@ public class GraphPanel extends JPanel {
         int xPos = 0; //position of item
         int yPos = 0; //position of item
 		this.takenPositions = new HashSet<String>(this.model.getNumberOfToDoItems()/2);
+		
 
         for (ToDoItem currItem : model.getAllToDoItems()) {
         	//calculate X position (date)
