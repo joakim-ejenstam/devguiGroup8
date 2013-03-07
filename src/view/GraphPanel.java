@@ -97,7 +97,10 @@ public class GraphPanel extends JPanel {
 
         for (ToDoItem currItem : model.getAllToDoItems()) {
         	//calculate X position (date)
-        	xPos = (int)((currItem.getDueDate().getTime()-this.minDueDate.getTime())/(1000 * 60 * 60 * 24)*this.timeScale+this.PADDING/5);
+        	if(currItem.getDueDate() != null)
+        		xPos = (int)((currItem.getDueDate().getTime()-this.minDueDate.getTime())/(1000 * 60 * 60 * 24)*this.timeScale+this.PADDING/5);
+        	else //treat as beeing in the future
+        		xPos = (int)((this.maxDueDate.getTime()-this.minDueDate.getTime())/(1000 * 60 * 60 * 24)*this.timeScale+this.PADDING/5);
         	//calculate Y position (priority)
         	yPos = this.height-(int)((currItem.getPriority()-this.minPriority)*this.priorityScale-this.PADDING/1.2);//0 is upper corner
         	//check if position is already taken
@@ -108,7 +111,10 @@ public class GraphPanel extends JPanel {
         	//insert position in collection
         	this.takenPositions.add(xPos+"x"+yPos);
         	//draw it
-			g.drawString(currItem.getTitle()+" ("+currItem.getPriority()+"; "+new SimpleDateFormat("yyyy-MM-dd").format(currItem.getDueDate())+")", xPos, yPos);
+        	if(currItem.getDueDate() != null)
+        		g.drawString(currItem.getTitle()+" ("+currItem.getPriority()+"; "+new SimpleDateFormat("yyyy-MM-dd").format(currItem.getDueDate())+")", xPos, yPos);
+        	else //treat it as beeing in the future
+        		g.drawString(currItem.getTitle()+" ("+currItem.getPriority()+"; "+new SimpleDateFormat("yyyy-MM-dd").format(this.maxDueDate)+")", xPos, yPos);
 		}
         
         //paint a line for today
@@ -118,17 +124,17 @@ public class GraphPanel extends JPanel {
         
     }
 	
-	/**
-	 * just temporary for testing!!!
-	 * @param arg
-	 */
-	public static void main(String[] arg) {
-		JFrame f = new JFrame();
-		ToDoItemModel model = new StupidToDoItemModel();
-		f.setContentPane(new GraphPanel(model));
-		f.setPreferredSize(new Dimension(Integer.valueOf(Config.getInstance().getProp("windowWidth")),Integer.valueOf(Config.getInstance().getProp("windowHeight"))));
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.pack();
-		f.setVisible(true);
-	}
+//	/**
+//	 * just temporary for testing!!!
+//	 * @param arg
+//	 */
+//	public static void main(String[] arg) {
+//		JFrame f = new JFrame();
+//		ToDoItemModel model = new StupidToDoItemModel();
+//		f.setContentPane(new GraphPanel(model));
+//		f.setPreferredSize(new Dimension(Integer.valueOf(Config.getInstance().getProp("windowWidth")),Integer.valueOf(Config.getInstance().getProp("windowHeight"))));
+//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		f.pack();
+//		f.setVisible(true);
+//	}
 }

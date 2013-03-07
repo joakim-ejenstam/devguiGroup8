@@ -175,6 +175,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    JTextField inputFld = new JTextField();
 	    JButton addBtn = new JButton(controller.getAddAction());
 
+
         this.testPane = new JTabbedPane();
         this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewpending"), null, scrollPane);
         this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"), null, donePane);
