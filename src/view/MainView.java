@@ -86,6 +86,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	 * Method for setting up the menu bar and adding it to the main frame.
 	 * @param frame the frame where to add the menu bar
 	 */
+	@SuppressWarnings("static-access")
 	private void addMenuBar(JFrame frame) {
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -109,6 +110,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
                 new GraphPanel(new StupidToDoItemModel());
             }
         });
+        showGraph.setIcon(controller.createNavigationIcon("/Chart1"));
 
 		// Set up menu bar
 		menuBar.add(file);
