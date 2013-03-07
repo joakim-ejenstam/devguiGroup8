@@ -81,12 +81,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.doneListModel = doneModel;
         this.deletedListModel = deleteModel;
         this.lang = newLang;
-        
-        viewPending = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewpending"), true);
-        viewDone = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewdone"), false);
-        viewOverDue = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewoverdue"), false);
-        viewDeleted = new JRadioButton(lang.getText("ui.mainview.radiobutton.viewdeleted"), false);
-        
         //add this view as a listener to the changes of the model
         controller.addObserver(this);
     }
@@ -184,19 +178,24 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.table.getColumnModel().getColumn(2).setCellRenderer(new ToDoTableRenderer());
         	    
         // Scroll pane
-        final JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane donePane = new JScrollPane(doneList);
+        JScrollPane deletePane = new JScrollPane(deletedList);
+        JScrollPane overDuePane = new JScrollPane(overdueList);
 
 	    // Text fields and buttons
 	    JTextField inputFld = new JTextField();
 	    JButton addBtn = new JButton(controller.getAddAction());
 
         JTabbedPane testPane = new JTabbedPane();
-        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewpending"),null,scrollPane,"Crazy stuff!");
-
-        JScrollPane donePane = new JScrollPane(doneList);
-        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"),null, donePane, "mer galet!");
+        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewpending"), null, scrollPane);
+        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"), null, donePane);
+        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewoverdue"),null,overDuePane);
+        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdeleted"),null,deletePane);
         testPane.setMnemonicAt(0, KeyEvent.VK_1);
         testPane.setMnemonicAt(1, KeyEvent.VK_2);
+        testPane.setMnemonicAt(2, KeyEvent.VK_3);
+        testPane.setMnemonicAt(3, KeyEvent.VK_4);
 	    // Add to pane
 	    pane.add(testPane, BorderLayout.CENTER);
 		pane.add(northPanel, BorderLayout.NORTH);
@@ -218,52 +217,9 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    northPanel.add(northRightPanel, BorderLayout.EAST);
 
 	    // Add radio buttons to button group to make it so only one can be selected at a time 
-	    viewItems.add(viewPending);
-	    viewItems.add(viewDone);
-	    viewItems.add(viewOverDue);
-	    viewItems.add(viewDeleted);
 
-	    viewPending.addActionListener(new ActionListener(){
-	        public void actionPerformed(ActionEvent e) {
-	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
-	          scrollPane.getViewport().add(table);
-	          scrollPane.revalidate();
-	          scrollPane.repaint();
-	        }
-	    });
-	    
-	    viewDone.addActionListener(new ActionListener(){
-	        public void actionPerformed(ActionEvent e) {
-	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
-	          scrollPane.getViewport().add(doneList);
-	          scrollPane.revalidate();
-	          scrollPane.repaint();
-	        }
-	    });
-	    
-	    viewOverDue.addActionListener(new ActionListener(){
-	        public void actionPerformed(ActionEvent e) {
-	          scrollPane.getViewport().remove(scrollPane.getViewport().getView());
-	          scrollPane.getViewport().add(overdueList);
-	          scrollPane.revalidate();
-	          scrollPane.repaint();
-	        }
-	    });
-	    
-	    viewDeleted.addActionListener(new ActionListener(){
-	        public void actionPerformed(ActionEvent e) {
-	          scrollPane.getViewport().remove(table);
-	          scrollPane.getViewport().add(deletedList);
-	          scrollPane.revalidate();
-	          scrollPane.repaint();
-	        }
-	    });
-	    
 	    // Adding radio buttons and clock to north panels 
-	    northLeftPanel.add(viewPending);
-	    northLeftPanel.add(viewDone);
-	    northLeftPanel.add(viewOverDue);
-	    northLeftPanel.add(viewDeleted);
+
 	    northRightPanel.add(timeLabel);
 	    
 	    // creates the clock
@@ -369,7 +325,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 
                 int index;
                 if (e.getSource() instanceof JTable)
-                    index = ((JTable) e.getSource()).convertColumnIndexToModel(((JTable) e.getSource()).getSelectedRow());
+                    index = ((JTable) e.getSource()).convertRowIndexToModel(((JTable) e.getSource()).getSelectedRow());
                 else
                     index = ((JList)e.getSource()).getSelectedIndex();
 

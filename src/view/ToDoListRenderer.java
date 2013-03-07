@@ -38,7 +38,7 @@ public class ToDoListRenderer extends JCheckBox implements ListCellRenderer {
                         "Due:" +
                         dueDate);
         if (isSelected)
-            setBackground(Color.RED);
+            setBackground(Color.LIGHT_GRAY);
 
         return this;
     }
