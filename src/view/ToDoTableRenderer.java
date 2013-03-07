@@ -36,6 +36,7 @@ public class ToDoTableRenderer extends DefaultTableCellRenderer {
 		lbl.setText("");
 		lbl.setIcon(icon);
 		lbl.setOpaque(isSelected);
+		lbl.setHorizontalAlignment(CENTER);
 		
 		return lbl;
 	}
