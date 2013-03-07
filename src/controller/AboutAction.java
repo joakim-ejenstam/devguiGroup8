@@ -39,7 +39,7 @@ public class AboutAction extends AbstractAction{
                         "\n Joakim Ejenstam " +
                         "\n Simon Harhues " +
                         "\n Emma Rangert " +
-                        "\n Mattias \u00F6st");
+                        "\n Mattias \u00F6st",null, JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
