@@ -37,7 +37,10 @@ public class ToDoTableRenderer extends DefaultTableCellRenderer {
 		lbl.setIcon(icon);
 		lbl.setOpaque(isSelected);
 		lbl.setHorizontalAlignment(CENTER);
-		
+		table.getColumnModel().getColumn(column).setMinWidth(50);
+		table.getColumnModel().getColumn(column).setMaxWidth(50);
+		table.getColumnModel().getColumn(column+1).setMinWidth(50);
+		table.getColumnModel().getColumn(column+1).setMaxWidth(50);		
 		return lbl;
 	}
 }
