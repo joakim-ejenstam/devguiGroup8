@@ -16,6 +16,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
 import controller.AddAction;
+import controller.TodoMouseListener;
 import model.DeletedListModel;
 import model.DoneListModel;
 import model.OverdueListModel;
@@ -160,22 +161,21 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 		
 	    // list
         this.doneList = new JList(doneListModel);
-        this.doneList.addMouseListener(new TodoMouseListener());
+        this.doneList.addMouseListener(new TodoMouseListener(controller));
         this.doneList.setCellRenderer(new ToDoListRenderer());
-        this.doneList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         this.deletedList = new JList(deletedListModel);
-        this.deletedList.addMouseListener(new TodoMouseListener());
+        this.deletedList.addMouseListener(new TodoMouseListener(controller));
         this.deletedList.setCellRenderer(new ToDoListRenderer());
 
         this.overdueList = new JList(overdueListModel);
-        this.overdueList.addMouseListener(new TodoMouseListener());
+        this.overdueList.addMouseListener(new TodoMouseListener(controller));
         this.overdueList.setCellRenderer(new ToDoListRenderer());
         
         // table
         this.table = createTable();
-        this.table.addMouseListener(new TodoMouseListener());
-        this.table.getColumnModel().getColumn(2).setCellRenderer(new ToDoTableRenderer());
+        this.table.addMouseListener(new TodoMouseListener(controller));
+        this.table.getColumnModel().getColumn(3).setCellRenderer(new ToDoTableRenderer());
         	    
         // Scroll pane
         JScrollPane scrollPane = new JScrollPane(table);
@@ -241,16 +241,16 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         ((AddAction)addBtn.getAction()).setTextField(inputFld);
         
         inputFld.addKeyListener(new KeyAdapter() {
-        	public void keyReleased(KeyEvent e) {
-        		if(e.getKeyCode() == KeyEvent.VK_ENTER){
-        			JTextField textField = (JTextField) e.getSource();
-        			String text = textField.getText();
-        			controller.addItem(text);
-        			textField.setText("");
-        		}
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    JTextField textField = (JTextField) e.getSource();
+                    String text = textField.getText();
+                    controller.addItem(text);
+                    textField.setText("");
+                }
                 //String text = textField.getText();
                 //textField.setText(text.toUpperCase());
-                
+
             }
         });
 	}
@@ -325,65 +325,5 @@ public class MainView extends JFrame implements Observer, TableModelListener{
      */
     public JTable getTable() {
         return this.table;
-    }
-
-    protected class TodoMouseListener implements MouseListener {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2 && !e.isConsumed() && e.getButton() == 1) {
-                e.consume();
-
-                int index;
-                if (e.getSource() instanceof JTable)
-                    index = ((JTable) e.getSource()).convertRowIndexToModel(((JTable) e.getSource()).getSelectedRow());
-                else
-                    index = ((JList)e.getSource()).getSelectedIndex();
-
-                EditTaskFrame editView =
-                        new EditTaskFrame(
-                                controller,
-                                controller.getEditItem(index),
-                                controller.getCategories(),
-                                controller.getLanguage());
-                editView.setSize(400, 400);
-                editView.setVisible(true);
-             }
-        }
-
-        public void mousePressed(MouseEvent ev) {
-            if (ev.isPopupTrigger()) {
-                int r = table.rowAtPoint(ev.getPoint());
-                if (r >= 0 && r < table.getRowCount()) {
-                    table.setRowSelectionInterval(r, r);
-                } else {
-                    table.clearSelection();
-                }
-                popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
-            }
-        }
-
-        public void mouseReleased(MouseEvent ev) {
-            if (ev.isPopupTrigger()) {
-                int r = table.rowAtPoint(ev.getPoint());
-                if (r >= 0 && r < table.getRowCount()) {
-                    table.setRowSelectionInterval(r, r);
-                } else {
-                    table.clearSelection();
-                }
-                popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
-            }
-        }
-
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            //To change body of implemented methods use File | Settings | File Templates.
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            //To change body of implemented methods use File | Settings | File Templates.
-        }
     }
 }
