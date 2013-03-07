@@ -114,6 +114,7 @@ public class EditTaskPanel extends JPanel {
     		this.categories[i] = categories.get(i-1).getLabel();
     	}
     	this.categoryBox = new JComboBox(this.categories);
+        this.categoryBox.setEditable(true);
     	this.categoryBox.setSelectedIndex(0);
         controller.getOkAction().addPanel(this);
         
@@ -134,7 +135,7 @@ public class EditTaskPanel extends JPanel {
         
         //Configuration for topTitlePanel
         topTitlePanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        topTitlePanel.add(Box.createRigidArea(new Dimension(10,0)));
+        topTitlePanel.add(Box.createRigidArea(new Dimension(10, 0)));
         titleLabel.setPreferredSize(titleLabel.getPreferredSize());
         topTitlePanel.add(titleLabel);
         topTitlePanel.add(titleField);
@@ -162,7 +163,7 @@ public class EditTaskPanel extends JPanel {
 
         
         //Configuration for the top panel
-        subTopPanel.add(Box.createRigidArea(new Dimension(0,10)));
+        subTopPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         subTopPanel.add(topTitlePanel);
         subTopPanel.add(Box.createRigidArea(new Dimension(0,2)));
         subTopPanel.add(topDatePanel);
@@ -202,7 +203,7 @@ public class EditTaskPanel extends JPanel {
         
         //Add everything together in the topPanel and bottomPanel
         topPanel.add(subTopPanel,BorderLayout.PAGE_START);
-        topPanel.add(Box.createRigidArea(new Dimension(0,5)));
+        topPanel.add(Box.createRigidArea(new Dimension(0, 5)));
         descriptionArea.setLineWrap(true);
         topPanel.add(scrollArea, BorderLayout.CENTER);
         subBottomPanel.add(bottomLabelPanel, BorderLayout.LINE_START);
@@ -250,7 +251,12 @@ public class EditTaskPanel extends JPanel {
             item.setPriority(2);
         if(highPriority.isSelected())
             item.setPriority(3);
-        item.setCategory(new Category((String)categoryBox.getSelectedItem()));
+        String cat = (String)categoryBox.getSelectedItem();
+        if (cat != "None")
+            item.setCategory(new Category(cat));
+        else {
+            item.setCategory(null);
+        }
         item.setDueDate(dueDateCal.getDate());
         return item;
     }

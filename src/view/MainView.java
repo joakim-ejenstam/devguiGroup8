@@ -4,10 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -192,12 +189,21 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    // Text fields and buttons
 	    JTextField inputFld = new JTextField();
 	    JButton addBtn = new JButton(controller.getAddAction());
-	    
+
+        JTabbedPane testPane = new JTabbedPane();
+        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewpending"),null,scrollPane,"Crazy stuff!");
+
+        JScrollPane donePane = new JScrollPane(doneList);
+        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"),null, donePane, "mer galet!");
+        testPane.setMnemonicAt(0, KeyEvent.VK_1);
+        testPane.setMnemonicAt(1, KeyEvent.VK_2);
 	    // Add to pane
-	    pane.add(scrollPane, BorderLayout.CENTER);
+	    pane.add(testPane, BorderLayout.CENTER);
 		pane.add(northPanel, BorderLayout.NORTH);
 	    pane.add(southPanel, BorderLayout.SOUTH);
-	    
+
+        testPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        testPane.setTabPlacement(JTabbedPane.TOP);
 	    // Set layouts and alignment
 	    southPanel.setLayout(new BorderLayout());
 	    northPanel.setLayout(new BorderLayout());
@@ -373,7 +379,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
                                 controller.getEditItem(index),
                                 controller.getCategories(),
                                 controller.getLanguage());
-                editView.setSize(400,400);
+                editView.setSize(400, 400);
                 editView.setVisible(true);
              }
         }
