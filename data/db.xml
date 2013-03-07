@@ -8,7 +8,7 @@
             <category>Private</category>
             <priority>1</priority>
             <creationdate>2013-03-05T07:03</creationdate>
-            <done>1</done>
+            <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
@@ -48,7 +48,7 @@
             <category>None</category>
             <priority>1</priority>
             <creationdate>2013-03-07T19:43</creationdate>
-            <done>1</done>
+            <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
@@ -65,8 +65,8 @@
             <title>yjj</title>
             <description/>
             <duedate/>
-            <category/>
-            <priority>0</priority>
+            <category>Hunden</category>
+            <priority>1</priority>
             <creationdate>2013-03-07T18:32</creationdate>
             <done>0</done>
             <deleted>0</deleted>
@@ -75,8 +75,8 @@
             <title>we</title>
             <description/>
             <duedate/>
-            <category/>
-            <priority>0</priority>
+            <category>Hästar</category>
+            <priority>1</priority>
             <creationdate>2013-03-07T19:13</creationdate>
             <done>0</done>
             <deleted>0</deleted>
@@ -118,6 +118,36 @@
             <category/>
             <priority>1</priority>
             <creationdate>2013-03-07T21:15</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>jkkhgkhfkjhkh</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-07T21:57</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>penis</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-07T22:16</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>penis igen</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-07T22:16</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
