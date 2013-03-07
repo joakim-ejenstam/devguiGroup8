@@ -48,7 +48,7 @@
             <category>None</category>
             <priority>1</priority>
             <creationdate>2013-03-07T19:43</creationdate>
-            <done>0</done>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
@@ -64,22 +64,22 @@
         <todoitem>
             <title>we</title>
             <description/>
-            <duedate/>
-            <category>Hästar</category>
+            <duedate>2013-03-18</duedate>
+            <category/>
             <priority>1</priority>
             <creationdate>2013-03-07T19:13</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
+            <done>1</done>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>jy</title>
             <description/>
-            <duedate/>
+            <duedate>2013-03-12</duedate>
             <category/>
-            <priority>0</priority>
+            <priority>1</priority>
             <creationdate>2013-03-07T19:17</creationdate>
-            <done>0</done>
-            <deleted>0</deleted>
+            <done>1</done>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>salkdjföaslkdjföoiasjdf</title>
@@ -88,7 +88,7 @@
             <category/>
             <priority>1</priority>
             <creationdate>2013-03-07T21:14</creationdate>
-            <done>0</done>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
@@ -98,7 +98,7 @@
             <category/>
             <priority>1</priority>
             <creationdate>2013-03-07T21:14</creationdate>
-            <done>0</done>
+            <done>1</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
@@ -119,7 +119,7 @@
             <priority>1</priority>
             <creationdate>2013-03-07T21:57</creationdate>
             <done>1</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>wdw</title>
@@ -129,7 +129,7 @@
             <priority>1</priority>
             <creationdate>2013-03-07T22:36</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>jkkhgkhfkjhkh</title>
