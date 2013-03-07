@@ -368,6 +368,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		ToDoItem newItem = new ToDoItem();
 		newItem.setTitle(title);
 		newItem.setCreationDate(new Date());
+		newItem.setPriority(1);
 		if(this.tasks.contains(newItem))
 			throw new ToDoItemExistsException();
 		else {
