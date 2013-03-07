@@ -37,6 +37,9 @@ public class ToDoController extends ComponentAdapter {
      * @param newModel The model of the current application
      * @param newLang The language object of the application
      */
+    // The icons used in this application comes from:
+    // Copyright (c) 2007 Axialis Software
+    // http://www.axialis.com
     public ToDoController(ToDoItemModel newModel, LocalizedTexts newLang){
         this.model = newModel;
         this.lang = newLang;
