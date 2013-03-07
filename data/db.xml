@@ -44,8 +44,8 @@
         <todoitem>
             <title>kajsdfölkajsdöflkjasdf</title>
             <description/>
-            <duedate>2013-03-14</duedate>
-            <category>None</category>
+            <duedate>2013-03-29</duedate>
+            <category/>
             <priority>1</priority>
             <creationdate>2013-03-07T19:43</creationdate>
             <done>0</done>
@@ -124,7 +124,7 @@
         <todoitem>
             <title>wdw</title>
             <description/>
-            <duedate/>
+            <duedate>2013-03-01</duedate>
             <category/>
             <priority>1</priority>
             <creationdate>2013-03-07T22:36</creationdate>
