@@ -17,11 +17,7 @@ import javax.swing.event.TableModelListener;
 
 import controller.AddAction;
 import controller.TodoMouseListener;
-import model.DeletedListModel;
-import model.DoneListModel;
-import model.OverdueListModel;
-import model.LocalizedTexts;
-import model.TableToDoItemModel;
+import model.*;
 
 import org.java.ayatana.ApplicationMenu;
 
@@ -107,12 +103,19 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
 		JMenuItem deleteTodo = new JMenuItem(controller.getDeleteAction());
         JMenuItem setTodo = new JMenuItem(controller.getDoneAction());
+        JMenuItem showGraph = new JMenuItem("Show Graph");
+        showGraph.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new GraphPanel(new StupidToDoItemModel());
+            }
+        });
 
 		// Set up menu bar
 		menuBar.add(file);
 		menuBar.add(edit);
 		menuBar.add(help);
 		file.add(chooseLanguage);
+        file.add(showGraph);
 		help.add(about);
 		edit.add(addTodo);
 		edit.add(editTodo);
@@ -192,11 +195,14 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"), null, donePane);
         testPane.addTab(lang.getText("ui.mainview.radiobutton.viewoverdue"),null,overDuePane);
         testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdeleted"),null,deletePane);
+        testPane.addTab("Graph",null,new GraphPanel(new StupidToDoItemModel()));
         testPane.setMnemonicAt(0, KeyEvent.VK_1);
         testPane.setMnemonicAt(1, KeyEvent.VK_2);
         testPane.setMnemonicAt(2, KeyEvent.VK_3);
         testPane.setMnemonicAt(3, KeyEvent.VK_4);
-	    // Add to pane
+        testPane.setMnemonicAt(4, KeyEvent.VK_5);
+
+        // Add to pane
 	    pane.add(testPane, BorderLayout.CENTER);
 		pane.add(northPanel, BorderLayout.NORTH);
 	    pane.add(southPanel, BorderLayout.SOUTH);
@@ -218,9 +224,10 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 
 	    // Adding clock to north panels 
 	    northRightPanel.add(timeLabel);
+
 	    
 	    // creates the clock
-	    final DateFormat timeFormat = new SimpleDateFormat("HH:mm");  
+	    final DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 	    ActionListener timerListener = new ActionListener()  
 	    {  
 	        public void actionPerformed(ActionEvent e)  
