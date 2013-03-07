@@ -22,14 +22,13 @@ public class TodoMouseListener implements MouseListener {
 
         this.controller = cont;
 
-        popupMenu = new JPopupMenu("Pew pew!");
+        popupMenu = new JPopupMenu();
         JMenuItem popEdit = new JMenuItem(controller.getEditAction());
         JMenuItem popDel = new JMenuItem(controller.getDeleteAction());
         JMenuItem popSet = new JMenuItem(controller.getDoneAction());
         popupMenu.add(popEdit);
         popupMenu.add(popDel);
         popupMenu.add(popSet);
-
     }
 
     public void mouseClicked(MouseEvent e) {
