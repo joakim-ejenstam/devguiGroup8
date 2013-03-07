@@ -49,14 +49,14 @@
             <priority>1</priority>
             <creationdate>2013-03-07T19:43</creationdate>
             <done>1</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>kajsdfölkajsdöflkjasdf</title>
             <description/>
             <duedate>2013-03-14</duedate>
-            <category>None</category>
-            <priority>1</priority>
+            <category/>
+            <priority>2</priority>
             <creationdate>2013-03-07T19:43</creationdate>
             <done>0</done>
             <deleted>0</deleted>
@@ -79,7 +79,7 @@
             <priority>0</priority>
             <creationdate>2013-03-07T19:13</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>jy</title>
@@ -89,7 +89,7 @@
             <priority>0</priority>
             <creationdate>2013-03-07T19:17</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>salkdjföaslkdjföoiasjdf</title>
@@ -99,7 +99,7 @@
             <priority>1</priority>
             <creationdate>2013-03-07T21:14</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>aspdofkaosfäaspkfaf</title>
@@ -109,7 +109,7 @@
             <priority>1</priority>
             <creationdate>2013-03-07T21:14</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
         <todoitem>
             <title>aspdfoiaspvcmäöasldkfsf</title>
@@ -119,7 +119,7 @@
             <priority>1</priority>
             <creationdate>2013-03-07T21:15</creationdate>
             <done>0</done>
-            <deleted>0</deleted>
+            <deleted>1</deleted>
         </todoitem>
     </todoitems>
     <categories>
