@@ -124,7 +124,7 @@ public class ApplicationStartup {
 
 			for (ToDoItem item : model.getAllToDoItems()) {
 				if (item.getDueDate() != null) {
-					if (item.getDueDate().compareTo(today) == 1
+					if (item.getDueDate().compareTo(today) == 0
 							|| item.getDueDate().compareTo(today) == -1) {
 						counter++;
 						message.append("- " + item.getTitle() + ", ");
