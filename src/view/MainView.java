@@ -267,7 +267,8 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	        {  
 	            Date date = new Date();  
 	            String time = timeFormat.format(date);  
-	            timeLabel.setText(time);  
+	            timeLabel.setText(time); 
+	            timeLabel.setFont(new Font("Arial",Font.PLAIN, 15));
 	        }  
 	    };  
 	    Timer timer = new Timer(1000, timerListener);  
