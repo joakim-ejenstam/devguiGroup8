@@ -197,7 +197,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"), null, donePane);
         testPane.addTab(lang.getText("ui.mainview.radiobutton.viewoverdue"),null,overDuePane);
         testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdeleted"),null,deletePane);
-        testPane.addTab("Graph",null,new GraphPanel(new StupidToDoItemModel()));
+        testPane.addTab("Graph",null,new GraphPanel(this.tableModel.getUnderlyingDataModel()));
         testPane.setMnemonicAt(0, KeyEvent.VK_1);
         testPane.setMnemonicAt(1, KeyEvent.VK_2);
         testPane.setMnemonicAt(2, KeyEvent.VK_3);
