@@ -6,9 +6,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.metal.OceanTheme;
+
+import controller.Config;
 
 public class CustomTheme extends OceanTheme {
 
@@ -25,17 +28,18 @@ public class CustomTheme extends OceanTheme {
 	private final ColorUIResource secondary2;
 	private final ColorUIResource secondary3;
 	
-	private final Properties prop;
+	private ResourceBundle rb = null;
+//	private final Properties prop;
 	
-	public CustomTheme(){
-		this.prop = this.loadColorProperties();
-		this.primary1 = new ColorUIResource(Color.decode(prop.getProperty("ui.primeColor1")));
-		this.primary2 = new ColorUIResource(Color.decode(prop.getProperty("ui.primeColor2")));
-		this.primary3 =new ColorUIResource(Color.decode(prop.getProperty("ui.primeColor3")));
+	public CustomTheme(Config cf){
+//		this.prop = this.loadColorProperties();
+		this.primary1 = new ColorUIResource(Color.decode(cf.getProp("ui.primeColor1")));
+		this.primary2 = new ColorUIResource(Color.decode(cf.getProp("ui.primeColor2")));
+		this.primary3 =new ColorUIResource(Color.decode(cf.getProp("ui.primeColor3")));
 		
-		this.secondary1 = new ColorUIResource(Color.decode(prop.getProperty("ui.secondaryColor1")));
-		this.secondary2 = new ColorUIResource(Color.decode(prop.getProperty("ui.secondaryColor2")));
-		this.secondary3 =new ColorUIResource(Color.decode(prop.getProperty("ui.secondaryColor3")));
+		this.secondary1 = new ColorUIResource(Color.decode(cf.getProp("ui.secondaryColor1")));
+		this.secondary2 = new ColorUIResource(Color.decode(cf.getProp("ui.secondaryColor2")));
+		this.secondary3 =new ColorUIResource(Color.decode(cf.getProp("ui.secondaryColor3")));
 	}
 
 	protected ColorUIResource getPrimary1() {
@@ -81,25 +85,4 @@ public class CustomTheme extends OceanTheme {
 		}
 		return colorTheme;
 	}
-
-
-/*
-private static final String THEME = "data" + File.separator
-+ "theme.properties";
-private final ColorUIResource primary1 = new ColorUIResource(50, 255, 0);
-private final ColorUIResource primary2 = new ColorUIResource(0, 255, 255);
-private final ColorUIResource primary3 = new ColorUIResource(0, 0, 0);
-
-protected ColorUIResource getPrimary1() {
-  return primary1;
-}
-
-protected ColorUIResource getPrimary2() {
-  return primary2;
-}
-
-protected ColorUIResource getPrimary3() {
-  return primary3;
-}
-*/
 }

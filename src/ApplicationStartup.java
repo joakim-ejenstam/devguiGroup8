@@ -69,7 +69,7 @@ public class ApplicationStartup {
 		} else {
 			try {
 				MetalLookAndFeel mlf = new MetalLookAndFeel();
-				MetalLookAndFeel.setCurrentTheme(new CustomTheme());
+				MetalLookAndFeel.setCurrentTheme(new CustomTheme(config));
 				UIManager.setLookAndFeel(mlf);
 			} catch (UnsupportedLookAndFeelException e1) {
 				// TODO Auto-generated catch block
