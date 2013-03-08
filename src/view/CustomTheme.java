@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 import javax.swing.plaf.ColorUIResource;
@@ -14,8 +15,7 @@ public class CustomTheme extends OceanTheme {
 
 	// Color theme
 	
-	private static final String THEME = "data" + File.separator
-			+ "theme.properties";
+	private static final String THEME = "theme.properties";
 	
 	private final ColorUIResource primary1;
 	private final ColorUIResource primary2;
@@ -66,18 +66,18 @@ public class CustomTheme extends OceanTheme {
 	 * Loads the color configuration
 	 */
 	private Properties loadColorProperties() {
+		URL path = ClassLoader.getSystemResource(THEME);
+		
 		Properties colorTheme = new Properties();
-		FileInputStream in;
 		try {
-			in = new FileInputStream(THEME);
-			colorTheme.load(in);
-			in.close();
-		} catch (FileNotFoundException e) {
+			System.out.println("p: "+THEME + "-" );
+			colorTheme.load(new FileInputStream(path.getFile()));
+		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
 		return colorTheme;
 	}
