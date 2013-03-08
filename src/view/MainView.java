@@ -38,6 +38,7 @@ import model.DeletedListModel;
 import model.DoneListModel;
 import model.LocalizedTexts;
 import model.OverdueListModel;
+import model.StupidToDoItemModel;
 import model.TableToDoItemModel;
 
 import org.java.ayatana.ApplicationMenu;
@@ -64,20 +65,14 @@ public class MainView extends JFrame implements Observer, TableModelListener{
     private LocalizedTexts lang;
     public JTable table;
     
+    private JFrame frame;
     private JMenu file;
     private JMenu edit;
     private JMenu help;
-    private JPopupMenu popupMenu;
+    private JTabbedPane testPane; 
     
-    private ButtonGroup viewItems = new ButtonGroup();
     final JLabel timeLabel = new JLabel(); 
     
-    //View button group for showing certain lists
-    private JRadioButton viewDone;
-    private JRadioButton viewOverDue;
-    private JRadioButton viewPending;
-    private JRadioButton viewDeleted;
-
     public JList doneList;
     public JList overdueList;
     public JList deletedList;
@@ -199,17 +194,18 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    JTextField inputFld = new JTextField();
 	    JButton addBtn = new JButton(controller.getAddAction());
 
-        JTabbedPane testPane = new JTabbedPane();
-        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewpending"), null, scrollPane);
-        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"), null, donePane);
-        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewoverdue"),null,overDuePane);
-        testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdeleted"),null,deletePane);
-        testPane.addTab("Graph",null,new GraphPanel(this.tableModel.getUnderlyingDataModel()));
-        testPane.setMnemonicAt(0, KeyEvent.VK_1);
-        testPane.setMnemonicAt(1, KeyEvent.VK_2);
-        testPane.setMnemonicAt(2, KeyEvent.VK_3);
-        testPane.setMnemonicAt(3, KeyEvent.VK_4);
-        testPane.setMnemonicAt(4, KeyEvent.VK_5);
+
+        this.testPane = new JTabbedPane();
+        this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewpending"), null, scrollPane);
+        this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"), null, donePane);
+        this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewoverdue"),null,overDuePane);
+        this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdeleted"),null,deletePane);
+        this.testPane.addTab("Graph",null,new GraphPanel(this.tableModel.getUnderlyingDataModel()));
+        this.testPane.setMnemonicAt(0, KeyEvent.VK_1);
+        this.testPane.setMnemonicAt(1, KeyEvent.VK_2);
+        this.testPane.setMnemonicAt(2, KeyEvent.VK_3);
+        this.testPane.setMnemonicAt(3, KeyEvent.VK_4);
+        this.testPane.setMnemonicAt(4, KeyEvent.VK_5);
 
         // Add to pane
 	    pane.add(testPane, BorderLayout.CENTER);
@@ -277,23 +273,23 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	 */
 	public void createAndShowGUI(Config config) {
 		
-		JFrame frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(Integer.valueOf(config.getProp("windowWidth")), 
+		this.frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setPreferredSize(new Dimension(Integer.valueOf(config.getProp("windowWidth")), 
 				Integer.valueOf(config.getProp("windowHeight"))));
-		frame.setLocation(Integer.valueOf(config.getProp("windowXPos")), Integer.valueOf(config.getProp("windowYPos")));
+		this.frame.setLocation(Integer.valueOf(config.getProp("windowXPos")), Integer.valueOf(config.getProp("windowYPos")));
 		
-		addComponentsToPane(frame.getContentPane());
-		addMenuBar(frame);
+		addComponentsToPane(this.frame.getContentPane());
+		addMenuBar(this.frame);
 		
 		//support for ubuntu global menu, using the jayanta-lib
-		ApplicationMenu.tryInstall(frame);
+		ApplicationMenu.tryInstall(this.frame);
 		
-		frame.pack();
-		frame.setVisible(true);
+		this.frame.pack();
+		this.frame.setVisible(true);
 		
 		//we add the controller as a listener to observe changes
-		frame.addComponentListener(this.controller);
+		this.frame.addComponentListener(this.controller);
         controller.setTable(table);
     }
 
@@ -326,10 +322,10 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.file.setText(lang.getText("ui.mainview.menu.file"));
         this.edit.setText(lang.getText("ui.mainview.menu.edit"));
         this.help.setText(lang.getText("ui.mainview.menu.help"));
-//        this.viewPending.setText(lang.getText("ui.mainview.radiobutton.viewpending"));
-//        this.viewDone.setText(lang.getText("ui.mainview.radiobutton.viewdone"));
-//        this.viewOverDue.setText(lang.getText("ui.mainview.radiobutton.viewoverdue"));
-//        this.viewDeleted.setText(lang.getText("ui.mainview.radiobutton.viewdeleted"));
+        this.testPane.setTitleAt(0,lang.getText("ui.mainview.radiobutton.viewpending"));
+        this.testPane.setTitleAt(1,lang.getText("ui.mainview.radiobutton.viewdone"));
+        this.testPane.setTitleAt(2,lang.getText("ui.mainview.radiobutton.viewoverdue"));
+        this.testPane.setTitleAt(3,lang.getText("ui.mainview.radiobutton.viewdeleted"));
         this.setTitle(lang.getText("ui.mainview.windowTitle"));
         this.validate();
         this.repaint();
