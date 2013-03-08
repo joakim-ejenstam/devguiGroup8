@@ -19,7 +19,6 @@ public class EditAction extends AbstractAction {
     private ToDoController parent;
     private LocalizedTexts lang;
     private JTable table;
-
     /**
      * Constructor, nothing fancy!
      * @param text The title for the component using this action.
@@ -48,7 +47,6 @@ public class EditAction extends AbstractAction {
 
     public void actionPerformed(ActionEvent event) {
         int index = table.getSelectedRow();//-1 if nothing is selected
-
         if(index >= 0) {
             index = table.convertRowIndexToModel(index);
             EditTaskFrame editView =
@@ -59,12 +57,12 @@ public class EditAction extends AbstractAction {
             editView.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(
-                    ((JComponent)event.getSource()).getTopLevelAncestor(),
+                    table.getTopLevelAncestor(),
                     lang.getText("ui.editaction.optionpane.select_item"),
                     lang.getText("ui.editaction.optionpane.noselectedtitle"),
                     JOptionPane.WARNING_MESSAGE);
         }
-     }
+    }
 
     /**
      * Language set method. Sets the strings of this object according to the input language localization object.
