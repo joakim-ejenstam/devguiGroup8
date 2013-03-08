@@ -138,7 +138,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	 */
 	private JTable createTable() {
 		JTable table = new JTable(tableModel);
-		table.setAutoCreateRowSorter(true); //removed the autosorting so we can implement our own sorting algorithm.
+		table.setAutoCreateRowSorter(true);
         table.getTableHeader().setReorderingAllowed(false);
 		table.getModel().addTableModelListener(this);//should catch changes in the table model once we promote them with the fireUpdate() below.
 	    

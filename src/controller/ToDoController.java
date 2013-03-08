@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import model.*;
 import view.MainView;
+import view.ToDoTableRenderer;
 import exceptions.ToDoItemExistsException;
 
 /**
@@ -303,6 +304,7 @@ public class ToDoController extends ComponentAdapter {
         this.about.updateLanguage(lang);
         this.ok.updateLanguage(lang);
         view.table.setModel(new TableToDoItemModel(model, lang));
+        view.table.getColumnModel().getColumn(3).setCellRenderer(new ToDoTableRenderer());
         this.view.updateLanguage(lang);
         this.setDone.updateLanguage(lang);
     }
