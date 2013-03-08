@@ -5,6 +5,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -115,8 +116,12 @@ public class GraphPanel extends JPanel {
         	//draw it
         	if(currItem.getDueDate() != null)
         		g.drawString(currItem.getTitle()+" ("+currItem.getPriority()+"; "+new SimpleDateFormat("yyyy-MM-dd").format(currItem.getDueDate())+")", xPos, yPos);
-        	else //treat it as beeing in the future
+        	else {//treat it as beeing in the future
+        		Font f = g.getFont();
+        		g.setFont(new Font(f.getName(), Font.ITALIC, f.getSize())); // italic to show that we have no due date
         		g.drawString(currItem.getTitle()+" ("+currItem.getPriority()+"; "+new SimpleDateFormat("yyyy-MM-dd").format(this.maxDueDate)+")", xPos, yPos);
+        		g.setFont(f);
+        	}
 		}
         
         //paint a line for today

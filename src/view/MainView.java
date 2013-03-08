@@ -14,9 +14,7 @@ import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -24,8 +22,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -38,7 +34,6 @@ import model.DeletedListModel;
 import model.DoneListModel;
 import model.LocalizedTexts;
 import model.OverdueListModel;
-import model.StupidToDoItemModel;
 import model.TableToDoItemModel;
 
 import org.java.ayatana.ApplicationMenu;
@@ -306,6 +301,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.doneListModel.getDoneItems();
         this.deletedListModel.getDeletedItems();
         this.overdueListModel.getOverdueItems();
+        this.testPane.getComponentAt(4).repaint();//repaint graph view
 	}
 
 	@Override
