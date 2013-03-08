@@ -108,22 +108,6 @@ public class ApplicationStartup {
 					lang.getText("ui.mainview.optionpane.remindertitle"),
 					JOptionPane.INFORMATION_MESSAGE);
 		}
-
-		// //following stuff happens at exiting the application
-		// Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-		//
-		// public void run() {
-		// //save state of the application
-		// try {
-		// config = Config.getInstance();
-		// config.saveApplicationProperties();
-		// System.out.println("DEBUG state got saved to file!");
-		// } catch (InstantiationException e) {
-		// e.printStackTrace();//we can't do anything here anymore, the config
-		// will just not be saved.
-		// }
-		// }
-		// }));
 	}
 
 	public static void main(String[] args) {
