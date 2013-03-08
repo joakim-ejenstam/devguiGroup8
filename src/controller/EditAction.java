@@ -45,29 +45,24 @@ public class EditAction extends AbstractAction {
         this.table = newTable;
     }
 
-    public void editItem(JComponent c, int index) {
+    public void actionPerformed(ActionEvent event) {
+        int index = table.getSelectedRow();//-1 if nothing is selected
         if(index >= 0) {
+            index = table.convertRowIndexToModel(index);
             EditTaskFrame editView =
                     new EditTaskFrame
                             (parent, parent.getEditItem(index),parent.getCategories(),parent.getLanguage());
             editView.setSize(400,400);
-            editView.setLocationRelativeTo(c);
+            editView.setLocationRelativeTo(table);
             editView.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(
-                    c.getTopLevelAncestor(),
+                    table.getTopLevelAncestor(),
                     lang.getText("ui.editaction.optionpane.select_item"),
                     lang.getText("ui.editaction.optionpane.noselectedtitle"),
                     JOptionPane.WARNING_MESSAGE);
         }
     }
-
-    public void actionPerformed(ActionEvent event) {
-            int index = table.getSelectedRow();
-            System.out.println("Index: "+index);
-            index = table.convertRowIndexToModel(index);
-            editItem(table,index);
-     }
 
     /**
      * Language set method. Sets the strings of this object according to the input language localization object.

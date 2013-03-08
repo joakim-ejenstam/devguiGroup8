@@ -110,7 +110,17 @@ public class TableToDoItemModel extends AbstractTableModel {
 	 */
 	@Override
 	public Class<?> getColumnClass(int column) {
+		Method[] methods = ToDoItem.class.getDeclaredMethods(); 
+	    for (Method method : methods) {
+	    	if (method.isAnnotationPresent(DisplayInTable.class) && method.getAnnotation(DisplayInTable.class).value() == column) {
+	    		System.out.println("ColA: "+column+" Class: "+method.getReturnType().toString());
+	//    		return method.getReturnType();
+	    	}
+		}
+		//return null;
+		
 		try {
+			System.out.println("ColB: "+column+" Class: "+getValueAt(0, column).getClass().toString());
 			return getValueAt(0,column).getClass();
 		} catch (NullPointerException e) { //happens if an attribute is not set
 			return null;
