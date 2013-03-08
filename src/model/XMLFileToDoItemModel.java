@@ -41,6 +41,14 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 		this.parseXML();
 	}
 	
+	/**
+	 * Check if the Category cat exists in the current list of categories
+	 * @param cat Category
+	 * @return true if the category already exist, false otherwhise
+	 */
+	private boolean categoryExist(Category cat){
+		return this.getAllCategories().contains(cat);
+	}
 	
 	/**
 	 * Creates a date object from the string value
@@ -260,6 +268,10 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	 * @param item current ToDoItem
 	 */
 	private void addItemXML(ToDoItem item){
+		if (!categoryExist(item.getCategory())){
+			this.addCategory(item.getCategory());
+		}
+
 		try {
 			Builder builder = new Builder();			
 			Document doc = builder.build(new File(XMLFILEPATH));
@@ -284,6 +296,9 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	 * @param item current ToDoItem to be written to the XML file
 	 */
 	private void updateItemXML(int index, ToDoItem item){
+		if (!categoryExist(item.getCategory())){
+			this.addCategory(item.getCategory());
+		}
 		try {
 			Builder builder = new Builder();	
 			Document doc = builder.build(new File(XMLFILEPATH));
@@ -308,6 +323,9 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	 * @param value new value for the field
 	 */
 	private void editItemXML(ToDoItem item, String field, String value){
+		if (!categoryExist(item.getCategory())){
+			this.addCategory(item.getCategory());
+		}
 		try {
 			Builder builder = new Builder();			
 			Document doc;
@@ -462,6 +480,28 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	@Override
 	public void addCategory(Category category) {
 		this.categories.add(category);
+		try {
+			Builder builder = new Builder();			
+			Document doc = builder.build(new File(XMLFILEPATH));
+			Element root 	= doc.getRootElement();
+			Element categories	= root.getFirstChildElement("categories");
+			Element cat 	= new Element("category");
+
+			categories.appendChild(cat);
+			cat.appendChild(category.getLabel());
+			
+			FileOutputStream out = new FileOutputStream(XMLFILEPATH);
+		    Serializer ser = new Serializer(out);
+		    ser.setIndent(4);
+		    ser.write(doc);
+		    out.close();
+			
+		}catch (ParsingException e){
+			e.printStackTrace();
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+		
 		setChanged();
 		notifyObservers();
 	}
