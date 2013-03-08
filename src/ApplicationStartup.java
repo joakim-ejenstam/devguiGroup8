@@ -1,16 +1,9 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
-
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import model.DoneListModel;
@@ -33,10 +26,6 @@ import exceptions.LoadModelException;
 public class ApplicationStartup {
 
 	private Config config = null; // the configuration values of the application
-
-	// Color theme
-	private static final String THEME = "data" + File.separator
-			+ "theme.properties";
 
 	public ApplicationStartup(String[] args) {
 		config = Config.getInstance();
@@ -75,26 +64,6 @@ public class ApplicationStartup {
 				// default l&f will be used
 			}
 		} else {
-			/*
-			 * // else set custom look and feel for the other OS's try {
-			 * Properties colorProp = loadColorProperties();
-			 * UIManager.put("Table.showGrid", true);
-			 * 
-			 * // Add custom colors from the property
-			 * UIManager.put("nimbusBase",
-			 * Color.decode(colorProp.getProperty("ui.primeColor1")));
-			 * UIManager.put("nimbusBlueGrey",
-			 * Color.decode(colorProp.getProperty("ui.primeColor2")));
-			 * UIManager.put("control",
-			 * Color.decode(colorProp.getProperty("ui.primeColor3")));
-			 * 
-			 * for (LookAndFeelInfo info : UIManager
-			 * .getInstalledLookAndFeels()) { if
-			 * ("Nimbus".equals(info.getName())) {
-			 * UIManager.setLookAndFeel(info.getClassName()); break; } } } catch
-			 * (Exception e) { // default theme will be used. } }
-			 */
-			// NEW CODE CHECK IF U GET THE WEIRD ERROR
 			try {
 				MetalLookAndFeel mlf = new MetalLookAndFeel();
 				MetalLookAndFeel.setCurrentTheme(new CustomTheme());
@@ -157,28 +126,6 @@ public class ApplicationStartup {
 		// }));
 	}
 
-	
-	/**
-	 * Loads the color configuration
-	 */
-	/*
-	private Properties loadColorProperties() {
-		Properties colorTheme = new Properties();
-		FileInputStream in;
-		try {
-			in = new FileInputStream(THEME);
-			colorTheme.load(in);
-			in.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return colorTheme;
-	}
-	*/
 	public static void main(String[] args) {
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		// change program name
