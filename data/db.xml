@@ -2,42 +2,102 @@
 <model>
     <todoitems>
         <todoitem>
-            <title>friday</title>
-            <description>foo</description>
+            <title>Go to the mall</title>
+            <description>Do some shopping..</description>
             <duedate>2013-03-22</duedate>
             <category>Private</category>
-            <priority>3</priority>
+            <priority>1</priority>
             <creationdate>2013-03-08T00:52</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>hello</title>
+            <title>Study for the exam</title>
             <description/>
-            <duedate>2013-03-08</duedate>
+            <duedate>2013-03-21</duedate>
+            <category>University</category>
+            <priority>2</priority>
+            <creationdate>2013-03-08T20:52</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Go to the gym</title>
+            <description>Do some workout</description>
+            <duedate>2013-03-13</duedate>
             <category>Private</category>
             <priority>2</priority>
-            <creationdate>2013-03-08T01:17</creationdate>
+            <creationdate>2013-03-08T20:53</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>test</title>
-            <description/>
-            <duedate>2013-03-09</duedate>
-            <category>University</category>
+            <title>Walk the dog</title>
+            <description>Go around the block...</description>
+            <duedate>2013-03-20</duedate>
+            <category>Private</category>
             <priority>1</priority>
-            <creationdate>2013-03-08T01:20</creationdate>
+            <creationdate>2013-03-08T20:53</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
         <todoitem>
-            <title>wff</title>
-            <description/>
-            <duedate/>
-            <category/>
+            <title>Presentation</title>
+            <description>Do the presentation at work</description>
+            <duedate>2013-03-30</duedate>
+            <category>Work</category>
+            <priority>3</priority>
+            <creationdate>2013-03-08T20:54</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Meet Mark</title>
+            <description>Have a cup of coffe with my friend mark.</description>
+            <duedate>2013-03-23</duedate>
+            <category>Private</category>
+            <priority>2</priority>
+            <creationdate>2013-03-08T20:54</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Make some food</title>
+            <description>Chicken, yummy!</description>
+            <duedate>2013-03-21</duedate>
+            <category>Private</category>
+            <priority>3</priority>
+            <creationdate>2013-03-08T20:55</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Celebrate the new years eve</title>
+            <description>Wohoo party hats on!</description>
+            <duedate>2013-12-31</duedate>
+            <category>Private</category>
+            <priority>3</priority>
+            <creationdate>2013-03-08T20:56</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Buy presents</title>
+            <description>Buy alot of presents to friends and family.</description>
+            <duedate>2013-03-23</duedate>
+            <category>Private</category>
+            <priority>2</priority>
+            <creationdate>2013-03-08T20:57</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>Apply for a new job</title>
+            <description>Need look for a new job.</description>
+            <duedate>2013-06-12</duedate>
+            <category>Work</category>
             <priority>1</priority>
-            <creationdate>2013-03-08T19:13</creationdate>
+            <creationdate>2013-03-08T20:58</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
@@ -45,5 +105,6 @@
     <categories>
         <category>Private</category>
         <category>University</category>
+        <category>Work</category>
     </categories>
 </model>
