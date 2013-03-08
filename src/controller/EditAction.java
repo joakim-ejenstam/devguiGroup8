@@ -19,7 +19,6 @@ public class EditAction extends AbstractAction {
     private ToDoController parent;
     private LocalizedTexts lang;
     private JTable table;
-
     /**
      * Constructor, nothing fancy!
      * @param text The title for the component using this action.
@@ -46,24 +45,28 @@ public class EditAction extends AbstractAction {
         this.table = newTable;
     }
 
-    public void actionPerformed(ActionEvent event) {
-        int index = table.getSelectedRow();
-       index = table.convertRowIndexToModel(index);
-
+    public void editItem(JComponent c, int index) {
         if(index >= 0) {
             EditTaskFrame editView =
                     new EditTaskFrame
                             (parent, parent.getEditItem(index),parent.getCategories(),parent.getLanguage());
             editView.setSize(400,400);
-            editView.setLocationRelativeTo(table);
+            editView.setLocationRelativeTo(c);
             editView.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(
-                    ((JComponent)event.getSource()).getTopLevelAncestor(),
+                    c.getTopLevelAncestor(),
                     lang.getText("ui.editaction.optionpane.select_item"),
                     lang.getText("ui.editaction.optionpane.noselectedtitle"),
                     JOptionPane.WARNING_MESSAGE);
         }
+    }
+
+    public void actionPerformed(ActionEvent event) {
+            int index = table.getSelectedRow();
+            System.out.println("Index: "+index);
+            index = table.convertRowIndexToModel(index);
+            editItem(table,index);
      }
 
     /**

@@ -49,34 +49,60 @@ public class TodoMouseListener implements MouseListener {
             editView.setSize(400, 400);
             editView.setVisible(true);
         }
-        else if(e.getSource() instanceof JList) {
-
+        else if(e.getClickCount() != 2 && e.getSource() instanceof JList) {
+            JList list = (JList)e.getSource();
+            int index = list.getSelectedIndex();
+            controller.setSelected(index);
         }
     }
 
     public void mousePressed(MouseEvent ev) {
         Object source = ev.getSource();
-        if (ev.isPopupTrigger()) {
-            int r = ((JTable)source).rowAtPoint(ev.getPoint());
-            if (r >= 0 && r < ((JTable)source).getRowCount()) {
-                ((JTable)source).setRowSelectionInterval(r, r);
-            } else {
-                ((JTable)source).clearSelection();
+        if (source instanceof JTable){
+            if (ev.isPopupTrigger()) {
+                int r = ((JTable)source).rowAtPoint(ev.getPoint());
+                if (r >= 0 && r < ((JTable)source).getRowCount()) {
+                    ((JTable)source).setRowSelectionInterval(r, r);
+                } else {
+                    ((JTable)source).clearSelection();
+                }
+                popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
             }
-            popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
+        } else {
+            if (ev.isPopupTrigger()) {
+                int r = ((JList)source).locationToIndex(ev.getPoint());
+                if (r >= 0 && r < ((JList)source).getModel().getSize()) {
+                    ((JList)source).setSelectedIndex(r);
+                } else {
+                    ((JList)source).clearSelection();
+                }
+                popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
+            }
         }
     }
 
     public void mouseReleased(MouseEvent ev) {
         Object source = ev.getSource();
-        if (ev.isPopupTrigger()) {
-            int r = ((JTable)source).rowAtPoint(ev.getPoint());
-            if (r >= 0 && r < ((JTable)source).getRowCount()) {
-                ((JTable)source).setRowSelectionInterval(r, r);
-            } else {
-                ((JTable)source).clearSelection();
+        if (source instanceof JTable){
+            if (ev.isPopupTrigger()) {
+                int r = ((JTable)source).rowAtPoint(ev.getPoint());
+                if (r >= 0 && r < ((JTable)source).getRowCount()) {
+                    ((JTable)source).setRowSelectionInterval(r, r);
+                } else {
+                    ((JTable)source).clearSelection();
+                }
+                popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
             }
-            popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
+        } else {
+            if (ev.isPopupTrigger()) {
+                int r = ((JList)source).locationToIndex(ev.getPoint());
+                if (r >= 0 && r < ((JList)source).getModel().getSize()) {
+                    ((JList)source).setSelectedIndex(r);
+                } else {
+                    ((JList)source).clearSelection();
+                }
+                popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
+            }
         }
     }
 

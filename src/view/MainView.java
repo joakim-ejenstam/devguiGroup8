@@ -195,12 +195,10 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"), null, donePane);
         this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewoverdue"),null,overDuePane);
         this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdeleted"),null,deletePane);
-        this.testPane.addTab("Graph",null,new GraphPanel(this.tableModel.getUnderlyingDataModel()));
         this.testPane.setMnemonicAt(0, KeyEvent.VK_1);
         this.testPane.setMnemonicAt(1, KeyEvent.VK_2);
         this.testPane.setMnemonicAt(2, KeyEvent.VK_3);
         this.testPane.setMnemonicAt(3, KeyEvent.VK_4);
-        this.testPane.setMnemonicAt(4, KeyEvent.VK_5);
 
         // Add to pane
 	    pane.add(testPane, BorderLayout.CENTER);
@@ -299,8 +297,8 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	 * This method is always called if something has changed in the observed object.
 	 * We will have to update our data now to make sure, that we show everything up to date.
 	 * @see  java.util.Observer#update(Observable, Object)
-	 * @param Observable the observed object
-	 * @param Object some arg that the observed object <em>might</em> set
+	 * @param o the observed object
+	 * @param arg some arg that the observed object <em>might</em> set
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -308,7 +306,6 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.doneListModel.getDoneItems();
         this.deletedListModel.getDeletedItems();
         this.overdueListModel.getOverdueItems();
-        this.testPane.getComponentAt(4).repaint();//repaint graph view
 	}
 
 	@Override
