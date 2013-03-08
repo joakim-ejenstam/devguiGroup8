@@ -83,6 +83,7 @@ public class AddAction extends AbstractAction {
     public void updateLanguage(LocalizedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.edit.add"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.addAction"));
+        putValue(MNEMONIC_KEY,new Integer(lang.getText("ui.mainview.menu.edit.add.mnemonic").charAt(0)));
 
     }
 }

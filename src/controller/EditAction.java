@@ -72,5 +72,6 @@ public class EditAction extends AbstractAction {
         this.lang = lang;
         putValue(NAME, lang.getText("ui.mainview.menu.edit.edit"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.editAction"));
+        putValue(MNEMONIC_KEY,new Integer(lang.getText("ui.mainview.menu.edit.edit.mnemonic").charAt(0)));
     }
 }

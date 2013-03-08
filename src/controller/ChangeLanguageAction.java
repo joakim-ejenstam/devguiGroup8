@@ -75,5 +75,6 @@ public class ChangeLanguageAction extends AbstractAction {
     public void updateLanguage(LocalizedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.file.changeLanguage"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.languageAction"));
+        putValue(MNEMONIC_KEY, new Integer(lang.getText("ui.mainview.menu.file.changeLanguage.mnemonic").charAt(0)));
     }
 }

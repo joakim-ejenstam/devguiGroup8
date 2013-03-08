@@ -53,7 +53,6 @@ public class ShowGraphAction extends AbstractAction implements Observer {
     	this.f.setPreferredSize(new Dimension(new Integer(this.parent.getConf().getProp("windowWidth")), 
     			new Integer(this.parent.getConf().getProp("windowHeight")))); // having our own size would be nicer...
     	this.f.setContentPane(new GraphPanel(this.parent.getModel()));
-//    	this.f.setDefaultCloseOperation(JFrame.);
     	this.f.pack();
     	this.f.setVisible(true);
 		
@@ -66,6 +65,8 @@ public class ShowGraphAction extends AbstractAction implements Observer {
     public void updateLanguage(LocalizedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.file.item.showGraph"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.menu.file.item.showGraph"));
+        putValue(MNEMONIC_KEY,new Integer(lang.getText("ui.mainview.menu.file.item.showGraph.mnemonic").charAt(0)));
+
     }
 
 	@Override

@@ -55,6 +55,5 @@ public class CancelAction extends AbstractAction {
     public void updateLanguage(LocalizedTexts lang) {
         putValue(NAME, lang.getText("ui.editview.button.cancel"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.cancelAction"));
-
     }
 }
