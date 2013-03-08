@@ -242,6 +242,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	            }
 	            timeLabel.setText(time); 
 	            timeLabel.setFont(new Font("Arial",Font.PLAIN, 15));
+	            timeLabel.setToolTipText(new SimpleDateFormat("EEE., yyyy-MM-dd HH:mm").format(date));
 	        }  
 	    };  
 	    Timer timer = new Timer(1000, timerListener);  
