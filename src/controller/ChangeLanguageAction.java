@@ -50,8 +50,8 @@ public class ChangeLanguageAction extends AbstractAction {
             Object[] possibilities = {"English","Deutsch","Svenska"};
             String l = (String)JOptionPane.showInputDialog(
                     rp,
-                    "Choose your preferred language!",
-                    "Customized Dialog",
+                    null,//"Choose your preferred language!",	no need to enter text here, it's self explanatory
+                    null,//"Customized Dialog",					no need to enter text here, it's self explanatory
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     possibilities,
