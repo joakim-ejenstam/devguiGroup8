@@ -70,17 +70,15 @@ public class TableToDoItemModel extends AbstractTableModel {
 		    for (Method method : methods) {
 		        if (method.isAnnotationPresent(DisplayInTable.class) && method.getAnnotation(DisplayInTable.class).value() == arg1) {
 		            try {
-                        //System.out.println(this.model.getToDoItem(arg0).getTitle() + " " + this.model.getToDoItem(arg0).getCategory() + " " + arg1);
-
-                        /*So this method returns null if the fields of the first item that is not deleted are not set, should do some error checking
-                        * TODO: Look for solution to returning null since we absolutely don't want that.*/
-						return method.invoke(this.model.getToDoItem(arg0), (Object[])null); //it's save to use null, as we just call getters
+		            	return method.invoke(this.model.getToDoItem(arg0), (Object[])null); //it's save to use null, as we just call getters
 					} catch (IllegalAccessException e) {
 						e.printStackTrace();
 					} catch (IllegalArgumentException e) {
 						e.printStackTrace();
 					} catch (InvocationTargetException e) {
 						e.printStackTrace();
+					} catch (NullPointerException e) { // if attribute of element is not set
+						return null;
 					}
 		        }
 		    }
@@ -112,7 +110,11 @@ public class TableToDoItemModel extends AbstractTableModel {
 	 */
 	@Override
 	public Class<?> getColumnClass(int column) {
-		return getValueAt(0,column).getClass();
+		try {
+			return getValueAt(0,column).getClass();
+		} catch (NullPointerException e) { //happens if an attribute is not set
+			return null;
+		}
 	}
 	
 	/**
@@ -123,11 +125,6 @@ public class TableToDoItemModel extends AbstractTableModel {
         return (col == 4);
     }
 	
-	/**
-	 * 
-	 */
-	// not needed for now?
-	// TODO: add listener to table column with the check box
 	@Override
 	public void setValueAt(Object value, int row, int col) {
 		super.setValueAt(value, row, col);

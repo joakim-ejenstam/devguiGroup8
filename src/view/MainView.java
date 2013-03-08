@@ -4,25 +4,48 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
-import controller.AddAction;
-import controller.TodoMouseListener;
-import model.*;
+import model.DeletedListModel;
+import model.DoneListModel;
+import model.LocalizedTexts;
+import model.OverdueListModel;
+import model.TableToDoItemModel;
 
 import org.java.ayatana.ApplicationMenu;
 
+import controller.AddAction;
 import controller.Config;
 import controller.ToDoController;
+import controller.TodoMouseListener;
 
 /**
  * This class sets up the main window of the application
@@ -104,15 +127,9 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
 		JMenuItem deleteTodo = new JMenuItem(controller.getDeleteAction());
         JMenuItem setTodo = new JMenuItem(controller.getDoneAction());
-        JMenuItem showGraph = new JMenuItem("Show Graph");
-        showGraph.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new GraphPanel(new StupidToDoItemModel());
-            }
-        });
-        showGraph.setIcon(controller.createNavigationIcon("/Chart1"));
+        JMenuItem showGraph = new JMenuItem(controller.getShowGraphAction());
 
-		// Set up menu bar
+        // Set up menu bar
 		menuBar.add(file);
 		menuBar.add(edit);
 		menuBar.add(help);

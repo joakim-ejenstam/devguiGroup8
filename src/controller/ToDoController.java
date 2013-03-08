@@ -30,6 +30,7 @@ public class ToDoController extends ComponentAdapter {
     private Config conf;
     private LocalizedTexts lang;
     private MainView view;
+	private ShowGraphAction showGraphAction;
 
 
     /**
@@ -92,9 +93,30 @@ public class ToDoController extends ComponentAdapter {
                         createNavigationIcon("/Ok"),
                         lang.getText("ui.tableview.setdone"),
                         KeyEvent.VK_D, this);
+        
+        this.showGraphAction =
+        		new ShowGraphAction(
+        				lang.getText("ui.mainview.menu.file.item.showGraph"),
+                        createNavigationIcon("/Chart1"),
+                        lang.getText("ui.mainview.menu.file.item.showGraph"),
+                        KeyEvent.VK_G, this); //TODO load lang.dep. mnemonic
     }
 
     /**
+	 * @return the model
+	 */
+	public ToDoItemModel getModel() {
+		return this.model;
+	}
+
+	/**
+	 * return the conf
+	 */
+	public Config getConf() {
+		return this.conf;
+	}
+
+	/**
      * Method to add a new item to the model.
      * @param title title string input by the user
      * @return null or the new item
@@ -318,6 +340,14 @@ public class ToDoController extends ComponentAdapter {
      */
 	public LocalizedTexts getLanguage() {
 		return this.lang;
+	}
+
+	/**
+	 * returns the ShowGraphAction
+	 * @return the action object
+	 */
+	public ShowGraphAction getShowGraphAction() {
+		return showGraphAction;
 	}
 
 
