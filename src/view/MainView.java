@@ -228,12 +228,18 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	    
 	    // creates the clock
 	    final DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+	    final DateFormat timeFormat2 = new SimpleDateFormat("HH mm ss");
 	    ActionListener timerListener = new ActionListener()  
 	    {  
 	        public void actionPerformed(ActionEvent e)  
 	        {  
-	            Date date = new Date();  
-	            String time = timeFormat.format(date);  
+	            Date date = new Date();
+	            String time;
+	            if((date.getTime()/1000%2) == 0) {
+	            	time = timeFormat.format(date); //even seconds
+	            } else {
+	            	time = timeFormat2.format(date); //odd seconds
+	            }
 	            timeLabel.setText(time); 
 	            timeLabel.setFont(new Font("Arial",Font.PLAIN, 15));
 	        }  
