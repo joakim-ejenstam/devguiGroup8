@@ -16,7 +16,7 @@
             <description/>
             <duedate/>
             <category>Work</category>
-            <priority>1</priority>
+            <priority>2</priority>
             <creationdate>2013-03-08T01:17</creationdate>
             <done>0</done>
             <deleted>0</deleted>
@@ -25,8 +25,8 @@
             <title>test</title>
             <description/>
             <duedate>2013-03-09</duedate>
-            <category>Private</category>
-            <priority>2</priority>
+            <category/>
+            <priority>1</priority>
             <creationdate>2013-03-08T01:20</creationdate>
             <done>0</done>
             <deleted>0</deleted>
@@ -55,7 +55,7 @@
             <title>jhmn</title>
             <description/>
             <duedate/>
-            <category>Work</category>
+            <category/>
             <priority>1</priority>
             <creationdate>2013-03-08T16:00</creationdate>
             <done>0</done>
@@ -63,11 +63,21 @@
         </todoitem>
         <todoitem>
             <title>wd</title>
+            <description>dsfgfds</description>
+            <duedate/>
+            <category>Friends</category>
+            <priority>1</priority>
+            <creationdate>2013-03-08T16:04</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>foo2</title>
             <description/>
             <duedate/>
             <category/>
             <priority>1</priority>
-            <creationdate>2013-03-08T16:04</creationdate>
+            <creationdate>2013-03-08T16:29</creationdate>
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
@@ -75,6 +85,11 @@
     <categories>
         <category>Private</category>
         <category>University</category>
+        <category>Work</category>
+        <category>Work</category>
+        <category>Hobby</category>
+        <category>Family</category>
+        <category>Friends</category>
         <category>Work</category>
     </categories>
 </model>

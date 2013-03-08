@@ -88,6 +88,11 @@ public class EditTaskPanel extends JPanel {
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories, LocalizedTexts lang){
+    	this.item = item;
+    	this.controller = controller;
+    	this.categories = new String[categories.size()+1];
+    	this.categories[0] = "None";
+    	this.lang = lang;
     	
     	titleLabel            = new JLabel(lang.getText("ui.editview.label.title"));
     	dateLabel             = new JLabel(lang.getText("ui.editview.label.dueDate"));
@@ -95,15 +100,10 @@ public class EditTaskPanel extends JPanel {
     	categoryLabel         = new JLabel(lang.getText("ui.editview.label.category"));
     	priorityLabel         = new JLabel(lang.getText("ui.editview.label.priority"));
     	
-    	lowPriority     = new JRadioButton(lang.getText("ui.editview.priority.low"), true);
-    	mediumPriority  = new JRadioButton(lang.getText("ui.editview.priority.medium"), false);
-    	highPriority    = new JRadioButton(lang.getText("ui.editview.priority.high"), false);
+    	lowPriority     = new JRadioButton(lang.getText("ui.editview.priority.low"), (this.item.getPriority()<2)?true:false);//1 or 0 (new Item, no priority)
+    	mediumPriority  = new JRadioButton(lang.getText("ui.editview.priority.medium"), (this.item.getPriority()==2)?true:false);
+    	highPriority    = new JRadioButton(lang.getText("ui.editview.priority.high"), (this.item.getPriority()==3)?true:false);
     	
-    	this.item = item;
-    	this.controller = controller;
-    	this.categories = new String[categories.size()+1];
-    	this.categories[0] = "None";
-    	this.lang = lang;
     	System.out.println(categories.size());
     	for(int i = 1; i<categories.size()+1; i++){
     		this.categories[i] = categories.get(i-1).getLabel();
