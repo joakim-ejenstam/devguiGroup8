@@ -23,7 +23,7 @@ public class ToDoTableRenderer extends DefaultTableCellRenderer {
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
 			boolean hasFocus, int row, int column) {
 		
-		if ( (Integer) value == 1) {
+		if ((Integer) value == 1) {
 			icon = controller.createNavigationIcon("/Flag-Green");
 		}
 		else if ((Integer) value == 2) {
@@ -37,10 +37,10 @@ public class ToDoTableRenderer extends DefaultTableCellRenderer {
 		lbl.setIcon(icon);
 		lbl.setOpaque(isSelected);
 		lbl.setHorizontalAlignment(CENTER);
-		table.getColumnModel().getColumn(column).setMinWidth(50);
-		table.getColumnModel().getColumn(column).setMaxWidth(50);
-		table.getColumnModel().getColumn(column+1).setMinWidth(50);
-		table.getColumnModel().getColumn(column+1).setMaxWidth(50);		
+		table.getColumnModel().getColumn(column).setMinWidth(55);
+		table.getColumnModel().getColumn(column).setMaxWidth(55);
+		table.getColumnModel().getColumn(column+1).setMinWidth(55);
+		table.getColumnModel().getColumn(column+1).setMaxWidth(55);		
 		return lbl;
 	}
 }
