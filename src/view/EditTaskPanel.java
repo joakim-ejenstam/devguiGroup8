@@ -54,8 +54,7 @@ public class EditTaskPanel extends JPanel {
     private JScrollPane	scrollArea 		 = new JScrollPane(descriptionArea);
     
     //Category JComboBox
-    @SuppressWarnings("rawtypes")
-	private JComboBox categoryBox;
+    private JComboBox categoryBox;
     
     //Priority JRadioButtons
     private ButtonGroup priorityGroup    = new ButtonGroup();
@@ -86,7 +85,6 @@ public class EditTaskPanel extends JPanel {
      * @param item
      * @param categories
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
 	EditTaskPanel(ToDoController controller, ToDoItem item, List<Category> categories, LocalizedTexts lang){
     	this.item = item;
     	this.controller = controller;

@@ -1,11 +1,7 @@
 package controller;
 
 import model.LocalizedTexts;
-
 import javax.swing.*;
-
-import view.EditTaskFrame;
-
 import java.awt.event.ActionEvent;
 
 /**
