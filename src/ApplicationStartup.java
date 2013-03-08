@@ -57,16 +57,14 @@ public class ApplicationStartup {
 		final DeletedListModel deleteModel = new DeletedListModel(model);
 		controller.setConfig(config);
 
+		
+
+		
 		// let's do some ui finetuning
 		// apple needs of course some extra attention...
 		if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")) {
 			// move program menu up to system bar
 			System.setProperty("apple.laf.useScreenMenuBar", "true");
-			// change program name
-			System.setProperty(
-					"com.apple.mrj.application.apple.menu.about.name",
-					lang.getText("ui.mainview.windowTitle"));
-
 			try {
 				// Apple's menu is not compatible with the nimbus theme with
 				// custom colors
@@ -182,6 +180,12 @@ public class ApplicationStartup {
 	}
 	*/
 	public static void main(String[] args) {
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
+		// change program name
+		System.setProperty(
+				"com.apple.mrj.application.apple.menu.about.name","Greigth ToDo Manager");
+				//lang.getText("ui.mainview.windowTitle"));
+
 		new ApplicationStartup(args);
 	}
 }
