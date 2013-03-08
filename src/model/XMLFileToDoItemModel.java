@@ -200,7 +200,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 			Elements categories = root.getFirstChildElement("categories").getChildElements();
 			for(int i = 0; i< categories.size(); i++){
 				String cat = categories.get(i).getValue();
-				this.addCategory(new Category(cat));
+				this.categories.add(new Category(cat));
 			}
 			
 			
@@ -268,7 +268,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	 * @param item current ToDoItem
 	 */
 	private void addItemXML(ToDoItem item){
-		if (!categoryExist(item.getCategory())){
+		if ((item.getCategory() != null) && !categoryExist(item.getCategory())){
 			this.addCategory(item.getCategory());
 		}
 
@@ -296,7 +296,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	 * @param item current ToDoItem to be written to the XML file
 	 */
 	private void updateItemXML(int index, ToDoItem item){
-		if (!categoryExist(item.getCategory())){
+		if ((item.getCategory() != null) && !categoryExist(item.getCategory())){
 			this.addCategory(item.getCategory());
 		}
 		try {
@@ -323,7 +323,7 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	 * @param value new value for the field
 	 */
 	private void editItemXML(ToDoItem item, String field, String value){
-		if (!categoryExist(item.getCategory())){
+		if ((item.getCategory() != null) && !categoryExist(item.getCategory())){
 			this.addCategory(item.getCategory());
 		}
 		try {

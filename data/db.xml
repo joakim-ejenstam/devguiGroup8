@@ -15,7 +15,7 @@
             <title>hello</title>
             <description/>
             <duedate/>
-            <category/>
+            <category>Work</category>
             <priority>1</priority>
             <creationdate>2013-03-08T01:17</creationdate>
             <done>0</done>
@@ -51,9 +51,30 @@
             <done>1</done>
             <deleted>1</deleted>
         </todoitem>
+        <todoitem>
+            <title>jhmn</title>
+            <description/>
+            <duedate/>
+            <category>Work</category>
+            <priority>1</priority>
+            <creationdate>2013-03-08T16:00</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
+        <todoitem>
+            <title>wd</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-08T16:04</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
     </todoitems>
     <categories>
         <category>Private</category>
         <category>University</category>
+        <category>Work</category>
     </categories>
 </model>
