@@ -4,25 +4,44 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
-import controller.AddAction;
-import controller.TodoMouseListener;
-import model.*;
+import model.DeletedListModel;
+import model.DoneListModel;
+import model.LocalizedTexts;
+import model.OverdueListModel;
+import model.TableToDoItemModel;
 
 import org.java.ayatana.ApplicationMenu;
 
+import controller.AddAction;
 import controller.Config;
 import controller.ToDoController;
+import controller.TodoMouseListener;
 
 /**
  * This class sets up the main window of the application
@@ -41,6 +60,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
     private LocalizedTexts lang;
     public JTable table;
     
+    private JFrame frame;
     private JMenu file;
     private JMenu edit;
     private JMenu help;
@@ -97,15 +117,9 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 		JMenuItem editTodo = new JMenuItem(controller.getEditAction());
 		JMenuItem deleteTodo = new JMenuItem(controller.getDeleteAction());
         JMenuItem setTodo = new JMenuItem(controller.getDoneAction());
-        JMenuItem showGraph = new JMenuItem("Show Graph");
-        showGraph.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new GraphPanel(new StupidToDoItemModel());
-            }
-        });
-        showGraph.setIcon(controller.createNavigationIcon("/Chart1"));
+        JMenuItem showGraph = new JMenuItem(controller.getShowGraphAction());
 
-		// Set up menu bar
+        // Set up menu bar
 		menuBar.add(file);
 		menuBar.add(edit);
 		menuBar.add(help);
@@ -181,7 +195,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdone"), null, donePane);
         this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewoverdue"),null,overDuePane);
         this.testPane.addTab(lang.getText("ui.mainview.radiobutton.viewdeleted"),null,deletePane);
-        this.testPane.addTab("Graph",null,new GraphPanel(new StupidToDoItemModel()));
+        this.testPane.addTab("Graph",null,new GraphPanel(this.tableModel.getUnderlyingDataModel()));
         this.testPane.setMnemonicAt(0, KeyEvent.VK_1);
         this.testPane.setMnemonicAt(1, KeyEvent.VK_2);
         this.testPane.setMnemonicAt(2, KeyEvent.VK_3);
@@ -254,23 +268,23 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 	 */
 	public void createAndShowGUI(Config config) {
 		
-		JFrame frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(Integer.valueOf(config.getProp("windowWidth")), 
+		this.frame = new JFrame(lang.getText("ui.mainview.windowTitle"));
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setPreferredSize(new Dimension(Integer.valueOf(config.getProp("windowWidth")), 
 				Integer.valueOf(config.getProp("windowHeight"))));
-		frame.setLocation(Integer.valueOf(config.getProp("windowXPos")), Integer.valueOf(config.getProp("windowYPos")));
+		this.frame.setLocation(Integer.valueOf(config.getProp("windowXPos")), Integer.valueOf(config.getProp("windowYPos")));
 		
-		addComponentsToPane(frame.getContentPane());
-		addMenuBar(frame);
+		addComponentsToPane(this.frame.getContentPane());
+		addMenuBar(this.frame);
 		
 		//support for ubuntu global menu, using the jayanta-lib
-		ApplicationMenu.tryInstall(frame);
+		ApplicationMenu.tryInstall(this.frame);
 		
-		frame.pack();
-		frame.setVisible(true);
+		this.frame.pack();
+		this.frame.setVisible(true);
 		
 		//we add the controller as a listener to observe changes
-		frame.addComponentListener(this.controller);
+		this.frame.addComponentListener(this.controller);
         controller.setTable(table);
     }
 
@@ -287,6 +301,7 @@ public class MainView extends JFrame implements Observer, TableModelListener{
         this.doneListModel.getDoneItems();
         this.deletedListModel.getDeletedItems();
         this.overdueListModel.getOverdueItems();
+        this.testPane.getComponentAt(4).repaint();//repaint graph view
 	}
 
 	@Override

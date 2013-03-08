@@ -12,11 +12,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.StupidToDoItemModel;
 import model.ToDoItem;
 import model.ToDoItemModel;
 import controller.Config;
@@ -79,11 +76,17 @@ public class GraphPanel extends JPanel {
 		this.minPriority	= this.model.getMinPriority();
 		this.maxPriority	= this.model.getMaxPriority();
 		this.prioritySpan	= this.maxPriority-this.minPriority;
-		this.priorityScale	= this.height/this.prioritySpan;
+		if(this.prioritySpan > 0)
+			this.priorityScale	= this.height/this.prioritySpan;
+		else
+			this.priorityScale = 0;
 		this.minDueDate		= this.model.getMinDueDate();
 		this.maxDueDate		= this.model.getMaxDueDate();
 		this.timeSpan		= (int)((this.maxDueDate.getTime()-this.minDueDate.getTime())/(1000 * 60 * 60 * 24));//difference in *days*
-		this.timeScale		= this.width/this.timeSpan;
+		if(this.timeSpan > 0)
+			this.timeScale		= this.width/this.timeSpan;
+		else
+			this.timeScale = 0;
 		System.out.println("---DEBUG BEGIN---");
 		System.out.println("--height: "+new Integer(this.height).longValue()+", width: "+new Integer(this.width).longValue());
 		System.out.println("--Priority: min: "+this.minPriority+" max: "+this.maxPriority+" span: "+this.prioritySpan+" scale: "+this.priorityScale);
@@ -113,8 +116,12 @@ public class GraphPanel extends JPanel {
         	//draw it
         	if(currItem.getDueDate() != null)
         		g.drawString(currItem.getTitle()+" ("+currItem.getPriority()+"; "+new SimpleDateFormat("yyyy-MM-dd").format(currItem.getDueDate())+")", xPos, yPos);
-        	else //treat it as beeing in the future
+        	else {//treat it as beeing in the future
+        		Font f = g.getFont();
+        		g.setFont(new Font(f.getName(), Font.ITALIC, f.getSize())); // italic to show that we have no due date
         		g.drawString(currItem.getTitle()+" ("+currItem.getPriority()+"; "+new SimpleDateFormat("yyyy-MM-dd").format(this.maxDueDate)+")", xPos, yPos);
+        		g.setFont(f);
+        	}
 		}
         
         //paint a line for today
