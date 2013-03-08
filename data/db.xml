@@ -31,6 +31,16 @@
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
+        <todoitem>
+            <title>wff</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-08T19:13</creationdate>
+            <done>0</done>
+            <deleted>0</deleted>
+        </todoitem>
     </todoitems>
     <categories>
         <category>Private</category>

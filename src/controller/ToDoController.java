@@ -307,6 +307,7 @@ public class ToDoController extends ComponentAdapter {
         view.table.getColumnModel().getColumn(3).setCellRenderer(new ToDoTableRenderer());
         this.view.updateLanguage(lang);
         this.setDone.updateLanguage(lang);
+        this.showGraphAction.updateLanguage(lang);
     }
     
     /**
