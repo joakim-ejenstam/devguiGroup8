@@ -47,7 +47,12 @@ public class XMLFileToDoItemModel extends ToDoItemModel {
 	 * @return true if the category already exist, false otherwhise
 	 */
 	private boolean categoryExist(Category cat){
-		return this.getAllCategories().contains(cat);
+		for(Category c : this.getAllCategories()){
+			if(cat.getLabel().toLowerCase().equals(c.getLabel().toLowerCase())){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
