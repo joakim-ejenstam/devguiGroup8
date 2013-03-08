@@ -55,6 +55,15 @@ public class Config {
 		this.defaults.put("windowXPos", "0");
 		this.defaults.put("windowYPos", "0");
 		this.defaults.put("locale", "Locale.ENGLISH");
+		
+		this.defaults.put("ui.primeColor1", "#5C5C5C");
+		this.defaults.put("ui.primeColor2", "#696969");
+		this.defaults.put("ui.primeColor3", "#A6A6A6");
+		
+		this.defaults.put("ui.secondaryColor1", "#030303");
+		this.defaults.put("ui.secondaryColor2", "#696969");
+		this.defaults.put("ui.secondaryColor3", "#919191");
+
 	}
 	
 

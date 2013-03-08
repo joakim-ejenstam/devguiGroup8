@@ -21,12 +21,17 @@ import controller.ToDoController;
 import exceptions.LoadModelException;
 
 /**
+ * The starter class which glues the model view and controller
  * @author Joakim, Mattias
  */
 public class ApplicationStartup {
 
 	private Config config = null; // the configuration values of the application
 
+	/**
+	 * The constructor
+	 * @param args
+	 */
 	public ApplicationStartup(String[] args) {
 		config = Config.getInstance();
 
@@ -45,9 +50,7 @@ public class ApplicationStartup {
 		final DoneListModel doneModel = new DoneListModel(model);
 		final DeletedListModel deleteModel = new DeletedListModel(model);
 		controller.setConfig(config);
-
 		
-
 		
 		// let's do some ui finetuning
 		// apple needs of course some extra attention...
@@ -66,7 +69,7 @@ public class ApplicationStartup {
 		} else {
 			try {
 				MetalLookAndFeel mlf = new MetalLookAndFeel();
-				MetalLookAndFeel.setCurrentTheme(new CustomTheme());
+				MetalLookAndFeel.setCurrentTheme(new CustomTheme(config));
 				UIManager.setLookAndFeel(mlf);
 			} catch (UnsupportedLookAndFeelException e1) {
 				// TODO Auto-generated catch block
@@ -109,7 +112,12 @@ public class ApplicationStartup {
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-
+	
+	
+	/**
+	 * The main method for the whole app
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		// change program name
