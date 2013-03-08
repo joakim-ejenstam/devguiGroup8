@@ -227,8 +227,8 @@ public class MainView extends JFrame implements Observer, TableModelListener{
 
 	    
 	    // creates the clock
-	    final DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-	    final DateFormat timeFormat2 = new SimpleDateFormat("HH mm ss");
+	    final DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	    final DateFormat timeFormat2 = new SimpleDateFormat("HH mm");
 	    ActionListener timerListener = new ActionListener()  
 	    {  
 	        public void actionPerformed(ActionEvent e)  
