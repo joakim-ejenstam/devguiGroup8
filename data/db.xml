@@ -31,6 +31,26 @@
             <done>0</done>
             <deleted>0</deleted>
         </todoitem>
+        <todoitem>
+            <title>foo</title>
+            <description/>
+            <duedate/>
+            <category/>
+            <priority>1</priority>
+            <creationdate>2013-03-08T12:40</creationdate>
+            <done>1</done>
+            <deleted>1</deleted>
+        </todoitem>
+        <todoitem>
+            <title>should have done</title>
+            <description/>
+            <duedate>2013-03-30</duedate>
+            <category>Private</category>
+            <priority>1</priority>
+            <creationdate>2013-03-08T13:27</creationdate>
+            <done>1</done>
+            <deleted>1</deleted>
+        </todoitem>
     </todoitems>
     <categories>
         <category>Private</category>

@@ -47,10 +47,10 @@ public class EditAction extends AbstractAction {
     }
 
     public void actionPerformed(ActionEvent event) {
-        int index = table.getSelectedRow();
-       index = table.convertRowIndexToModel(index);
+        int index = table.getSelectedRow();//-1 if nothing is selected
 
         if(index >= 0) {
+            index = table.convertRowIndexToModel(index);
             EditTaskFrame editView =
                     new EditTaskFrame
                             (parent, parent.getEditItem(index),parent.getCategories(),parent.getLanguage());

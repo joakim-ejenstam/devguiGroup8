@@ -3,6 +3,7 @@ package controller;
 import model.LocalizedTexts;
 
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 
 /**
@@ -47,8 +48,18 @@ public class SetDoneAction extends AbstractAction {
      * @param event the event fired from the user.
      */
     public void actionPerformed(ActionEvent event){
-        int index = table.getSelectedRow();
-        parent.setSelected(index);
+        int index = table.getSelectedRow(); //-1 if nothing selected
+        if(index >= 0) {
+            index = table.convertRowIndexToModel(index);
+            parent.setSelected(index);
+        } else {
+        	LocalizedTexts lang = this.parent.getLanguage();
+            JOptionPane.showMessageDialog(
+                    ((JComponent)event.getSource()).getTopLevelAncestor(),
+                    lang.getText("ui.editaction.optionpane.select_item"),
+                    lang.getText("ui.editaction.optionpane.noselectedtitle"),
+                    JOptionPane.WARNING_MESSAGE);
+        }
     }
 
     /**
