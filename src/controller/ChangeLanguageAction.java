@@ -16,7 +16,7 @@ import java.util.Locale;
 @SuppressWarnings("serial")
 public class ChangeLanguageAction extends AbstractAction {
     private ToDoController parent;
-
+    private LocalizedTexts lang;
     /**
      * Constructor, nothing fancy!
      * @param text The title for the component using this action.
@@ -27,11 +27,12 @@ public class ChangeLanguageAction extends AbstractAction {
      */
     public ChangeLanguageAction(String text, ImageIcon icon,
                                 String desc, Integer mnemonic,
-                                ToDoController controller) {
+                                ToDoController controller,LocalizedTexts lang) {
         super(text, icon);
         putValue(SHORT_DESCRIPTION, desc);
         putValue(MNEMONIC_KEY, mnemonic);
         this.parent = controller;
+        this.lang = lang;
     }
 
     /**
@@ -51,7 +52,7 @@ public class ChangeLanguageAction extends AbstractAction {
             String l = (String)JOptionPane.showInputDialog(
                     rp,
                     null,//"Choose your preferred language!",	no need to enter text here, it's self explanatory
-                    null,//"Customized Dialog",					no need to enter text here, it's self explanatory
+                    this.lang.getText("ui.changelanguageaction.optionpane.title"),//"Customized Dialog",					no need to enter text here, it's self explanatory
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     possibilities,

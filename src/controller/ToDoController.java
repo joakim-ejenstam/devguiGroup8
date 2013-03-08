@@ -80,7 +80,7 @@ public class ToDoController extends ComponentAdapter {
                         lang.getText("ui.mainview.menu.file.changeLanguage"),
                         createNavigationIcon("/Compile"),
                         lang.getText("ui.mainview.languageAction"),
-                        new Integer(lang.getText("ui.mainview.menu.file.changeLanguage.mnemonic").charAt(0)), this);
+                        new Integer(lang.getText("ui.mainview.menu.file.changeLanguage.mnemonic").charAt(0)), this, lang);
         this.about =
                 new AboutAction(
                         lang.getText("ui.mainview.menu.help.about"),
