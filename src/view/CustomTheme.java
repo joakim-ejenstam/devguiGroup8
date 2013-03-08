@@ -1,25 +1,18 @@
 package view;
 
 import java.awt.Color;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.ResourceBundle;
-
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.metal.OceanTheme;
 
 import controller.Config;
 
+/**
+ * Custom theme with chosen colors
+ * @author Matteh
+ *
+ */
 public class CustomTheme extends OceanTheme {
 
-	// Color theme
-	
-	private static final String THEME = "data" + File.separator
-			+ "theme.properties";
-	
 	private final ColorUIResource primary1;
 	private final ColorUIResource primary2;
 	private final ColorUIResource primary3;
@@ -27,12 +20,12 @@ public class CustomTheme extends OceanTheme {
 	private final ColorUIResource secondary1;
 	private final ColorUIResource secondary2;
 	private final ColorUIResource secondary3;
-	
-	private ResourceBundle rb = null;
-//	private final Properties prop;
-	
+
+	/**
+	 * Constructor for the class
+	 * @param cf Config to be used to load color resources
+	 */
 	public CustomTheme(Config cf){
-//		this.prop = this.loadColorProperties();
 		this.primary1 = new ColorUIResource(Color.decode(cf.getProp("ui.primeColor1")));
 		this.primary2 = new ColorUIResource(Color.decode(cf.getProp("ui.primeColor2")));
 		this.primary3 =new ColorUIResource(Color.decode(cf.getProp("ui.primeColor3")));
@@ -64,25 +57,5 @@ public class CustomTheme extends OceanTheme {
 
 	protected ColorUIResource getSecondary3() {
 		return secondary3;
-	}
-	
-	/**
-	 * Loads the color configuration
-	 */
-	private Properties loadColorProperties() {
-		Properties colorTheme = new Properties();
-		FileInputStream in;
-		try {
-			in = new FileInputStream(THEME);
-			colorTheme.load(in);
-			in.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return colorTheme;
 	}
 }
