@@ -49,57 +49,57 @@ public class ToDoController extends ComponentAdapter {
                         lang.getText("ui.mainview.menu.edit.add"),
                         createNavigationIcon("/Add"),
                         lang.getText("ui.mainview.addAction"),
-                        KeyEvent.VK_A, this, lang);
+                        new Integer(lang.getText("ui.mainview.menu.edit.add.mnemonic").charAt(0)), this, lang);
         this.edit =
                 new EditAction(
                         lang.getText("ui.mainview.menu.edit.edit"),
                         createNavigationIcon("/Overlay-edit"),
                         lang.getText("ui.mainview.editAction"),
-                        KeyEvent.VK_E, this, lang);
+                        new Integer(lang.getText("ui.mainview.menu.edit.edit.mnemonic").charAt(0)), this, lang);
         this.delete =
                 new DeleteAction(
                         lang.getText("ui.mainview.menu.edit.delete"),
                         createNavigationIcon("/Trash"),
                         lang.getText("ui.mainview.deleteAction"),
-                        KeyEvent.VK_D, this);
+                        new Integer(lang.getText("ui.mainview.menu.edit.delete.mnemonic").charAt(0)), this);
         this.ok =
                 new OkAction(
                 		lang.getText("ui.editview.button.ok"),
                         null,
                         lang.getText("ui.mainview.okAction"),
-                        KeyEvent.VK_O, this);
+                        new Integer(lang.getText("ui.editview.button.ok.mnemonic").charAt(0)), this);
         this.cancel =
                 new CancelAction(
                         lang.getText("ui.editview.button.cancel"),
                         null,
                         lang.getText("ui.mainview.cancelAction"),
-                        KeyEvent.VK_C, this);
+                        new Integer(lang.getText("ui.editview.button.cancel.mnemonic").charAt(0)), this);
         this.language =
                 new ChangeLanguageAction(
                         lang.getText("ui.mainview.menu.file.changeLanguage"),
                         createNavigationIcon("/Compile"),
                         lang.getText("ui.mainview.languageAction"),
-                        KeyEvent.VK_L, this);
+                        new Integer(lang.getText("ui.mainview.menu.file.changeLanguage.mnemonic").charAt(0)), this);
         this.about =
                 new AboutAction(
                         lang.getText("ui.mainview.menu.help.about"),
                         createNavigationIcon("/Info"),
                         lang.getText("ui.mainview.aboutAction"),
-                        KeyEvent.VK_F, this);
+                        new Integer(lang.getText("ui.mainview.menu.help.about.mnemonic").charAt(0)), this);
         
         this.setDone =
                 new SetDoneAction(
                         lang.getText("ui.tableview.setdone"),
                         createNavigationIcon("/Ok"),
                         lang.getText("ui.tableview.setdone"),
-                        KeyEvent.VK_D, this);
+                        new Integer(lang.getText("ui.tableview.setdone.mnemonic").charAt(0)), this);
         
         this.showGraphAction =
         		new ShowGraphAction(
         				lang.getText("ui.mainview.menu.file.item.showGraph"),
                         createNavigationIcon("/Chart1"),
                         lang.getText("ui.mainview.menu.file.item.showGraph"),
-                        KeyEvent.VK_G, this); //TODO load lang.dep. mnemonic
+                        new Integer(lang.getText("ui.mainview.menu.file.item.showGraph.mnemonic").charAt(0)), this);
     }
 
     /**
