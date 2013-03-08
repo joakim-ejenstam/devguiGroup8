@@ -71,6 +71,7 @@ public class DeleteAction extends AbstractAction {
     public void updateLanguage(LocalizedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.edit.delete"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.deleteAction"));
+        putValue(MNEMONIC_KEY,new Integer(lang.getText("ui.mainview.menu.edit.delete.mnemonic").charAt(0)));
     }
 
 }

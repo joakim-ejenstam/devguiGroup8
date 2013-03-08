@@ -49,6 +49,7 @@ public class AboutAction extends AbstractAction{
     public void updateLanguage(LocalizedTexts lang) {
         putValue(NAME, lang.getText("ui.mainview.menu.help.about"));
         putValue(SHORT_DESCRIPTION,lang.getText("ui.mainview.aboutAction"));
+        putValue(MNEMONIC_KEY,new Integer(lang.getText("ui.mainview.menu.help.about.mnemonic").charAt(0)));
     }
 	
 }
